@@ -59,6 +59,10 @@ Required small catalogue files, schemas, SQL or viewer assets belong inside the 
 
 Number notebooks to show the reading order. Start with a small notebook using the package's main modules, then show inputs and outputs, then a connection to another EPSM package. Short `.py` helpers are optional when they make a notebook easier to follow. An example uses public imports, states its prerequisites and shows an outcome. It must not depend on a neighbouring checkout, hidden notebook variables or a developer's absolute file paths. Follow the [examples guide](examples-and-use-cases.md).
 
+## Use the same branches
+
+Each repository keeps `main` for stable releases and `dev` for shared development. Feature and experiment branches start from `dev` and return there after review and tests. A checked release moves into `main` and receives a version tag. Follow [branches and releases](branches-and-releases.md) and use the [branch-policy template](templates/branch-policy.md.tmpl).
+
 ## Explain the project before the code
 
 Start the README with the package's purpose and the people it serves. State what it owns, what it calls elsewhere and what is outside its scope. Use the [project README template](templates/project-readme.md.tmpl), and adapt the [source templates](templates/README.md) for modules and objects.

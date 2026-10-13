@@ -34,6 +34,7 @@ Coding agents should also read [AGENTS.md](AGENTS.md).
 | Write tests before changing code | [Test-driven development](docs/engineering-style.md#test-driven-development) |
 | Write clear code and useful docstrings | [Source and documentation](docs/engineering-style.md#human-readable-source) |
 | Set up a repository and its project information | [Project layout](docs/project-layout.md) |
+| Start a feature, experiment or release | [Branches and releases](docs/branches-and-releases.md) |
 | Read and write data, or pass it to another package | [I/O modules and package APIs](docs/io-and-api.md) |
 | Add a notebook that teaches a package | [Examples guide](docs/examples-and-use-cases.md) |
 | Find a shared example of a research task | [Common use cases](use_cases/README.md) |

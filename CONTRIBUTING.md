@@ -10,6 +10,12 @@ Check the [common use cases](use_cases/README.md) for a task that already descri
 
 You do not have to redesign a whole package to fix one problem. Keep the change small enough that another person can understand and check it.
 
+## Start from dev
+
+`main` holds stable releases. `dev` is the shared home for development. Start a feature or experiment branch from the current `dev`, then send the completed change back to `dev` through a reviewed pull request.
+
+Ordinary feature work does not go straight to `main`. A tested version reaches `main` through a release pull request and gets a version tag. See [branches and releases](docs/branches-and-releases.md) for the commands, release checks and urgent-fix route.
+
 ## Work from a test
 
 For a new behaviour or a bug fix:

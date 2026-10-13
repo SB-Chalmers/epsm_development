@@ -451,6 +451,8 @@ Geometry checks, a complete weather calendar or an accepted engine run do not es
 
 ## Repository and review conventions
 
+Use `main` for stable releases and `dev` as the shared home for development. Start feature and experiment branches from `dev`, review and test them, then merge them back into `dev`. Promote a tested release to `main` and tag its final commit. The [branch guide](branches-and-releases.md) explains this process, release checks and urgent fixes.
+
 Use `src/`, `tests/`, `examples/` and `docs/` consistently. Put external inputs in explicit data/artifact locations and generated study artifacts in output directories ignored by Git. Keep research protocols with their study records.
 
 Every repository has an `examples/` folder and a short index. Use simple Python notebooks: begin with the package's main modules, then show how it works with the other EPSM packages. Give each notebook one task, small declared inputs, plain explanations and checks of the result. Run it from a fresh kernel before publishing it. Follow [the examples guide](examples-and-use-cases.md).

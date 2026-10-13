@@ -9,6 +9,7 @@ These files help you start a Python module or a public object in the EPSM style.
 | [Input and output module](io-module.py.tmpl) | Reading and writing small JSON metadata files, clear errors, and operational logs |
 | [Project README](project-readme.md.tmpl) | Purpose, scope, installation, public API, tests and honest project information |
 | [Notebook](notebook.ipynb.tmpl) | One small teaching task, prerequisites, plain Python cells and a check of the result |
+| [Branch policy](branch-policy.md.tmpl) | Shared `main`/`dev` rules, feature and experiment branches, release checks and urgent fixes |
 
 The `.tmpl` extension marks a file to adapt. Copy a Python module into the package that owns your feature and give it a `.py` name. Put an adapted notebook in `examples/` with a numbered `.ipynb` name. Use the README template for the repository's `README.md`.
 

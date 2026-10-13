@@ -7,6 +7,7 @@ This repository is the EPSM developer handbook. Its readers include new develope
 - Read `README.md` and the relevant section of `docs/engineering-style.md`.
 - Read the project, I/O and examples guides for work in those areas. Use `use_cases/README.md` to find the shared expected behaviour.
 - Keep the user's requested scope clear. This repository contains documentation and templates; its guidance does not authorize changes to other repositories.
+- Read `docs/branches-and-releases.md` before changing branches. Start ordinary work on a `codex/<short-name>` branch from `dev` and target `dev` for review. Preserve existing local work. Do not promote a feature to `main` as part of an ordinary task.
 - Preserve the distinction between today's software, proposed package boundaries and illustrative future APIs.
 - Check source facts before changing versions, test counts or scientific validation claims. Keep dated review snapshots clearly dated.
 
