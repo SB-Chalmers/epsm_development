@@ -1,0 +1,112 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "id": "goal",
+      "metadata": {},
+      "source": [
+        "# Replace with one clear notebook goal\n",
+        "\n",
+        "**Template status:** this is an executable standard-library scaffold. Replace its\n",
+        "small metadata-copy example with your package's actual public operation before\n",
+        "publishing. It does not define or test an EPSM API.\n",
+        "\n",
+        "Describe the result the reader will obtain. List Python/package releases, actual\n",
+        "installation extras, kernel/working directory, fixtures/source IDs, physical units\n",
+        "and reference bases, and any required engine/service. Put installation commands\n",
+        "in `examples/README.md`, outside notebook cells.\n",
+        "\n",
+        "This scaffold needs Python 3.11 or newer and no extra packages. Its source ID is\n",
+        "`synthetic.handbook.notebook-template.v1`; counts are dimensionless; it uses no\n",
+        "random sampling, seed, external resource or output file.\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "setup-note",
+      "metadata": {},
+      "source": [
+        "## Set up the smallest useful input\n",
+        "\n",
+        "Use an installed public import for a real package example. Keep the fixture small\n",
+        "and explicit. If random sampling is necessary, create a local generator and state\n",
+        "its seed. Do not rely on another notebook or an earlier manual cell.\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "id": "fixture",
+      "metadata": {},
+      "source": [
+        "fixture = {\n",
+        "    \"source_id\": \"synthetic.handbook.notebook-template.v1\",\n",
+        "    \"identifier\": \"example-1\",\n",
+        "    \"state\": \"draft\",\n",
+        "    \"item_count\": 2,\n",
+        "}\n"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "id": "operation-note",
+      "metadata": {},
+      "source": [
+        "## Show the public operation, then inspect the result\n",
+        "\n",
+        "Replace the next cell with a real package call and an assertion about its useful\n",
+        "outcome. Here, Python's ordinary dictionary copy is only a runnable scaffold.\n",
+        "Explain assumptions, evidence, diagnostics and any file writes before the call.\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "id": "operation",
+      "metadata": {},
+      "source": [
+        "summary = fixture.copy()\n",
+        "assert summary == fixture\n",
+        "assert summary is not fixture\n",
+        "summary\n"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "id": "finish-note",
+      "metadata": {},
+      "source": [
+        "## Check and describe the boundary\n",
+        "\n",
+        "Use **Restart Kernel and Run All** in a fresh documented environment. Every cell\n",
+        "must succeed in order. Clear outputs and execution counts before committing.\n",
+        "Explain what the completed check establishes and what remains untested.\n",
+        "\n",
+        "Add a later numbered notebook for a real connection to another EPSM package. State\n",
+        "its collaborator releases and required fixtures/resources. A required release\n",
+        "integration must fail when a collaborator is unavailable; a skip is not passing\n",
+        "evidence. Keep future API sketches in labelled Markdown rather than runnable cells.\n"
+      ]
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Python 3",
+      "language": "python",
+      "name": "python3"
+    },
+    "language_info": {
+      "name": "python"
+    },
+    "epsm": {
+      "kind": "executable_scaffold",
+      "source_id": "synthetic.handbook.notebook-template.v1",
+      "offline": true,
+      "edit_before_use": true
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

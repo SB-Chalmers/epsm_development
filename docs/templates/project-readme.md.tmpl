@@ -1,0 +1,81 @@
+# {{PROJECT_DISPLAY_NAME}}
+
+{{Explain in one or two sentences what this package does, who uses it and the useful result it produces.}}
+
+**Status:** {{Release or development status and date. Do not claim unsupported readiness.}}
+
+## What this package owns
+
+{{Describe its narrow responsibility in plain English.}}
+
+{{Describe the related packages it calls, what they own, and the main exclusions.}}
+
+## Project information
+
+| Item | Value |
+| --- | --- |
+| Distribution / installation name | `{{DISTRIBUTION_NAME}}` |
+| Python import | `{{IMPORT_NAME}}` |
+| Commands, if supplied | `{{COMMAND_NAMES}}` |
+| Version source | `{{VERSION_SOURCE}}`; current release `{{VERSION}}` |
+| Maintainer / team | {{MAINTAINER_OR_TEAM}} |
+| Contact / issue tracker | {{CONTACT_OR_VERIFIED_ISSUE_URL}} |
+| License / copyright | {{APPROVED_LICENSE_AND_ACTUAL_COPYRIGHT_HOLDER}} |
+| Research attribution | {{TRUTHFUL_PROJECT_OR_GROUP_INFORMATION}} |
+| Citation | {{VERIFIED_CITATION_OR_STATE_NONE_IS_CURRENTLY_DEFINED}} |
+| Python requirement | {{SUPPORTED_PYTHON_RANGE}} |
+
+Keep these facts consistent with `pyproject.toml` and the source headers. Remove inapplicable rows. Replace every placeholder before publishing; do not invent original creation dates, authorship or license information.
+
+## Install
+
+{{State whether users install a published release, a development checkout or a pinned research environment. Give the actual tested commands.}}
+
+```sh
+# Illustrative command only: replace the distribution name and extras.
+python -m pip install 'DISTRIBUTION_NAME'
+python -m pip install 'DISTRIBUTION_NAME[FEATURE_EXTRA]'
+```
+
+| Feature | Required dependencies or extra | External prerequisite |
+| --- | --- | --- |
+| Basic use | {{REQUIRED_DEPENDENCIES}} | {{NONE_OR_REQUIREMENT}} |
+| {{OPTIONAL_FEATURE}} | `{{EXTRA_NAME}}` | {{ENGINE_SERVICE_OR_ARTIFACT}} |
+
+{{Explain where required runtime resources are packaged, and how users supply external data. No neighbouring checkout or developer-specific path should be required.}}
+
+## First useful example
+
+{{Add a small executable example using public imports. Explain its inputs, units, prerequisites and expected outcome. If the API is only proposed, label it illustrative and do not advertise it as runnable.}}
+
+{{Point to numbered Python scripts or notebooks actually present in examples/. Explain any service, weather, catalogue, source-release or engine requirements.}}
+
+## Public API
+
+{{Name the main objects and operations. Explain their inputs, returned objects, missing-data handling, errors and any file/service access. Link to API documentation that actually exists.}}
+
+{{Explain which object contains or references another, how authoring edits work and how submitted runs retain fixed inputs. Include concise inspection examples where helpful.}}
+
+## Inputs and retained outputs
+
+{{Describe supported formats, units and area/time reference bases. State where external sources, small fixtures, packaged resources and generated outputs live.}}
+
+{{Explain provenance, release identities, logs and output retention. Do not put credentials or unlicensed source releases in the repository.}}
+
+## Development and checks
+
+{{Give the actual commands for installing development/test extras, running unit tests, running relevant integrations and checking formatting/documentation. List prerequisites and useful offline checks.}}
+
+{{Explain how CI tests the installed wheel and public examples, including optional resources. Identify the common EPSM use-case IDs this package supports and where their package/umbrella tests live.}}
+
+## Validation and limitations
+
+{{State what has been checked, with the environment or release, evidence reference and date. Keep source coverage, model completeness, accepted engine execution and empirical accuracy separate.}}
+
+{{State unsupported cases, provisional assumptions and integrations not yet exercised. A skipped test is not a validated feature.}}
+
+## Contributing and API changes
+
+{{Link to this repository's real contribution/agent guidance and the shared EPSM standards. Identify the owner of a proposed change before implementation.}}
+
+{{Describe how public API changes update examples, package tests, installed integration checks and migration notes. Link to a changelog or migration guide only when it exists.}}

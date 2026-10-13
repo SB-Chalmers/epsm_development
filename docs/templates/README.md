@@ -6,8 +6,11 @@ These files help you start a Python module or a public object in the EPSM style.
 | --- | --- |
 | [Python module](python-module.py.tmpl) | Source header, useful module documentation and a logger that leaves configuration to the application |
 | [Public object](public-entity.py.tmpl) | Class and method documentation, a short `repr`, and an explicit summary using information already loaded |
+| [Input and output module](io-module.py.tmpl) | Reading and writing small JSON metadata files, clear errors, and operational logs |
+| [Project README](project-readme.md.tmpl) | Purpose, scope, installation, public API, tests and honest project information |
+| [Notebook](notebook.ipynb.tmpl) | One small teaching task, prerequisites, plain Python cells and a check of the result |
 
-The `.tmpl` extension keeps these files outside an installed Python package. Copy the pattern into the package that owns your feature and give the file a normal `.py` name.
+The `.tmpl` extension marks a file to adapt. Copy a Python module into the package that owns your feature and give it a `.py` name. Put an adapted notebook in `examples/` with a numbered `.ipynb` name. Use the README template for the repository's `README.md`.
 
 ## Before using a template
 
@@ -17,3 +20,5 @@ The `.tmpl` extension keeps these files outside an installed Python package. Cop
 4. Write the tests for your feature before implementing its behaviour.
 
 The public-object example uses a small `BuildingSummary` class so its inspection examples can run without a database or EnergyPlus. It does not define the future EPSM Building API or a base class that every object must inherit.
+
+Try the [learning notebooks](../../examples/README.md) to see the object and I/O templates in use. For a real package, follow [the I/O guide](../io-and-api.md), [project guide](../project-layout.md), and [notebook guide](../examples-and-use-cases.md).

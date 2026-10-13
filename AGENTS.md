@@ -5,6 +5,7 @@ This repository is the EPSM developer handbook. Its readers include new develope
 ## Before you change something
 
 - Read `README.md` and the relevant section of `docs/engineering-style.md`.
+- Read the project, I/O and examples guides for work in those areas. Use `use_cases/README.md` to find the shared expected behaviour.
 - Keep the user's requested scope clear. This repository contains documentation and templates; its guidance does not authorize changes to other repositories.
 - Preserve the distinction between today's software, proposed package boundaries and illustrative future APIs.
 - Check source facts before changing versions, test counts or scientific validation claims. Keep dated review snapshots clearly dated.
@@ -15,9 +16,11 @@ This repository is the EPSM developer handbook. Its readers include new develope
 - For code changes, begin with a test of observable behaviour. For documentation changes, verify the links and examples.
 - Preserve useful Core-style docstrings, honest authorship and project-approved license information in templates.
 - Keep logging, representation and evidence rules consistent across examples.
+- Keep file/service access in I/O modules and use documented public APIs for package handoffs. Do not import a private helper from another package to save a few lines.
+- Keep `examples/` notebooks small and ordered. Show the package's own modules before integrations. Label extra prerequisites and future API sketches clearly.
 - Do not add a generic entity framework, live database connection or scientific calculation to this documentation repository.
 - Never present a future API sketch as implemented behaviour or a skipped integration check as passing evidence.
 
 ## Before you finish
 
-Run `python3 scripts/check_docs.py` and `python3 -m unittest discover -s tests -v`. Explain what changed, how it was checked and any remaining limitation. Use file links so the user can open the result.
+Run `python3 scripts/check_docs.py`, `python3 -m unittest discover -s tests -v` and `python3 scripts/run_examples.py`. Explain what changed, how it was checked and any remaining limitation. Use file links so the user can open the result.

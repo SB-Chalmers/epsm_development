@@ -1,0 +1,407 @@
+# File: docs/templates/io-module.py.tmpl
+# Purpose: Demonstrate reading and safely writing one small metadata format.
+# SPDX-License-Identifier: <project-approved license identifier>
+# Copyright (c) <year> <actual copyright holder>
+# License: <actual license-file location; omit if no license is established>
+# Author: <actual author or team and contact>
+# Project PI: <applicable project attribution>
+# Research group: <applicable research group>
+# Institution: <applicable institution>
+# Date created: 2026-10-13 (template creation)
+# Date modified: 2026-10-13
+# Changelog:
+#   2026-10-13 - Add a standalone, tested example of a narrow JSON I/O module.
+
+"""Read and write one documented example metadata file.
+
+Notes
+-----
+This standalone template uses only the Python standard library. It is not an
+implemented EPSM API, a building model or a general file-format framework.
+Replace its small example format with the format your package actually owns.
+Complete the legal and research attribution placeholders when adopting it.
+
+The format holds exactly three fields: format_version=1, a nonempty identifier
+and a nonnegative integer item_count. It has no physical quantities or units.
+Both functions validate the format; neither selects assumptions, calculates
+physics, queries a service or changes the supplied mapping.
+
+All paths are explicit. Writing requires an existing parent directory and refuses
+to overwrite a file unless overwrite=True. A complete UTF-8 file is staged in
+that directory before publication. The no-overwrite path uses an atomic hard link;
+the overwrite path uses atomic replacement. No fallback performs a partial direct
+write. Filesystems that do not support these operations raise an error.
+
+The file is flushed before publication. This is a single-file operation, not a
+transaction across several artifacts or a guarantee against loss after a power
+failure. The new file uses the temporary file's permissions, not the old file's
+permissions. Ordinary failures remove the staged file; abrupt process termination
+may leave a temporary file for an explicit cleanup operation.
+
+Credentials and live connections do not belong in this format. Callers must keep
+secrets out of identifiers and paths. Logging records completion and counts, not
+source contents or paths. The calling application configures logging and reports
+failures once. Importing this module does not read or write files.
+
+Examples
+--------
+The examples below use temporary directories and no external data or services.
+They test the promised behaviour before the implementation beneath the docstring.
+
+>>> from pathlib import Path
+>>> from tempfile import TemporaryDirectory
+>>> with TemporaryDirectory() as directory:
+...     path = Path(directory) / "metadata.json"
+...     metadata = {"format_version": 1, "identifier": "offline-example", "item_count": 2}
+...     assert write_metadata(metadata, path) == path
+...     assert read_metadata(path) == metadata
+...     assert metadata["item_count"] == 2
+
+An existing file is preserved by default. Replacement must be explicit.
+
+>>> with TemporaryDirectory() as directory:
+...     path = Path(directory) / "metadata.json"
+...     original = {"format_version": 1, "identifier": "example", "item_count": 2}
+...     changed = {**original, "item_count": 3}
+...     _ = write_metadata(original, path)
+...     try:
+...         write_metadata(changed, path)
+...     except FileExistsError:
+...         pass
+...     else:
+...         raise AssertionError("An existing file must not be overwritten by default")
+...     assert read_metadata(path) == original
+...     _ = write_metadata(changed, path, overwrite=True)
+...     assert read_metadata(path) == changed
+
+Rejected values and a failed replacement leave the previous file unchanged.
+
+>>> from unittest.mock import patch
+>>> with TemporaryDirectory() as directory:
+...     path = Path(directory) / "metadata.json"
+...     original = {"format_version": 1, "identifier": "example", "item_count": 2}
+...     _ = write_metadata(original, path)
+...     try:
+...         write_metadata({**original, "item_count": float("nan")}, path, overwrite=True)
+...     except ValueError:
+...         pass
+...     else:
+...         raise AssertionError("Nonfinite values must be rejected")
+...     with patch.object(os, "replace", side_effect=OSError("test replacement failure")):
+...         try:
+...             write_metadata({**original, "item_count": 3}, path, overwrite=True)
+...         except OSError:
+...             pass
+...         else:
+...             raise AssertionError("The replacement error must reach the caller")
+...     assert read_metadata(path) == original
+...     assert {file.name for file in Path(directory).iterdir()} == {"metadata.json"}
+
+The reader rejects malformed JSON, duplicate fields, nonfinite numbers and an
+unsupported format version. It does not guess a migration or fill missing fields.
+
+>>> with TemporaryDirectory() as directory:
+...     path = Path(directory) / "invalid.json"
+...     invalid_documents = (
+...         "{",
+...         '{"format_version": 1, "identifier": "x", "item_count": NaN}',
+...         '{"format_version": 1, "identifier": "x", "item_count": 1e309}',
+...         '{"format_version": 1, "identifier": "x", "item_count": 1, "item_count": 2}',
+...         '{"format_version": 2, "identifier": "x", "item_count": 1}',
+...         '{"format_version": 1, "identifier": "x", "item_count": true}',
+...     )
+...     for document in invalid_documents:
+...         _ = path.write_text(document, encoding="utf-8")
+...         try:
+...             read_metadata(path)
+...         except ValueError:
+...             pass
+...         else:
+...             raise AssertionError("An invalid document was accepted")
+
+A missing parent directory is not created automatically.
+
+>>> with TemporaryDirectory() as directory:
+...     parent = Path(directory) / "not-created"
+...     metadata = {"format_version": 1, "identifier": "x", "item_count": 0}
+...     try:
+...         write_metadata(metadata, parent / "metadata.json")
+...     except FileNotFoundError:
+...         pass
+...     else:
+...         raise AssertionError("The caller must create the intended directory")
+...     assert not parent.exists()
+"""
+
+from __future__ import annotations
+
+import json
+import logging
+import os
+from pathlib import Path
+from tempfile import NamedTemporaryFile
+from typing import Literal, NoReturn, TypedDict
+
+logger = logging.getLogger(__name__)
+
+__all__ = ["ExampleMetadata", "read_metadata", "write_metadata"]
+
+
+class ExampleMetadata(TypedDict):
+    """Document the three fields in this standalone example format.
+
+    Attributes
+    ----------
+    format_version : Literal[1]
+        Stored-format version, independent of the library's release version.
+    identifier : str
+        Nonempty UTF-8-encodable identifier, kept exactly as supplied. No lookup
+        or whitespace normalization is performed. It must not contain secrets.
+    item_count : int
+        Nonnegative number of items. A boolean is not an accepted count.
+
+    Notes
+    -----
+    TypedDict describes an ordinary dictionary for readers and type checkers.
+    It does not validate values at runtime. The read/write functions enforce this
+    format explicitly. This example type has no physics or provenance policy.
+    """
+
+    format_version: Literal[1]
+    identifier: str
+    item_count: int
+
+
+def _validate_metadata(value: object) -> ExampleMetadata:
+    """Check this example's exact fields and return a new validated mapping.
+
+    Parameters
+    ----------
+    value : object
+        Decoded JSON value or caller-supplied dictionary.
+
+    Returns
+    -------
+    ExampleMetadata
+        Fresh mapping with the original identifier and count.
+
+    Raises
+    ------
+    ValueError
+        If the value is not an object with exactly the three documented fields,
+        the format version is unsupported, the identifier is empty, or the count
+        is not a nonnegative integer. Booleans do not stand in for integers.
+    UnicodeError
+        If the identifier cannot be encoded as UTF-8.
+
+    Notes
+    -----
+    No I/O occurs here. This checks one small format, not arbitrary nested data.
+    Returning a fresh mapping prevents subsequent caller edits during encoding
+    from changing the selected fields. It does not freeze the returned mapping.
+    """
+    if not isinstance(value, dict) or set(value) != {
+        "format_version", "identifier", "item_count"
+    }:
+        raise ValueError("Metadata must contain format_version, identifier and item_count only")
+    if type(value["format_version"]) is not int or value["format_version"] != 1:
+        raise ValueError("Unsupported metadata format_version; supported version is 1")
+    identifier = value["identifier"]
+    if not isinstance(identifier, str) or not identifier.strip():
+        raise ValueError("Metadata identifier must be a nonempty string")
+    identifier.encode("utf-8")
+    item_count = value["item_count"]
+    if type(item_count) is not int or item_count < 0:
+        raise ValueError("Metadata item_count must be a nonnegative integer")
+    return {"format_version": 1, "identifier": identifier, "item_count": item_count}
+
+
+def _reject_nonfinite_number(_value: str) -> NoReturn:
+    """Reject JSON decoder extensions for NaN and positive/negative infinity.
+
+    Notes
+    -----
+    Python's decoder accepts these spellings by default, although JSON does not.
+    Raising ValueError keeps those values out of the decoded document. Ordinary
+    numeric overflow is rejected by the integer field check in this format.
+    """
+    raise ValueError("Nonfinite JSON numbers are not supported")
+
+
+def _object_without_duplicates(pairs: list[tuple[str, object]]) -> dict[str, object]:
+    """Decode JSON object pairs without silently dropping a duplicate field.
+
+    Parameters
+    ----------
+    pairs : list of (str, object)
+        Key/value pairs supplied by the JSON decoder in source order.
+
+    Returns
+    -------
+    dict[str, object]
+        Object containing each field once.
+
+    Raises
+    ------
+    ValueError
+        If a field occurs more than once. No winning value is guessed.
+    """
+    result: dict[str, object] = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError("Duplicate JSON fields are not supported")
+        result[key] = value
+    return result
+
+
+def read_metadata(path: str | Path) -> ExampleMetadata:
+    """Read a UTF-8 metadata file and check the documented format.
+
+    Parameters
+    ----------
+    path : str or Path
+        Explicit local file path. Relative paths use the caller's working
+        directory. No directory search, download or alternate filename is tried.
+
+    Returns
+    -------
+    ExampleMetadata
+        Validated plain dictionary. No connection or file handle remains open.
+
+    Raises
+    ------
+    FileNotFoundError
+        If the requested file does not exist.
+    OSError
+        If the file cannot be read, for example because permission is denied.
+    UnicodeError
+        If the file or its identifier is not valid UTF-8 text.
+    ValueError
+        If JSON syntax, duplicate fields, nonfinite values or the metadata format
+        are invalid. Unsupported versions fail instead of being guessed.
+
+    Notes
+    -----
+    This reads one small file completely. It neither fills missing values nor
+    converts units or physical models. The source file is never changed. A DEBUG
+    completion event records the format and item count without logging contents.
+
+    Examples
+    --------
+    See the module's temporary-directory examples for a complete round trip and
+    rejected-file checks. A real package reader should return its own validated
+    public object when that is the advertised interface.
+    """
+    source = Path(path)
+    decoded = json.loads(
+        source.read_text(encoding="utf-8"),
+        parse_constant=_reject_nonfinite_number,
+        object_pairs_hook=_object_without_duplicates,
+    )
+    metadata = _validate_metadata(decoded)
+    logger.debug(
+        "Read example metadata containing %d items", metadata["item_count"],
+        extra={
+            "epsm_event": "io.metadata.read.completed",
+            "epsm_context": {},
+            "epsm_details": {"format_version": 1, "item_count": metadata["item_count"]},
+        },
+    )
+    return metadata
+
+
+def write_metadata(
+    metadata: ExampleMetadata, path: str | Path, *, overwrite: bool = False
+) -> Path:
+    """Publish a complete UTF-8 metadata file in an existing directory.
+
+    Parameters
+    ----------
+    metadata : ExampleMetadata
+        Mapping with exactly format_version=1, identifier and item_count. Values
+        are checked and copied before creating a temporary file.
+    path : str or Path
+        Explicit destination. Its parent directory must already exist. Relative
+        paths use the caller's working directory; no extension is appended.
+    overwrite : bool, default False
+        False refuses to replace any existing destination. True replaces it with
+        the completed file. This choice must be explicit; it is not a merge.
+
+    Returns
+    -------
+    Path
+        Requested destination, after publication succeeds.
+
+    Raises
+    ------
+    ValueError
+        If the metadata does not match the documented format.
+    TypeError
+        If overwrite is not a boolean.
+    UnicodeError
+        If the identifier cannot be encoded as UTF-8.
+    FileNotFoundError
+        If the parent directory does not exist.
+    NotADirectoryError
+        If the parent path is not a directory.
+    FileExistsError
+        If overwrite=False and another file or directory already has the name.
+    OSError
+        If staging or publication fails, including unsupported hard links. An
+        existing destination is not changed before publication succeeds.
+
+    Notes
+    -----
+    Encoding and validation happen before staging. The complete staged file is
+    flushed and fsynced. os.link provides a no-overwrite publication without a
+    check-then-write race; os.replace provides explicit atomic replacement. The
+    temporary file is in the destination directory so it is on the same filesystem.
+
+    The module notes explain the limits of this single-file operation. Directory
+    durability, coordinated writers and transactions across files are outside
+    this template. For several study artifacts, publish a completion marker only
+    after the owning operation validates all required outputs.
+
+    Examples
+    --------
+    The module examples show a round trip, refused overwrite, explicit replacement
+    and preserved old content when replacement fails.
+    """
+    if type(overwrite) is not bool:
+        raise TypeError("overwrite must be a boolean")
+    validated = _validate_metadata(metadata)
+    content = (json.dumps(
+        validated, allow_nan=False, ensure_ascii=False, indent=2, sort_keys=True
+    ) + "\n").encode("utf-8")
+    destination = Path(path)
+    if not destination.parent.exists():
+        raise FileNotFoundError("The metadata parent directory must already exist")
+    if not destination.parent.is_dir():
+        raise NotADirectoryError("The metadata parent path must be a directory")
+
+    staged_path: Path | None = None
+    try:
+        with NamedTemporaryFile(
+            mode="wb", dir=destination.parent, prefix=".metadata-", suffix=".tmp", delete=False
+        ) as staged:
+            staged_path = Path(staged.name)
+            staged.write(content)
+            staged.flush()
+            os.fsync(staged.fileno())
+        if overwrite:
+            os.replace(staged_path, destination)
+        else:
+            os.link(staged_path, destination)
+    finally:
+        if staged_path is not None:
+            staged_path.unlink(missing_ok=True)
+
+    logger.debug(
+        "Wrote example metadata containing %d items", validated["item_count"],
+        extra={
+            "epsm_event": "io.metadata.write.completed",
+            "epsm_context": {},
+            "epsm_details": {"format_version": 1, "item_count": validated["item_count"]},
+        },
+    )
+    return destination

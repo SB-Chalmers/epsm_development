@@ -1,7 +1,9 @@
 # EPSM Engineering and API Style
 
-**Status:** Draft v0.1  
-**Date:** 13 October 2026  
+**Status:** Draft v0.2
+
+**Date:** 13 October 2026
+
 **Audience:** Developers, researchers and coding agents contributing to EPSM
 
 Welcome to EPSM. Our aim is to make each library easy to understand, test and use. Each part should have one clear job. Source code should explain the building and research ideas behind its calculations. Documentation, logs and printed objects should help people see what is happening during a study.
@@ -22,6 +24,8 @@ If you are new to EPSM, follow this path:
 4. Use [human-readable source](#human-readable-source) and [documentation and boilerplate](#documentation-and-boilerplate) while writing the implementation. Start new files and public objects from the linked templates.
 5. Add the relevant [logs](#uniform-logging), [object inspection](#object-representation-and-inspection) and [error handling](#errors-and-scientific-meaning).
 6. Check [repository and review conventions](#repository-and-review-conventions) before asking for review.
+
+For practical instructions, use [project layout](project-layout.md), [I/O and package APIs](io-and-api.md), and [example notebooks](examples-and-use-cases.md). The [common use cases](../use_cases/README.md) show which behaviours package tests should cover.
 
 Some terms used below:
 
@@ -199,6 +203,10 @@ Mark tests that require `energyplus`, `postgis`, `network` or `slow` resources. 
 
 Report the command, environment and relevant engine/service versions, pass/fail/skip counts, and what those checks establish. Coverage reports show which code was exercised. A coverage percentage alone does not show that the software is correct.
 
+For a package release, report both statement and branch coverage. Statement coverage shows which lines ran; branch coverage shows which choices, such as success and failure, were exercised. Test normal use, missing inputs, boundary values and expected failures for every new public operation. Explain meaningful gaps and keep skipped checks visible. A test that repeats the code's calculation adds little evidence.
+
+Each package keeps its own tests and must pass them when installed on its own. The umbrella keeps tests of real package handoffs using declared versions and small, fixed inputs. Both use the [common use cases](../use_cases/README.md); one does not replace the other.
+
 ## Human-readable source
 
 Use English `snake_case` names for modules, functions and attributes, and `PascalCase` names for public classes. Prefer building and research terms over unexplained abbreviations.
@@ -237,6 +245,18 @@ Examples use public APIs and show a useful outcome or assertion. State the requi
 Use doctests for small offline examples: these run example code and check its shown output. Use executable tests or notebooks for examples that connect packages or services. Keep future API sketches labelled as illustrative; do not count them as working example coverage.
 
 Update function signatures, units, return types, examples and limitations together. Extensive documentation is valuable when it explains the actual implementation. Repeated generic text and stale examples do not meet this standard.
+
+## Inputs outputs and package APIs
+
+Most packages need an `io.py` module for reading and writing their data. If several file formats need separate code, use a small `io/` folder instead. A package that only calculates values does not need an empty I/O module.
+
+Keep reading and writing separate from calculations. I/O code handles paths, text encoding, stored formats, external services and useful errors. The module that owns a calculation or model checks its physical meaning. Reading a file should not also choose assumptions, change geometry or start a simulation.
+
+Give each package a small public API. Put the main names in `__init__.py` and explain them in its README. Other packages should use those public names rather than import private helpers or depend on a neighbouring checkout.
+
+When one package sends a model to another, state the accepted object or file type, units, coordinate system, known/missing values, and source versions. Keep the producer's information. Put any required conversion in one named place, and test that handoff from both sides.
+
+Use [I/O and package APIs](io-and-api.md) for the full rules and the [I/O template](templates/io-module.py.tmpl) as a starting point. The public Building API can stay simple while the packages agree how to pass information internally.
 
 ## Uniform logging
 
@@ -432,6 +452,10 @@ Geometry checks, a complete weather calendar or an accepted engine run do not es
 ## Repository and review conventions
 
 Use `src/`, `tests/`, `examples/` and `docs/` consistently. Put external inputs in explicit data/artifact locations and generated study artifacts in output directories ignored by Git. Keep research protocols with their study records.
+
+Every repository has an `examples/` folder and a short index. Use simple Python notebooks: begin with the package's main modules, then show how it works with the other EPSM packages. Give each notebook one task, small declared inputs, plain explanations and checks of the result. Run it from a fresh kernel before publishing it. Follow [the examples guide](examples-and-use-cases.md).
+
+Document project name, purpose, scope, supported Python version, installation, optional features, license, maintainer contact and how to cite the work. Keep the facts in the README and `pyproject.toml` consistent. The [project guide](project-layout.md) and [README template](templates/project-readme.md.tmpl) show what to include.
 
 Include required runtime resources in the package. Test them from an installed wheel, the distributable package file, rather than relying on files available only in a source checkout.
 

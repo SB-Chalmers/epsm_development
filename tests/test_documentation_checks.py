@@ -7,6 +7,7 @@ packages, GitHub access, a database or EnergyPlus.
 from __future__ import annotations
 
 import io
+import json
 import tempfile
 import unittest
 from contextlib import redirect_stderr, redirect_stdout
@@ -74,6 +75,53 @@ class DocumentationChecks(unittest.TestCase):
         )
         self.assertEqual(status, 1)
         self.assertIn("failed doctest examples", errors)
+
+    def test_invalid_notebook_json_is_reported(self) -> None:
+        status, _, errors = self.check_fixture({"examples/01_example.ipynb": "not JSON"})
+        self.assertEqual(status, 1)
+        self.assertIn("notebook", errors.lower())
+
+    def test_invalid_notebook_code_is_reported(self) -> None:
+        content = json.dumps(
+            {
+                "nbformat": 4,
+                "nbformat_minor": 5,
+                "metadata": {"kernelspec": {"name": "python3", "language": "python"}},
+                "cells": [
+                    {
+                        "cell_type": "code",
+                        "metadata": {},
+                        "execution_count": None,
+                        "outputs": [],
+                        "source": ["if:\n"],
+                    }
+                ],
+            }
+        )
+        status, _, errors = self.check_fixture({"examples/01_example.ipynb": content})
+        self.assertEqual(status, 1)
+        self.assertIn("cell 1", errors)
+
+    def test_valid_notebook_code_is_not_executed_by_syntax_check(self) -> None:
+        content = json.dumps(
+            {
+                "nbformat": 4,
+                "nbformat_minor": 5,
+                "metadata": {"kernelspec": {"name": "python3", "language": "python"}},
+                "cells": [
+                    {
+                        "cell_type": "code",
+                        "metadata": {},
+                        "execution_count": None,
+                        "outputs": [],
+                        "source": "raise RuntimeError('syntax check must not run this')",
+                    }
+                ],
+            }
+        )
+        status, _, errors = self.check_fixture({"examples/01_example.ipynb": content})
+        self.assertEqual(status, 0)
+        self.assertEqual(errors, "")
 
 
 if __name__ == "__main__":

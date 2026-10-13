@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import ast
 import doctest
+import json
 import re
 import sys
 import types
@@ -42,6 +43,50 @@ def heading_ids(content: str) -> set[str]:
     return identifiers
 
 
+def check_notebook(path: Path) -> tuple[list[str], int]:
+    """Check basic notebook fields and Python syntax without running the cells."""
+    failures: list[str] = []
+    try:
+        notebook = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as error:
+        return [f"invalid notebook JSON: {error}"], 0
+    if not isinstance(notebook, dict) or notebook.get("nbformat") != 4:
+        return ["notebook must use nbformat 4"], 0
+    metadata = notebook.get("metadata")
+    if not isinstance(metadata, dict):
+        return ["notebook metadata must be an object"], 0
+    kernel = metadata.get("kernelspec", {})
+    if not isinstance(kernel, dict) or kernel.get("language") != "python":
+        failures.append("notebook must name a Python kernel")
+    cells = notebook.get("cells")
+    if not isinstance(cells, list):
+        return ["notebook cells must be a list"], 0
+    code_count = 0
+    for index, cell in enumerate(cells, start=1):
+        if not isinstance(cell, dict):
+            failures.append(f"cell {index}: expected an object")
+            continue
+        kind = cell.get("cell_type")
+        if kind not in {"markdown", "code", "raw"}:
+            failures.append(f"cell {index}: unknown cell type")
+            continue
+        source = cell.get("source")
+        if isinstance(source, list) and all(isinstance(line, str) for line in source):
+            source = "".join(source)
+        if not isinstance(source, str):
+            failures.append(f"cell {index}: source must be text or a list of text lines")
+            continue
+        if kind == "code":
+            code_count += 1
+            if not isinstance(cell.get("outputs"), list):
+                failures.append(f"cell {index}: outputs must be a list")
+            try:
+                ast.parse(source)
+            except SyntaxError as error:
+                failures.append(f"cell {index}: invalid Python: {error.msg}")
+    return failures, code_count
+
+
 def main() -> int:
     """Run the small documentation checks and report any actionable failures."""
     root = ROOT.resolve()
@@ -49,6 +94,7 @@ def main() -> int:
     link_count = 0
     block_count = 0
     example_count = 0
+    notebook_cell_count = 0
     markdown_files = sorted(root.rglob("*.md"))
 
     for path in markdown_files:
@@ -104,6 +150,15 @@ def main() -> int:
         finally:
             sys.modules.pop(module_name, None)
 
+    notebooks = sorted((root / "examples").glob("*.ipynb"))
+    notebooks += sorted((root / "docs" / "templates").glob("*.ipynb.tmpl"))
+    for path in notebooks:
+        notebook_failures, code_count = check_notebook(path)
+        notebook_cell_count += code_count
+        failures.extend(
+            f"{path.relative_to(root)}: {failure}" for failure in notebook_failures
+        )
+
     if failures:
         for failure in failures:
             print(f"ERROR: {failure}", file=sys.stderr)
@@ -112,7 +167,8 @@ def main() -> int:
     print(
         f"Passed: {len(markdown_files)} Markdown files, {link_count} local links, "
         f"{block_count} Python examples checked for syntax, "
-        f"{example_count} template doctest examples."
+        f"{example_count} template doctest examples, "
+        f"{len(notebooks)} notebooks/templates with {notebook_cell_count} Python cells."
     )
     return 0
 
