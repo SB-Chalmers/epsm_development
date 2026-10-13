@@ -1,6 +1,6 @@
 # Guidance for coding agents
 
-This repository is the EPSM developer handbook. Its readers include new developers and researchers, so use simple, welcoming language and explain unfamiliar terms.
+This repository is the EPSM developer handbook. Write for new developers and researchers. Use plain English, explain unfamiliar terms and follow `docs/writing-guide.md`.
 
 ## Before you change something
 
@@ -13,11 +13,11 @@ This repository is the EPSM developer handbook. Its readers include new develope
 
 ## While you work
 
-- Make a small, coherent change. Use concrete examples rather than abstract framework language.
+- Make one small change with a clear purpose. Explain it with a concrete example.
 - For code changes, begin with a test of observable behaviour. For documentation changes, verify the links and examples.
 - Preserve useful Core-style docstrings, honest authorship and project-approved license information in templates.
-- Keep logging, representation and evidence rules consistent across examples.
-- Keep file/service access in I/O modules and use documented public APIs for package handoffs. Do not import a private helper from another package to save a few lines.
+- Keep logging, representation and evidence rules consistent across examples. Use the shared glossary, model ownership and plotting guide for those changes.
+- Keep file/service access in I/O modules and use documented public APIs for data passed between packages. Do not import a private helper from another package to save a few lines.
 - Keep `examples/` notebooks small and ordered. Show the package's own modules before integrations. Label extra prerequisites and future API sketches clearly.
 - Do not add a generic entity framework, live database connection or scientific calculation to this documentation repository.
 - Never present a future API sketch as implemented behaviour or a skipped integration check as passing evidence.

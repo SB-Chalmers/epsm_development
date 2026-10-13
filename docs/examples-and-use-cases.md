@@ -2,6 +2,8 @@
 
 Every EPSM repository keeps simple Python notebooks in `examples/`. Start with what that package does on its own. Then show how it connects to other EPSM packages. Readers should be able to run one small example before planning a larger study.
 
+Put short examples of individual public calls in [docstrings](docstrings-and-api-docs.md). Use notebooks to explain a complete task.
+
 Use today's public APIs in runnable examples. Keep future API ideas in clearly labelled Markdown sketches. A design sketch is not a successful integration check.
 
 ## A short progression

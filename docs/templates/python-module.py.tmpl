@@ -17,24 +17,26 @@
 Notes
 -----
 Explain what a researcher can accomplish here and which work belongs elsewhere.
-Name the input/output types, units and reference bases. State assumptions and
-their sources, the supported validation scope, mutation, and exactly which calls
-use files, services or external processes. Imports and object inspection do none
-of that work.
+Name the input/output types, units and reference bases. Explain assumptions and
+their sources, which checks the module performs, and what those checks establish.
+Say whether operations change their inputs, read or write files, contact services
+or start another process. Imports and object inspection do none of that work.
 
-Use the module logger for operational events. Caller applications choose handlers
+Use this module's logger to record important operations. Caller applications choose handlers
 and levels; the module does not configure logging. Returned diagnostics and saved
 artifacts remain the records of results, assumptions and provenance.
 
 Replace this instructional text when adopting the template. Include only useful
 docstring sections: public functions describe Parameters, Returns or Yields,
-expected Raises, and relevant Notes, Examples and References. Public classes also
+expected Raises, a small working Examples section, and relevant Notes and References. Public classes also
 explain their Attributes and lifecycle. Do not invent a domain API to fill a section.
 
 Examples
 --------
 Add a complete offline doctest using this module's public operations and a small
-declared fixture. Show a useful outcome or assertion. Document required inputs
+declared fixture. Explain the task in a short sentence before the code. Show a
+useful outcome or assertion. Use >>> prompts so doctest can check the example.
+Use reStructuredText markup inside docstrings, not Markdown code fences. Document required inputs
 for integration examples and test those in an executable notebook or test. Label
 future API sketches as illustrative; they are not executable coverage.
 

@@ -32,6 +32,8 @@ For documentation changes, check the links and examples. You do not need to inve
 
 ## Make the change easy to understand
 
+Write as you would explain the work to a colleague. Use ordinary words, name the action and give a small example. See [Writing for people](docs/writing-guide.md).
+
 Use clear names. State units and assumptions. Explain the important decisions in docstrings and comments. The [module and object templates](docs/templates/README.md) provide a starting point; replace their instructions with accurate information about your code.
 
 Put reading and writing in the package's I/O module. Keep calculations and model choices in their owning modules. Use the next package's documented public API, and test the data it receives. See [inputs, outputs and APIs](docs/io-and-api.md).
@@ -49,7 +51,7 @@ python3 scripts/check_docs.py
 python3 -m unittest discover -s tests -v
 ```
 
-For a change to an EPSM package, run the tests that cover the changed behaviour and its package handoffs. The package's own instructions explain its additional checks.
+For a change to an EPSM package, run the tests that cover the changed behaviour and its data passed between packages. The package's own instructions explain its additional checks.
 
 Add or update a small notebook in `examples/` when a public feature needs a usage example. Teach the package on its own first, then show the next package it connects to. Restart the kernel and run all cells in order. Follow [the examples guide](docs/examples-and-use-cases.md).
 

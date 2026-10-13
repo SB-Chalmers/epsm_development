@@ -2,7 +2,7 @@
 
 **Working direction: 13 October 2026.** This roadmap turns the [ecosystem review](ecosystem-review.md) into manageable work. It keeps useful implementations, gives each responsibility one owner and makes the platform easier for researchers and new contributors to understand.
 
-The [engineering and API style](engineering-style.md) is the development reference. The public entity vocabulary is agreed as a direction; its illustrative methods are not yet final contracts. Begin by agreeing a few executable usage stories, then implement the smallest coherent route through the packages.
+The [engineering and API style](engineering-style.md) is the development reference. We have agreed to use objects such as Building, Study and Result. Their exact methods still need to be designed. First agree a few small working examples, then build the steps those examples need.
 
 ## Package identities and responsibilities
 
@@ -19,14 +19,14 @@ The [engineering and API style](engineering-style.md) is the development referen
 
 Use EPSM consistently as the umbrella identity. Align repository, distribution, import and command names during each rename. Check package/namespace availability before publishing; the intended names are not a claim of registry ownership.
 
-Lower-level libraries must not import `epsm`. Database and Catalogue remain useful without Core. Workflows executes prepared cases rather than owning database ingestion or default selection. EPSM may compose collaborators and expose convenient entities, while each underlying package remains authoritative for its own implementation.
+Lower-level libraries must not import `epsm`. Database and Catalogue remain useful without Core. Workflows executes prepared cases rather than owning database ingestion or default selection. EPSM connects the packages and gives researchers a convenient interface. Each package still owns its calculations and data rules.
 
 ## First milestone: one working research route
 
 Complete this milestone before a broad rewrite. Allow about **1–2 weeks** for a focused engineer to establish the initial route, depending on collaborator access and the agreed examples.
 
 1. Freeze an agreed baseline of the existing checkouts. Preserve Workflows' modified and untracked research work, and recover or establish the database repository history. Record versions, source identities and existing acceptance fixtures.
-2. Agree usage stories for a footprint model, a database building, an incomplete Record, a small Study and a two-scenario renovation comparison. Settle the minimum public verbs, containment and edit behaviour through acceptance examples.
+2. Use [shared terms and model agreements](terminology-and-models.md) to agree usage stories for a footprint model, a database building, an incomplete Record, a small Study and a two-scenario renovation comparison. Settle the minimum public verbs, containment and edit behaviour through acceptance examples.
 3. Build thin EPSM integration for a pinned database Record plus an explicit catalogue profile and weather artifact. Produce one native Core model without placing assumptions or engine conversion in the database.
 4. Run a small prepared study through Workflows. Retain every attempt and failure, use Core's result interpretation and publish one understandable study summary with evidence/assumption identities.
 5. Test the route from installed wheels with documented fixtures, then provide one executable notebook/example. Make missing information and unsupported cases visible.
@@ -45,9 +45,9 @@ Prepare manual updates beside the accepted release. The procedure is: acquire an
 
 Separate processing from promotion: current processing automatically activates a validated municipality dataset. Add an explicit promotion operation with the accepted validation report and previous-default identity. A default pointer must support the chosen national/shared release as well as municipality selections. Switching between physical shadow databases requires a release registry or configuration switch above them; the existing municipality pointer alone cannot do that.
 
-Resolve the default once before preparing a Study. Pin backing database identity, source snapshot, processed dataset and processing release in retained inputs. Subsequent pages, lookups and reruns use that reference even if the shared default changes.
+Resolve the default once before preparing a Study. Save the exact database, source snapshot, processed dataset and processing release with the study inputs, so later queries and reruns can use the same versions. Subsequent pages, lookups and reruns use that reference even if the shared default changes.
 
-Document package version, physical schema baseline, public record/export contract and evidence-release identity separately. Expose required release/layer metadata through read-only public projections, verify restricted accounts, package SQL/configuration resources, and test installation outside the source checkout.
+Document package version, physical schema baseline, public record/export contract and evidence-release identity separately. Provide release details and the status of each evidence layer through public database views that restricted accounts can read. Test those accounts, include SQL and configuration files in the package, and check installation without the source repository.
 
 The initial service is a **shared research database with read-only access and an explicit manual update runbook**. Automated acquisition, incremental refresh and a public HTTP API are outside this phase.
 
@@ -59,7 +59,7 @@ Keep physical geometry/quantity algorithms and simulation interpretation in Core
 
 Expose Buildings and their geometry, fabric, operation, systems, weather and provenance through the common EPSM interface. Support inspection before all simulation requirements are known. Keep `BuildingSpec` and compiler internals available through an advanced interface; they should not dominate the ordinary researcher workflow.
 
-Choose draft/edit semantics before implementation. A renovation scenario preserves its baseline, and submission freezes a validated model/input snapshot. Editing a Building cannot change an existing Run or Result. Avoid universal entity base classes and generic extension frameworks until concrete consumers need them.
+Agree how users edit a Building and create independent versions before implementing the interface. A renovation scenario preserves its baseline, and submission freezes a validated model/input snapshot. Editing a Building cannot change an existing Run or Result. Avoid universal entity base classes and generic extension frameworks until concrete consumers need them.
 
 Make package conversion thin and inspectable. Return structured assumption/assembly diagnostics, preserve evidence states, and never turn a fallback into a reported observation. Keep exact method names open until the usage stories are accepted.
 
@@ -90,9 +90,11 @@ A compiled object should carry its validated inputs, report, weather reference a
 
 Adopt the shared style for useful explanatory docstrings, ordinary logging, bounded representations and explicit inspection. Preserve Core's documentation depth. Improve scope, accuracy and examples rather than chasing a smaller physical line count.
 
+Add [docstring examples and generated API pages](docstrings-and-api-docs.md), then adopt [the common plotting and preview style](plotting-and-previews.md) through the owning renderers. Keep their public return types and display choices consistent.
+
 Give each package a short purpose statement, working quickstart, public API guide, dependency/extras description, scoped validation statement and migration notes. Keep researcher usage separate from operations and historical acceptance reports.
 
-Use a deliberate clean API break. Publish an old-to-new migration guide and update retained study routes; do not preserve every overlapping facade as a permanent alias. Agree public package handoffs before release and verify them in one compatibility matrix using installed distributions.
+Use a deliberate clean API break. Publish an old-to-new migration guide and update retained study routes; do not preserve every overlapping facade as a permanent alias. Before release, agree what each package passes to the next and test the supported combinations of installed package versions.
 
 ## Acceptance and effort
 

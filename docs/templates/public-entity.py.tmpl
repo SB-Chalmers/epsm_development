@@ -17,8 +17,8 @@ r"""Demonstrate bounded inspection of already available entity metadata.
 Notes
 -----
 BuildingSummary is a standalone documentation example. It is not EPSM's proposed
-Building implementation or an Entity superclass. Adapt the pattern to the actual
-domain object and document its own responsibility and lifecycle.
+Building implementation or an Entity superclass. Adapt this example to the
+object you are building. Explain what it does and what states it can be in.
 
 Representation and summary perform no I/O, logging or model computation. This
 example stores only immutable scalar metadata; it does not claim deep immutability
@@ -26,6 +26,8 @@ for arbitrary objects containing dictionaries or arrays.
 
 Examples
 --------
+Inspect a small building summary without loading geometry or querying a database.
+
 >>> item = BuildingSummary("example-building", "incomplete", 2)
 >>> "state='incomplete'" in repr(item)
 True
@@ -133,6 +135,8 @@ class BuildingSummary:
 
     Examples
     --------
+    Create a summary before the number of parts is known.
+
     >>> item = BuildingSummary("b-1", "draft", None)
     >>> "parts=not_loaded" in repr(item)
     True
@@ -183,9 +187,14 @@ class BuildingSummary:
 
         Examples
         --------
+        Inspect the full identifier and the known number of parts.
+
         >>> item = BuildingSummary("b-1", "draft", 3)
-        >>> item.summary()["identifier"]
+        >>> details = item.summary()
+        >>> details["identifier"]
         'b-1'
+        >>> details["part_count"]
+        3
         """
         return {
             "identifier": self.identifier,
