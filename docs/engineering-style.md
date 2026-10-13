@@ -2,17 +2,41 @@
 
 **Status:** Draft v0.1  
 **Date:** 13 October 2026  
-**Audience:** Developers and researchers contributing to the EPSM platform
+**Audience:** Developers, researchers and coding agents contributing to EPSM
 
-EPSM development should produce narrowly scoped, well-tested libraries and an intuitive researcher interface. Code should explain the physical and research concepts it implements. Documentation, logs and object representations should make behaviour inspectable throughout a study.
+Welcome to EPSM. Our aim is to make each library easy to understand, test and use. Each part should have one clear job. Source code should explain the building and research ideas behind its calculations. Documentation, logs and printed objects should help people see what is happening during a study.
 
-This reference establishes engineering conventions for new development and planned refactors across the ecosystem. The public entity vocabulary is a design direction. Examples labelled **illustrative API** describe the intended experience; their constructors and method names are not yet implemented or approved contracts.
+This draft sets working rules for new development and planned refactors across EPSM. Existing repositories may not meet every rule yet. Use it to plan and review a specific change; it is not a claim that the current packages already work this way.
 
-The existing Core documentation is the reference for the depth of explanation. Preserve extensive, useful docstrings and examples. Their accuracy, relevance and executability are part of code quality.
+The proposed public objects are a design direction. Examples labelled **illustrative API** show how we would like the software to feel. Their constructors and method names are not yet implemented or approved API promises.
+
+The existing Core documentation shows the depth of explanation we want. Keep extensive, useful docstrings and examples. Good documentation must explain the actual code, and examples advertised as working must run.
+
+## Start here
+
+If you are new to EPSM, follow this path:
+
+1. Read [responsibility boundaries](#responsibility-boundaries) to find the package that owns your change.
+2. Read [domain vocabulary](#domain-vocabulary-and-containment) and [public interface behaviour](#public-interface-behaviour) to understand the objects a researcher will use.
+3. Write the expected behaviour and a failing test using [test-driven development](#test-driven-development).
+4. Use [human-readable source](#human-readable-source) and [documentation and boilerplate](#documentation-and-boilerplate) while writing the implementation. Start new files and public objects from the linked templates.
+5. Add the relevant [logs](#uniform-logging), [object inspection](#object-representation-and-inspection) and [error handling](#errors-and-scientific-meaning).
+6. Check [repository and review conventions](#repository-and-review-conventions) before asking for review.
+
+Some terms used below:
+
+- **Evidence** is a source observation or document supporting a value. **Provenance** records where a value came from, including any selection, assumption or transformation.
+- A **pinned input** names a fixed release or content identity. A **snapshot** is the fixed set of inputs used for a run; later edits must not change it.
+- An **artifact** is a retained file, such as weather, model inputs, diagnostics or results.
+- A **contract** is a stated agreement about inputs, outputs and behaviour. A **package handoff** is where one package passes information to another.
+- A **schema** describes the fields and rules of a stored or exchanged format. It is an implementation detail unless the user needs to inspect that format.
+- An **entity** is a meaningful object, such as a Building or Study. An **archetype** groups documented assumptions for a type of building.
+- A **fixture** is a known test input. An **invariant** is a rule that must remain true, such as conserving material mass.
+- A **release gate** is a check that must pass before publishing a release. A skipped required check does not pass the gate.
 
 ## Responsibility boundaries
 
-Every package and module must have a written responsibility. A feature starts with an owner, observable behaviour and explicit exclusions. Shared responsibilities should be small integration contracts with one authoritative implementation.
+Write down the job of every package and module. Before adding a feature, identify its owner, the behaviour a user can observe and what is outside the change. When packages work together, keep their agreement small and give each calculation or decision one owning implementation.
 
 | Package | Owns | Delegates |
 | --- | --- | --- |
@@ -25,11 +49,15 @@ Every package and module must have a written responsibility. A feature starts wi
 | `epsm_studies` | Named research questions, selection and calibration protocols, experiment designs, analysis and paper reports | Reusable platform implementations |
 | Future `epsm_lca` | Lifecycle assessment methods and the meaning of assessment results | Physical quantities, factor catalogues and study orchestration |
 
-`epsm` may compose these libraries. Lower-level libraries must not import `epsm`. Database and Catalogue remain usable without Core. Workflows accepts prepared cases and explicit collaborators. A user-facing workflow can request records through an EPSM integration step; that does not give the Workflows library ownership of database acquisition or model assembly.
+These are the proposed package boundaries. Existing repositories may still use older names. AMY means actual meteorological year: weather for a selected historical year. EPW is the weather file format; epJSON and IDF are EnergyPlus building-model formats.
 
-Simulation output definitions belong to Core; assessment definitions belong to the relevant method package. Workflows owns persisted study results, their aggregation and retention. Database can index published study artifacts by building and evidence release.
+`epsm` may call and connect these libraries. The libraries it uses must not import `epsm` in return. Database and Catalogue must work without Core installed. Workflows receives prepared cases and the services or evaluators it needs as explicit inputs.
 
-Avoid universal `Entity` base classes, general plugin systems and new shared packages until two concrete consumers demonstrate the need. Reuse domain implementations rather than reproducing algorithms inside the umbrella.
+A user-facing workflow may request records through an EPSM integration step. That does not move database retrieval or building assembly into the Workflows library.
+
+Core defines what simulation outputs mean. The relevant method package defines what an assessment result means. Workflows stores study results, combines them and manages how long they are retained. Database may link published study artifacts to their buildings and evidence releases.
+
+Do not introduce a universal `Entity` base class, a general plugin system or another shared package until two real users of that code show why it is needed. The umbrella should call the owning implementation, not copy its algorithms.
 
 ### Scope note for a change
 
@@ -45,11 +73,11 @@ Acceptance scenarios:
 Evidence and artifact changes:
 ```
 
-If a change crosses owners, identify the handoff and the contract test. An integration test does not replace either owner's tests.
+If a change involves more than one owner, describe what passes between them and test that agreement. A test of the connection does not replace the tests within each package.
 
 ## Domain vocabulary and containment
 
-Public interfaces use research and building concepts. Researchers should be able to begin with a footprint or a record, inspect incomplete information, and progressively prepare a model.
+Public interfaces use building and research concepts. A researcher should be able to start with a footprint or database record, inspect missing information and prepare the model one step at a time.
 
 | Entity | Meaning | Contains or references |
 | --- | --- | --- |
@@ -61,32 +89,40 @@ Public interfaces use research and building concepts. Researchers should be able
 | Scenario | A declared alternative to a baseline | Measures, relevant dates, assumptions and an independent model revision |
 | Study | A concrete research investigation | Question, selection, scenarios, pinned inputs, workflow executions and results |
 | Workflow | A reusable procedure for conducting a study or a stage | Named steps and their input/output contracts |
-| Run | One execution attempt using frozen inputs | Input identities, status, diagnostics and result/artifact references |
+| Run | One requested execution using frozen inputs | Input identities, execution attempts, status, diagnostics and result/artifact references |
 | Result | An outcome attributable to a run | Named metrics with units, time series, diagnostics and provenance |
 
 A Study states what is investigated. A Workflow describes how it is carried out. A study may execute several workflows, and a workflow may be reused by several studies.
 
-Containment must preserve factual ownership. Several building records can reference one certificate; certificate energy is not copied into independently measured building observations. A Building contains a modelled quantity only with its reference basis and selection or assumption history.
+When objects contain or refer to information, preserve who or what that information describes. Several buildings may refer to one energy certificate. Do not copy the certificate's energy into each building and label those copies as independent measurements.
 
-Keep live connections on clients. Records and submitted case bundles must remain portable and must not serialize credentials, open connections or notebook state.
+Every modelled quantity in a Building keeps its reference basis and its selection or assumption history. For example, an energy value per square metre must say which floor area and time period it uses.
+
+Keep live database or service connections on client objects. Records and submitted case bundles must be usable in another process or machine. Do not save credentials, open connections or notebook state inside them.
 
 ## Public interface behaviour
 
-Use domain nouns for objects and ordinary verbs for operations. Prefer `building`, `weather`, `study`, `record` and `result` in researcher examples. Validation schemas, compiler objects and engine object names belong in advanced interfaces.
+Name objects after the concepts researchers use, and name operations with ordinary verbs. Prefer `building`, `weather`, `study`, `record` and `result` in examples. Put validation schemas, compiler objects and engine-specific names in advanced interfaces.
 
-Use one advertised path for each common task. Convenience entrypoints delegate to the same implementation and return compatible objects. Do not maintain several equivalent builder, fetcher and wrapper families.
+Teach one recommended way to do each common task. Convenience methods call the same implementation and return compatible objects. Do not maintain several competing sets of builders, retrieval helpers or wrappers for the same task.
 
-Properties expose already available state. Explicit methods perform retrieval, preparation, inspection requiring computation, execution or export. Document every method that reads files, uses the network, queries a database, writes artifacts or starts a subprocess. An explicitly named retrieval constructor may perform I/O when documented; an ordinary value constructor must not contact external services.
+Properties show state already available on the object. Methods perform work: retrieval, preparation, inspection that needs calculation, execution or export.
 
-Support incomplete Buildings for inspection. Validate supplied values as they enter the model; explain missing simulation requirements through an explicit check. Simulation requires a complete validated snapshot. Snapshot creation, compilation and execution should happen behind the common simulation operation.
+Document every method that reads files, uses the network, queries a database, writes artifacts or starts another process. This is often called input/output, or I/O. A constructor clearly named for retrieval may perform that work when documented. An ordinary constructor receiving values must not contact external services.
 
-Document mutation for every authoring operation. Authoring may use an editable draft, but editing that draft must never change an existing Run or Result. A renovation scenario preserves its baseline. A frozen dataclass or Pydantic model does not establish deep immutability of contained dictionaries and arrays.
+Let researchers inspect incomplete Buildings. Check supplied values when they enter the model. Provide an explicit check that explains what is still needed for simulation.
 
-Missing, conflicting and unavailable values retain their reasons. Zero is a value, not a missing-data marker. Explicit overrides remain traceable; catalogue defaults fill gaps without reclassifying assumed values as observations.
+Simulation requires a complete, validated snapshot. The common simulation operation should create that snapshot, compile it and run it, without requiring users to perform those internal steps themselves.
+
+For every editing operation, say whether it changes the object or returns a new one. Changing an object in place is called mutation. An editable draft is allowed, but editing it must never change an existing Run or Result. A renovation scenario keeps its baseline unchanged.
+
+Do not describe an object as fully immutable just because it is a frozen dataclass or Pydantic model. Dictionaries and arrays inside it may still be editable.
+
+Keep the reasons for missing, conflicting or unavailable values. Zero is a value, not a marker for missing data. Record explicit overrides and where they came from. Catalogue defaults may fill gaps, but those values remain assumptions rather than observations.
 
 ### Illustrative API
 
-The following examples are design sketches, not executable documentation for the current packages. They should guide future acceptance tests before method names are adopted.
+The following are future API sketches. They are not examples that run against the current packages. Use them to write future acceptance tests before adopting their method names.
 
 ```python
 import epsm
@@ -102,7 +138,7 @@ result = building.simulate(output="runs/baseline")
 print(result.annual.heating_demand_kwh)
 ```
 
-The source-free authoring route should be similarly direct:
+Starting without a database record should be similarly direct:
 
 ```python
 building = epsm.Building(
@@ -123,21 +159,23 @@ execution = study.execute(workflow, output="runs/uddevalla")
 results = execution.results
 ```
 
-These examples leave database configuration, weather selection, execution configuration and exact constructor behaviour open for the next API design exercise. They do not imply automatic weather acquisition or successful modelling of every record.
+The next API design exercise must settle database setup, weather selection, execution settings and exactly what each constructor does. These sketches do not promise automatic weather downloads or successful modelling of every record.
 
 ## Test-driven development
 
-For a new behaviour or bug fix:
+Test-driven development means writing the expected behaviour as a test before implementing it. For a new behaviour or bug fix:
 
-1. Write a test expressing an observable requirement or scientific invariant.
+1. Write a test for something a user can observe or a scientific rule that must hold.
 2. Run it and confirm that it fails for the intended reason.
-3. Implement the smallest coherent change that passes it.
+3. Make the smallest complete change that passes it.
 4. Refactor for clarity while keeping the relevant tests passing.
-5. Update examples, docstrings and contracts in the same change.
+5. Update examples, docstrings and input/output agreements in the same change.
 
-For a behaviour-preserving refactor, establish characterization tests before changing the implementation. Preserve scientific inputs and compare outputs using justified tolerances. Identify intentional physical or accounting changes separately from structural cleanup.
+Before reorganizing code without changing its behaviour, write tests that record the important current behaviour. These are called characterization tests. Keep scientific inputs the same and compare outputs with explained tolerances.
 
-Documentation-only changes require documentation and example checks appropriate to their content. They do not require artificial behavioural tests.
+If you intend to change physics or accounting, identify that change separately from code cleanup. A tolerance must have a reason; it must not merely make a failing test pass.
+
+When only documentation changes, check the relevant text, links and examples. Do not add artificial behaviour tests for a prose edit.
 
 ### What to test
 
@@ -151,33 +189,39 @@ Documentation-only changes require documentation and example checks appropriate 
 | Logging and representation | Correct context, bounded output, no secret disclosure, no unintended I/O and no duplicate events |
 | Installation and public examples | Advertised paths work from installed wheels and a fresh process or notebook kernel |
 
-Use small synthetic fixtures for fast tests. Pin representative integration fixtures, their source/release identities and the assumptions they support. Use real engine and database checks for the behaviours those collaborators actually determine.
+Use small, made-up inputs for fast tests. For tests that connect packages, use representative fixed inputs and record their source, release and assumptions. Test with the real engine or database when their behaviour determines the outcome.
 
-Use `pytest`, shared fixtures, `tmp_path` and `caplog`. Mock external boundaries to exercise failures and isolate unit tests; do not mock away the behaviour an integration test claims to verify. Avoid assertions that merely reproduce the implementation.
+Use `pytest` for tests, shared fixtures for known inputs, `tmp_path` for temporary files and `caplog` for captured logs.
 
-Mark tests requiring `energyplus`, `postgis`, `network` or `slow` resources. The ordinary development suite must be useful offline. A release gate requiring an integration must fail when its prerequisite is absent. A skipped test is not evidence that the integration works.
+In a unit test, a mock replaces an external service or operation so the test can control its response. Use mocks to test failures and keep unit tests independent. In an integration test, do not replace the behaviour that the test claims to verify. Expected answers must not simply repeat the implementation's calculation.
 
-Report the command, environment or collaborator versions, pass/fail/skip counts and acceptance boundary. Coverage reports identify gaps; a coverage percentage alone is not an acceptance criterion.
+Mark tests that require `energyplus`, `postgis`, `network` or `slow` resources. Ordinary development tests must be useful offline. If a release requires an integration check, its gate must fail when the required resource is missing. A skipped test is not evidence that the connection works.
+
+Report the command, environment and relevant engine/service versions, pass/fail/skip counts, and what those checks establish. Coverage reports show which code was exercised. A coverage percentage alone does not show that the software is correct.
 
 ## Human-readable source
 
-Use English `snake_case` for modules, functions and attributes, and `PascalCase` for public classes. Use domain names rather than unexplained abbreviations. Physical quantities use unit suffixes, such as `height_m`, `area_m2`, `energy_kwh` and `temperature_c`, and document area, volume and time reference bases.
+Use English `snake_case` names for modules, functions and attributes, and `PascalCase` names for public classes. Prefer building and research terms over unexplained abbreviations.
 
-Prefer straightforward control flow, explicit collaborators, early validation and cohesive functions. Split code when responsibilities differ. Avoid compressed one-line blocks, dynamic return-type tricks, hidden globals, circular imports and broad exception suppression.
+Put units in physical quantity names: `height_m`, `area_m2`, `energy_kwh` and `temperature_c`. Also explain which area, volume or time period a value refers to.
 
-Type public boundaries and important internal transformations. Use named objects for stable domain structures. Raw source dictionaries and JSON are appropriate at ingestion/artifact boundaries, where their schema and conversion are explicit.
+Write straightforward steps, pass dependencies explicitly, check inputs early and give each function one clear job. Split code when the jobs differ.
 
-Keep numerical constants named and sourced. Distinguish physical constants, adopted standards, provisional assumptions and study parameters. Keep expensive calculations out of property access and object representation.
+Avoid compressed one-line blocks, surprising changes in return type, hidden global state, imports that depend on each other in a circle, and broad exception handlers that hide failures.
 
-Comments explain intent, assumptions, numerical reasoning and consequential stage transitions. Source should remain understandable without following a chain of tiny helpers or decoding framework conventions.
+Add type annotations to public inputs/outputs and important internal conversions. Use named objects for recurring building or research information. Raw source dictionaries and JSON are appropriate when importing data or storing files, provided their format and conversion are explained.
+
+Give numerical constants names and source references. Make clear whether each value is a physical constant, an adopted standard, a provisional assumption or a study parameter. Keep expensive calculations out of properties and printed object descriptions.
+
+Comments explain why a step exists, its assumptions, its numerical reasoning and important changes between stages. A reader should understand the code without chasing a chain of tiny helpers or first learning hidden framework rules.
 
 ## Documentation and boilerplate
 
-Each module has the Core-style source header and an explanatory module docstring. Use the accompanying [module template](templates/python-module.py.tmpl) as the starting point.
+Each module has a Core-style source header and an explanatory module docstring. A docstring is the quoted documentation immediately inside a module, class or function. Use the accompanying [module template](templates/python-module.py.tmpl) as the starting point.
 
-The header records file, purpose, project-approved license, actual copyright holder and author, research attribution, and truthful creation/modification dates. Retain a short file changelog for consequential changes. Git retains the complete history. Do not copy inaccurate authorship or invent original creation dates.
+The header records the file, purpose, project-approved license, actual copyright holder and author, research attribution, and truthful creation/modification dates. Keep a short file changelog for meaningful changes; Git retains the complete history. Do not copy inaccurate authorship or invent original creation dates.
 
-Use NumPy-style docstrings. Their sections and formatting follow the [numpydoc style guide](https://numpydoc.readthedocs.io/en/latest/format.html). EPSM additionally requires domain-specific units, evidence treatment and side-effect descriptions.
+Use NumPy-style docstrings, with the sections and formatting described in the [numpydoc style guide](https://numpydoc.readthedocs.io/en/latest/format.html). EPSM also requires units, an explanation of how evidence is handled, and a description of work that changes state or reads/writes outside the object.
 
 | Location | Required content |
 | --- | --- |
@@ -186,17 +230,19 @@ Use NumPy-style docstrings. Their sections and formatting follow the [numpydoc s
 | Public method/function | Every parameter, units and reference basis, choices/defaults, return meaning, specific failures, mutation/I/O and an example |
 | Nontrivial private algorithm | Purpose, invariants, numerical/source reasoning, assumptions and consequential edge cases |
 
-Use `Parameters`, `Attributes`, `Returns`, `Yields`, `Raises`, `Notes`, `Examples` and `References` where relevant. Explain a default's scientific meaning as well as its literal value. Do not add irrelevant sections just to fill a template.
+Use `Parameters`, `Attributes`, `Returns`, `Yields`, `Raises`, `Notes`, `Examples` and `References` where relevant. Explain what a default means scientifically, as well as its literal value. Do not add sections that say nothing useful just to fill the template.
 
-Examples must use public APIs and show a useful outcome or assertion. State required fixtures, files, services, catalogue releases and engine versions. Use ordinary doctests for small offline examples and executable tests/notebooks for integration examples. Illustrative future API sketches must remain labelled and excluded from claims of executable coverage.
+Examples use public APIs and show a useful outcome or assertion. State the required fixtures, files, services, catalogue releases and engine versions.
 
-Update signatures, units, return types, examples and limitations together. Extensive documentation is valuable when it explains the implementation accurately. Repetitive generic text and stale examples do not meet the standard.
+Use doctests for small offline examples: these run example code and check its shown output. Use executable tests or notebooks for examples that connect packages or services. Keep future API sketches labelled as illustrative; do not count them as working example coverage.
+
+Update function signatures, units, return types, examples and limitations together. Extensive documentation is valuable when it explains the actual implementation. Repeated generic text and stale examples do not meet this standard.
 
 ## Uniform logging
 
 ### Package events and application configuration
 
-All packages use Python's standard `logging` module. Meaningful operational modules create a module logger:
+Logs describe what the software did, when it did it and which study or building was involved. All packages use Python's standard `logging` module. A module that performs meaningful operations creates its own logger:
 
 ```python
 import logging
@@ -204,24 +250,28 @@ import logging
 logger = logging.getLogger(__name__)
 ```
 
-Use the package's import namespace and module children: `epsm`, `epsm_core`, `epsm_catalogue`, `epsm_database`, `epsm_workflows` and `smhi2epw`. Current package names keep their actual namespaces until a rename is implemented. Libraries do not need the umbrella installed to emit normal Python log records.
+Logger names follow the package and module name: `epsm`, `epsm_core`, `epsm_catalogue`, `epsm_database`, `epsm_workflows` and `smhi2epw`, with module names beneath them. Current packages keep their actual names until a rename is implemented. A library does not need the umbrella installed to emit ordinary Python logs.
 
-Library imports may add one `NullHandler` at their package root. Libraries and their ordinary public calls do not install console/file handlers, call `basicConfig`, force levels, create log directories or print progress. Configuration belongs to the CLI or explicitly invoked application/notebook setup. Python's [logging reference](https://docs.python.org/3.11/library/logging.html) explains logger hierarchy and propagation.
+A handler decides where a log goes, such as the terminal or a file. On import, a library may add one `NullHandler` at its package root; this handler emits nothing. Libraries and their ordinary public calls must not install terminal/file handlers, call `basicConfig`, force levels, create log directories or print progress.
 
-The umbrella will provide one explicit logging configuration entrypoint. Default EPSM-managed routing uses:
+The command-line interface (CLI), application or an explicitly invoked notebook setup configures logging. Python's [logging reference](https://docs.python.org/3.11/library/logging.html) explains how child loggers pass records to their parents, called propagation.
 
-- An INFO console handler on stderr with short, readable messages.
-- A DEBUG JSONL file handler when the caller supplies a study/output directory.
-- Application-owned handlers shared across the package namespaces, with package-root propagation disabled while this managed routing is active.
-- Idempotent reconfiguration that updates or replaces only EPSM-owned handlers, including levels and destinations.
+The umbrella will provide one explicit function for configuring logging. Its exact name is still to be designed. When the application selects this EPSM-managed setup, the default destinations are:
 
-Preserve unrelated host application handlers. Ordinary host-managed Python logging remains supported when EPSM-managed routing is not selected. Configuration must diagnose a conflicting unmanaged handler on an EPSM package hierarchy rather than silently create duplicate output or discard it. Standalone CLIs follow the same event and output conventions at their entrypoints.
+- An INFO console handler on stderr with short, readable messages. Stderr is the terminal stream used for status and errors, separate from command output.
+- A DEBUG JSONL file handler when the caller supplies a study/output directory. JSONL stores one JSON record per line.
+- Application-owned handlers shared across the package names. Disable propagation at those package roots while this setup is active, so a record is not emitted twice.
+- Repeated configuration calls update or replace only EPSM-owned handlers, including their levels and destinations. Calling setup twice must not add duplicate handlers.
 
-Logging configuration is an application concern, not a new dependency from lower packages back to `epsm`. A shared formatter/helper distribution can be evaluated during implementation; this reference requires common behaviour, not a new logging package.
+Leave unrelated handlers in the host application unchanged. When EPSM-managed setup is not selected, ordinary host-managed Python logging must still work.
+
+If an existing, unmanaged handler on an EPSM logger conflicts with setup, report the conflict. Do not silently duplicate or discard its output. Standalone CLIs follow the same event and output rules in their entrypoint.
+
+The application owns logging configuration. This must not create an import from a lower-level package back to `epsm`. During implementation, consider a shared formatter or helper only if it is needed. This reference requires common behaviour; it does not require another logging package.
 
 ### Events and fields
 
-Emit a human-readable message and stable machine-readable event name. Put additional fields in `extra` under the prefixed attributes `epsm_event`, `epsm_context` and `epsm_details`. Do not overwrite reserved `LogRecord` attributes.
+Each event has a readable message and a stable event name that software can recognize. Put additional fields in `extra` using `epsm_event`, `epsm_context` and `epsm_details`. These names avoid overwriting fields reserved by Python's `LogRecord`.
 
 ```python
 logger.info(
@@ -236,7 +286,7 @@ logger.info(
 )
 ```
 
-The managed JSONL formatter normalizes each event into this versioned record shape:
+The EPSM-managed JSONL formatter writes each event in this format. `schema_version` identifies the version of the format:
 
 ```json
 {
@@ -251,13 +301,19 @@ The managed JSONL formatter normalizes each event into this versioned record sha
 }
 ```
 
-`schema_version`, UTC ISO-8601 `timestamp`, `level`, `logger`, `event` and `message` are required. `context`, `details` and structured `exception` are optional. JSON serialization must reject nonfinite values and avoid stringifying arbitrary domain objects. Third-party records lacking EPSM fields use `event="python.log"` and retain their logger/message.
+Every record includes `schema_version`, `timestamp`, `level`, `logger`, `event` and `message`. Use UTC ISO-8601 timestamps, as shown above. `context`, `details` and a structured `exception` are optional.
 
-Context carries available `study_id`, `workflow_id`, `run_id`, `case_id`, `building_id`, `operation_id`, `parent_operation_id`, `stage`, `attempt`, `worker_id` and Slurm job/task identifiers. Release identities and artifact references belong in context or details when relevant. Omit unavailable values. IDs support correlation; timestamps do not establish strict ordering across machines.
+When writing JSON, reject nonfinite numbers such as NaN or infinity. Do not turn an arbitrary building or research object into a string just to make it fit. For third-party records without EPSM fields, use `event="python.log"` and keep their original logger and message.
 
-Use event names such as `database.query.completed`, `catalogue.resolve.completed`, `weather.compile.started`, `building.assemble.completed`, `simulation.failed`, `study.checkpoint.saved` and `study.completed`. Treat event names and diagnostic codes as contracts; changing them requires migration notes.
+Context identifies the work being logged. Include available `study_id`, `workflow_id`, `run_id`, `case_id`, `building_id`, `operation_id`, `parent_operation_id`, `stage`, `attempt`, `worker_id` and Slurm job/task identifiers. Slurm is the job scheduler used for cluster execution.
 
-Measure elapsed durations with a monotonic clock and record them as `duration_s`. Never log passwords, connection URLs containing credentials, access tokens, complete source payloads or large numerical arrays. Sanitize exception output at the reporting boundary before publishing logs.
+Put relevant release identities and artifact references in context or details. Omit values that are unavailable. IDs connect related events; timestamps alone cannot prove the order of events on different machines.
+
+Use names such as `database.query.completed`, `catalogue.resolve.completed`, `weather.compile.started`, `building.assemble.completed`, `simulation.failed`, `study.checkpoint.saved` and `study.completed`. Other software may rely on these names and diagnostic codes. If they change, explain how existing consumers should migrate.
+
+Measure elapsed time with a monotonic clock, which measures duration without being affected by a clock-time adjustment. Store it as `duration_s`.
+
+Never log passwords, connection URLs containing credentials, access tokens, complete source records or large numerical arrays. Remove sensitive information from exception output at the layer that reports it, before publishing logs.
 
 ### Levels and coverage
 
@@ -269,17 +325,21 @@ Measure elapsed durations with a monotonic clock and record them as `duration_s`
 | ERROR | An operation or case failed; include its category, identifiers and retained evidence reference |
 | CRITICAL | The application cannot continue reliably, such as unavailable required checkpoint storage |
 
-Log all consequential stages across repositories: source and release selection, data validation, assumption resolution, geometry preparation, compilation, weather recovery, engine execution, result extraction, scheduling, checkpoints, resume, cancellation and collection. Pure accessors and arithmetic helpers need no routine INFO events.
+Log every important stage across the repositories: source and release selection, data validation, assumption selection, geometry preparation, compilation, weather recovery, engine execution, result extraction, scheduling, checkpoints, resume, cancellation and collection. A checkpoint is retained progress from which execution can resume. Simple accessors and arithmetic helpers need no routine INFO events.
 
-High-volume per-building work uses DEBUG detail plus INFO batch summaries. Aggregate progress emits at most once every ten seconds, plus a final update. One failure boundary records the traceback; intermediate layers raise or add context without logging the same traceback again. Study summaries can count failures without repeating them.
+When processing many buildings, keep per-building detail at DEBUG and report batch summaries at INFO. Report overall progress at most once every ten seconds, plus a final update.
 
-Warnings and failures also survive in returned diagnostics and retained receipts with the same codes. Logs explain execution; result artifacts, provenance, diagnostics and checkpoints remain authoritative.
+Choose one layer to report a failure and its traceback. Other layers raise the error or add context without logging the same traceback again. Study summaries may count failures without repeating their details.
+
+Return and retain warnings and failures in diagnostics or operation receipts, using the same codes as the logs. A receipt records the outcome and evidence for an operation. Logs explain execution; result artifacts, provenance, diagnostics and checkpoints remain the source of truth.
 
 ### Processes and retained logs
 
-Local process workers send records through `QueueHandler` to one application-owned `QueueListener` that writes console and file output. A worker must not retain a second file handler for the same destination. Transfer correlation context explicitly into threads and spawned workers. Python's [logging cookbook](https://docs.python.org/3.11/howto/logging-cookbook.html) provides the underlying queue patterns.
+For local execution in several processes, workers send log records through `QueueHandler`. One application-owned `QueueListener` receives them and writes terminal/file output. A worker must not also keep another file handler for that destination.
 
-Slurm tasks write distinct JSONL shards. Multiple tasks or nodes must not append to a common log file. The coordinator records task summaries and shard references; collection may merge or index shards without claiming a total distributed event order.
+Pass the IDs that connect events explicitly into threads and newly started workers. Python's [logging cookbook](https://docs.python.org/3.11/howto/logging-cookbook.html) shows the queue patterns used here.
+
+Each Slurm task writes its own JSONL file, called a log shard. Several tasks or nodes must not append to one shared log file. The coordinator records task summaries and links to these files. Collection may merge or index them, but must not claim a proven order for all events across the cluster.
 
 Use a predictable study layout:
 
@@ -295,19 +355,27 @@ study/
     diagnostics.json
 ```
 
-This is a logging/artifact layout convention, not a complete result-storage schema. Engine transcripts remain separate from structured application logs. Log exit status and transcript references.
+This layout sets a convention for logs and artifact locations. It does not define the complete result format. Keep raw engine output separate from structured application logs. Log the engine exit status and links to that output.
 
-Logs remain with their study artifacts until an explicit retention/archive operation. A configured rotation or deletion policy must declare what is retained and record that operation. Resuming a study must preserve earlier attempts and their logs.
+Keep logs with their study artifacts until an explicit retention or archive operation. If logs are rotated or deleted, the configured policy must state what is kept and record the operation. Resuming a study must preserve earlier attempts and their logs.
 
 ### Logging acceptance tests
 
-Verify normal capture with `caplog`, no import-time output/files, host-managed logging, no duplicate output after repeated managed configuration, effective level changes, valid JSONL records, missing optional fields, context isolation/transfer, distinct task shards, and once-only exception reporting. Check agreement between warning event codes and returned diagnostics.
+Test normal log capture with `caplog` and check that imports create no output or files. Also test:
+
+- Host-managed logging and repeated EPSM-managed setup without duplicate output.
+- Changes to levels actually taking effect, valid JSONL records and missing optional fields.
+- Context staying with the correct operation and reaching threads/workers correctly.
+- Separate task log files and a failure traceback being reported once.
+- Warning codes agreeing with returned diagnostics.
 
 ## Object representation and inspection
 
-Python uses the `__repr__` method through `repr(object)` for the developer representation. `__str__` controls `str(object)` and ordinary printing. The optional standard-library `reprlib` module can shorten containers; it is not the platform's object model. See Python's [data model](https://docs.python.org/3.11/reference/datamodel.html#object.__repr__) for the underlying methods.
+When you inspect an object in Python, its `__repr__` method supplies the text shown by `repr(object)`. Its `__str__` method supplies `str(object)` and ordinary printing. Both should help someone understand what they have.
 
-Important public entities implement a concise representation contract:
+Python's optional `reprlib` module can shorten container output; it does not define EPSM's objects. See Python's [data model](https://docs.python.org/3.11/reference/datamodel.html#object.__repr__) for these methods.
+
+Important public objects provide the following inspection behaviour:
 
 | Interface | Purpose | Required behaviour |
 | --- | --- | --- |
@@ -328,25 +396,29 @@ Run(id='7ac2…', state='failed', attempt=2)
 Result(run_id='7ac2…', hours=8760, accepted=True)
 ```
 
-Use `unknown` or `not_loaded` when counts/state are unavailable. State labels must describe the actual lifecycle; `accepted` or `ready` must not imply empirical validation.
+Use `unknown` or `not_loaded` when a count or state is unavailable. State labels describe the object's actual progress. `accepted` or `ready` must not imply that predictions have been validated against measured buildings.
 
-Keep default representations within 160 characters; shorten labels, identifiers and collections with an explicit ellipsis. Display compact counts instead of nested payloads. Full identifiers and details remain available through attributes and explicit inspection.
+Keep default representations on one line and within 160 characters. This means `len(text) <= 160` for the **final formatted text**, including quotes, escaping, separators and any ellipsis. Shorten labels and identifiers with a visible ellipsis, and show collection counts instead of their contents. Full identifiers and details remain available through attributes and explicit inspection.
 
-Representation must use already loaded metadata. It performs no database, network or filesystem access, model compilation, simulation, logging configuration or expensive recomputation. It must remain useful for empty, incomplete and failed objects. It must not expose credentials or whole source records.
+Clipping a raw name to 160 characters does not enforce this limit. Quotes, backslashes, control characters and nonprinting Unicode may take more characters when formatted. Escape line breaks and other control characters so the result stays on one line. Shorten values further or omit optional fields before formatting; do not leave broken escape sequences or unmatched quotes. Test the final output with long and unusual Unicode inputs.
 
-Override verbose default dataclass/Pydantic representations where necessary. Use `repr=False` for heavy/private fields. Define both repr and str deliberately, including Pydantic objects. Changing representation must not change serialization, equality, validation or identity hashes.
+Printed representations use information already loaded on the object. They must not access a database, network or filesystem; compile a model; run a simulation; configure logging; or repeat an expensive calculation. They must remain useful for empty, incomplete and failed objects. They must not expose credentials or whole source records.
 
-Notebook rich display is optional. If supplied, it follows the same no-I/O rule, escapes displayed text and shows a bounded summary. Detailed expansion remains an explicit operation.
+Replace verbose default dataclass/Pydantic representations where needed. Use `repr=False` for large or private fields. Deliberately define both repr and str behaviour, including for Pydantic objects. Changing printed text must not change serialization, equality, validation or identity hashes.
 
-The accompanying [public entity template](templates/public-entity.py.tmpl) demonstrates bounded repr/str and explicit summary using loaded metadata. It is an example, not a universal base class or a new production Building type.
+A richer notebook display is optional. If provided, it follows the same no-I/O rule, escapes displayed text and shows a bounded summary. Opening more detail remains an explicit operation.
 
-Test informative fields and output bounds, partial/large cases, absence of sensitive values and zero I/O. Formatting assertions should target the representation contract rather than incidental whitespace.
+The accompanying [public entity template](templates/public-entity.py.tmpl) demonstrates bounded repr/str and an explicit summary using loaded metadata. It is a template, not a universal base class or an implemented Building API. Any use of it must meet the final-format limit above.
+
+Test useful fields and final output length, incomplete and large objects, unusual names, absence of sensitive values and zero I/O. Assertions should check the promised behaviour rather than incidental spaces.
 
 ## Errors and scientific meaning
 
-Public errors name the failed domain operation and the actionable input. Prefer a message such as “Weather is missing for building X” over an unprocessed schema traceback. Retain the original exception cause for debugging and a structured error code/context for execution records.
+Public errors name what failed and the input the user can act on. Prefer “Weather is missing for building X” over a raw schema traceback. Keep the original exception cause for debugging, plus a structured error code and context in execution records.
 
-Explicitly document recoverable conditions, fallbacks, unsupported cases and interruption behaviour. Defaults and fallback choices retain their source and reason. Every attempted case has an outcome; failed models are not silently removed from study denominators.
+Explain conditions the software can recover from, fallback choices, unsupported cases and what happens when work is interrupted. Keep the source and reason for defaults and fallbacks.
+
+Record an outcome for every attempted case. Do not silently remove failed models when reporting how many study cases succeeded or computing study totals.
 
 Distinguish these statuses in APIs, documentation, logs and results:
 
@@ -355,26 +427,30 @@ Distinguish these statuses in APIs, documentation, logs and results:
 - Numerical/simulation acceptance.
 - Scientific prediction accuracy and validation scope.
 
-Geometry checks, a completed weather calendar or an accepted engine run cannot establish measured-building accuracy. Demand, delivered energy, electricity, costs and GWP retain distinct units and boundaries.
+Geometry checks, a complete weather calendar or an accepted engine run do not establish accuracy against measured buildings. Keep demand, delivered energy, electricity, costs and global warming potential (GWP) distinct. Each has its own units and describes a different physical or assessment boundary.
 
 ## Repository and review conventions
 
-Use `src/`, `tests/`, `examples/` and `docs/` consistently. External input files belong in explicit data/artifact locations; generated study artifacts belong in ignored output directories. Research protocols live with their study records. Required runtime resources must be packaged and tested from installed wheels.
+Use `src/`, `tests/`, `examples/` and `docs/` consistently. Put external inputs in explicit data/artifact locations and generated study artifacts in output directories ignored by Git. Keep research protocols with their study records.
 
-Use Ruff for consistent formatting/imports and the project's agreed lint rules. Keep style-only changes separate from numerical or behavioural changes when that improves review. Dependency declarations cover every import required by an advertised feature, with optional capabilities isolated in extras.
+Include required runtime resources in the package. Test them from an installed wheel, the distributable package file, rather than relying on files available only in a source checkout.
 
-Each contribution is reviewable when its responsibility is narrow, acceptance tests are meaningful, documentation/examples are current, consequential operations emit the prescribed logs, and public entities have useful inspection. Include evidence that package handoffs, missing-data behaviour and retained artifacts remain correct.
+Use Ruff for consistent formatting, import order and the project's agreed lint checks. Where it helps review, separate style-only edits from changes to calculations or behaviour.
 
-Adopt this reference through explicit, bounded work items: one entity family, one operation or one package boundary at a time. Avoid a repository-wide logging/docstring rewrite that changes scientific behaviour along the way.
+Declare every dependency imported by an advertised feature. Put dependencies for optional features in package extras, so users can install them explicitly without making them mandatory for everyone.
+
+A contribution is ready for review when its job is clear and limited, its tests check useful behaviour, its documentation and examples are current, important operations emit the prescribed logs, and its public objects are easy to inspect. Include evidence that package handoffs, missing-data handling and retained artifacts still work correctly.
+
+Adopt this reference through small, named changes: one group of related objects, one operation or one package handoff at a time. Do not mix a repository-wide logging/docstring rewrite with changes to scientific behaviour.
 
 ## Decisions for the next API design exercise
 
-Before implementing the new umbrella interface, agree executable usage stories for a footprint model, a database building, an incomplete record, a small study and a renovation comparison. Settle:
+Before implementing the new umbrella interface, agree small examples of a footprint model, a database building, an incomplete record, a study and a renovation comparison. Decide:
 
-- Exact public constructors, verbs and containment paths.
+- Exact public constructors, operation names and how users reach contained objects.
 - How authoring edits behave and how independent scenarios are created.
 - How assumptions are selected and inspected.
 - How database/engine/artifact configuration is supplied.
 - How checks, execution handles and result inspection appear in notebooks.
 
-Express those stories first as small acceptance tests and examples. The conventions above constrain their implementation without prematurely fixing the full EPSM interface.
+Write those examples first as small acceptance tests. The rules above guide how we build the interface; the next design exercise decides its exact names and behaviour.

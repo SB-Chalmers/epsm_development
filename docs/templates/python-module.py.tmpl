@@ -2,31 +2,41 @@
 # Purpose: <one narrow responsibility>
 # SPDX-License-Identifier: <project-approved license identifier>
 # Copyright (c) <year> <actual copyright holder>
-# License: see the project-root LICENSE.
+# License: <actual license-file location; omit if no license is established>
 # Author: <actual author or team and contact>
 # Project PI: <applicable project attribution>
 # Research group: <applicable research group>
 # Institution: <applicable institution>
-# Date created: <known original creation date or documented inherited date>
-# Date modified: <date of latest substantive edit>
+# Date created: <known original creation date; say unknown if not established>
+# Date modified: <date of latest substantive edit, YYYY-MM-DD>
 # Changelog:
 #   <date> - <consequential change; full history remains in Git>
 
-"""Describe the domain operation performed by this module.
+"""Explain the module's purpose in one plain-language sentence.
 
 Notes
 -----
-State the single responsibility and the inputs/outputs it owns. Explain delegated
-work and units/reference bases. Describe assumptions and their sources, validation
-boundaries, mutation, and exactly which calls use I/O or external processes.
+Explain what a researcher can accomplish here and which work belongs elsewhere.
+Name the input/output types, units and reference bases. State assumptions and
+their sources, the supported validation scope, mutation, and exactly which calls
+use files, services or external processes. Imports and object inspection do none
+of that work.
 
-Importing this module does not connect to services, configure logging or run work.
-Replace this instructional text when adopting the template.
+Use the module logger for operational events. Caller applications choose handlers
+and levels; the module does not configure logging. Returned diagnostics and saved
+artifacts remain the records of results, assumptions and provenance.
+
+Replace this instructional text when adopting the template. Include only useful
+docstring sections: public functions describe Parameters, Returns or Yields,
+expected Raises, and relevant Notes, Examples and References. Public classes also
+explain their Attributes and lifecycle. Do not invent a domain API to fill a section.
 
 Examples
 --------
-Add a complete example using public APIs and declared local fixtures. Show a useful
-outcome. Mark any future API sketch as illustrative rather than executable.
+Add a complete offline doctest using this module's public operations and a small
+declared fixture. Show a useful outcome or assertion. Document required inputs
+for integration examples and test those in an executable notebook or test. Label
+future API sketches as illustrative; they are not executable coverage.
 
 References
 ----------
@@ -42,4 +52,7 @@ logger = logging.getLogger(__name__)
 # Add imports, public types and cohesive operations for the declared responsibility.
 # Configure handlers only in the application or CLI entrypoint.
 # Emit structured events with epsm_event, epsm_context and epsm_details in extra.
+# Use lazy formatting, for example logger.debug("Loaded %d items", item_count).
+# Log available identifiers/counts; do not compute results merely to format a log.
+# Record a failure once where it is handled, retaining its diagnostic/exception.
 # Start behavioural changes with failing acceptance tests.

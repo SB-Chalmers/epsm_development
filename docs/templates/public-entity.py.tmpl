@@ -2,17 +2,17 @@
 # Purpose: <replace with the actual entity responsibility>
 # SPDX-License-Identifier: <project-approved license identifier>
 # Copyright (c) <year> <actual copyright holder>
-# License: see the project-root LICENSE.
+# License: <actual license-file location; omit if no license is established>
 # Author: <actual author or team and contact>
 # Project PI: <applicable project attribution>
 # Research group: <applicable research group>
 # Institution: <applicable institution>
-# Date created: <known original creation date or documented inherited date>
-# Date modified: <date of latest substantive edit>
+# Date created: <known original creation date; say unknown if not established>
+# Date modified: <date of latest substantive edit, YYYY-MM-DD>
 # Changelog:
 #   <date> - <consequential change; full history remains in Git>
 
-"""Demonstrate bounded inspection of already available entity metadata.
+r"""Demonstrate bounded inspection of already available entity metadata.
 
 Notes
 -----
@@ -31,32 +31,80 @@ Examples
 True
 >>> item.summary()["part_count"]
 2
+>>> unknown = BuildingSummary("b-1", "draft", None)
+>>> "parts=not_loaded" in repr(unknown)
+True
+>>> controls = BuildingSummary("b\n\t\x00", "\x1b[31mfailed", 2)
+>>> text = repr(controls)
+>>> len(text) <= 160 and all(character.isprintable() for character in text)
+True
+>>> "\\x00" in text and "\\x1b" in text
+True
+>>> large = BuildingSummary("\x00" * 10_000, "\U0001f3e0" * 10_000, 10**100)
+>>> text = repr(large)
+>>> len(text) <= 160 and "…" in text and "parts=large" in text
+True
+>>> large.summary()["identifier"] == "\x00" * 10_000
+True
+>>> large.summary()["part_count"] == 10**100
+True
 """
 
 from __future__ import annotations
 
+import logging
 from dataclasses import dataclass
 
+logger = logging.getLogger(__name__)
+# Operational methods may emit events; inspection methods do not log.
+# Handlers and levels belong to the calling application or CLI.
 
-def _short_text(value: str, *, limit: int = 24) -> str:
-    """Return a bounded single-line label, preserving an explicit truncation mark.
+
+def _bounded_text_repr(value: str, *, limit: int = 36) -> str:
+    """Return a quoted, single-line label bounded after escaping characters.
 
     Parameters
     ----------
     value : str
-        Already available label. Whitespace is normalized for compact display.
-    limit : int, default 24
-        Maximum displayed characters; internal callers use positive limits.
+        Already available label, retained unchanged in the entity.
+    limit : int, default 36
+        Maximum output characters, including quotes and any ellipsis. At least 3.
 
     Returns
     -------
     str
-        Label containing an ellipsis when shortened. Does not modify stored data.
+        Quoted label with controls escaped and an ellipsis if text was omitted.
+
+    Raises
+    ------
+    ValueError
+        If the display limit leaves no room for two quotes and an ellipsis.
+
+    Notes
+    -----
+    Only a bounded prefix is inspected. Budget the rendered escape sequences,
+    rather than input characters: one null character renders as four characters.
+    Truncation preserves complete escapes and closing quotes. This is a display
+    helper, not a serialization format or a shared entity abstraction.
     """
-    label = " ".join(value.split())
-    if len(label) <= limit:
-        return label
-    return label[: limit - 1] + "…"
+    if limit < 3:
+        raise ValueError("Display limit must be at least 3")
+    budget = limit - 2
+    pieces: list[str] = []
+    used = 0
+    consumed = 0
+    for character in value[:budget]:
+        escaped = repr(character)[1:-1].replace("'", "\\'")
+        if used + len(escaped) > budget:
+            break
+        pieces.append(escaped)
+        used += len(escaped)
+        consumed += 1
+    if consumed < len(value):
+        while used + 1 > budget:
+            used -= len(pieces.pop())
+        pieces.append("…")
+    return "'" + "".join(pieces) + "'"
 
 
 @dataclass(frozen=True, repr=False)
@@ -77,6 +125,11 @@ class BuildingSummary:
     This example holds metadata only. Real objects validate their domain inputs
     through their owning implementations and never derive counts inside repr.
     Creation, representation and summary do not access external resources.
+    Labels are shortened after escaping, so controls and long Unicode text still
+    produce one printable line within 160 characters. Counts are stored metadata;
+    no geometry is traversed. A count with 25 or more decimal digits is displayed
+    as ``large`` to avoid formatting an arbitrarily large integer. Full values
+    remain available through attributes and summary.
 
     Examples
     --------
@@ -99,13 +152,24 @@ class BuildingSummary:
         str
             One-line description. Full metadata remains available via summary.
         """
-        identifier = _short_text(self.identifier)
-        state = _short_text(self.state)
-        parts = "not_loaded" if self.part_count is None else _short_text(str(self.part_count))
-        return f"BuildingSummary(id={identifier!r}, parts={parts}, state={state!r})"
+        identifier = _bounded_text_repr(self.identifier)
+        state = _bounded_text_repr(self.state)
+        if self.part_count is None:
+            parts = "not_loaded"
+        elif -10**24 < self.part_count < 10**24:
+            parts = str(self.part_count)
+        else:
+            parts = "large"
+        return f"BuildingSummary(id={identifier}, parts={parts}, state={state})"
 
     def __str__(self) -> str:
-        """Return the same compact description used for developer inspection."""
+        """Return the same compact description used for developer inspection.
+
+        Returns
+        -------
+        str
+            The bounded representation, without fetching or changing metadata.
+        """
         return repr(self)
 
     def summary(self) -> dict[str, str | int | None]:
