@@ -1,0 +1,130 @@
+# File: <repository-relative path>
+# Purpose: <replace with the actual entity responsibility>
+# SPDX-License-Identifier: <project-approved license identifier>
+# Copyright (c) <year> <actual copyright holder>
+# License: see the project-root LICENSE.
+# Author: <actual author or team and contact>
+# Project PI: <applicable project attribution>
+# Research group: <applicable research group>
+# Institution: <applicable institution>
+# Date created: <known original creation date or documented inherited date>
+# Date modified: <date of latest substantive edit>
+# Changelog:
+#   <date> - <consequential change; full history remains in Git>
+
+"""Demonstrate bounded inspection of already available entity metadata.
+
+Notes
+-----
+BuildingSummary is a standalone documentation example. It is not EPSM's proposed
+Building implementation or an Entity superclass. Adapt the pattern to the actual
+domain object and document its own responsibility and lifecycle.
+
+Representation and summary perform no I/O, logging or model computation. This
+example stores only immutable scalar metadata; it does not claim deep immutability
+for arbitrary objects containing dictionaries or arrays.
+
+Examples
+--------
+>>> item = BuildingSummary("example-building", "incomplete", 2)
+>>> "state='incomplete'" in repr(item)
+True
+>>> item.summary()["part_count"]
+2
+"""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+
+
+def _short_text(value: str, *, limit: int = 24) -> str:
+    """Return a bounded single-line label, preserving an explicit truncation mark.
+
+    Parameters
+    ----------
+    value : str
+        Already available label. Whitespace is normalized for compact display.
+    limit : int, default 24
+        Maximum displayed characters; internal callers use positive limits.
+
+    Returns
+    -------
+    str
+        Label containing an ellipsis when shortened. Does not modify stored data.
+    """
+    label = " ".join(value.split())
+    if len(label) <= limit:
+        return label
+    return label[: limit - 1] + "…"
+
+
+@dataclass(frozen=True, repr=False)
+class BuildingSummary:
+    """Loaded metadata for illustrating a public object's inspection contract.
+
+    Parameters
+    ----------
+    identifier : str
+        Full example building identifier, retained unchanged in stored metadata.
+    state : str
+        Loaded authoring/execution state; no readiness calculation is performed.
+    part_count : int or None
+        Known geometry part count. None means the count has not been loaded.
+
+    Notes
+    -----
+    This example holds metadata only. Real objects validate their domain inputs
+    through their owning implementations and never derive counts inside repr.
+    Creation, representation and summary do not access external resources.
+
+    Examples
+    --------
+    >>> item = BuildingSummary("b-1", "draft", None)
+    >>> "parts=not_loaded" in repr(item)
+    True
+    >>> str(item) == repr(item)
+    True
+    """
+
+    identifier: str
+    state: str
+    part_count: int | None
+
+    def __repr__(self) -> str:
+        """Return bounded identity, composition and state from loaded metadata.
+
+        Returns
+        -------
+        str
+            One-line description. Full metadata remains available via summary.
+        """
+        identifier = _short_text(self.identifier)
+        state = _short_text(self.state)
+        parts = "not_loaded" if self.part_count is None else _short_text(str(self.part_count))
+        return f"BuildingSummary(id={identifier!r}, parts={parts}, state={state!r})"
+
+    def __str__(self) -> str:
+        """Return the same compact description used for developer inspection."""
+        return repr(self)
+
+    def summary(self) -> dict[str, str | int | None]:
+        """Return complete loaded metadata without fetching or deriving values.
+
+        Returns
+        -------
+        dict
+            Fresh mapping with full identifier, state and known/unknown part count.
+            This inspection mapping does not define a versioned artifact schema.
+
+        Examples
+        --------
+        >>> item = BuildingSummary("b-1", "draft", 3)
+        >>> item.summary()["identifier"]
+        'b-1'
+        """
+        return {
+            "identifier": self.identifier,
+            "state": self.state,
+            "part_count": self.part_count,
+        }
