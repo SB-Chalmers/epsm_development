@@ -1,0 +1,23 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) <year or year range> <actual copyright holder or holders>
+# License: See LICENSE at the project root.
+
+"""Start a package API reference from its NumPy-style docstrings.
+
+Copy this file to docs/conf.py in the owning package and set the project name.
+Install that package and Sphinx in the documentation environment. Keep useful
+constructor documentation in the class docstring for new public classes.
+"""
+
+project = "Your EPSM package"
+extensions = ["sphinx.ext.autodoc", "sphinx.ext.napoleon"]
+
+napoleon_numpy_docstring = True
+napoleon_google_docstring = False
+autoclass_content = "class"
+autodoc_typehints = "none"  # Types and units are explained in NumPy sections.
+autodoc_member_order = "bysource"
+
+root_doc = "index"
+exclude_patterns = ["_build"]
+html_theme = "alabaster"

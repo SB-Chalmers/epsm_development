@@ -1,0 +1,33 @@
+## Branches and releases
+
+Use these branches in this repository:
+
+- `main` holds stable releases. Each published release has a `vX.Y.Z` tag.
+- `dev` holds the shared development version. New work starts here and returns here after review and tests.
+- `feature/<short-name>` is one change started from `dev`.
+- `experiment/<short-name>` is a trial method started from `dev`.
+- Coding agents use `codex/<short-name>` or `codex/experiment/<short-name>` and follow the same process.
+
+### Make a change
+
+Check local work before switching branches. Start a feature or experiment from the current `dev`. Write its tests, code, documentation and examples. Open a pull request targeting `dev`.
+
+{{List this repository's development check commands and review requirements.}}
+
+### Release a tested version
+
+Finish the version and release notes on `dev`. Run the release checks and review a pull request into `main`. Preserve shared history with a normal release merge. Tag the final `main` commit, then publish from that tag and merge `main` back into `dev`.
+
+{{List required release checks, notebook checks, installed-package checks and external integrations. State who prepares the release.}}
+
+If a temporary `release/X.Y.Z` branch is needed, start it from the chosen `dev` commit and accept release fixes only. Merge the released history back into `dev` after publication.
+
+An urgent released-version fix starts on `hotfix/<short-name>` from `main`. Test and release that narrow fix, then bring it back into `dev`.
+
+### Shared branch settings
+
+Protect `main` and `dev` with pull requests, required checks and review. Do not force-push or delete them. Keep `main` as the default branch and choose `dev` as the target for ordinary development pull requests.
+
+Stable describes the tested release and its stated scope. Experimental methods and scientific validation limits must remain clearly labelled. Never move or reuse a published tag.
+
+{{Replace these instructions with this repository's actual check names and a verified link to the shared EPSM branch guide before publishing.}}

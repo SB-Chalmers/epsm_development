@@ -1,8 +1,8 @@
 # File: docs/templates/io-module.py.tmpl
 # Purpose: Demonstrate reading and safely writing one small metadata format.
-# SPDX-License-Identifier: <project-approved license identifier>
+# SPDX-License-Identifier: MIT
 # Copyright (c) <year> <actual copyright holder>
-# License: <actual license-file location; omit if no license is established>
+# License: See LICENSE at the project root.
 # Author: <actual author or team and contact>
 # Project PI: <applicable project attribution>
 # Research group: <applicable research group>
@@ -35,8 +35,10 @@ write. Filesystems that do not support these operations raise an error.
 The file is flushed before publication. This is a single-file operation, not a
 transaction across several artifacts or a guarantee against loss after a power
 failure. The new file uses the temporary file's permissions, not the old file's
-permissions. Ordinary failures remove the staged file; abrupt process termination
-may leave a temporary file for an explicit cleanup operation.
+permissions. The function attempts to remove its staged file on success or an
+ordinary failure. Cleanup can also fail, including after publication succeeds.
+An error after publication does not mean the destination was left unchanged.
+Abrupt process termination may leave a temporary file for explicit cleanup.
 
 Credentials and live connections do not belong in this format. Callers must keep
 secrets out of identifiers and paths. Logging records completion and counts, not
@@ -288,9 +290,20 @@ def read_metadata(path: str | Path) -> ExampleMetadata:
 
     Examples
     --------
-    See the module's temporary-directory examples for a complete round trip and
-    rejected-file checks. A real package reader should return its own validated
-    public object when that is the advertised interface.
+    Read a small example file and inspect the number of items. The temporary
+    directory is removed when the example finishes.
+
+    >>> from pathlib import Path
+    >>> from tempfile import TemporaryDirectory
+    >>> with TemporaryDirectory() as directory:
+    ...     path = Path(directory) / "metadata.json"
+    ...     metadata = {"format_version": 1, "identifier": "example", "item_count": 2}
+    ...     _ = write_metadata(metadata, path)
+    ...     loaded = read_metadata(path)
+    ...     assert loaded["item_count"] == 2
+
+    A real package reader returns its own documented public object. The module
+    examples also show how rejected files are handled.
     """
     source = Path(path)
     decoded = json.loads(
@@ -347,8 +360,9 @@ def write_metadata(
     FileExistsError
         If overwrite=False and another file or directory already has the name.
     OSError
-        If staging or publication fails, including unsupported hard links. An
-        existing destination is not changed before publication succeeds.
+        If staging, publication or cleanup fails, including unsupported hard links.
+        An existing destination is not changed before publication succeeds.
+        A cleanup error after publication can occur after the destination changes.
 
     Notes
     -----
@@ -364,8 +378,19 @@ def write_metadata(
 
     Examples
     --------
-    The module examples show a round trip, refused overwrite, explicit replacement
-    and preserved old content when replacement fails.
+    Save a small metadata file and check that it can be read back.
+
+    >>> from pathlib import Path
+    >>> from tempfile import TemporaryDirectory
+    >>> with TemporaryDirectory() as directory:
+    ...     path = Path(directory) / "metadata.json"
+    ...     metadata = {"format_version": 1, "identifier": "example", "item_count": 2}
+    ...     saved = write_metadata(metadata, path)
+    ...     assert saved == path
+    ...     assert read_metadata(saved) == metadata
+
+    The module examples also show refused overwrite, explicit replacement and
+    preserved old content when replacement fails.
     """
     if type(overwrite) is not bool:
         raise TypeError("overwrite must be a boolean")

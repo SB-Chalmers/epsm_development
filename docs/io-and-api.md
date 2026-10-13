@@ -70,15 +70,17 @@ A **handoff** is the information one package gives another. A good handoff names
 | Coordinate reference system (CRS), origin and orientation | Footprints and neighbours must be placed in the same physical frame |
 | Area, volume and time reference bases | Atemp, gross floor area and zone area describe different quantities; weather and results must share the intended calendar |
 | Missing values, conflicts and their reasons | Zero must not replace missing data, and an unresolved conflict must not disappear |
-| Source links and measured/inferred/assumed status | A selected catalogue value remains an assumption, even after conversion |
-| Database snapshot, catalogue release and weather content identity | Another researcher can recover the inputs used for the case |
+| Source links, value origin and verification status | A reported value is not necessarily measured or verified. A selected catalogue value remains an assumption, even after conversion. |
+| Evidence release and its source/processing identities, catalogue release and weather content identity | Another researcher can recover the inputs used for the case |
 | Stored-format version and producer package version | A reader can distinguish file compatibility from a software release |
 
 CRS means the coordinate reference system used to interpret coordinates. A reference basis says what a value describes: for example, annual heating per square metre of heated floor area. Record that basis alongside the units.
 
 Prefer transformations that receive values and return new values without fetching data or changing their input. Such a transformation is called **pure**. This makes it easier to test conversion separately from file access or database queries.
 
-Live clients own connections and authentication. Portable records, profiles and submitted cases hold data and safe source references. Do not save credentials, connection objects, open cursors or notebook state with them. Use stable source identifiers rather than connection URLs containing a password.
+Keep database and service connections, including authentication, on client objects. Portable records, profiles and submitted cases hold data and safe source references. Do not save credentials, connection objects, open cursors or notebook state with them. Use stable source identifiers rather than connection URLs containing a password.
+
+Use [Shared terms and models](terminology-and-models.md) when agreeing field meanings, model ownership and versions.
 
 ## One owner for each conversion
 
@@ -117,7 +119,7 @@ An atomic file operation means readers see the old complete file or the new comp
 
 Reject malformed input and nonfinite numbers such as NaN or infinity. Retain the original failure cause, give a useful error and leave existing evidence unchanged until publication succeeds. Do not suppress failures to make a file appear successfully loaded or saved.
 
-Use the [shared logging fields](engineering-style.md#events-and-fields): `epsm_event`, `epsm_context` and `epsm_details`. Record useful counts, approved identifiers and artifact references. Do not log complete records or secrets. The application configures handlers; the I/O module does not. Report a failure and its traceback once, at the layer that handles it.
+Use the [shared logging fields](engineering-style.md#events-and-fields): `epsm_event`, `epsm_context` and `epsm_details`. Log counts, identifiers that are safe to share, and the locations or IDs of saved outputs. Do not log complete records or secrets. The application configures handlers; the I/O module does not. Report a failure and its traceback once, at the layer that handles it.
 
 ## Package releases and stored formats are separate
 
@@ -148,7 +150,7 @@ Keep fast tests independent of services. Use mocks to exercise I/O failures, but
 
 Mark engine, database, network and slow tests. A missing service may skip an optional development check; it must fail a release gate that requires that check. Report the command, versions, pass/fail/skip counts and the limits of the evidence.
 
-Contract tests describe what a producer promises and what a consumer accepts. Keep them small and agree them with both package owners. One successful end-to-end example does not replace either package's own tests.
+Tests shared by two packages check that the object returned by one can be used by the other. Keep them small and agree them with both package owners. One successful end-to-end example does not replace either package's own tests.
 
 ## Each repository teaches its own public API
 

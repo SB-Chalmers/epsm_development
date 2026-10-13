@@ -10,9 +10,9 @@ Welcome to EPSM. Our aim is to make each library easy to understand, test and us
 
 This draft sets working rules for new development and planned refactors across EPSM. Existing repositories may not meet every rule yet. Use it to plan and review a specific change; it is not a claim that the current packages already work this way.
 
-The proposed public objects are a design direction. Examples labelled **illustrative API** show how we would like the software to feel. Their constructors and method names are not yet implemented or approved API promises.
+The public objects below are proposals; their names and behaviour are still being decided. Examples labelled **illustrative API** show how we would like the software to feel. Their constructors and method names are not yet implemented or approved API promises.
 
-The existing Core documentation shows the depth of explanation we want. Keep extensive, useful docstrings and examples. Good documentation must explain the actual code, and examples advertised as working must run.
+The existing Core documentation shows the depth of explanation we want. Keep extensive, useful docstrings and examples. Explain the actual code, and check that examples advertised as working really run. Follow [Writing for people](writing-guide.md) when adding or reviewing text.
 
 ## Start here
 
@@ -40,7 +40,7 @@ Some terms used below:
 
 ## Responsibility boundaries
 
-Write down the job of every package and module. Before adding a feature, identify its owner, the behaviour a user can observe and what is outside the change. When packages work together, keep their agreement small and give each calculation or decision one owning implementation.
+Write down the job of every package and module. Before adding a feature, identify its owner, the behaviour a user can observe and what is outside the change. When packages exchange data, write down what they pass. Keep each calculation or decision in one package.
 
 | Package | Owns | Delegates |
 | --- | --- | --- |
@@ -103,6 +103,8 @@ When objects contain or refer to information, preserve who or what that informat
 Every modelled quantity in a Building keeps its reference basis and its selection or assumption history. For example, an energy value per square metre must say which floor area and time period it uses.
 
 Keep live database or service connections on client objects. Records and submitted case bundles must be usable in another process or machine. Do not save credentials, open connections or notebook state inside them.
+
+Use [Shared terms and models](terminology-and-models.md) for the full glossary, model ownership and cross-package data rules.
 
 ## Public interface behaviour
 
@@ -227,7 +229,7 @@ Comments explain why a step exists, its assumptions, its numerical reasoning and
 
 Each module has a Core-style source header and an explanatory module docstring. A docstring is the quoted documentation immediately inside a module, class or function. Use the accompanying [module template](templates/python-module.py.tmpl) as the starting point.
 
-The header records the file, purpose, project-approved license, actual copyright holder and author, research attribution, and truthful creation/modification dates. Keep a short file changelog for meaningful changes; Git retains the complete history. Do not copy inaccurate authorship or invent original creation dates.
+The header records the file, purpose, MIT license identifier, actual copyright holder and author, research attribution, and truthful creation/modification dates. Follow [the shared MIT policy](licensing.md), including separate terms for source data and third-party material. Keep a short file changelog for meaningful changes; Git retains the complete history. Do not copy inaccurate authorship or invent original creation dates.
 
 Use NumPy-style docstrings, with the sections and formatting described in the [numpydoc style guide](https://numpydoc.readthedocs.io/en/latest/format.html). EPSM also requires units, an explanation of how evidence is handled, and a description of work that changes state or reads/writes outside the object.
 
@@ -242,7 +244,9 @@ Use `Parameters`, `Attributes`, `Returns`, `Yields`, `Raises`, `Notes`, `Example
 
 Examples use public APIs and show a useful outcome or assertion. State the required fixtures, files, services, catalogue releases and engine versions.
 
-Use doctests for small offline examples: these run example code and check its shown output. Use executable tests or notebooks for examples that connect packages or services. Keep future API sketches labelled as illustrative; do not count them as working example coverage.
+Put a small working example in the `Examples` section of public docstrings. Use doctests for small offline examples: these run example code and check its shown output. Use executable tests or notebooks for examples that connect packages or services. Keep future API sketches labelled as illustrative; do not count them as working example coverage.
+
+Follow [Docstring examples and API documentation](docstrings-and-api-docs.md) for friendly examples, NumPy formatting and automatic documentation generation.
 
 Update function signatures, units, return types, examples and limitations together. Extensive documentation is valuable when it explains the actual implementation. Repeated generic text and stale examples do not meet this standard.
 
@@ -257,6 +261,10 @@ Give each package a small public API. Put the main names in `__init__.py` and ex
 When one package sends a model to another, state the accepted object or file type, units, coordinate system, known/missing values, and source versions. Keep the producer's information. Put any required conversion in one named place, and test that handoff from both sides.
 
 Use [I/O and package APIs](io-and-api.md) for the full rules and the [I/O template](templates/io-module.py.tmpl) as a starting point. The public Building API can stay simple while the packages agree how to pass information internally.
+
+## Plots and previews
+
+Use `.plot()` for 2D figures and `.view()` for 3D previews where meaningful. Keep rendering in a focused module in the owning package. Use the shared palette, labels and terminology. Follow [Plots and 3D previews](plotting-and-previews.md) for return types, display choices, notebook use and checks.
 
 ## Uniform logging
 
@@ -351,7 +359,7 @@ When processing many buildings, keep per-building detail at DEBUG and report bat
 
 Choose one layer to report a failure and its traceback. Other layers raise the error or add context without logging the same traceback again. Study summaries may count failures without repeating their details.
 
-Return and retain warnings and failures in diagnostics or operation receipts, using the same codes as the logs. A receipt records the outcome and evidence for an operation. Logs explain execution; result artifacts, provenance, diagnostics and checkpoints remain the source of truth.
+Include warnings and failures in returned diagnostics and saved operation records, using the same codes as the logs. A receipt records the outcome and evidence for an operation. Logs explain execution; result artifacts, provenance, diagnostics and checkpoints remain the source of truth.
 
 ### Processes and retained logs
 
@@ -430,7 +438,7 @@ A richer notebook display is optional. If provided, it follows the same no-I/O r
 
 The accompanying [public entity template](templates/public-entity.py.tmpl) demonstrates bounded repr/str and an explicit summary using loaded metadata. It is a template, not a universal base class or an implemented Building API. Any use of it must meet the final-format limit above.
 
-Test useful fields and final output length, incomplete and large objects, unusual names, absence of sensitive values and zero I/O. Assertions should check the promised behaviour rather than incidental spaces.
+Test `repr` and `str` with incomplete objects, large objects and unusual names. Check that they show useful fields, stay within the length limit, reveal no secrets and perform no I/O. Assertions should check the promised behaviour rather than incidental spaces.
 
 ## Errors and scientific meaning
 
@@ -450,6 +458,8 @@ Distinguish these statuses in APIs, documentation, logs and results:
 Geometry checks, a complete weather calendar or an accepted engine run do not establish accuracy against measured buildings. Keep demand, delivered energy, electricity, costs and global warming potential (GWP) distinct. Each has its own units and describes a different physical or assessment boundary.
 
 ## Repository and review conventions
+
+Use `main` for stable releases and `dev` as the shared home for development. Start feature and experiment branches from `dev`, review and test them, then merge them back into `dev`. Promote a tested release to `main` and tag its final commit. The [branch guide](branches-and-releases.md) explains this process, release checks and urgent fixes.
 
 Use `src/`, `tests/`, `examples/` and `docs/` consistently. Put external inputs in explicit data/artifact locations and generated study artifacts in output directories ignored by Git. Keep research protocols with their study records.
 

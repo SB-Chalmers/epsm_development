@@ -6,20 +6,21 @@ This is the shared index of useful things a researcher should be able to do with
 
 Read the [package layout](../docs/project-layout.md) and [engineering style](../docs/engineering-style.md) for where implementations and tests belong. The new package names below describe the agreed direction; some current repositories still have older names.
 
-## The first eight stories
+## The common stories
 
 | ID | Researcher story | Owning packages | Input and expected outcome | Evidence status |
 | --- | --- | --- | --- | --- |
 | UC01 | Start a Building from a footprint | EPSM interface; Core geometry/model | A polygon with coordinate reference, units and supplied floor information becomes an inspectable Building. Missing weather or assumptions remain visible. | Proposed; needs public authoring and geometry checks |
-| UC02 | Retrieve a building Record | Database retrieval; EPSM integration | A building identity and pinned release return portable evidence with components, provenance, conflicts and missing-data reasons through a restricted reader. | Proposed; needs real database and release-pinning checks |
+| UC02 | Retrieve a building Record | Database retrieval; EPSM integration | A read-only account uses a building ID and fixed database release to retrieve components, source history, conflicts and missing-data reasons. The Record can be saved or passed on without a database connection. | Proposed; needs real database and release-pinning checks |
 | UC03 | Apply declared assumptions | Catalogue definitions; EPSM assembly; Core validation | A Record or incomplete Building plus an explicit profile yields a model revision and an inspectable assumption report. Source observations remain unchanged. | Proposed; needs installed catalogue-to-model checks |
 | UC04 | Select usable weather | `smhi2epw` weather; EPSM handoff; Core calendar checks | A supplied EPW and explicit calendar produce a weather reference with provenance and content identity. Generation is a separately requested operation. | Proposed; needs artifact/calendar and installed weather checks |
 | UC05 | Simulate and inspect results | Core execution/result meaning; EPSM convenience | A complete model and fixed weather produce a retained run and readable metrics/diagnostics. Thermal demand and delivered energy retain their different meanings and units. | Proposed; needs real engine and result checks |
 | UC06 | Run a small Study | EPSM Study interface; Workflows execution; Core simulation | A small prepared cohort and explicit configuration produce an outcome for every attempted case, retained run identities and a useful study summary. | Proposed; needs installed local study execution checks |
 | UC07 | Compare a renovation scenario | Catalogue measure definitions; Core physical change; EPSM scenario; Workflows execution | A baseline and declared measure produce an independent alternative and energy/quantity comparison. The baseline and prior runs stay unchanged. | Proposed; needs scenario isolation and comparison checks; LCA is later scope |
 | UC08 | Resume interrupted work | Workflows checkpoints/attempts; EPSM interface | An interrupted study resumes from retained state without losing earlier attempts or mixing changed inputs into existing runs. Every case keeps an outcome. | Proposed; needs interruption, restart and input-identity checks |
+| UC09 | Inspect and compare plots and previews | Owning package renderers; EPSM convenience | Small loaded objects produce 2D Figures or documented 3D previews with common colours, labels, units and missing-data cues. Export and browser startup are explicit; source data remain unchanged. | Proposed; needs rendering, optional-dependency and preview cleanup checks |
 
-A story can be supported by several smaller tests. For example, UC04 has an offline artifact handoff and an explicitly requested weather-generation route that may require network access. Record which route was exercised; do not give the whole story a passing label because only one part ran.
+A story can be supported by several smaller tests. For example, UC04 includes passing an existing weather file between packages without going online. It also includes generating weather when explicitly requested; that step may need network access. Record which route was exercised; do not give the whole story a passing label because only one part ran.
 
 ## Where the work lives
 

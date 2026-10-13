@@ -20,12 +20,18 @@
 | Version source | `{{VERSION_SOURCE}}`; current release `{{VERSION}}` |
 | Maintainer / team | {{MAINTAINER_OR_TEAM}} |
 | Contact / issue tracker | {{CONTACT_OR_VERIFIED_ISSUE_URL}} |
-| License / copyright | {{APPROVED_LICENSE_AND_ACTUAL_COPYRIGHT_HOLDER}} |
+| License / copyright | MIT; see [LICENSE](LICENSE). Copyright {{ACTUAL_YEAR_AND_COPYRIGHT_HOLDERS}}. |
 | Research attribution | {{TRUTHFUL_PROJECT_OR_GROUP_INFORMATION}} |
 | Citation | {{VERIFIED_CITATION_OR_STATE_NONE_IS_CURRENTLY_DEFINED}} |
 | Python requirement | {{SUPPORTED_PYTHON_RANGE}} |
 
-Keep these facts consistent with `pyproject.toml` and the source headers. Remove inapplicable rows. Replace every placeholder before publishing; do not invent original creation dates, authorship or license information.
+Keep these facts consistent with `pyproject.toml` and the source headers. Remove inapplicable rows. Replace every placeholder before publishing; use truthful original creation dates, authorship and copyright information. Preserve separate third-party and source-data terms.
+
+## License
+
+This package's own code and documentation use the MIT license. See [LICENSE](LICENSE) for the full terms. Keep required third-party notices with bundled code and assets. Source datasets, weather, evidence and research artifacts retain their separately declared terms.
+
+{{List bundled material and its notices, and explain where source/data terms are recorded. Remove this instruction before publishing.}}
 
 ## Install
 
@@ -75,6 +81,12 @@ python -m pip install 'DISTRIBUTION_NAME[FEATURE_EXTRA]'
 {{State unsupported cases, provisional assumptions and integrations not yet exercised. A skipped test is not a validated feature.}}
 
 ## Contributing and API changes
+
+### Branches
+
+`main` holds stable releases. `dev` is where new development comes together. Start feature and experiment branches from `dev`, then open a pull request back to `dev` after adding the tests, documentation and examples. A reviewed, checked release is merged into `main` and tagged as `vX.Y.Z`.
+
+{{Add this repository's actual check commands and link to its contribution guide. Use the shared EPSM branch-policy template for release and urgent-fix details.}}
 
 {{Link to this repository's real contribution/agent guidance and the shared EPSM standards. Identify the owner of a proposed change before implementation.}}
 

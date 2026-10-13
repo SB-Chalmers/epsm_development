@@ -10,6 +10,12 @@ Check the [common use cases](use_cases/README.md) for a task that already descri
 
 You do not have to redesign a whole package to fix one problem. Keep the change small enough that another person can understand and check it.
 
+## Start from dev
+
+`main` holds stable releases. `dev` is the shared home for development. Start a feature or experiment branch from the current `dev`, then send the completed change back to `dev` through a reviewed pull request.
+
+Ordinary feature work does not go straight to `main`. A tested version reaches `main` through a release pull request and gets a version tag. See [branches and releases](docs/branches-and-releases.md) for the commands, release checks and urgent-fix route.
+
 ## Work from a test
 
 For a new behaviour or a bug fix:
@@ -26,11 +32,17 @@ For documentation changes, check the links and examples. You do not need to inve
 
 ## Make the change easy to understand
 
+Write as you would explain the work to a colleague. Use ordinary words, name the action and give a small example. See [Writing for people](docs/writing-guide.md).
+
 Use clear names. State units and assumptions. Explain the important decisions in docstrings and comments. The [module and object templates](docs/templates/README.md) provide a starting point; replace their instructions with accurate information about your code.
 
 Put reading and writing in the package's I/O module. Keep calculations and model choices in their owning modules. Use the next package's documented public API, and test the data it receives. See [inputs, outputs and APIs](docs/io-and-api.md).
 
 Log important operations using the shared conventions. Keep logging configuration in the application. Give public objects a short representation that helps someone understand their identity and current state.
+
+## Keep the license clear
+
+Use [the shared MIT policy](docs/licensing.md) for EPSM's own code, documentation and examples. Submit material you have the right to share under MIT. Keep existing copyright notices and identify imported code, assets or data and their separate terms.
 
 ## Help the reviewer
 
@@ -41,9 +53,12 @@ For a change to this repository, run:
 ```sh
 python3 scripts/check_docs.py
 python3 -m unittest discover -s tests -v
+python3 scripts/run_examples.py
 ```
 
-For a change to an EPSM package, run the tests that cover the changed behaviour and its package handoffs. The package's own instructions explain its additional checks.
+When changing the API documentation templates or renderer, also run `python scripts/build_api_example.py` in an environment with `requirements-docs.txt` installed.
+
+For a change to an EPSM package, run the tests that cover the changed behaviour and its data passed between packages. The package's own instructions explain its additional checks.
 
 Add or update a small notebook in `examples/` when a public feature needs a usage example. Teach the package on its own first, then show the next package it connects to. Restart the kernel and run all cells in order. Follow [the examples guide](docs/examples-and-use-cases.md).
 

@@ -40,7 +40,7 @@ Workflows also had 49 example files / 16,376 lines and 64 test files / 16,701 li
 
 ### Evidence retrieval and model assembly
 
-The database has two reader families: `UBEM` / `Building` return dataframe views, while `fetch_record` / `fetch_records` return records and bounded collections. They query the same public projections through different implementations. The newer reader enforces read-only, repeatable-read transactions and cursor pagination; exploration uses generic connections and SELECT queries.
+The database has two reader families: `UBEM` / `Building` return dataframe views, while `fetch_record` / `fetch_records` return records and bounded collections. They query the same public projections through different implementations. The newer reader opens a transaction that cannot change data, keeps a consistent view during the request, and returns large selections in pages using a continuation cursor. The exploration interface runs SELECT queries through ordinary connections.
 
 The database's `epsm.py` and `weather.py` contain approximately 821 lines of optional integration. They choose floor counts, basement assumptions, roof completion, ventilation, window ratios, calendars, delivery assumptions and catalogue climate classification; resolve archetypes; create Core specifications; compile and simulate; and acquire/cache weather. These are concrete modelling and application responsibilities rather than database maintenance.
 
@@ -66,15 +66,15 @@ Do not replace the established PostGIS evidence schema with a separate starter d
 
 ## Database readiness and reproducibility
 
-The database already distinguishes national source import, processing and publication. It preserves shared certificate ownership, source hashes and locators, component geometry identities, assessment dates, processing policies and immutable processed selections. This is more than raw storage: it is the authoritative evidence and linkage layer.
+The database already distinguishes national source import, processing and publication. It keeps certificate values attached to their certificate, records checksums and locations for original sources, identifies each component's geometry, and records assessment dates and processing rules. Published selections are kept unchanged. This is more than raw storage: it is the authoritative evidence and linkage layer.
 
 Important limits remain. SCB income/context coverage is not uniformly national; the documented income coverage includes Uddevalla. Height coverage and publication have unresolved gates. Original LM and detailed measurement evidence may require the retained source bundle, whose files are explicitly verified. A database backup alone does not preserve all original evidence.
 
 The current schema baseline is `0.0.4`, while the exported evidence-contract constant is `0.0.3`. Package version, physical schema baseline, public record/export contract and evidence-release identity must be documented separately. Existing names such as `national` and `uddevalla` are dataset identifiers, not enough on their own to identify a maintained sequence of releases.
 
-The supported update direction is a shared research database with restricted read access and manually prepared evidence releases. Changed bundles, mappings or source interpretation may require a fresh backing database. Build a candidate beside the accepted release, validate it, retain the old release and source assets, and explicitly promote the new default. Resolve and pin that default before preparing a study.
+The supported update direction is a shared research database with restricted read access and manually prepared evidence releases. Changed bundles, mappings or source interpretation may require a fresh backing database. Prepare the update separately from the accepted release, check it, and keep the previous release and original source files. Then explicitly select which release new queries should use by default. Resolve and pin that default before preparing a study.
 
-The current reader directly requests catalogue metadata even though the advertised read-only role is granted only public `mart` access. Expose required release/layer metadata through public read-only projections and verify the installed reader with a restricted login.
+The current reader requests release and layer metadata from the internal PostgreSQL `catalog` schema, although the advertised read-only role has access only to public `mart` views. Expose that metadata through public read-only views and verify the installed reader with a restricted login.
 
 ## Documentation, installation and validation
 
@@ -104,7 +104,7 @@ Keep four claims separate everywhere: evidence availability, model completeness,
 
 Retain separate focused packages and introduce a thin `epsm` interface. Rename Data to `epsm_catalogue` and the evidence service/library to `epsm_database`; keep `smhi2epw` as the independently useful weather tool. Adopt a clean API break with deliberate migration notes rather than maintaining every old interface.
 
-Researchers should work with Records, Footprints, Buildings, Weather, Scenarios, Studies, Workflows, Runs and Results. Validation specifications remain available to advanced users, but the common interface should hide unnecessary schema/compiler plumbing. Buildings contain meaningful subentities, and concise representations make incomplete and failed states inspectable. Exact constructors and mutation behaviour remain the next design exercise, not an API promised by this review.
+Researchers should work with Records, Footprints, Buildings, Weather, Scenarios, Studies, Workflows, Runs and Results. Advanced users can still work directly with validation specifications. The usual researcher interface should handle validation and EnergyPlus compilation without requiring users to manage those details. Buildings contain meaningful subentities, and concise representations make incomplete and failed states inspectable. Exact constructors and mutation behaviour remain the next design exercise, not an API promised by this review.
 
 Core owns simulation-result meaning; a future assessment package owns its assessment methods; Workflows owns durable study-result artifacts, collection and retention. Database may index published study outputs by building and evidence release. It should not become a second owner of simulation attempts or study storage.
 

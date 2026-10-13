@@ -1,0 +1,2 @@
+# Optional environment for checking the API documentation templates.
+Sphinx==9.1.0

@@ -43,6 +43,7 @@ Use only the parts the package needs. A few tests can live directly in `tests/`;
 | --- | --- |
 | `__init__.py` | A small, advertised public interface; importing it does not fetch data, configure logging or run a study |
 | `io.py` | Reading/writing files, querying services and translating external formats at this package's boundary |
+| `plotting.py` or `visualization/` | Render the package's own objects using the shared plot and preview conventions |
 | Domain or focused modules | Objects, rules and calculations that belong to the package |
 | `tests/` | Tests of that package's behaviour, including its real collaborators where needed |
 | `tests/fixtures/` | Small known inputs, with provenance and permission to store them |
@@ -59,6 +60,10 @@ Required small catalogue files, schemas, SQL or viewer assets belong inside the 
 
 Number notebooks to show the reading order. Start with a small notebook using the package's main modules, then show inputs and outputs, then a connection to another EPSM package. Short `.py` helpers are optional when they make a notebook easier to follow. An example uses public imports, states its prerequisites and shows an outcome. It must not depend on a neighbouring checkout, hidden notebook variables or a developer's absolute file paths. Follow the [examples guide](examples-and-use-cases.md).
 
+## Use the same branches
+
+Each repository keeps `main` for stable releases and `dev` for shared development. Feature and experiment branches start from `dev` and return there after review and tests. A checked release moves into `main` and receives a version tag. Follow [branches and releases](branches-and-releases.md) and use the [branch-policy template](templates/branch-policy.md.tmpl).
+
 ## Explain the project before the code
 
 Start the README with the package's purpose and the people it serves. State what it owns, what it calls elsewhere and what is outside its scope. Use the [project README template](templates/project-readme.md.tmpl), and adapt the [source templates](templates/README.md) for modules and objects.
@@ -67,20 +72,20 @@ Keep these project facts accurate:
 
 - Repository/display name, distribution name, import name and any command names.
 - Maintainer or team, contact route and truthful authorship/research attribution.
-- License, copyright holder and citation or research reference, where applicable.
+- MIT license for EPSM-owned code and documentation, actual copyright holders, separate source/third-party terms, and citation or research reference where applicable.
 - Version and release status, with one source of truth for the package version.
 - Supported Python version, required dependencies and optional features/extras.
 - Public API, installation route, example inputs and validation limits.
 
-`pyproject.toml` holds build and package metadata. Declare the name, purpose, version source, Python requirement, dependencies, optional dependencies, entrypoints and packaged resources there. Supply the project-approved license, README, maintainers/contact and project URLs using the supported metadata fields. Do not invent authorship, a citation, a license or a supported Python range to complete boilerplate.
+`pyproject.toml` holds build and package metadata. Declare the name, purpose, version source, Python requirement, dependencies, optional dependencies, entrypoints and packaged resources there. Declare the MIT license and license files using the supported metadata fields; follow [the licensing guide](licensing.md). Supply the README, maintainers/contact and project URLs using the supported fields. Use truthful authorship, citation and supported Python information. Preserve separate licenses where the package includes third-party material.
 
-Keep metadata and the README consistent. Pin exact collaborator versions for reproducible integration checks; use justified dependency ranges in the reusable library. Optional database, engine, plotting and weather features should have declared installation extras rather than imports that unexpectedly fail during basic use.
+Keep metadata and the README consistent. Use exact versions of the other packages when running integration tests so the checks can be repeated. Explain which version ranges the reusable library supports and why. Optional database, engine, plotting and weather features should have declared installation extras rather than imports that unexpectedly fail during basic use.
 
 ## Test packages separately, then test them together
 
 Each package owns its unit tests, numerical reference checks and relevant integration tests. Its CI checks supported Python versions, installation and packaged resources. Test from a built wheel in a clean environment so files available only in the repository cannot hide a packaging problem.
 
-The EPSM umbrella tests common use cases with actual installed collaborating packages. It checks that records, assumptions, units, calendars, errors and result identities survive the handoffs. These tests do not replace the owner's tests. Use real EnergyPlus/PostGIS/weather artifacts when their behaviour is the subject of the test; small offline tests can exercise other routes and failure handling.
+The EPSM umbrella tests common use cases with actual installed collaborating packages. These tests check that passing data between packages preserves records, assumptions, units, calendars and error details, along with the identifiers that link results to their runs and inputs. These tests do not replace the owner's tests. Use real EnergyPlus/PostGIS/weather artifacts when their behaviour is the subject of the test; small offline tests can exercise other routes and failure handling.
 
 Publish which package combination was tested and what prerequisites it used. A required integration that cannot run is still unverified. When an API changes, update its package tests, public examples, migration note and the affected umbrella use cases together.
 

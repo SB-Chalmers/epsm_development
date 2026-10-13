@@ -1,8 +1,8 @@
 # EPSM Development
 
-Welcome. This is the shared developer handbook for EPSM, our Swedish building-stock research platform. It brings together the engineering guidelines, package review, API design ideas and next steps.
+This is our handbook for building EPSM, the Swedish building-stock research platform. The coding guides, package review, templates, example notebooks and plans are kept here in one repository.
 
-The handbook is for people and coding agents. You do not need to understand the whole platform before contributing. Start with one small task, find the package that owns it, and write a test that shows the behaviour you want.
+The handbook is written for the people who build and use EPSM. Coding agents follow the same instructions. Start with one small task, find the package that owns it, and write a test that shows the behaviour you want.
 
 **Status:** Working draft v0.2, 13 October 2026. The new EPSM interface is still being designed. Code labelled **illustrative API** shows a possible user experience; it is not an API you can use today.
 
@@ -16,7 +16,9 @@ The handbook is for people and coding agents. You do not need to understand the 
 
 Coding agents should also read [AGENTS.md](AGENTS.md).
 
-## What we want EPSM development to feel like
+**License:** This handbook uses the [MIT license](LICENSE). All EPSM projects adopt [the shared MIT licensing policy](docs/licensing.md) for their own code and documentation.
+
+## The basic rules
 
 - **Small, clear responsibilities.** Each package does a few things well and calls the package that owns the next step.
 - **Tests first.** Describe a useful behaviour in a test, see it fail, then make it work.
@@ -30,10 +32,15 @@ Coding agents should also read [AGENTS.md](AGENTS.md).
 | If you want to… | Read… |
 | --- | --- |
 | Know which package should own a feature | [Package responsibilities](docs/engineering-style.md#responsibility-boundaries) |
-| Understand Study, Workflow, Record and Building | [Domain vocabulary](docs/engineering-style.md#domain-vocabulary-and-containment) |
+| Understand Study, Workflow, Record and Building | [Shared terms and models](docs/terminology-and-models.md) |
+| Add consistent 2D plots and 3D previews | [Plots and previews](docs/plotting-and-previews.md) |
 | Write tests before changing code | [Test-driven development](docs/engineering-style.md#test-driven-development) |
+| Write clear instructions | [Writing for people](docs/writing-guide.md) |
 | Write clear code and useful docstrings | [Source and documentation](docs/engineering-style.md#human-readable-source) |
+| Add friendly docstring examples and generated API pages | [Docstrings and API documentation](docs/docstrings-and-api-docs.md) |
+| Apply the shared MIT license and retain source notices | [MIT licensing](docs/licensing.md) |
 | Set up a repository and its project information | [Project layout](docs/project-layout.md) |
+| Start a feature, experiment or release | [Branches and releases](docs/branches-and-releases.md) |
 | Read and write data, or pass it to another package | [I/O modules and package APIs](docs/io-and-api.md) |
 | Add a notebook that teaches a package | [Examples guide](docs/examples-and-use-cases.md) |
 | Find a shared example of a research task | [Common use cases](use_cases/README.md) |
@@ -49,17 +56,21 @@ Use Python 3.11 or newer. No extra packages are needed:
 ```sh
 python3 scripts/check_docs.py
 python3 -m unittest discover -s tests -v
+python3 scripts/run_examples.py
 ```
 
 The check verifies local files and heading links, Python example syntax, notebook structure, and the runnable examples in the templates. The small test suite checks that broken links and examples are reported clearly. Future API sketches are checked for syntax only. They are not executed or counted as working platform features.
 
-To run the learning notebooks from a clean namespace using only Python:
+The notebook runner starts each learning notebook with fresh variables using only Python. It runs this handbook's small, plain-Python notebook examples. Package notebooks that use a database, EnergyPlus or notebook display tools need their declared environment and a real notebook runner.
+
+To check the Sphinx templates as well, use an environment with the optional documentation tools:
 
 ```sh
-python3 scripts/run_examples.py
+python -m pip install -r requirements-docs.txt
+python scripts/build_api_example.py
 ```
 
-This runs this handbook's small, plain-Python notebook examples. Package notebooks that use a database, EnergyPlus or notebook display tools need their declared environment and a real notebook runner.
+This creates an API reference under `build/api-preview/` and treats documentation warnings as errors. The generated files are ignored by Git. CI runs this check separately from the ordinary handbook checks.
 
 ## Help improve this handbook
 

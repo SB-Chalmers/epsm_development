@@ -1,0 +1,27 @@
+{
+  "style_version": "draft-1",
+  "status": "proposed",
+  "colours": {
+    "background": "#FFFFFF",
+    "text": "#1F2937",
+    "grid": "#E5E7EB",
+    "observed": "#0072B2",
+    "derived": "#E69F00",
+    "assumed": "#CC79A7",
+    "missing": "#6B7280",
+    "conflict": "#D55E00",
+    "failed": "#D55E00",
+    "passed_check": "#009E73"
+  },
+  "categorical_cycle": [
+    "#0072B2",
+    "#E69F00",
+    "#009E73",
+    "#CC79A7",
+    "#56B4E9",
+    "#D55E00"
+  ],
+  "sequential_colormap": "cividis",
+  "diverging_colormap": "RdBu_r",
+  "notes": "Pair colours with labels or other visual cues. Material classes and provenance are separate encodings."
+}
