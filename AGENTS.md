@@ -15,7 +15,7 @@ This repository is the EPSM developer handbook. Write for new developers and res
 
 - Make one small change with a clear purpose. Explain it with a concrete example.
 - For code changes, begin with a test of observable behaviour. For documentation changes, verify the links and examples.
-- Preserve useful Core-style docstrings, honest authorship and project-approved license information in templates.
+- Preserve useful Core-style docstrings and honest authorship. Follow `docs/licensing.md`: use MIT for EPSM-owned material, retain accurate copyright notices and preserve third-party and data terms.
 - Keep logging, representation and evidence rules consistent across examples. Use the shared glossary, model ownership and plotting guide for those changes.
 - Keep file/service access in I/O modules and use documented public APIs for data passed between packages. Do not import a private helper from another package to save a few lines.
 - Keep `examples/` notebooks small and ordered. Show the package's own modules before integrations. Label extra prerequisites and future API sketches clearly.
@@ -24,4 +24,4 @@ This repository is the EPSM developer handbook. Write for new developers and res
 
 ## Before you finish
 
-Run `python3 scripts/check_docs.py`, `python3 -m unittest discover -s tests -v` and `python3 scripts/run_examples.py`. Explain what changed, how it was checked and any remaining limitation. Use file links so the user can open the result.
+Run `python3 scripts/check_docs.py`, `python3 -m unittest discover -s tests -v` and `python3 scripts/run_examples.py`. When changing the API documentation templates or renderer, also run `python scripts/build_api_example.py` with the optional documentation requirements installed. Explain what changed, how it was checked and any remaining limitation. Use file links so the user can open the result.

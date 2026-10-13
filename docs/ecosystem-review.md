@@ -74,7 +74,7 @@ The current schema baseline is `0.0.4`, while the exported evidence-contract con
 
 The supported update direction is a shared research database with restricted read access and manually prepared evidence releases. Changed bundles, mappings or source interpretation may require a fresh backing database. Prepare the update separately from the accepted release, check it, and keep the previous release and original source files. Then explicitly select which release new queries should use by default. Resolve and pin that default before preparing a study.
 
-The current reader directly requests catalogue metadata even though the advertised read-only role is granted only public `mart` access. Expose required release/layer metadata through public read-only projections and verify the installed reader with a restricted login.
+The current reader requests release and layer metadata from the internal PostgreSQL `catalog` schema, although the advertised read-only role has access only to public `mart` views. Expose that metadata through public read-only views and verify the installed reader with a restricted login.
 
 ## Documentation, installation and validation
 

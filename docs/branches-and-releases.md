@@ -29,6 +29,8 @@ Here, stable means a tested release with a clear scope and known limitations. It
 
 First check your branch and local changes with `git status`. Keep any existing work safe. Do not reset, clean away, overwrite or silently stash another person's changes to make the commands fit.
 
+If this checkout contains unfinished work, use a separate worktree from `dev` rather than carrying those edits into another task.
+
 For a repository with a configured remote and an existing `dev` branch:
 
 ```sh

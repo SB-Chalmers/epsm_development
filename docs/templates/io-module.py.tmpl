@@ -1,8 +1,8 @@
 # File: docs/templates/io-module.py.tmpl
 # Purpose: Demonstrate reading and safely writing one small metadata format.
-# SPDX-License-Identifier: <project-approved license identifier>
+# SPDX-License-Identifier: MIT
 # Copyright (c) <year> <actual copyright holder>
-# License: <actual license-file location; omit if no license is established>
+# License: See LICENSE at the project root.
 # Author: <actual author or team and contact>
 # Project PI: <applicable project attribution>
 # Research group: <applicable research group>
@@ -360,8 +360,9 @@ def write_metadata(
     FileExistsError
         If overwrite=False and another file or directory already has the name.
     OSError
-        If staging or publication fails, including unsupported hard links. An
-        existing destination is not changed before publication succeeds.
+        If staging, publication or cleanup fails, including unsupported hard links.
+        An existing destination is not changed before publication succeeds.
+        A cleanup error after publication can occur after the destination changes.
 
     Notes
     -----

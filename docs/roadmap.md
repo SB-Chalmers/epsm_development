@@ -92,6 +92,8 @@ Adopt the shared style for useful explanatory docstrings, ordinary logging, boun
 
 Add [docstring examples and generated API pages](docstrings-and-api-docs.md), then adopt [the common plotting and preview style](plotting-and-previews.md) through the owning renderers. Keep their public return types and display choices consistent.
 
+Adopt [the MIT licensing policy](licensing.md) through each repository's license, metadata and truthful notices. Preserve source-data and bundled third-party terms.
+
 Give each package a short purpose statement, working quickstart, public API guide, dependency/extras description, scoped validation statement and migration notes. Keep researcher usage separate from operations and historical acceptance reports.
 
 Use a deliberate clean API break. Publish an old-to-new migration guide and update retained study routes; do not preserve every overlapping facade as a permanent alias. Before release, agree what each package passes to the next and test the supported combinations of installed package versions.

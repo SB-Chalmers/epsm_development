@@ -72,12 +72,12 @@ Keep these project facts accurate:
 
 - Repository/display name, distribution name, import name and any command names.
 - Maintainer or team, contact route and truthful authorship/research attribution.
-- License, copyright holder and citation or research reference, where applicable.
+- MIT license for EPSM-owned code and documentation, actual copyright holders, separate source/third-party terms, and citation or research reference where applicable.
 - Version and release status, with one source of truth for the package version.
 - Supported Python version, required dependencies and optional features/extras.
 - Public API, installation route, example inputs and validation limits.
 
-`pyproject.toml` holds build and package metadata. Declare the name, purpose, version source, Python requirement, dependencies, optional dependencies, entrypoints and packaged resources there. Supply the project-approved license, README, maintainers/contact and project URLs using the supported metadata fields. Do not invent authorship, a citation, a license or a supported Python range to complete boilerplate.
+`pyproject.toml` holds build and package metadata. Declare the name, purpose, version source, Python requirement, dependencies, optional dependencies, entrypoints and packaged resources there. Declare the MIT license and license files using the supported metadata fields; follow [the licensing guide](licensing.md). Supply the README, maintainers/contact and project URLs using the supported fields. Use truthful authorship, citation and supported Python information. Preserve separate licenses where the package includes third-party material.
 
 Keep metadata and the README consistent. Use exact versions of the other packages when running integration tests so the checks can be repeated. Explain which version ranges the reusable library supports and why. Optional database, engine, plotting and weather features should have declared installation extras rather than imports that unexpectedly fail during basic use.
 

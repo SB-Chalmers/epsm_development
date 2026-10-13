@@ -229,7 +229,7 @@ Comments explain why a step exists, its assumptions, its numerical reasoning and
 
 Each module has a Core-style source header and an explanatory module docstring. A docstring is the quoted documentation immediately inside a module, class or function. Use the accompanying [module template](templates/python-module.py.tmpl) as the starting point.
 
-The header records the file, purpose, project-approved license, actual copyright holder and author, research attribution, and truthful creation/modification dates. Keep a short file changelog for meaningful changes; Git retains the complete history. Do not copy inaccurate authorship or invent original creation dates.
+The header records the file, purpose, MIT license identifier, actual copyright holder and author, research attribution, and truthful creation/modification dates. Follow [the shared MIT policy](licensing.md), including separate terms for source data and third-party material. Keep a short file changelog for meaningful changes; Git retains the complete history. Do not copy inaccurate authorship or invent original creation dates.
 
 Use NumPy-style docstrings, with the sections and formatting described in the [numpydoc style guide](https://numpydoc.readthedocs.io/en/latest/format.html). EPSM also requires units, an explanation of how evidence is handled, and a description of work that changes state or reads/writes outside the object.
 

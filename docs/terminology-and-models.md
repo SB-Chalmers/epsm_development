@@ -91,7 +91,7 @@ Use this sequence to agree the first models and tests:
 2. EPSM selects documented assumptions from a fixed Catalogue release. Its assembly report shows selections, overrides, conflicts and values still missing.
 3. Core receives physical inputs and checks their units, geometry and meaning. The user can inspect and edit the Building without altering its source Record.
 4. Submission fixes the model, weather, engine request and evaluation inputs. Core can run a single simulation independently. When the case belongs to a Study, Workflows links it to a Run, records each attempt and references Core's execution report.
-5. Core interprets simulation outputs. Workflows retains the outputs and case outcome. EPSM makes the Result easy to inspect and plot.
+5. Core interprets simulation outputs. For a Study, Workflows retains the outputs and case outcome. EPSM makes the Result easy to inspect and plot.
 6. A renovation scenario creates an independent revision. The baseline, earlier inputs and results remain available unchanged.
 
 This is a proposed acceptance route, not a claim that the current packages implement it end to end. Use [the common use cases](../use_cases/README.md) and link real tests when each step works.

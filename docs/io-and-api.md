@@ -70,8 +70,8 @@ A **handoff** is the information one package gives another. A good handoff names
 | Coordinate reference system (CRS), origin and orientation | Footprints and neighbours must be placed in the same physical frame |
 | Area, volume and time reference bases | Atemp, gross floor area and zone area describe different quantities; weather and results must share the intended calendar |
 | Missing values, conflicts and their reasons | Zero must not replace missing data, and an unresolved conflict must not disappear |
-| Source links and measured/inferred/assumed status | A selected catalogue value remains an assumption, even after conversion |
-| Database snapshot, catalogue release and weather content identity | Another researcher can recover the inputs used for the case |
+| Source links, value origin and verification status | A reported value is not necessarily measured or verified. A selected catalogue value remains an assumption, even after conversion. |
+| Evidence release and its source/processing identities, catalogue release and weather content identity | Another researcher can recover the inputs used for the case |
 | Stored-format version and producer package version | A reader can distinguish file compatibility from a software release |
 
 CRS means the coordinate reference system used to interpret coordinates. A reference basis says what a value describes: for example, annual heating per square metre of heated floor area. Record that basis alongside the units.

@@ -40,6 +40,10 @@ Put reading and writing in the package's I/O module. Keep calculations and model
 
 Log important operations using the shared conventions. Keep logging configuration in the application. Give public objects a short representation that helps someone understand their identity and current state.
 
+## Keep the license clear
+
+Use [the shared MIT policy](docs/licensing.md) for EPSM's own code, documentation and examples. Submit material you have the right to share under MIT. Keep existing copyright notices and identify imported code, assets or data and their separate terms.
+
 ## Help the reviewer
 
 Describe the problem, the resulting behaviour and how you checked it. Mention anything that is still uncertain. Include the commands and relevant test results, including skipped checks.
@@ -49,7 +53,10 @@ For a change to this repository, run:
 ```sh
 python3 scripts/check_docs.py
 python3 -m unittest discover -s tests -v
+python3 scripts/run_examples.py
 ```
+
+When changing the API documentation templates or renderer, also run `python scripts/build_api_example.py` in an environment with `requirements-docs.txt` installed.
 
 For a change to an EPSM package, run the tests that cover the changed behaviour and its data passed between packages. The package's own instructions explain its additional checks.
 

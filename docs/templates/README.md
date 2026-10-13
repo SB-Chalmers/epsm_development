@@ -4,6 +4,7 @@ These files help you start a Python module or a public object in the EPSM style.
 
 | Template | What it shows |
 | --- | --- |
+| [MIT license](LICENSE-MIT.txt.tmpl) | Standard license text with placeholders for the actual year and copyright holders |
 | [Python module](python-module.py.tmpl) | Source header, useful module documentation and a logger that leaves configuration to the application |
 | [Public object](public-entity.py.tmpl) | Class and method documentation, a short `repr`, and an explicit summary using information already loaded |
 | [Input and output module](io-module.py.tmpl) | Reading and writing small JSON metadata files, clear errors, and operational logs |
@@ -18,7 +19,7 @@ The `.tmpl` extension marks a file to adapt. Copy a Python module into the packa
 ## Before using a template
 
 1. Read the [coding and documentation guidelines](../engineering-style.md#documentation-and-boilerplate) and [Writing for people](../writing-guide.md).
-2. Replace the header placeholders with truthful project, license and author information.
+2. Follow [the MIT licensing guide](../licensing.md). Copy the license template to the project root and fill in the actual copyright holders. Replace header placeholders with truthful project and author information.
 3. Replace the instructional docstrings with the purpose, units, assumptions and examples for your actual code.
 4. Write the tests for your feature before implementing its behaviour.
 

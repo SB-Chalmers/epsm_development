@@ -16,6 +16,8 @@ The handbook is written for the people who build and use EPSM. Coding agents fol
 
 Coding agents should also read [AGENTS.md](AGENTS.md).
 
+**License:** This handbook uses the [MIT license](LICENSE). All EPSM projects adopt [the shared MIT licensing policy](docs/licensing.md) for their own code and documentation.
+
 ## The basic rules
 
 - **Small, clear responsibilities.** Each package does a few things well and calls the package that owns the next step.
@@ -36,6 +38,7 @@ Coding agents should also read [AGENTS.md](AGENTS.md).
 | Write clear instructions | [Writing for people](docs/writing-guide.md) |
 | Write clear code and useful docstrings | [Source and documentation](docs/engineering-style.md#human-readable-source) |
 | Add friendly docstring examples and generated API pages | [Docstrings and API documentation](docs/docstrings-and-api-docs.md) |
+| Apply the shared MIT license and retain source notices | [MIT licensing](docs/licensing.md) |
 | Set up a repository and its project information | [Project layout](docs/project-layout.md) |
 | Start a feature, experiment or release | [Branches and releases](docs/branches-and-releases.md) |
 | Read and write data, or pass it to another package | [I/O modules and package APIs](docs/io-and-api.md) |
@@ -53,17 +56,12 @@ Use Python 3.11 or newer. No extra packages are needed:
 ```sh
 python3 scripts/check_docs.py
 python3 -m unittest discover -s tests -v
+python3 scripts/run_examples.py
 ```
 
 The check verifies local files and heading links, Python example syntax, notebook structure, and the runnable examples in the templates. The small test suite checks that broken links and examples are reported clearly. Future API sketches are checked for syntax only. They are not executed or counted as working platform features.
 
-To run each learning notebook with fresh variables using only Python:
-
-```sh
-python3 scripts/run_examples.py
-```
-
-This runs this handbook's small, plain-Python notebook examples. Package notebooks that use a database, EnergyPlus or notebook display tools need their declared environment and a real notebook runner.
+The notebook runner starts each learning notebook with fresh variables using only Python. It runs this handbook's small, plain-Python notebook examples. Package notebooks that use a database, EnergyPlus or notebook display tools need their declared environment and a real notebook runner.
 
 To check the Sphinx templates as well, use an environment with the optional documentation tools:
 
