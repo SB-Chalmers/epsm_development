@@ -10,7 +10,7 @@ Welcome to EPSM. Our aim is to make each library easy to understand, test and us
 
 This draft sets working rules for new development and planned refactors across EPSM. Existing repositories may not meet every rule yet. Use it to plan and review a specific change; it is not a claim that the current packages already work this way.
 
-The Building, construction, renovation and evaluation APIs described in [Harmonisation](harmonisation.md) are implemented on the coordinated development branches. Broader inspection, logging and presentation rules below remain requirements for adoption; this handbook does not claim that every existing object meets them.
+The Building, construction, renovation and evaluation APIs described in [Harmonisation](harmonisation.md) are implemented in the coordinated package releases. Broader inspection, logging and presentation rules below remain requirements for adoption; this handbook does not claim that every existing object meets them.
 
 The existing Core documentation shows the depth of explanation we want. Keep extensive, useful docstrings and examples. Explain the actual code, and check that examples advertised as working really run. Follow [Writing for people](writing-guide.md) when adding or reviewing text.
 

@@ -1,9 +1,9 @@
 # EPSM harmonisation
 
-**Implementation update, 14 October 2026.** The agreed object model is implemented
-on the coordinated `codex/harmonisation` development branches. This page describes
-the new APIs and their present limits. It does not declare a released platform or
-scientific validation. See the [file map](harmonisation-file-map.md) for ownership
+**Release update, 14 October 2026.** The agreed object model is implemented
+in the coordinated tagged package releases. This page describes the APIs and
+their present limits; the release does not establish scientific validation.
+See the [file map](harmonisation-file-map.md) for ownership
 changes and remaining migration work. The [review register](harmonisation-review.md) records per-repository findings and verification.
 
 ## Decisions to discuss

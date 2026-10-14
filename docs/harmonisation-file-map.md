@@ -1,6 +1,6 @@
 # Harmonisation file map
 
-**Implementation and archive update, 14 October 2026.** The agreed ownership is implemented on coordinated development branches. The table below records current changes, including the [study archive decision](study-archive-policy.md). The original inspection inventory follows for traceability; its proposed destinations and study reproduction obligations are superseded by the implementation table and [current architecture](harmonisation.md).
+**Release and archive update, 14 October 2026.** The agreed ownership is implemented in coordinated tagged package releases. The table below records current changes, including the [study archive decision](study-archive-policy.md). The original inspection inventory follows for traceability; its proposed destinations and study reproduction obligations are superseded by the implementation table and [current architecture](harmonisation.md).
 
 ## Implementation status
 
