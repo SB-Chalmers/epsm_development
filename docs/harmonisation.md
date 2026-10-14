@@ -47,7 +47,9 @@ inventory traverses those physical elements. It does not count thermal zones as
 physical material. Window area and equipment counts can be known while mass is
 unknown. Thermal equivalents never replace the physical inventory.
 
-Physical snapshots are independent of weather and evaluation services. Core
+Physical snapshots are independent of weather and evaluation services. Core Weather
+infers the simulation year from supported AMY headers and retains supplied
+weather provenance and generation receipts with evaluations. Core
 serializes renovation lineage separately; EPSM's portable Building envelope
 retains both the physical state and lineage, assessment settings and source
 evidence. Portable DB records omit the live database connection and credentials.
