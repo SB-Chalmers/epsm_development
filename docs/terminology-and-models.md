@@ -2,7 +2,7 @@
 
 The `epsm_development` handbook is the place to agree on the words we use and the information packages pass to each other. These agreements help independently developed packages work together and give researchers a familiar interface. Database refers to `epsm_db`; Catalogue refers to `epsm_data`.
 
-**Status: proposed model agreements.** The ownership and meanings below guide the redesign. Exact class names, fields and file formats still need to be settled through small working examples. They are not a new implemented API.
+**Status: agreed ownership, 14 October 2026.** The [harmonisation guide](harmonisation.md) describes the implemented development API and its limits. These shared meanings also guide future additions; individual stored formats remain owned and versioned by their packages.
 
 ## What we mean by a shared model
 
@@ -23,11 +23,13 @@ Keep those relationships clear. The ordinary API should use familiar objects and
 | Provenance | The history showing where information came from and how it was selected or changed |
 | Certificate | An energy certificate and its observations. Several buildings may refer to one certificate. |
 | Footprint | A plan outline with its coordinate system, units, holes and disconnected parts where needed |
-| Building | A physical research model being authored, with geometry, fabric, operation, systems and weather |
+| Building | A physical research model with geometry, fabric, operation and systems; weather is supplied to an evaluation |
 | Assumption | A declared modelling choice, including an adopted default or override |
-| Archetype | Documented assumptions for a type of building, with applicability and source references |
+| Archetype | A named construction set with classification, applicability and source references; HVAC and operating profiles are separate choices |
+| Material / Layer / Component / Element | The shared construction hierarchy: material constituents, layered compositions, ordered components and complete construction assemblies |
+| BuildingElement | A particular physical wall, roof, floor or window with geometry and an assigned construction Element |
 | Profile | A named set of assumptions or schedules; qualify the name when its purpose is unclear |
-| Scenario | An alternative to a baseline, with declared changes, dates and an independent model revision |
+| Scenario | An independent Building alternative with declared changes and an identifiable renovation path; no dates or fixed stage slots are required |
 | Evidence release | A fixed published selection of database evidence and its processing history |
 | Model snapshot | A fixed version of an authored model; later edits do not change it |
 | Weather | A weather file or artifact with location, calendar, source period and generation history |
@@ -37,7 +39,9 @@ Keep those relationships clear. The ordinary API should use familiar objects and
 | Run | One requested execution using fixed inputs |
 | Attempt | One try at completing a Run; retries remain attached to the same request |
 | Engine input | Core's compiled input, tied to the weather, engine and requested outputs |
-| Result | An interpreted outcome linked to its execution, input identities and interpretation method |
+| Evaluation | A retained combination of energy, LCA, quantities, diagnostics, fixed inputs and calculation identities |
+| Results | A Building’s collection of evaluations, initially empty; later edits do not rewrite its entries |
+| Result | An interpreted calculation outcome linked to its inputs and method |
 | Artifact | A retained file, such as model input, weather, diagnostics, results or a report |
 | Schema | The fields and rules of a stored or exchanged format; it has its own version |
 
@@ -50,18 +54,19 @@ Use the same names in public methods, docstrings, logs, plot legends and noteboo
 | Information | Owner | Must preserve |
 | --- | --- | --- |
 | Building Record | Database | Real building and source identities, evidence release, components, observations, subject/scope, conflicts and missing-data reasons |
-| Catalogue definition | Catalogue | Definition ID and version, parameters, units, applicability and sources |
-| Weather reference | Weather package | File content identity, location, simulation calendar, source period and generation history |
-| Physical Building model | Core | Geometry, fabric, operation, systems, weather, physical units, reference bases and assumption history |
+| Construction and catalogue definition | Data | Material identities, fractions, physical order, current parameters, units, applicability and sources; saved evaluations keep the values they used |
+| Weather object | Core | File content identity, location and simulation calendar; smhi2epw owns acquisition, generation and their provenance |
+| Physical Building model | Core | Geometry, fabric, operation, systems, physical units, reference bases, physical occurrences and assumptions |
 | Cross-package assembly | EPSM | The mapping from evidence and chosen definitions to Core inputs, with a report of choices and unresolved requirements |
 | Prepared case and execution records | Workflows | Case/run IDs, fixed input references, attempts, status and retained outputs |
-| Simulation Result | Core | Metric definitions, units, reference bases, periods, diagnostics and execution identity |
+| Engine result | Core or RC | Engine outputs, units, periods, diagnostics, explicit approximations and execution identity |
+| Combined evaluation and Results | EPSM | Common energy boundaries, physical state, renovation path, weather, assessment settings and separate energy/LCA identities |
 | LCA or other assessment Result | The method package | Method and factor versions, assessment boundaries, time basis and result meaning |
 | Study outcomes and retained files | Workflows | Every case outcome, collection, aggregation and retention policy |
 
 Use the owning package's public objects and validators. EPSM should not maintain a second physical model with a second set of validation rules. If an adapter needs a small intermediate value, explain why and keep it limited to that conversion.
 
-Packages must remain independently usable. Database and Catalogue do not need Core to represent their evidence or definitions. Lower-level packages must not import EPSM to obtain a shared type. Agree a small shared runtime dependency only when concrete consumers need it; this handbook is not a Python model package.
+Packages must remain independently usable. Database and Catalogue do not need Core to represent their evidence or definitions. Data owns the lightweight construction classes shared by Core. Lower-level packages do not import EPSM to obtain a shared type. Named, lazy legacy forwarders are temporary integration compatibility routes, not a second domain implementation. This handbook is not a Python model package.
 
 ## Rules that cross package boundaries
 
@@ -79,22 +84,22 @@ Packages must remain independently usable. Database and Catalogue do not need Co
 
 **Results and reuse.** Engine execution identity describes the numerical inputs, weather, engine and requested outputs. Evaluated-result identity also includes the inputs, calculation version and dependencies used to interpret those outputs. Keep these identities, acceptance policy and original producer history separate. A change to delivery, photovoltaic (PV) generation or lifecycle assessment (LCA) interpretation may require reevaluation even when the engine output can be reused. A new reader must not replace the recorded original producer.
 
-**Stored formats.** Keep schema/format versions separate from package releases, database releases and catalogue releases. Each owner documents supported versions and explicit migrations. Portable records and cases contain data and safe source references, not credentials, open connections or notebook state.
+**Stored formats.** Keep schema/format versions separate from package releases, database evidence releases and saved catalogue input identities. Each owner documents supported versions and explicit migrations. Portable records and cases contain data and safe source references, not credentials, open connections or notebook state.
 
-For future LCA, agree quantities, factor versions, assessment stages, time horizon and global warming potential (GWP) method before comparing results. A number labelled `kg CO2e` alone does not establish that two assessments share the same boundaries.
+For LCA, declare material flows, actual factors and sources, assessment modules, reference period and global warming potential (GWP) method before comparing results. A number labelled `kg CO2e` alone does not establish that two assessments share the same boundaries.
 
 ## Walk through one small building
 
-Use this sequence to agree the first models and tests:
+The current local route follows this sequence:
 
 1. Database returns a Record for one building from a fixed evidence release. Its certificate is still identified as the source of certificate-level observations.
-2. EPSM selects documented assumptions from a fixed Catalogue release. Its assembly report shows selections, overrides, conflicts and values still missing.
+2. The caller selects documented constructions, HVAC and operating profiles from the current Data catalogue. EPSM preserves source evidence separately from modelling overrides. A saved evaluation retains the actual selected values.
 3. Core receives physical inputs and checks their units, geometry and meaning. The user can inspect and edit the Building without altering its source Record.
-4. Submission fixes the model, weather, engine request and evaluation inputs. Core can run a single simulation independently. When the case belongs to a Study, Workflows links it to a Run, records each attempt and references Core's execution report.
-5. Core interprets simulation outputs. For a Study, Workflows retains the outputs and case outcome. EPSM makes the Result easy to inspect and plot.
+4. `building.simulate(engine=..., weather=...)` freezes physical inputs, weather and assessment settings internally. Core runs EnergyPlus or RC runs its reduced model. Workflows can prepare and execute the same evaluation with retained attempts.
+5. EPSM normalizes energy outputs, runs LCA and appends the combined evaluation to `building.results`. An incomplete or failed assessment preserves the completed energy result. Workflows retains case outcomes and separate cache identities.
 6. A renovation scenario creates an independent revision. The baseline, earlier inputs and results remain available unchanged.
 
-This is a proposed acceptance route, not a claim that the current packages implement it end to end. Use [the common use cases](../use_cases/README.md) and link real tests when each step works.
+The [review register](harmonisation-review.md) records local verification and missing deployment checks. Live database access, weather acquisition and Vera execution each need their own stated evidence; a local simulation does not verify those services. Use [the common use cases](../use_cases/README.md) when extending this route.
 
 ## Agree a format before implementing it
 

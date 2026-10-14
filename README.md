@@ -2,11 +2,11 @@
 
 This is our handbook for building EPSM, the Swedish building-stock research platform. The coding guides, package review, templates, example notebooks and plans are kept here in one repository.
 
-The agreed package names are `epsm`, `epsm_db`, `epsm_data`, `epsm_core`, `epsm_workflows`, `epsm_studies` and `smhi2epw`. This handbook is `epsm_development`; the existing web application is `epsm_studio`. These names were confirmed on 14 October 2026. See the [harmonisation review](docs/harmonisation.md) for implementation and repository status.
+The agreed package names are `epsm`, `epsm_db`, `epsm_data`, `epsm_core`, `epsm_workflows`, `epsm_studies`, `epsm_rc`, `epsm_lca` and `smhi2epw`. This handbook is `epsm_development`; the existing web application is `epsm_studio`. These names were confirmed on 14 October 2026. See the [harmonisation guide](docs/harmonisation.md) for the implemented model and the [repository review register](docs/harmonisation-review.md) for checks and remaining limitations.
 
 The handbook is written for the people who build and use EPSM. Coding agents follow the same instructions. Start with one small task, find the package that owns it, and write a test that shows the behaviour you want.
 
-**Status:** Working draft v0.2, 13 October 2026. The new EPSM interface is still being designed. Code labelled **illustrative API** shows a possible user experience; it is not an API you can use today.
+**Status:** Working draft v0.3, 14 October 2026. The coordinated EPSM packages have tagged releases; see the [review register](docs/harmonisation-review.md) for exact commits, supported scope and verification. Reusable study and execution tools remain active; outdated named studies and their specific scripts are archived under the [study archive decision](docs/study-archive-policy.md). Code labelled **illustrative API** shows a possible user experience; it is not an API you can use today.
 
 ## Start here
 
@@ -14,7 +14,7 @@ The handbook is written for the people who build and use EPSM. Coding agents fol
 2. Read [Project layout](docs/project-layout.md) and [Inputs, outputs and package APIs](docs/io-and-api.md) before starting a module.
 3. Find your topic in [Engineering and API style](docs/engineering-style.md).
 4. Try the [small example notebooks](examples/README.md). Read [Examples and common use cases](docs/examples-and-use-cases.md) when adding an example to a package.
-5. Read [The ecosystem review](docs/ecosystem-review.md) for the current state, or [The roadmap](docs/roadmap.md) for the proposed next steps.
+5. Read [Harmonisation](docs/harmonisation.md) for the released APIs and their limits. The [ecosystem review](docs/ecosystem-review.md) and [original roadmap](docs/roadmap.md) preserve the earlier review and its rationale.
 
 Coding agents should also read [AGENTS.md](AGENTS.md).
 
@@ -34,7 +34,8 @@ Coding agents should also read [AGENTS.md](AGENTS.md).
 | If you want to… | Read… |
 | --- | --- |
 | Know which package should own a feature | [Package responsibilities](docs/engineering-style.md#responsibility-boundaries) |
-| Review current packages and proposed file transfers | [Harmonisation review](docs/harmonisation.md) and [file map](docs/harmonisation-file-map.md) |
+| Review current packages and file transfers | [Harmonisation guide](docs/harmonisation.md), [file map](docs/harmonisation-file-map.md) and [review register](docs/harmonisation-review.md) |
+| Distinguish maintained study tools from archived research | [Study archive decision](docs/study-archive-policy.md) |
 | Understand Study, Workflow, Record and Building | [Shared terms and models](docs/terminology-and-models.md) |
 | Add consistent 2D plots and 3D previews | [Plots and previews](docs/plotting-and-previews.md) |
 | Write tests before changing code | [Test-driven development](docs/engineering-style.md#test-driven-development) |

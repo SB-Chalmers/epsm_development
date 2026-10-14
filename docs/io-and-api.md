@@ -71,7 +71,7 @@ A **handoff** is the information one package gives another. A good handoff names
 | Area, volume and time reference bases | Atemp, gross floor area and zone area describe different quantities; weather and results must share the intended calendar |
 | Missing values, conflicts and their reasons | Zero must not replace missing data, and an unresolved conflict must not disappear |
 | Source links, value origin and verification status | A reported value is not necessarily measured or verified. A selected catalogue value remains an assumption, even after conversion. |
-| Evidence release and its source/processing identities, catalogue release and weather content identity | Another researcher can recover the inputs used for the case |
+| Evidence release and its source/processing identities, actual selected catalogue values and weather content identity | Another researcher can recover the inputs used for the case |
 | Stored-format version and producer package version | A reader can distinguish file compatibility from a software release |
 
 CRS means the coordinate reference system used to interpret coordinates. A reference basis says what a value describes: for example, annual heating per square metre of heated floor area. Record that basis alongside the units.
@@ -84,20 +84,23 @@ Use [Shared terms and models](terminology-and-models.md) when agreeing field mea
 
 ## One owner for each conversion
 
-Within the proposed ecosystem, each source package owns its own file readers and factual definitions. The `epsm` integration layer owns conversions that assemble Database, Catalogue and Weather objects into Core inputs.
+Within the agreed ecosystem, each source package owns its own file readers and factual definitions. The `epsm` integration layer owns conversions that assemble Database, Catalogue and Weather objects into Core inputs.
 
 | Step | Owner |
 | --- | --- |
 | Source files or database rows become validated building observations | Database, including its ingestion and I/O modules |
-| Catalogue files become versioned profiles, constructions, factors and measures | Catalogue |
+| Current catalogue files become profiles, constructions, factors and measures | Data |
 | Provider data becomes an inspected weather artifact | Weather package |
-| Building observations, chosen assumptions and weather become a Core input | EPSM integration adapter |
-| A Core input becomes geometry, epJSON and interpreted simulation results | Core |
+| Building observations and chosen assumptions become a physical Core Building | EPSM integration adapter |
+| An EPW becomes an inspected Weather object supplied to an evaluation | Core Weather; smhi2epw owns weather generation |
+| A physical Building becomes geometry, epJSON and interpreted EnergyPlus results | Core |
+| The same Building becomes a reduced model and thermal results | RC |
+| Material flows and delivered energy become environmental impacts | LCA; EPSM connects the calculation |
 | Run results become retained study results, checkpoints and aggregate reports | Workflows |
 
 The table defines responsibilities, not final method or type names. Core still checks the inputs it needs before running. For example, an upstream weather inspection does not remove Core's obligation to verify the file identity and simulation calendar at execution.
 
-Keep one implementation of each integration conversion. A convenience method may call that implementation; it must not grow its own mapping or default-selection rules. Database and Catalogue remain usable without Core, and lower-level packages must not import `epsm` in return.
+Keep one implementation of each integration conversion. A convenience method may call that implementation; it must not grow its own mapping or default-selection rules. Database and Catalogue remain usable without Core. New lower-level operations do not depend on `epsm`; documented lazy compatibility forwarders are temporary migration exceptions.
 
 Inside a package, ordinary imports between its modules are fine. Between packages, import an installed, declared dependency through its supported API. Do not add a sibling repository to `sys.path`, assume `../epsm_core` exists, or import another package's private helpers. If you need an operation it does not expose, agree a public handoff with that package's owner.
 
@@ -158,7 +161,7 @@ Each package repository should include a short introduction, executable examples
 
 Start with an offline example wherever the package supports one. Show reading/writing when the package owns a file format. Include a separate integration example when an engine, database or service is needed, with the exact prerequisites stated.
 
-Run notebooks from a fresh kernel against an installed package. Do not hide a sibling import path in a setup cell. Use small declared fixtures, explicit output directories and fixed catalogue/data releases. Saved output alone does not show that the current notebook works.
+Run notebooks from a fresh kernel against an installed package. Do not hide a sibling import path in a setup cell. Use small declared fixtures, explicit output directories, fixed database evidence releases and saved selected catalogue values. Saved output alone does not show that the current notebook works.
 
 Keep reusable implementation in the package. Examples and notebooks call it; they do not copy another reader, converter or physics calculation. Label future API sketches clearly and exclude them from claims of executable coverage.
 

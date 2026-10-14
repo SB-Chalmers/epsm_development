@@ -1,8 +1,33 @@
 # Harmonisation file map
 
-**14 October 2026. Package names are accepted; responsibility changes below remain proposed and await the decisions in the [review](harmonisation.md#decisions-to-discuss).** Database means `epsm_db`, Catalogue means `epsm_data`, and the handbook is `epsm_development`.
+**Release and archive update, 14 October 2026.** The agreed ownership is implemented in coordinated tagged package releases. The table below records current changes, including the [study archive decision](study-archive-policy.md). The original inspection inventory follows for traceability; its proposed destinations and study reproduction obligations are superseded by the implementation table and [current architecture](harmonisation.md).
 
-Paths are relative to the named current repository. `Keep` preserves the owner; `Refactor` changes organization/API within that owner; `Split` separates responsibilities inside a file; `Transfer` moves a coherent responsibility; `Review` needs more evidence or a design decision. A destination names an owning package, not an approved new file path. Refer to the [inventory](harmonisation-inventory.json) for the original files, hashes, Git status and dependencies. Previously untracked work is now committed; the [synchronization report](repository-sync-2026-10-14.md) records the updated repository state.
+## Implementation status
+
+| Original IDs | Files / owner after the change | Status and follow-through |
+| --- | --- | --- |
+| DB01–DB04 | `epsm_db/src/epsm_db/`, existing `sweden_ubem` database/record/stock implementation | Public Database/Stock/BuildingRecord namespace; one Stock; credential-free portable records; SE.07 selectors. Live ingestion/database schemas preserved. |
+| DB05 | `epsm/src/epsm/records.py`, `legacy_records.py`; old DB module forwards | Model conversion belongs to EPSM. Portable evidence remains DB-owned. Legacy model policy remains a migration adapter. |
+| CA01–CA02 | Data shared domain classes, serialization, `profiles.py`, `operations.py`, current catalogue | One construction hierarchy, explicit ordering, optional carbon, independent SE.07, executable fabrication/system definitions, Data-owned standard resources. |
+| CA03–CA07 | EPSM `catalogue_application.py`, `catalogue_release.py`, `catalogue_validation.py`; maintained Data assembly forwarders | Core-dependent assembly/validation moved out of Data. Core loads Data-owned sourced standard resources. Data's study-specific `cohorts.py` forwarder is archived under `docs/archive/2026-10-14/`. |
+| CA08–CA10 | Studies archives with manifests; current Data source evidence retained | Obsolete active catalogue history removed after preservation. Source editions remain provenance rather than active catalogue versions. |
+| CO01–CO06 | Core `building.py`, `physical_geometry.py`, `inventory.py`, `building_adapter.py`, Weather and compiler bridge | Physical authoring, quantities, independent snapshots, targeted fabric/HVAC transformations, actual E+ execution. Legacy Specs remain compatibility inputs during gradual migration. |
+| CO07 | Core Weather; independent `smhi2epw` | Weather content/calendar identity stays outside the physical snapshot. Weather generation remains explicit. |
+| CO08–CO10 | Existing Core district/viewer/experimental geometry | Preserved. The new authoring bridge declares supported geometry; historical geometry experiments are not silently claimed as migrated. |
+| WF01 | Workflows reusable design, renovation search and prepared execution modules | Active parametric/GSA, energy/carbon Pareto exploration, local/Vera transport and checkpoint resume. Observed worker runtime identity is checked before execution and resume; custom external engines remain caller-declared. |
+| WF02–WF10 | `archive/2026-10-14/` in Workflows and Studies, including Studies' former `src/epsm_studies/legacy_workflows/` | Named research implementations, old compatibility routes and their scripts/tests/configuration are archived. Existing preservation snapshots and manifests remain unchanged. No repair, reproduction or porting obligation. |
+| Studies protocol support | `epsm_studies.PaperStudy` | Generic protocol setup, identity and persistence remain active. |
+| IN01 | EPSM Building subclass, Results, EvaluationCache and installed platform example | Same physical model; automatic energy-to-LCA; immutable retained evaluations; no public SimulationRequest. |
+| New RC | `epsm_rc` distribution/import and `platform.py` | Standalone numerical rename checkpoint; adapter uses Core state and shared heating-delivery accounting. |
+| New LCA | `epsm_lca/assessment.py` | Material occurrence/operational assessment with explicit boundaries and incomplete totals. |
+| IN03 | `epsm_studio` | Future web interface remains out of scope. |
+
+## Original inspection inventory
+
+
+The following inventory is a pre-archive snapshot. Instructions to retain old study imports, reproduce studies or extract their implementation are historical proposals. The archive decision above supersedes them.
+
+Paths are relative to the named repository at the original inspection. `Keep` preserves the owner; `Refactor` changes organization/API within that owner; `Split` separates responsibilities inside a file; `Transfer` moves a coherent responsibility; `Review` needs more evidence or a design decision. A destination names an owning package, not an approved new file path. Refer to the [inventory](harmonisation-inventory.json) for the original files, hashes, Git status and dependencies. Previously untracked work is now committed; the [synchronization report](repository-sync-2026-10-14.md) records the updated repository state.
 
 Tests should follow the behavior they verify. Split tests that currently mix evidence interpretation, assembly and execution. Historical study tests and inputs should remain attributable to the study. New integration tests are required where the existing test checks a collaborator only through a stub.
 
@@ -78,6 +103,6 @@ Tests should follow the behavior they verify. Split tests that currently mix evi
 
 ## Documentation and test follow-through
 
-Every accepted row needs a destination, named consumers, a before/after public example, affected tests, installed-package checks, and a migration note where a public import or command changes. Preserve useful Core docstrings and source attribution. Update each owner's README, API reference, examples and optional dependencies in the same change as its behavior.
+Every active implementation change needs a destination, named consumers, a before/after public example, affected tests, installed-package checks, and a migration note where a public import or command changes. Archived research needs a preservation record and a clear retirement notice; it does not need a working replacement or a reproduction check. Preserve useful Core docstrings and source attribution. Update each owner's README, API reference, examples and optional dependencies in the same change as its behavior.
 
 Initial test infrastructure gaps include missing GitHub workflows in Data and Workflows, required resources not all declared in the database package, and a lack of an implemented umbrella installation test. Core's present CI runs non-EnergyPlus tests; required engine evidence needs a distinct gate. These are identified follow-up tasks, not claims that existing scientific behavior is incorrect.
