@@ -6,6 +6,8 @@ This review supports a discussion with the platform maintainer before package tr
 
 The [engineering guide](engineering-style.md), [model agreements](terminology-and-models.md), [branch policy](branches-and-releases.md), and [roadmap](roadmap.md) supply the starting direction. The decisions below remain open unless their status says otherwise. No runtime package has been refactored by this review.
 
+Git preparation is recorded in the [14 October synchronization report](repository-sync-2026-10-14.md). It supersedes the initial Git-state snapshot below; responsibility and model decisions remain open.
+
 The [file map](harmonisation-file-map.md) marks concrete candidates for discussion. The [static inventory](harmonisation-inventory.json) records local revisions, working changes, source file hashes, public definitions, platform imports, and supporting test/example paths. Hashes identify inspected files; they are not a backup of file contents. The inventory is a sequential reading of active checkouts, so reconfirm changed files before implementation.
 
 ## Work sequence
@@ -52,7 +54,7 @@ The user confirmed the short package names `epsm_data` and `epsm_db`, requested 
 | [SB-Chalmers/epsm_data](https://github.com/SB-Chalmers/epsm_data) | Normalized repository spelling from EPSM_data; updated the local origin URL; branches and private visibility retained |
 | [SB-Chalmers/epsm_studio](https://github.com/SB-Chalmers/epsm_studio) | Renamed from epsm; updated the local epsm_studio origin URL from the former personal URL; existing branches and public visibility retained |
 
-Repository metadata and branch revisions were verified after the renames. The existing handbook and Data checkout directories still use their original local names during the active review. Database distribution/import changes, repository setup for Database/Studies, and preservation/synchronization of outstanding research work are still pending. Moving the web application frees the intended hosted name; a new Python epsm repository has not yet been created.
+The local directories now use `epsm_development`, `epsm_data`, and `epsm_db`. All nine repositories have Git and SB-Chalmers origins; current local source work has been committed for synchronization on main, as the maintainer explicitly requested. The new Python EPSM and Studies repositories contain initial documentation only. See the [synchronization report](repository-sync-2026-10-14.md) for revisions, retained Data branches, ignored artifacts, verification and remaining runtime naming work.
 
 ## What each package currently does
 
@@ -60,7 +62,7 @@ Repository metadata and branch revisions were verified after the renames. The ex
 
 This package ingests and links Swedish building, footprint, property, address, height, EPC and context evidence into PostGIS. It processes selections, reports quality/completeness, retains original-source references, and exposes records and dataframe views. Existing public routes include `UBEM`, `Building`, `fetch_record`, `fetch_records`, `BuildingRecord`, and `RecordCollection`.
 
-The new, untracked `stock.py` already provides `Stock`, `StockCell`, catalogue-backed matrices, lazy record iteration, plots, and bulk model creation. This is concrete starting material for the interface discussed with the user. Its constructor loads epsm_data, and catalogue classification is spread across stock and exploration methods.
+The `stock.py` implementation, untracked at initial inspection and now committed, provides `Stock`, `StockCell`, catalogue-backed matrices, lazy record iteration, plots, and bulk model creation. This is concrete starting material for the interface discussed with the user. Its constructor loads epsm_data, and catalogue classification is spread across stock and exploration methods.
 
 The package also contains `EPSMBuilding`, `ModelPolicy`, a `WeatherReference`, geometry/operating/system defaults, model assembly and simulation. `epc_heating.py` combines source target interpretation with simulation-period comparison. These responsibilities need splitting. `comparison.py`, however, compares evidence relations against an oracle and belongs with database validation.
 
@@ -102,7 +104,7 @@ Workflows contains restartable local/Slurm campaign execution, `CampaignCase`, p
 
 The main CLI currently validates the specific Vera study's seed, site count and Core revision. Campaign weather storage assumes 8,760 rows and relabels the calendar as 2018. Extracting reusable execution must preserve the historical campaign's reproducibility while allowing new studies to declare their own calendars and input identities.
 
-Of 75 source modules in this checkout, 61 are untracked. Named study code and tests must be preserved before transfers; a clean remote clone does not describe the implementation currently being used.
+At initial inspection, 61 of 75 source modules in this checkout were untracked. These modules and their accompanying tests, configurations, examples and documentation are now committed and synchronized. Ownership transfers remain to be agreed.
 
 ### Weather: smhi2epw
 
@@ -112,9 +114,9 @@ Its existing CI covers multiple Python versions, minimum dependencies, installed
 
 ### EPSM, Studies and the web application
 
-The local Python umbrella and Studies directories are empty. Existing database assembly, stock exploration and study code provide candidates for their initial implementations. Introduce them around accepted workflows rather than new placeholder frameworks.
+The Python umbrella and Studies repositories now have initial README, license and ignore files, with no package implementation yet. Existing database assembly, stock exploration and study code provide candidates for their initial implementations. Introduce them around accepted workflows rather than new placeholder frameworks.
 
-The existing hosted EPSM application is a separate React/TypeScript frontend and Django/Celery backend with component data, uploaded-IDF workflows, scenario management and batch simulation. This review inspected its repository metadata and README only; its backend/frontend implementation has not been audited. Its integration and retirement/preservation policy require a scope decision before moving its code.
+The existing hosted EPSM application is a separate React/TypeScript frontend and Django/Celery backend with component data, uploaded-IDF workflows, scenario management and batch simulation. The initial review inspected its metadata and README. The later synchronization also inspected the main/development merge, ran the frontend tests and build, and compiled the relevant Python files; a full application audit remains outstanding. Its integration and retirement/preservation policy require a scope decision before moving its code.
 
 ## Present dependency directions
 
@@ -149,7 +151,7 @@ Ask these in small groups and record the user's actual choices. Recommendations 
 | D08 | Which first user workflows define acceptance? | Database completeness; stock/archetype inspection; one record to an incomplete Building; evidence-to-model comparison; one simulation; one independent renovation scenario | Open |
 | D09 | Where do catalogue thermal calculations and physical representations belong? | Compare existing algorithms and consumers before choosing a shared implementation; preserve independent catalogue inspection | Open |
 
-Implement the accepted names and preserve development before synchronization. Next discuss D03/D04 using the database and catalogue file rows, then physical models, execution, and the remaining packages. Do not infer decisions from the absence of a reply.
+The maintainer explicitly approved making main the latest current baseline across repositories and preserving Data’s former main as dev_djamila before advancing main to dev_sanjay. This synchronization is recorded separately from the ordinary release policy. Next discuss D03/D04 using the database and catalogue file rows, then physical models, execution, and the remaining packages. Do not infer decisions from the absence of a reply.
 
 ## Required features to confirm
 
@@ -178,6 +180,6 @@ The file map associates affected code with existing tests and examples. Before e
 
 Installation checks must verify declared optional dependencies and packaged JSON, SQL, configuration and viewer assets outside sibling editable checkouts. Public examples should run in fresh processes or notebook kernels. Where historical runs need the old interface, preserve their pinned environment or an explicitly agreed compatibility route.
 
-At this stage only static source/API, metadata, documentation and Git inspection has been performed for runtime packages. No package test suite, database query, source import, EnergyPlus simulation or provider request was executed. Existing CI definitions describe intended checks, not evidence that those checks passed during this review. The web application's implementation remains outside the completed source inspection.
+Initial inventory work was static. During Git preparation, selected Core, Database and Workflows tests and the Studio frontend tests/build were run. Exact results and missing prerequisites are recorded in the [synchronization report](repository-sync-2026-10-14.md#verification-performed). Existing CI definitions describe intended checks; they are not evidence that all platform checks passed. No live source import, database migration or EnergyPlus validation was performed for this synchronization.
 
 For the handbook changes, `python3 scripts/check_docs.py`, `python3 -m unittest discover -s tests -v`, and `python3 scripts/run_examples.py` passed. This covers local links, example syntax, template doctests, 11 checker/runner tests and the two executable teaching notebooks. It does not validate runtime package integrations.

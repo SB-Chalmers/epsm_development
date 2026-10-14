@@ -2,26 +2,26 @@
 
 **14 October 2026. Package names are accepted; responsibility changes below remain proposed and await the decisions in the [review](harmonisation.md#decisions-to-discuss).** Database means `epsm_db`, Catalogue means `epsm_data`, and the handbook is `epsm_development`.
 
-Paths are relative to the named current repository. `Keep` preserves the owner; `Refactor` changes organization/API within that owner; `Split` separates responsibilities inside a file; `Transfer` moves a coherent responsibility; `Review` needs more evidence or a design decision. A destination names an owning package, not an approved new file path. Refer to the [inventory](harmonisation-inventory.json) for individual files, hashes, Git status and dependencies.
+Paths are relative to the named current repository. `Keep` preserves the owner; `Refactor` changes organization/API within that owner; `Split` separates responsibilities inside a file; `Transfer` moves a coherent responsibility; `Review` needs more evidence or a design decision. A destination names an owning package, not an approved new file path. Refer to the [inventory](harmonisation-inventory.json) for the original files, hashes, Git status and dependencies. Previously untracked work is now committed; the [synchronization report](repository-sync-2026-10-14.md) records the updated repository state.
 
 Tests should follow the behavior they verify. Split tests that currently mix evidence interpretation, assembly and execution. Historical study tests and inputs should remain attributable to the study. New integration tests are required where the existing test checks a collaborator only through a stub.
 
-## Database: sweden_building_combined
+## Database: epsm_db
 
 | ID | Current files or symbols | Disposition / proposed owner | Reason and required behavior | Existing evidence to carry forward |
 | --- | --- | --- | --- | --- |
 | DB01 | `src/sweden_ubem/ingest.py`, `linkage.py`, `components.py`, `epc.py`, `source_inventory.py`, `source_inspection.py`, `dataset.py`, SQL/config resources | Keep / Database | Preserve source interpretation, identities, certificate ownership, linkage and release history; package required runtime SQL/config resources | `tests/test_linkage.py`, `test_components.py`, `test_epc_assessment.py`, `test_postgis_integration.py`, source reconciliation/backup checks |
 | DB02 | `src/sweden_ubem/io.py`, retrieval portions of `explore.py` | Refactor / Database | One query implementation with record and dataframe views; fixed release reference; verify metadata access with restricted credentials | `tests/test_record_api.py`, `test_record_io_postgis.py`; exploration notebook |
 | DB03 | `src/sweden_ubem/records.py`: `BuildingRecord`, `RecordCollection`, `Receipt` | Split / Database plus EPSM assembly report | Keep source evidence portable; remove connection ownership from the portable record; separate evidence completeness from model readiness while retaining the relationship | Record API, EPSM adapter and serialization characterization cases |
-| DB04 | `src/sweden_ubem/stock.py`; `UBEM.stock`, `archetype_matrix` in `explore.py` | Split / Database stock query and EPSM enriched stock | Preserve lazy iteration, cells, catalogue awareness, plots and per-building conversion receipts; decide D03 before placing the public stock object | New stock implementation is untracked; locate/add dedicated behavior coverage before moving it; `notebooks/explore_uddevalla.ipynb` |
+| DB04 | `src/sweden_ubem/stock.py`; `UBEM.stock`, `archetype_matrix` in `explore.py` | Split / Database stock query and EPSM enriched stock | Preserve lazy iteration, cells, catalogue awareness, plots and per-building conversion receipts; decide D03 before placing the public stock object | Stock implementation is now committed; locate/add dedicated behavior coverage before moving it; `notebooks/explore_uddevalla.ipynb` |
 | DB05 | `src/sweden_ubem/epsm.py`: `ModelPolicy`, `EPSMBuilding`, `_geometry`, `_operation`, `_delivery` | Split / EPSM assembly, Catalogue defaults, Core physical functions | Centralize evidence-to-model conversion; retain explicit defaults, unresolved requirements, source values and overrides | `tests/test_epsm_adapter.py`, `test_service_core_experiment.py`, geometry failure and EPC comparison fixtures |
 | DB06 | `src/sweden_ubem/weather.py`: `WeatherReference` | Split / weather artifact definition and EPSM adapter | Keep generation explicit, content/calendar validation and cache identity; choose shared artifact owner before transfer | Weather cases within adapter tests; source/reference checks and new installed weather handoff |
 | DB07 | `src/sweden_ubem/epc_heating.py` | Split / Database source interpretation and EPSM comparison | Keep raw fields, period, scope and exclusions with evidence; move simulation-result alignment to the integration owner | `tests/test_epc_heating.py`; preserve old/new EPC accounting and shared-certificate exclusions |
 | DB08 | `src/sweden_ubem/comparison.py`, `asset_operations.py`, `physical_assessment.py` | Keep / Database | These compare or assess source evidence and retained databases; model-result comparison is a separate concern | Oracle comparisons, physical assessment, asset restoration tests |
 | DB09 | Study-specific files under `scripts/`; `docs/uddevalla_*` research results | Review / Studies for named experiments | Identify simulation/renovation experiments separately from database operational scripts; retain evidence inputs, versions and historical results | `tests/test_dwelling_zone_experiment.py`, `test_renovation_matrix_summary.py`, `test_benchmark_correction.py` |
-| DB10 | Remote ingestion scripts, `snapshot_paths.py`, `docs/remote_pipeline_operations.md` | Keep pending review / Database | Active ingestion/deployment work is present and partly untracked; preserve it before Git synchronization | `tests/test_remote_pipeline.py`, `test_snapshot_paths.py`; operational runbooks |
+| DB10 | Remote ingestion scripts, `snapshot_paths.py`, `docs/remote_pipeline_operations.md` | Keep pending review / Database | Active ingestion/deployment work is committed; preserve its operational behavior during refactoring | `tests/test_remote_pipeline.py`, `test_snapshot_paths.py`; operational runbooks |
 
-## Catalogue: EPSM_data
+## Catalogue: epsm_data
 
 | ID | Current files or symbols | Disposition / proposed owner | Reason and required behavior | Existing evidence to carry forward |
 | --- | --- | --- | --- | --- |
@@ -49,7 +49,7 @@ Tests should follow the behavior they verify. Split tests that currently mix evi
 | CO07 | `weather.py` | Split review / Core calendar compatibility and shared weather artifact | Consolidate duplicated EPW inspection/hash/calendar helpers only after comparing supported behaviors | Core weather/calendar cases, Weather reader tests, weather notebooks |
 | CO08 | `district.py`, notebook batch routes | Review / Core geometry composition and Workflows execution | Distinguish multi-building geometry from persistent campaign scheduling | Batch notebooks and any consumers found during implementation |
 | CO09 | `inspection.py`, `viewer.py`, `notebook.py`, viewer assets | Keep / Core | Preserve explicit preview lifecycle and independent geometry inspection | Widget and viewer tests; geometry preview notebooks |
-| CO10 | Untracked `experiments/mfh_zoning/`, layout scripts, `tests/core/test_mfh_layouts.py`, fixtures | Review / preserve before transfer decisions | Determine supported geometry behavior versus named experimental study; retain current files and evidence | Existing untracked layout tests/scripts; experimental README |
+| CO10 | `experiments/mfh_zoning/`, layout scripts, `tests/core/test_mfh_layouts.py`, fixtures | Review / preserve before transfer decisions | Determine supported geometry behavior versus named experimental study; retain current files and evidence | Committed layout tests/scripts; experimental README |
 
 ## Workflows: epsm_workflows
 
@@ -72,9 +72,9 @@ Tests should follow the behavior they verify. Split tests that currently mix evi
 | --- | --- | --- | --- | --- |
 | WE01 | `smhi2epw/src/smhi2epw/` provider, recovery, processing, solar, export and reader modules | Keep / Weather | Preserve independent generation/reading, recovery provenance, units and calendars | Offline provider-replay/physics/reader tests, real-engine CI and notebook course |
 | WE02 | Weather reference data currently in Database; Core/Workflows weather wrappers | Review / Weather artifact definition and EPSM conversion | One inspectable content/calendar/source identity, with generation and filesystem access explicit | New installed Weather–EPSM–Core handoff plus existing calendar cases |
-| IN01 | Empty local `epsm/`; assembly candidates DB04–DB07, CA03–CA07, CO02, WF03–WF06 | New composition / EPSM after decisions | Preserve convenient stock/record/building workflows while using owners' implementations | Proposed common-use-case integration tests and a first public notebook |
-| IN02 | Empty local `epsm_studies/`; candidates WF02, WF07–WF10 and DB09 | Establish / Studies after preservation | Make named studies reproducible with pinned collaborators and retained artifacts | Transfer matching tests/configs/reports with each study |
-| IN03 | Existing web application inspected in `SB-Chalmers/epsm`, local `epsm_studio/` | Rename remote to epsm_studio / D02 accepted | User requested the remote rename; application integration scope remains undecided | Only README/metadata inspected; backend/frontend review is still required if included |
+| IN01 | Initial `epsm/` repository; assembly candidates DB04–DB07, CA03–CA07, CO02, WF03–WF06 | New composition / EPSM after decisions | Preserve convenient stock/record/building workflows while using owners' implementations | Proposed common-use-case integration tests and a first public notebook |
+| IN02 | Initial `epsm_studies/` repository; candidates WF02, WF07–WF10 and DB09 | Establish / Studies after preservation | Make named studies reproducible with pinned collaborators and retained artifacts | Transfer matching tests/configs/reports with each study |
+| IN03 | Existing web application in `SB-Chalmers/epsm_studio`, local `epsm_studio/` | Remote rename completed / D02 accepted | User requested the remote rename; application integration scope remains undecided | Metadata and merge checked; frontend tests/build passed; broader application review remains required |
 
 ## Documentation and test follow-through
 
