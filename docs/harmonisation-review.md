@@ -140,9 +140,10 @@ passed after worker-runtime enforcement; Studies 6 passed. Handbook links,
 examples and 11 unit tests passed. These commands used coordinated local source
 paths or installed wheels as stated; they do not constitute hosted CI.
 
-Required hosted CI, private Core dependency access, and the release PR checks
-remain pending. Core's hosted Python 3.13 job on PR #1 failed before testing
-because `EPSM_DATA_DEPLOY_KEY` is absent; its Python 3.11 job was cancelled.
+At this initial checkpoint, hosted CI, private Core dependency access, and the
+release PR checks were pending. Core's hosted Python 3.13 job on PR #1 failed
+before testing because `EPSM_DATA_DEPLOY_KEY` was absent; its Python 3.11 job
+was cancelled. The later release gate outcomes are below.
 Live Vera, PostGIS and SMHI acquisition were not run in this preparation. No
 release tag or `main` merge is claimed here.
 
@@ -163,8 +164,8 @@ release promotion or hosted CI success.
 | Workflows | [epsm_workflows #1](https://github.com/SB-Chalmers/epsm_workflows/pull/1) | Merged to `dev` at `a911743677e21f2a99bd738095a10bda8dd57b8e` |
 | Studies | [epsm_studies #1](https://github.com/SB-Chalmers/epsm_studies/pull/1) | Merged to `dev` at `75f60e0fc9b9a874b61fec55af7152391d90cea2` |
 
-Core's branch and review are published. Approval for private dependency
-credentials remains pending before its hosted CI can pass.
+Core's branch and review are published. Its later hosted result is recorded
+under the release PR gate below.
 
 ## Release PR gate (14 October 2026)
 
@@ -175,7 +176,7 @@ updates are identified below. None is approved for promotion.
 | Repository | Release review | Hosted check at opening |
 | --- | --- | --- |
 | Data | [#2](https://github.com/SB-Chalmers/epsm_data/pull/2) | [Hosted workflow #3](https://github.com/SB-Chalmers/epsm_data/pull/3) merged to `dev` at `ae102d33eda79fd429fb445ec99b32dabcab8024`. [Its Python 3.11 and 3.13 PR runs](https://github.com/SB-Chalmers/epsm_data/actions/runs/38574778749) on `2d66b18` failed: 211 passed, 33 skipped, 8 failed on each because private EPSM was unavailable. Wheel step did not run. |
-| Core | [#2](https://github.com/SB-Chalmers/epsm_core/pull/2) | Failed before tests: missing `EPSM_DATA_DEPLOY_KEY`. [CI branch retarget #3](https://github.com/SB-Chalmers/epsm_core/pull/3) merged at `8a7c5abf9228e7e6c3792f1f34490aaffd1f608f`. |
+| Core | [#2](https://github.com/SB-Chalmers/epsm_core/pull/2) | Initial checks failed before tests for missing `EPSM_DATA_DEPLOY_KEY`. [CI branch retarget #3](https://github.com/SB-Chalmers/epsm_core/pull/3) merged at `8a7c5abf9228e7e6c3792f1f34490aaffd1f608f`. After the read-only credential was configured, [release PR CI](https://github.com/SB-Chalmers/epsm_core/actions/runs/38575163235) and [dev push CI](https://github.com/SB-Chalmers/epsm_core/actions/runs/38575152737) both passed on Python 3.11 and 3.13 at that revision; `gh pr checks 2` reported four passing checks. |
 | LCA | [#2](https://github.com/SB-Chalmers/epsm_lca/pull/2) | No hosted workflow |
 | RC | [#2](https://github.com/SB-Chalmers/epsm_rc/pull/2) | No hosted workflow |
 | Database | [#2](https://github.com/SB-Chalmers/epsm_db/pull/2) | [Existing suite](https://github.com/SB-Chalmers/epsm_db/actions/runs/38574452246) manually dispatched on `a51ab68e0ff290d743754177d0e709a78fbf7262`; failed at collection because Core and EPSM are unavailable to the hosted runner |
@@ -198,12 +199,12 @@ history synchronisation are complete.
 
 ## Remaining deployment and adoption work
 
-- Hosted Core CI is configured for read-only SSH dependency checkout using
-  `EPSM_DATA_DEPLOY_KEY`. Automatic approval review rejected creating that key and
-  storing its private half as a Core repository secret without explicit approval.
-  No credential was created; the user approval request remains pending. Core
-  PR #1 is published and merged to `dev`, but local test success is not a
-  hosted CI result.
+- Hosted Core CI uses read-only SSH dependency checkout via
+  `EPSM_DATA_DEPLOY_KEY`. Automatic approval review initially rejected creating
+  the key and secret without explicit approval. After the user's approval, a
+  read-only Data deploy key was added and its private half stored only as Core's
+  Actions secret. The temporary local key files were removed. The later hosted
+  result is recorded above; other private dependency CI access remains separate.
 - Vera transport and resume have offline checks. SSH staging, Slurm submission
   and retrieval on the live cluster still require a deployment verification.
   Online SMHI acquisition also remains unverified in this pass.
