@@ -212,7 +212,7 @@ Post-merge hosted `main` runs passed for
 [Workflows](https://github.com/SB-Chalmers/epsm_workflows/actions/runs/38586177061)
 and [Studies](https://github.com/SB-Chalmers/epsm_studies/actions/runs/38586246183)
 at the released commits. [Data's post-merge run](https://github.com/SB-Chalmers/epsm_data/actions/runs/38587833451)
-is still in progress.
+also passed on Python 3.11 and 3.13.
 
 The current candidate was checked locally with `python -m pytest -q` using
 coordinated package `src` paths (package-specific exclusions and unavailable
@@ -222,10 +222,10 @@ and retired-module checks, `python examples/platform_walkthrough.py`, and both
 installed RC and EnergyPlus evaluations. The handbook ran
 `python3 scripts/check_docs.py`, `python3 -m unittest discover -s tests -v`,
 and `python3 scripts/run_examples.py`. The required hosted package checks
-passed before each `main` merge. Post-merge `main` checks are tracked
-separately. Harmonisation branches, including the handbook's
-`codex/harmonisation-map`, remain until the handbook release merge and `dev`
-history synchronisation are complete.
+passed before each `main` merge. Post-merge `main` checks passed at the
+released commits. Fully merged package topic branches were pruned remotely;
+Data's divergent historical `DEV` was retained. The handbook's merged topic
+branches will be pruned after its release merge and `dev` history sync.
 
 ## Remaining deployment and adoption work
 
