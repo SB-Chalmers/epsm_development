@@ -123,37 +123,48 @@ Pareto alternative. The installed reference Building produced 31,888.201130
 kWh/year with EnergyPlus and 27,342.393446 kWh/year with RC. Its automatic LCA
 remained incomplete without supplied factors, as designed.
 
+After the initial wheel check, LCA and RC wheels were rebuilt for the final
+module split and apartment-helper deprecation. Both reinstalled into the clean
+environment; `pip check` passed and their public imports resolved. The RC wheel
+emitted the intended `DeprecationWarning` for the legacy apartment helper.
+
 Current local checks: Data 247 passed with 5 sandbox-blocked loopback tests,
 then all 11 explorer tests passed outside the sandbox; Core 772 passed, 9 skipped
 and 21 deselected with one version assertion updated and one sandbox-blocked
 loopback test, then both focused cases passed outside the sandbox; LCA 17 passed;
-RC 313 passed and 3 skipped; Database offline 141 passed, 14 skipped and 37
-deselected because a test database was unavailable; EPSM 9 passed; Workflows 44
+RC initially had 313 passed and 3 skipped; after deprecating its illustrative
+apartment helper, the complete RC suite had 293 passed and 23 skipped in the
+available Python 3.12 environment; Database offline 141 passed, 14 skipped
+and 37 deselected because a test database was unavailable; EPSM 9 passed; Workflows 44
 passed after worker-runtime enforcement; Studies 6 passed. Handbook links,
 examples and 11 unit tests passed. These commands used coordinated local source
 paths or installed wheels as stated; they do not constitute hosted CI.
 
 Required hosted CI, private Core dependency access, and the release PR checks
-remain pending. Live Vera, PostGIS and SMHI acquisition were not run in this
-preparation. No release tag or `main` merge is claimed here.
+remain pending. Core's hosted Python 3.13 job on PR #1 failed before testing
+because `EPSM_DATA_DEPLOY_KEY` is absent; its Python 3.11 job was cancelled.
+Live Vera, PostGIS and SMHI acquisition were not run in this preparation. No
+release tag or `main` merge is claimed here.
 
 ## Development publication
 
-These draft pull requests expose the coordinated changes for review. They do not
-record a merge, release promotion or hosted CI success.
+The harmonisation pull requests expose the coordinated changes for review.
+Completed `dev` integrations used normal merge commits; they do not establish
+release promotion or hosted CI success.
 
-| Repository | Draft review | Base branch |
+| Repository | Review | Development status |
 | --- | --- | --- |
-| Data | [epsm_data #1](https://github.com/SB-Chalmers/epsm_data/pull/1) | `main`, because the retained uppercase `DEV` is historical; this is a comparison base, not release promotion |
-| RC | [epsm_rc #1](https://github.com/SB-Chalmers/epsm_rc/pull/1) | `dev` |
-| LCA | [epsm_lca #1](https://github.com/SB-Chalmers/epsm_lca/pull/1) | `dev` |
-| Database | [epsm_db #1](https://github.com/SB-Chalmers/epsm_db/pull/1) | `dev` |
-| Workflows | [epsm_workflows #1](https://github.com/SB-Chalmers/epsm_workflows/pull/1) | `dev` |
-| Studies | [epsm_studies #1](https://github.com/SB-Chalmers/epsm_studies/pull/1) | `dev` |
-| EPSM | [epsm #1](https://github.com/SB-Chalmers/epsm/pull/1) | `dev` |
+| Data | [epsm_data #1](https://github.com/SB-Chalmers/epsm_data/pull/1) | Merged to lowercase `dev` at `596705153af49bbf22789481aa610edabbe582c7`; historical `DEV` retained |
+| Core | [epsm_core #1](https://github.com/SB-Chalmers/epsm_core/pull/1) | Merged to `dev` at `faac4b5b9a4a7ff22c37e127a99023e72fd24966`; hosted CI blocked on private Data access |
+| LCA | [epsm_lca #1](https://github.com/SB-Chalmers/epsm_lca/pull/1) | Merged to `dev` at `f2e646713d20f0480bb245e344f86d45292efcdd` |
+| Database | [epsm_db #1](https://github.com/SB-Chalmers/epsm_db/pull/1) | Merged to `dev` at `a51ab68e0ff290d743754177d0e709a78fbf7262` |
+| RC | [epsm_rc #1](https://github.com/SB-Chalmers/epsm_rc/pull/1) | Merged to `dev` at `bc65cb2b5ab866ad9909a39b4b7a412beadf84e5`; illustrative apartment helper deprecated |
+| EPSM | [epsm #1](https://github.com/SB-Chalmers/epsm/pull/1) | Merged to `dev` at `ec32c61acc77915322bb0a82adf8421bbc3b3def` |
+| Workflows | [epsm_workflows #1](https://github.com/SB-Chalmers/epsm_workflows/pull/1) | Merged to `dev` at `a911743677e21f2a99bd738095a10bda8dd57b8e` |
+| Studies | [epsm_studies #1](https://github.com/SB-Chalmers/epsm_studies/pull/1) | Merged to `dev` at `75f60e0fc9b9a874b61fec55af7152391d90cea2` |
 
-Core's branch remains local while approval for private dependency credentials is
-pending. The handbook review includes this verification checkpoint.
+Core's branch and review are published. Approval for private dependency
+credentials remains pending before its hosted CI can pass.
 
 ## Remaining deployment and adoption work
 
@@ -161,7 +172,8 @@ pending. The handbook review includes this verification checkpoint.
   `EPSM_DATA_DEPLOY_KEY`. Automatic approval review rejected creating that key and
   storing its private half as a Core repository secret without explicit approval.
   No credential was created; the user approval request remains pending. Core
-  publication stays local, and local test success is not a hosted CI result.
+  PR #1 is published and merged to `dev`, but local test success is not a
+  hosted CI result.
 - Vera transport and resume have offline checks. SSH staging, Slurm submission
   and retrieval on the live cluster still require a deployment verification.
   Online SMHI acquisition also remains unverified in this pass.
