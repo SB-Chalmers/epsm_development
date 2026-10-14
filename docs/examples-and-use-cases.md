@@ -6,6 +6,8 @@ Put short examples of individual public calls in [docstrings](docstrings-and-api
 
 Use today's public APIs in runnable examples. Keep future API ideas in clearly labelled Markdown sketches. A design sketch is not a successful integration check.
 
+The [study archive policy](study-archive-policy.md) retires outdated named investigations and their specific scripts. Small teaching examples of the maintained APIs remain active, including generic study setup, local/Vera execution, parametric designs, global sensitivity analysis and renovation search. A named illustrative example alone is not a retired study.
+
 ## A short progression
 
 Number notebooks so a new reader knows where to start. Use descriptive names and keep one main question per notebook.

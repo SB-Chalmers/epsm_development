@@ -6,7 +6,7 @@ The agreed package names are `epsm`, `epsm_db`, `epsm_data`, `epsm_core`, `epsm_
 
 The handbook is written for the people who build and use EPSM. Coding agents follow the same instructions. Start with one small task, find the package that owns it, and write a test that shows the behaviour you want.
 
-**Status:** Working draft v0.3, 14 October 2026. The new EPSM interface is implemented on coordinated development branches; see the harmonisation page for supported scope and verification. Code labelled **illustrative API** shows a possible user experience; it is not an API you can use today.
+**Status:** Working draft v0.3, 14 October 2026. The new EPSM interface is implemented on coordinated development branches; see the harmonisation page for supported scope and verification. Reusable study and execution tools remain active; outdated named studies and their specific scripts are archived under the [study archive decision](docs/study-archive-policy.md). Code labelled **illustrative API** shows a possible user experience; it is not an API you can use today.
 
 ## Start here
 
@@ -35,6 +35,7 @@ Coding agents should also read [AGENTS.md](AGENTS.md).
 | --- | --- |
 | Know which package should own a feature | [Package responsibilities](docs/engineering-style.md#responsibility-boundaries) |
 | Review current packages and file transfers | [Harmonisation guide](docs/harmonisation.md), [file map](docs/harmonisation-file-map.md) and [review register](docs/harmonisation-review.md) |
+| Distinguish maintained study tools from archived research | [Study archive decision](docs/study-archive-policy.md) |
 | Understand Study, Workflow, Record and Building | [Shared terms and models](docs/terminology-and-models.md) |
 | Add consistent 2D plots and 3D previews | [Plots and previews](docs/plotting-and-previews.md) |
 | Write tests before changing code | [Test-driven development](docs/engineering-style.md#test-driven-development) |

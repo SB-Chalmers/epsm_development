@@ -25,7 +25,7 @@ geometry/assessment cases. They do not reopen these package boundaries.
 | `epsm_lca` | Application of material-flow and operational environmental factors under an explicit boundary |
 | `epsm` | Researcher-facing Building subclass, record/catalogue adapters, engine dispatch, automatic LCA and Results |
 | `epsm_workflows` | Reusable experiment designs, renovation search, prepared local/Vera execution and resume |
-| `epsm_studies` | Named study protocols, archived research implementations, analyses and paper outputs |
+| `epsm_studies` | Generic PaperStudy protocol support and preservation of archived research implementations, analyses and paper outputs |
 | `smhi2epw` | Independent weather acquisition, preparation, EPW export and quality reporting |
 | `epsm_development` | This handbook, contracts, migration map and development guidance |
 
@@ -126,9 +126,17 @@ Pareto set. Search checkpoints retain results and validate configuration identit
 
 Prepared JSON cases, weather assets and result artifacts support local execution
 and SSH/rsync/Slurm staging on Vera. Transport and resume have offline tests; a
-live Vera job is a separate deployment verification. Historical studies are
-preserved with source commits and hash manifests in Studies. Compatibility routes
-keep existing imports available while selected studies are ported.
+live Vera job is a separate deployment verification. Workers verify the observed
+package, handler and selected built-in EPSM engine identity before execution and
+resume, retaining the runtime hash per attempt. Custom handlers must identify
+external engines in their declared environment.
+
+Studies retains generic `PaperStudy` protocol setup and persistence. Outdated named
+studies, old fixed campaigns and their specific scripts are archived under
+`archive/2026-10-14/` in their owning repositories. The previous Studies preservation
+snapshot and Data transfer remain unchanged. Historical study imports are retired;
+there is no obligation to repair, reproduce or port those studies. See the
+[study archive decision](study-archive-policy.md) for the scope and locations.
 
 ## Verification and present limits
 

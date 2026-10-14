@@ -4,7 +4,7 @@ This is the shared index of useful things a researcher should be able to do with
 
 **Status: development acceptance routes, 14 October 2026.** The table records supported local routes and remaining checks. Commands, results and limitations appear in the [repository review register](../docs/harmonisation-review.md). The earlier [ecosystem review](../docs/ecosystem-review.md) is a historical snapshot.
 
-Read the [package layout](../docs/project-layout.md) and [engineering style](../docs/engineering-style.md) for where implementations and tests belong. The package names below follow the agreed ownership; documented legacy imports are compatibility routes.
+Read the [package layout](../docs/project-layout.md) and [engineering style](../docs/engineering-style.md) for where implementations and tests belong. The package names below follow the agreed ownership. Reusable study setup and execution remain active; outdated named studies and their legacy imports follow the [study archive decision](../docs/study-archive-policy.md).
 
 ## The common stories
 
@@ -17,7 +17,7 @@ Read the [package layout](../docs/project-layout.md) and [engineering style](../
 | UC05 | Simulate and inspect results | Core/RC execution; EPSM common energy boundary and Results | A complete model and fixed weather produce a retained run and readable metrics/diagnostics. Thermal demand and delivered energy retain their different meanings and units. | Both engines ran through the public Building interface; saved evaluations and incomplete/failed LCA are tested |
 | UC06 | Run a small Study | Studies PaperStudy; Workflows execution; EPSM evaluation | A small prepared cohort and explicit configuration produce an outcome for every attempted case, retained run identities and a useful study summary. | Prepared local execution and PaperStudy protocols are implemented; installed/deployment evidence is recorded separately |
 | UC07 | Compare a renovation scenario | Catalogue measure definitions; Core physical change; EPSM scenario; Workflows execution | A baseline and declared measure produce an independent alternative and energy, quantity and LCA comparison. The baseline and prior runs stay unchanged. | Targeted and like-for-like changes, path-specific LCA and energy reuse have local regression coverage; factors remain explicit |
-| UC08 | Resume interrupted work | Workflows checkpoints/attempts; EPSM interface | An interrupted study resumes from retained state without losing earlier attempts or mixing changed inputs into existing runs. Every case keeps an outcome. | Local checkpoints and Vera transport have offline regressions; a live Vera job remains unverified |
+| UC08 | Resume interrupted work | Workflows checkpoints/attempts; EPSM interface | An interrupted study resumes from retained state without losing earlier attempts or mixing changed inputs or runtimes into existing runs. Every case keeps an outcome. | Incomplete: offline checkpoint/transport regressions exist, but actual worker runtime verification remains open; a live Vera job is unverified |
 | UC09 | Inspect and compare plots and previews | Owning package renderers; EPSM convenience | Small loaded objects produce 2D Figures or documented 3D previews with common colours, labels, units and missing-data cues. Export and browser startup are explicit; source data remain unchanged. | Proposed; needs rendering, optional-dependency and preview cleanup checks |
 
 A story can be supported by several smaller tests. For example, UC04 includes passing an existing weather file between packages without going online. It also includes generating weather when explicitly requested; that step may need network access. Record which route was exercised; do not give the whole story a passing label because only one part ran.
@@ -28,7 +28,7 @@ Keep tests of a package's rules with that package. Core tests its geometry, simu
 
 The EPSM umbrella owns tests that connect their real installed APIs. Those checks should not depend on editable sibling checkouts or replace every collaborator with a mock. Use small fixed inputs and real services/engines when their behaviour determines the expected outcome.
 
-This handbook holds the use-case index and shared story descriptions. It does not copy platform implementations or claim that its documentation checks validate EnergyPlus, PostGIS or weather generation. Named research experiments, calibration choices and paper analyses belong in `epsm_studies`.
+This handbook holds the use-case index and shared story descriptions. It does not copy platform implementations or claim that its documentation checks validate EnergyPlus, PostGIS or weather generation. Generic `PaperStudy` support remains in `epsm_studies`. Outdated named experiments, calibration implementations and paper scripts are archived for inspection, with no repair or reproduction obligation.
 
 ## Turn a story into a tested route
 
