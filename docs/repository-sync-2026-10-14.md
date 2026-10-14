@@ -1,5 +1,7 @@
 # Repository synchronization — 14 October 2026
 
+**Historical baseline preparation record.** The repository and branch descriptions below refer to that preparation, before the harmonisation implementation. Subsequent development status is recorded in the [harmonisation guide](harmonisation.md) and [review register](harmonisation-review.md).
+
 This records the preparation requested by the maintainer before the harmonisation refactor. The maintainer explicitly requested committing the current local work, making `main` the latest baseline, and synchronizing the repositories to SB-Chalmers. This one-time baseline update does not change the ordinary [development and release policy](branches-and-releases.md) or certify a scientific release.
 
 ## Repositories

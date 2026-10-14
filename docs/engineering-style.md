@@ -1,8 +1,8 @@
 # EPSM Engineering and API Style
 
-**Status:** Draft v0.2
+**Status:** Draft v0.3
 
-**Date:** 13 October 2026
+**Date:** 14 October 2026
 
 **Audience:** Developers, researchers and coding agents contributing to EPSM
 
@@ -10,7 +10,7 @@ Welcome to EPSM. Our aim is to make each library easy to understand, test and us
 
 This draft sets working rules for new development and planned refactors across EPSM. Existing repositories may not meet every rule yet. Use it to plan and review a specific change; it is not a claim that the current packages already work this way.
 
-The public objects below are proposals; their names and behaviour are still being decided. Examples labelled **illustrative API** show how we would like the software to feel. Their constructors and method names are not yet implemented or approved API promises.
+The Building, construction, renovation and evaluation APIs described in [Harmonisation](harmonisation.md) are implemented on the coordinated development branches. Broader inspection, logging and presentation rules below remain requirements for adoption; this handbook does not claim that every existing object meets them.
 
 The existing Core documentation shows the depth of explanation we want. Keep extensive, useful docstrings and examples. Explain the actual code, and check that examples advertised as working really run. Follow [Writing for people](writing-guide.md) when adding or reviewing text.
 
@@ -46,20 +46,21 @@ Write down the job of every package and module. Before adding a feature, identif
 | --- | --- | --- |
 | `epsm` | Researcher-facing entities and conveniences, evidence-to-model assembly, cross-package handoffs and application logging configuration | Evidence retrieval, catalogue definitions, physical algorithms, simulation and durable study execution |
 | `epsm_db` | Source ingestion, building identity, evidence linkage, normalized factual observations, provenance, coverage, validation, queries and evidence releases | Model assumptions, simulation assembly, weather generation and study execution |
-| `epsm_data` | Versioned archetypes, construction recipes, operating assumptions, material and assessment factors, measure definitions and source evidence | Individual building observations, engine-specific conversion, simulation and lifecycle calculations |
-| `epsm_core` | Physical entities and algorithms, geometry, model validation, epJSON authoring and IDF export, single simulation execution, quantities, physical transformations and simulation-result interpretation | Database access, catalogue lookup, weather acquisition, batch scheduling and study storage policy |
+| `epsm_data` | Current archetypes, shared construction classes, construction recipes, operating assumptions, material and assessment factors, measure definitions and source evidence | Individual building observations, engine-specific conversion, simulation and lifecycle calculations |
+| `epsm_core` | Physical Building and elements, geometry, validation, quantities, transformations, Weather, EnergyPlus authoring, execution and result interpretation | Database access, catalogue lookup, weather acquisition, batch scheduling and study storage policy |
+| `epsm_rc` | Explicit reduction of the same physical Building and reduced-order thermal calculation | Physical construction ownership, evidence retrieval, lifecycle assessment and study orchestration |
 | `smhi2epw` | Provider acquisition, historical AMY generation, EPW inspection and weather provenance | Building modelling and study policy; additional weather methods require explicit future scope |
-| `epsm_workflows` | Reusable execution procedures, prepared cases, local and Slurm execution, checkpoints, attempts, failures, collection and durable study-result artifacts | Source ingestion, direct catalogue selection, physical calculations and engine compilation |
+| `epsm_workflows` | Reusable experiment designs, renovation search, prepared cases, local and Slurm execution, checkpoints, attempts, failures, collection and durable study-result artifacts | Source ingestion, direct catalogue selection, physical calculations and engine compilation |
 | `epsm_studies` | Named research questions, selection and calibration protocols, experiment designs, analysis and paper reports | Reusable platform implementations |
-| Future `epsm_lca` | Lifecycle assessment methods and the meaning of assessment results | Physical quantities, factor catalogues and study orchestration |
+| `epsm_lca` | Lifecycle assessment methods and the meaning of assessment results | Physical quantities, factor catalogues and study orchestration |
 
-These are the proposed package boundaries. The package names were confirmed on 14 October 2026; existing repositories may still use older names during migration. The handbook is `epsm_development` and the web application is `epsm_studio`. AMY means actual meteorological year: weather for a selected historical year. EPW is the weather file format; epJSON and IDF are EnergyPlus building-model formats.
+These are the agreed package boundaries; the [harmonisation guide](harmonisation.md) records the current implementation. The package names were confirmed on 14 October 2026. Legacy import names remain only where a documented compatibility route is needed. The handbook is `epsm_development` and the web application is `epsm_studio`. AMY means actual meteorological year: weather for a selected historical year. EPW is the weather file format; epJSON and IDF are EnergyPlus building-model formats.
 
-`epsm` may call and connect these libraries. The libraries it uses must not import `epsm` in return. Database and Catalogue must work without Core installed. Workflows receives prepared cases and the services or evaluators it needs as explicit inputs.
+`epsm` calls and connects these libraries. Core imports Data’s lightweight construction classes; those imports do not load a catalogue. Database and Catalogue represent their own objects without Core or EPSM. New lower-level implementations must not depend on EPSM. Existing optional compatibility forwarders are named migration exceptions and load EPSM only when that legacy integration is requested. Workflows receives prepared cases and explicit services or evaluators.
 
 A user-facing workflow may request records through an EPSM integration step. That does not move database retrieval or building assembly into the Workflows library.
 
-Core defines what simulation outputs mean. The relevant method package defines what an assessment result means. Workflows stores study results, combines them and manages how long they are retained. Database may link published study artifacts to their buildings and evidence releases.
+Core and RC define their engine outputs; EPSM normalizes the common demand and delivered-energy boundary. LCA defines what an environmental assessment result means. Workflows stores study results, combines them and manages how long they are retained. Database may link published study artifacts to their buildings and evidence releases.
 
 Do not introduce a universal `Entity` base class, a general plugin system or another shared package until two real users of that code show why it is needed. The umbrella should call the owning implementation, not copy its algorithms.
 
@@ -87,10 +88,10 @@ Public interfaces use building and research concepts. A researcher should be abl
 | --- | --- | --- |
 | Record | Portable building evidence from a pinned database release | Components, observations, conflicts, quality findings and evidence references |
 | Footprint | An identified geometry with a coordinate reference and units | Outline, holes and disconnected parts as appropriate |
-| Building | A research model being authored from evidence and declared assumptions | Geometry, fabric, operation, systems, weather reference and provenance |
-| Catalogue | A versioned library of assumptions and definitions | Archetypes, materials, constructions, profiles and measures |
+| Building | A physical research model being authored from evidence and declared assumptions | Geometry, fabric, operation, systems and provenance; EPSM adds assessment configuration and Results |
+| Catalogue | The current library of sourced assumptions and definitions | Archetypes, materials, constructions, profiles and measures; evaluations save the actual values used |
 | Weather | A weather artifact and its origin | Calendar, location, content identity and provenance |
-| Scenario | A declared alternative to a baseline | Measures, relevant dates, assumptions and an independent model revision |
+| Scenario | An alternative to a baseline | An independent Building, renovation path and assumptions; dates are optional study information |
 | Study | A concrete research investigation | Question, selection, scenarios, pinned inputs, workflow executions and results |
 | Workflow | A reusable procedure for conducting a study or a stage | Named steps and their input/output contracts |
 | Run | One requested execution using frozen inputs | Input identities, execution attempts, status, diagnostics and result/artifact references |
@@ -126,46 +127,43 @@ Do not describe an object as fully immutable just because it is a frozen datacla
 
 Keep the reasons for missing, conflicting or unavailable values. Zero is a value, not a marker for missing data. Record explicit overrides and where they came from. Catalogue defaults may fill gaps, but those values remain assumptions rather than observations.
 
-### Illustrative API
+### Current Building API
 
-The following are future API sketches. They are not examples that run against the current packages. Use them to write future acceptance tests before adopting their method names.
-
-```python
-import epsm
-
-record = database.get_building(building_id)
-building = epsm.Building.from_record(record)
-building.assume(catalogue.profile("swedish-existing"))
-building.weather = weather
-
-building.view()
-building.check()
-result = building.simulate(output="runs/baseline")
-print(result.annual.heating_demand_kwh)
-```
-
-Starting without a database record should be similarly direct:
+These calls use the development API. The default is a named illustrative reference building. A footprint or record can remain incomplete while the researcher supplies its constructions, systems and profiles.
 
 ```python
-building = epsm.Building(
-    footprint=polygon,
+from epsm import Building
+from shapely.geometry import Polygon
+
+reference = Building()
+blank = Building.empty()
+building = Building.from_footprint(
+    Polygon([(0, 0), (20, 0), (20, 12), (0, 12)]),
     storeys=3,
     storey_height_m=2.8,
-    use="apartments",
-    construction_year=1965,
 )
+building.construction_set = reference.construction_set
+building.facade = reference.facade
+print(building.readiness("quantities"))
+print(building.quantities().by_material())
 ```
 
-A Study and Workflow should make their relationship visible:
+Supply inspected weather to the calculation. It belongs to the retained evaluation, outside the physical Building snapshot. This example needs an EPW file and EnergyPlus installation; complete LCA additionally requires explicit assessment settings and factors.
 
 ```python
-study = epsm.Study(name="Uddevalla baseline", buildings=buildings)
-workflow = epsm.Workflow.baseline(weather=weather, assumptions=profile)
-execution = study.execute(workflow, output="runs/uddevalla")
-results = execution.results
+from epsm import Building, Weather
+
+building = Building()
+weather = Weather.from_epw("weather.epw")
+result = building.simulate(
+    engine="energyplus", weather=weather, directory="outputs/baseline"
+)
+print(result.energy.annual_delivered_energy_kwh)
+print(result.lca.status, result.lca.requirements)
+assert building.results.latest is result
 ```
 
-The next API design exercise must settle database setup, weather selection, execution settings and exactly what each constructor does. These sketches do not promise automatic weather downloads or successful modelling of every record.
+Use `Building.from_record(record, ...)` for evidence conversion and `baseline.renovate(*measures)` for an independent alternative. `epsm_workflows` owns prepared execution and renovation search; `epsm_studies.PaperStudy` stores a named research protocol. There is no public SimulationRequest step or `epsm.Study`/`epsm.Workflow` facade. See the [common use cases](../use_cases/README.md) and [review register](harmonisation-review.md) for the scope actually checked.
 
 ## Test-driven development
 
@@ -278,7 +276,7 @@ import logging
 logger = logging.getLogger(__name__)
 ```
 
-Logger names follow the package and module name: `epsm`, `epsm_core`, `epsm_data`, `epsm_db`, `epsm_workflows`, `epsm_studies` and `smhi2epw`, with module names beneath them. Current packages keep their actual names until a rename is implemented. A library does not need the umbrella installed to emit ordinary Python logs.
+Logger names follow the package and module name: `epsm`, `epsm_core`, `epsm_data`, `epsm_db`, `epsm_rc`, `epsm_lca`, `epsm_workflows`, `epsm_studies` and `smhi2epw`, with module names beneath them. Compatibility modules may retain their documented legacy logger names. A library does not need the umbrella installed to emit ordinary Python logs.
 
 A handler decides where a log goes, such as the terminal or a file. On import, a library may add one `NullHandler` at its package root; this handler emits nothing. Libraries and their ordinary public calls must not install terminal/file handlers, call `basicConfig`, force levels, create log directories or print progress.
 
@@ -417,7 +415,7 @@ Examples of intended representation content:
 
 ```text
 Record(id='ee1d78d0…', type='multifamily', components=2, release='r1')
-Building(id='ee1d78d0…', parts=2, weather='AMY 2023', state='incomplete', unresolved=1)
+Building(id='ee1d78d0…', parts=2, state='incomplete', unresolved=1)
 Study(name='Uddevalla baseline', buildings=120, workflows=1, state='prepared')
 Workflow(name='baseline', steps=4)
 Run(id='7ac2…', state='failed', attempt=2)
@@ -477,9 +475,9 @@ A contribution is ready for review when its job is clear and limited, its tests 
 
 Adopt this reference through small, named changes: one group of related objects, one operation or one package handoff at a time. Do not mix a repository-wide logging/docstring rewrite with changes to scientific behaviour.
 
-## Decisions for the next API design exercise
+## Extending the agreed API
 
-Before implementing the new umbrella interface, agree small examples of a footprint model, a database building, an incomplete record, a study and a renovation comparison. Decide:
+The initial Building interface is agreed and implemented. For each additional geometry, system, assessment or study feature, first agree a small example covering:
 
 - Exact public constructors, operation names and how users reach contained objects.
 - How authoring edits behave and how independent scenarios are created.
@@ -487,4 +485,4 @@ Before implementing the new umbrella interface, agree small examples of a footpr
 - How database/engine/artifact configuration is supplied.
 - How checks, execution handles and result inspection appear in notebooks.
 
-Write those examples first as small acceptance tests. The rules above guide how we build the interface; the next design exercise decides its exact names and behaviour.
+Write those examples first as small acceptance tests. Extend the agreed ownership and public operations; record any necessary compatibility change explicitly.
