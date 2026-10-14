@@ -44,7 +44,7 @@ not certification that every older module meets every handbook convention.
 | Repository | Findings and action | Verification and remaining scope |
 | --- | --- | --- |
 | `epsm_data` | Shared construction classes remain Core-independent. Fixed layered-window graph roundtrips, preserved identities/order/fractions, and corrected explorer expectations after adding SE.07. One current catalogue replaces active historical override chains; preserved studies retain source history. | Construction/serialization and explorer regressions passed; all 720 established numerical source cells remain unchanged. SE.07 has independent recipes and no renovation-state selector. Final run details follow below. |
-| `epsm_core` | Fixed dropped explicit zero-window-ratio facade overrides. Preserved physical quantities and occurrence identities through targeted renovations. Unsupported geometry is reported. Fixed AMY calendar inference and weather provenance/receipt preservation after the weather handoff review. | Authoring/readiness/renovation regressions and real EnergyPlus execution passed. Hosted CI still needs private Data dependency access. Complex geometry outside the new bridge remains a declared limit. |
+| `epsm_core` | Fixed dropped explicit zero-window-ratio facade overrides. Preserved physical quantities and occurrence identities through targeted renovations. Unsupported geometry is reported. Fixed AMY calendar inference and weather provenance/receipt preservation after the weather handoff review. | Authoring/readiness/renovation regressions and real EnergyPlus execution passed. Hosted CI passed after private Data read access was configured. Complex geometry outside the new bridge remains a declared limit. |
 | `epsm` | Fixed source overrides being mistaken for observations, evaluation artifact overwrites, editable result attributes and incomplete cache identities. Common energy accounting and automatic LCA retain separate identities and failures. | Both real annual engines ran through `Building.simulate`; immutable results, multiple evaluations, evidence comparison and path-specific LCA have regression coverage. Clean installed platform regressions, the full example and both real engines passed. The final record conversion regression preserves its coordinate reference system (CRS). |
 | `epsm_db` | Fixed portable nested geometry decoding, Stock archetype links, optional integration dependencies, coordinate reference preservation and bounded inspection. Database/Stock/BuildingRecord keep one underlying evidence implementation. Model conversion delegates to EPSM. | Offline record/query/adapter regressions passed. No live schema migration or ingestion change was made. Live restricted-account, PostGIS and release-deployment checks are not inferred from offline tests. |
 | `epsm_rc` | Preserved the standalone 5R1C numerical solver through renaming. Corrected FTX heat-recovery accounting in the Core adapter, settings identity and unsupported-input reporting. A clean wheel environment exposed a read-only solar array under pandas 3; fixed in `2139c48`. | Standalone and adapter tests passed. Reduced-order assumptions remain explicit; a successful run does not establish agreement with measured buildings or EnergyPlus. |
@@ -109,9 +109,10 @@ and optimisation: **2 alternatives evaluated, 1 Pareto alternative**. Generated
 
 The reviewed candidate versions are Data `0.4.0`, Core `0.2.0`, LCA `0.1.0`,
 RC `0.2.0`, Database `0.1.0`, EPSM `0.1.0`, Workflows `0.2.0`, and Studies
-`0.1.0`. The handbook remains draft v0.3. These versions are branch candidates,
-not published releases or `main` promotions. Core's historical `v2.0.x` tags
-remain untouched. Studio and smhi2epw have no harmonisation branch.
+`0.1.0`. The handbook remains draft v0.3. These versions were branch
+candidates at this checkpoint; the released tags and commits are recorded
+below. Core's historical `v2.0.x` tags remain untouched. Studio and smhi2epw
+have no harmonisation branch.
 
 The new archive manifests matched all 1 Data, 78 Studies, and 226 Workflows
 preserved files by byte count and SHA256. After removing stale generated build
@@ -167,11 +168,12 @@ release promotion or hosted CI success.
 Core's branch and review are published. Its later hosted result is recorded
 under the release PR gate below.
 
-## Release PR gate (14 October 2026)
+## Release promotion (14 October 2026)
 
-The following `dev` to `main` candidates are open as drafts. They began at the
-development merge revisions in the table above; subsequent CI and evidence
-updates are identified below. None is approved for promotion.
+The eight package `dev` to `main` reviews passed their hosted checks and were
+merged with normal merge commits. They began at the development revisions
+above; subsequent CI and evidence updates are identified below. The handbook
+release review remains open until this register matches those commits.
 
 | Repository | Release review | Hosted release check |
 | --- | --- | --- |
@@ -185,6 +187,33 @@ updates are identified below. None is approved for promotion.
 | Studies | [#2](https://github.com/SB-Chalmers/epsm_studies/pull/2) | [CI #3](https://github.com/SB-Chalmers/epsm_studies/pull/3) merged at `8dbb440fa6fbf210a5ca823b91a74ba09748bdf1`; [release-head checks](https://github.com/SB-Chalmers/epsm_studies/actions/runs/38581087123) passed on Python 3.11 and 3.13. |
 | Handbook | [#3](https://github.com/SB-Chalmers/epsm_development/pull/3) | [Docs workflow update #4](https://github.com/SB-Chalmers/epsm_development/pull/4) merged at `8efc56f2bd46d51b4145477fa6cc7c8bc3238f51`; hosted Python 3.11, 3.13 and API documentation jobs passed on the release PR |
 
+Each package tag points to the normal `main` merge commit below. The released
+commit was then fast-forwarded into its lowercase `dev` branch; no historical
+tag was moved. `git ls-remote` confirmed that `main`, `dev` and the peeled
+version tag resolve to the same commit in every package.
+
+| Package | Version tag | Released `main` and synchronised `dev` commit |
+| --- | --- | --- |
+| Data | `v0.4.0` | `d7b19688ae7bb73dbbc4bc12afa83a6bcc67ae48` |
+| Core | `v0.2.0` | `64909eb7e62ce2af4e515d4a443ecf82166c4803` |
+| LCA | `v0.1.0` | `07d84f04aaf419ab21f5daa56340991af21bb53f` |
+| RC | `v0.2.0` | `b3c415b333ea3df17cfd436589e69277503fe712` |
+| Database | `v0.1.0` | `ec8f114b3e2d6ecff6443311c60549afa4817dc1` |
+| EPSM | `v0.1.0` | `979d7e5347f74a222324c50cf4e9c38cd265c924` |
+| Workflows | `v0.2.0` | `a8d29afac1b8aa4bd35c3210cf2b8490dbb795b3` |
+| Studies | `v0.1.0` | `8abbcea3bd2c204e9e34e903ed03f3d10f0de708` |
+
+Post-merge hosted `main` runs passed for
+[Core](https://github.com/SB-Chalmers/epsm_core/actions/runs/38586218546),
+[LCA](https://github.com/SB-Chalmers/epsm_lca/actions/runs/38586198080),
+[RC](https://github.com/SB-Chalmers/epsm_rc/actions/runs/38586157712),
+[Database](https://github.com/SB-Chalmers/epsm_db/actions/runs/38586264765),
+[EPSM](https://github.com/SB-Chalmers/epsm/actions/runs/38586295206),
+[Workflows](https://github.com/SB-Chalmers/epsm_workflows/actions/runs/38586177061)
+and [Studies](https://github.com/SB-Chalmers/epsm_studies/actions/runs/38586246183)
+at the released commits. [Data's post-merge run](https://github.com/SB-Chalmers/epsm_data/actions/runs/38587833451)
+is still in progress.
+
 The current candidate was checked locally with `python -m pytest -q` using
 coordinated package `src` paths (package-specific exclusions and unavailable
 services are stated above), `python -m build --wheel --no-isolation`, clean
@@ -192,9 +221,10 @@ wheel installation followed by `python -m pip check`, installed public-import
 and retired-module checks, `python examples/platform_walkthrough.py`, and both
 installed RC and EnergyPlus evaluations. The handbook ran
 `python3 scripts/check_docs.py`, `python3 -m unittest discover -s tests -v`,
-and `python3 scripts/run_examples.py`. The same matrix must have hosted
-evidence before any `main` merge. Harmonisation branches, including the
-handbook's `codex/harmonisation-map`, remain until release merges and `dev`
+and `python3 scripts/run_examples.py`. The required hosted package checks
+passed before each `main` merge. Post-merge `main` checks are tracked
+separately. Harmonisation branches, including the handbook's
+`codex/harmonisation-map`, remain until the handbook release merge and `dev`
 history synchronisation are complete.
 
 ## Remaining deployment and adoption work
@@ -211,9 +241,9 @@ history synchronisation are complete.
 - Vera transport and resume have offline checks. SSH staging, Slurm submission
   and retrieval on the live cluster still require a deployment verification.
   Online SMHI acquisition also remains unverified in this pass.
-- The new RC and LCA repositories exist privately under SB-Chalmers with checked
-  baseline `main` and `dev` branches. Development changes follow the ordinary
-  feature-branch review policy; this register does not claim release promotion.
+- The RC and LCA repositories remain private under SB-Chalmers. Their releases
+  are recorded above; later development follows the ordinary feature-branch
+  review policy.
 - Continue adopting bounded inspection, detailed public docstrings, structured
   logging and teaching notebooks in untouched legacy modules through small
   changes. Historical study compatibility routes are archived; remaining

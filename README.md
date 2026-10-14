@@ -6,7 +6,7 @@ The agreed package names are `epsm`, `epsm_db`, `epsm_data`, `epsm_core`, `epsm_
 
 The handbook is written for the people who build and use EPSM. Coding agents follow the same instructions. Start with one small task, find the package that owns it, and write a test that shows the behaviour you want.
 
-**Status:** Working draft v0.3, 14 October 2026. The new EPSM interface is implemented on coordinated development branches; see the harmonisation page for supported scope and verification. Reusable study and execution tools remain active; outdated named studies and their specific scripts are archived under the [study archive decision](docs/study-archive-policy.md). Code labelled **illustrative API** shows a possible user experience; it is not an API you can use today.
+**Status:** Working draft v0.3, 14 October 2026. The coordinated EPSM packages have tagged releases; see the [review register](docs/harmonisation-review.md) for exact commits, supported scope and verification. Reusable study and execution tools remain active; outdated named studies and their specific scripts are archived under the [study archive decision](docs/study-archive-policy.md). Code labelled **illustrative API** shows a possible user experience; it is not an API you can use today.
 
 ## Start here
 
@@ -14,7 +14,7 @@ The handbook is written for the people who build and use EPSM. Coding agents fol
 2. Read [Project layout](docs/project-layout.md) and [Inputs, outputs and package APIs](docs/io-and-api.md) before starting a module.
 3. Find your topic in [Engineering and API style](docs/engineering-style.md).
 4. Try the [small example notebooks](examples/README.md). Read [Examples and common use cases](docs/examples-and-use-cases.md) when adding an example to a package.
-5. Read [Harmonisation](docs/harmonisation.md) for the current development APIs. The [ecosystem review](docs/ecosystem-review.md) and [original roadmap](docs/roadmap.md) preserve the earlier review and its rationale.
+5. Read [Harmonisation](docs/harmonisation.md) for the released APIs and their limits. The [ecosystem review](docs/ecosystem-review.md) and [original roadmap](docs/roadmap.md) preserve the earlier review and its rationale.
 
 Coding agents should also read [AGENTS.md](AGENTS.md).
 
