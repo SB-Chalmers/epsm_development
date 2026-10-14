@@ -1,6 +1,28 @@
 # Harmonisation file map
 
-**14 October 2026. Package names are accepted; responsibility changes below remain proposed and await the decisions in the [review](harmonisation.md#decisions-to-discuss).** Database means `epsm_db`, Catalogue means `epsm_data`, and the handbook is `epsm_development`.
+**Implementation update, 14 October 2026.** The agreed ownership is implemented on coordinated development branches. The table below records current changes. The original inspection inventory follows for traceability; its proposed destinations are superseded by the implementation table and [current architecture](harmonisation.md).
+
+## Implementation status
+
+| Original IDs | Files / owner after the change | Status and follow-through |
+| --- | --- | --- |
+| DB01–DB04 | `epsm_db/src/epsm_db/`, existing `sweden_ubem` database/record/stock implementation | Public Database/Stock/BuildingRecord namespace; one Stock; credential-free portable records; SE.07 selectors. Live ingestion/database schemas preserved. |
+| DB05 | `epsm/src/epsm/records.py`, `legacy_records.py`; old DB module forwards | Model conversion belongs to EPSM. Portable evidence remains DB-owned. Legacy model policy remains a migration adapter. |
+| CA01–CA02 | Data shared domain classes, serialization, `profiles.py`, `operations.py`, current catalogue | One construction hierarchy, explicit ordering, optional carbon, independent SE.07, executable fabrication/system definitions, Data-owned standard resources. |
+| CA03–CA07 | EPSM `catalogue_application.py`, `catalogue_release.py`, `catalogue_validation.py`; Data compatibility forwarders | Core-dependent assembly/validation moved out of Data. Core loads Data-owned sourced standard resources. |
+| CA08–CA10 | Studies archives with manifests; current Data source evidence retained | Obsolete active catalogue history removed after preservation. Source editions remain provenance rather than active catalogue versions. |
+| CO01–CO06 | Core `building.py`, `physical_geometry.py`, `inventory.py`, `building_adapter.py`, Weather and compiler bridge | Physical authoring, quantities, independent snapshots, targeted fabric/HVAC transformations, actual E+ execution. Legacy Specs remain compatibility inputs during gradual migration. |
+| CO07 | Core Weather; independent `smhi2epw` | Weather content/calendar identity stays outside the physical snapshot. Weather generation remains explicit. |
+| CO08–CO10 | Existing Core district/viewer/experimental geometry | Preserved. The new authoring bridge declares supported geometry; historical geometry experiments are not silently claimed as migrated. |
+| WF01 | Workflows reusable design, renovation search and prepared execution modules | Parametric/GSA, energy/carbon Pareto exploration, independent cache/result identities, local/Vera transport and checkpoint resume. |
+| WF02–WF10 | `epsm_studies` study protocol/archive/legacy implementations; thin Workflows compatibility routes | Research implementations and matching inputs/tests preserved with hashes. Selective scientific ports remain explicit follow-up studies. |
+| IN01 | EPSM Building subclass, Results, EvaluationCache and installed platform example | Same physical model; automatic energy-to-LCA; immutable retained evaluations; no public SimulationRequest. |
+| New RC | `epsm_rc` distribution/import and `platform.py` | Standalone numerical rename checkpoint; adapter uses Core state and shared heating-delivery accounting. |
+| New LCA | `epsm_lca/assessment.py` | Material occurrence/operational assessment with explicit boundaries and incomplete totals. |
+| IN03 | `epsm_studio` | Future web interface remains out of scope. |
+
+## Original inspection inventory
+
 
 Paths are relative to the named current repository. `Keep` preserves the owner; `Refactor` changes organization/API within that owner; `Split` separates responsibilities inside a file; `Transfer` moves a coherent responsibility; `Review` needs more evidence or a design decision. A destination names an owning package, not an approved new file path. Refer to the [inventory](harmonisation-inventory.json) for the original files, hashes, Git status and dependencies. Previously untracked work is now committed; the [synchronization report](repository-sync-2026-10-14.md) records the updated repository state.
 
