@@ -223,9 +223,11 @@ installed RC and EnergyPlus evaluations. The handbook ran
 `python3 scripts/check_docs.py`, `python3 -m unittest discover -s tests -v`,
 and `python3 scripts/run_examples.py`. The required hosted package checks
 passed before each `main` merge. Post-merge `main` checks passed at the
-released commits. Fully merged package topic branches were pruned remotely;
-Data's divergent historical `DEV` was retained. The handbook's merged topic
-branches will be pruned after its release merge and `dev` history sync.
+released commits, including the handbook. Fully merged package and handbook
+topic branches, including `codex/harmonisation-map`, were pruned remotely
+after their release merges and `dev` history sync. Data's divergent historical
+`DEV` was retained. Local checkout branches with unpublished work were left
+untouched.
 
 ## Remaining deployment and adoption work
 
