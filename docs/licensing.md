@@ -50,7 +50,7 @@ This example describes a distribution containing first-party MIT material. If it
 
 Check the backend's support before changing metadata. Setuptools supports these fields from version 77.0.0; declare a suitable minimum build dependency when adopting them, as described in its [configuration guide](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html). Replace conflicting legacy license fields or license classifiers. Inspect the built wheel and source archive to confirm their license metadata and included notices. The [Python Packaging User Guide](https://packaging.python.org/en/latest/guides/licensing-examples-and-user-scenarios/) explains the fields and bundled-code cases.
 
-EPSM Development is a handbook rather than a Python distribution, so it does not need a `pyproject.toml` just to declare its license. Its root license and README carry that information.
+The `epsm_development` repository is a handbook rather than a Python distribution, so it does not need a `pyproject.toml` just to declare its license. Its root license and README carry that information. The repository rename preserves the existing copyright holder notice.
 
 ## Keep source and third-party terms
 
@@ -77,7 +77,7 @@ A quick local check on 13 October 2026 found:
 
 | Repository | License declaration found | Adoption work |
 | --- | --- | --- |
-| EPSM Development | MIT root license added with this guide | Keep templates and notices consistent. |
+| `epsm_development` | MIT root license added with this guide | Keep templates and notices consistent; preserve the existing holder notice. |
 | EPSM Core | Root MIT license; no `[project]` license fields | Add supported package metadata and check bundled notices in built distributions. |
 | EPSM Data, planned Catalogue | No root license or `[project]` license fields found | Establish accurate notices, add the MIT license and metadata, and record data/evidence terms. |
 | EPSM Workflows | No root license or `[project]` license fields found | Establish accurate notices, add the MIT license and metadata, and preserve study/source terms. |

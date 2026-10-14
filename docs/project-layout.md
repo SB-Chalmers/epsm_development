@@ -89,4 +89,4 @@ The EPSM umbrella tests common use cases with actual installed collaborating pac
 
 Publish which package combination was tested and what prerequisites it used. A required integration that cannot run is still unverified. When an API changes, update its package tests, public examples, migration note and the affected umbrella use cases together.
 
-EPSM Development keeps the shared standards and use-case index. It is not another simulation library or a home for copied package tests. Named experiments and paper analyses belong in `epsm_studies`, where their research question, inputs and reproducibility record can stay together.
+The `epsm_development` handbook keeps the shared standards and use-case index. It is not another simulation library or a home for copied package tests. Named experiments and paper analyses belong in `epsm_studies`, where their research question, inputs and reproducibility record can stay together.

@@ -45,15 +45,15 @@ Write down the job of every package and module. Before adding a feature, identif
 | Package | Owns | Delegates |
 | --- | --- | --- |
 | `epsm` | Researcher-facing entities and conveniences, evidence-to-model assembly, cross-package handoffs and application logging configuration | Evidence retrieval, catalogue definitions, physical algorithms, simulation and durable study execution |
-| `epsm_database` | Source ingestion, building identity, evidence linkage, normalized factual observations, provenance, coverage, validation, queries and evidence releases | Model assumptions, simulation assembly, weather generation and study execution |
-| `epsm_catalogue` | Versioned archetypes, construction recipes, operating assumptions, material and assessment factors, measure definitions and source evidence | Individual building observations, engine-specific conversion, simulation and lifecycle calculations |
+| `epsm_db` | Source ingestion, building identity, evidence linkage, normalized factual observations, provenance, coverage, validation, queries and evidence releases | Model assumptions, simulation assembly, weather generation and study execution |
+| `epsm_data` | Versioned archetypes, construction recipes, operating assumptions, material and assessment factors, measure definitions and source evidence | Individual building observations, engine-specific conversion, simulation and lifecycle calculations |
 | `epsm_core` | Physical entities and algorithms, geometry, model validation, epJSON authoring and IDF export, single simulation execution, quantities, physical transformations and simulation-result interpretation | Database access, catalogue lookup, weather acquisition, batch scheduling and study storage policy |
 | `smhi2epw` | Provider acquisition, historical AMY generation, EPW inspection and weather provenance | Building modelling and study policy; additional weather methods require explicit future scope |
 | `epsm_workflows` | Reusable execution procedures, prepared cases, local and Slurm execution, checkpoints, attempts, failures, collection and durable study-result artifacts | Source ingestion, direct catalogue selection, physical calculations and engine compilation |
 | `epsm_studies` | Named research questions, selection and calibration protocols, experiment designs, analysis and paper reports | Reusable platform implementations |
 | Future `epsm_lca` | Lifecycle assessment methods and the meaning of assessment results | Physical quantities, factor catalogues and study orchestration |
 
-These are the proposed package boundaries. Existing repositories may still use older names. AMY means actual meteorological year: weather for a selected historical year. EPW is the weather file format; epJSON and IDF are EnergyPlus building-model formats.
+These are the proposed package boundaries. The package names were confirmed on 14 October 2026; existing repositories may still use older names during migration. The handbook is `epsm_development` and the web application is `epsm_studio`. AMY means actual meteorological year: weather for a selected historical year. EPW is the weather file format; epJSON and IDF are EnergyPlus building-model formats.
 
 `epsm` may call and connect these libraries. The libraries it uses must not import `epsm` in return. Database and Catalogue must work without Core installed. Workflows receives prepared cases and the services or evaluators it needs as explicit inputs.
 
@@ -278,7 +278,7 @@ import logging
 logger = logging.getLogger(__name__)
 ```
 
-Logger names follow the package and module name: `epsm`, `epsm_core`, `epsm_catalogue`, `epsm_database`, `epsm_workflows` and `smhi2epw`, with module names beneath them. Current packages keep their actual names until a rename is implemented. A library does not need the umbrella installed to emit ordinary Python logs.
+Logger names follow the package and module name: `epsm`, `epsm_core`, `epsm_data`, `epsm_db`, `epsm_workflows`, `epsm_studies` and `smhi2epw`, with module names beneath them. Current packages keep their actual names until a rename is implemented. A library does not need the umbrella installed to emit ordinary Python logs.
 
 A handler decides where a log goes, such as the terminal or a file. On import, a library may add one `NullHandler` at its package root; this handler emits nothing. Libraries and their ordinary public calls must not install terminal/file handlers, call `basicConfig`, force levels, create log directories or print progress.
 

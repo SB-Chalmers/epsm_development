@@ -102,7 +102,7 @@ Keep four claims separate everywhere: evidence availability, model completeness,
 
 ## Direction agreed in the discussion
 
-Retain separate focused packages and introduce a thin `epsm` interface. Rename Data to `epsm_catalogue` and the evidence service/library to `epsm_database`; keep `smhi2epw` as the independently useful weather tool. Adopt a clean API break with deliberate migration notes rather than maintaining every old interface.
+Retain separate focused packages and introduce a thin `epsm` interface. The naming decision was updated on 14 October 2026: keep `epsm_data`, rename the evidence service/library to `epsm_db`, call the handbook `epsm_development`, and preserve the web application as `epsm_studio`. Keep `smhi2epw` as the independently useful weather tool. The 13 October discussion proposed a clean API break with migration notes; the [harmonisation review](harmonisation.md#decisions-to-discuss) now records the compatibility decision to settle before implementation. The dated observations elsewhere in this review remain unchanged.
 
 Researchers should work with Records, Footprints, Buildings, Weather, Scenarios, Studies, Workflows, Runs and Results. Advanced users can still work directly with validation specifications. The usual researcher interface should handle validation and EnergyPlus compilation without requiring users to manage those details. Buildings contain meaningful subentities, and concise representations make incomplete and failed states inspectable. Exact constructors and mutation behaviour remain the next design exercise, not an API promised by this review.
 

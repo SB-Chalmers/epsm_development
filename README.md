@@ -1,6 +1,8 @@
-# EPSM Development
+# epsm_development
 
 This is our handbook for building EPSM, the Swedish building-stock research platform. The coding guides, package review, templates, example notebooks and plans are kept here in one repository.
+
+The agreed package names are `epsm`, `epsm_db`, `epsm_data`, `epsm_core`, `epsm_workflows`, `epsm_studies` and `smhi2epw`. This handbook is `epsm_development`; the existing web application is `epsm_studio`. These names were confirmed on 14 October 2026. See the [harmonisation review](docs/harmonisation.md) for implementation and repository status.
 
 The handbook is written for the people who build and use EPSM. Coding agents follow the same instructions. Start with one small task, find the package that owns it, and write a test that shows the behaviour you want.
 
@@ -32,6 +34,7 @@ Coding agents should also read [AGENTS.md](AGENTS.md).
 | If you want to… | Read… |
 | --- | --- |
 | Know which package should own a feature | [Package responsibilities](docs/engineering-style.md#responsibility-boundaries) |
+| Review current packages and proposed file transfers | [Harmonisation review](docs/harmonisation.md) and [file map](docs/harmonisation-file-map.md) |
 | Understand Study, Workflow, Record and Building | [Shared terms and models](docs/terminology-and-models.md) |
 | Add consistent 2D plots and 3D previews | [Plots and previews](docs/plotting-and-previews.md) |
 | Write tests before changing code | [Test-driven development](docs/engineering-style.md#test-driven-development) |

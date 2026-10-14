@@ -1,6 +1,6 @@
 # Shared terms and models
 
-EPSM Development is the place to agree on the words we use and the information packages pass to each other. These agreements help independently developed packages work together and give researchers a familiar interface.
+The `epsm_development` handbook is the place to agree on the words we use and the information packages pass to each other. These agreements help independently developed packages work together and give researchers a familiar interface. Database refers to `epsm_db`; Catalogue refers to `epsm_data`.
 
 **Status: proposed model agreements.** The ownership and meanings below guide the redesign. Exact class names, fields and file formats still need to be settled through small working examples. They are not a new implemented API.
 

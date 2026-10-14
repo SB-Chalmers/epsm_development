@@ -1,6 +1,8 @@
-# EPSM Development Roadmap
+# EPSM development roadmap
 
 **Working direction: 13 October 2026.** This roadmap turns the [ecosystem review](ecosystem-review.md) into manageable work. It keeps useful implementations, gives each responsibility one owner and makes the platform easier for researchers and new contributors to understand.
+
+**Naming decision: 14 October 2026.** Keep `epsm_data`, use `epsm_db` for the evidence database, `epsm_development` for this handbook and `epsm_studio` for the existing web application. The [harmonisation review](harmonisation.md) records current implementation and pending responsibility decisions.
 
 The [engineering and API style](engineering-style.md) is the development reference. We have agreed to use objects such as Building, Study and Result. Their exact methods still need to be designed. First agree a few small working examples, then build the steps those examples need.
 
@@ -10,11 +12,13 @@ The [engineering and API style](engineering-style.md) is the development referen
 | --- | --- | --- |
 | `epsm` | Researcher-facing entities and thin package integration | Introduce one understandable authoring/study interface; own conversions and evidence-to-model assembly without duplicating algorithms |
 | `epsm_core` | Physical entities, geometry, specifications, compilation, single simulation execution, quantities and simulation-result interpretation | Keep the physics/engine implementation focused; move application/catalogue responsibilities to their owners |
-| `epsm_catalogue` | Versioned archetypes, constructions, operating assumptions, factors and measure definitions | Rename `epsm_data`; consolidate its representations and move engine-facing conversion to EPSM |
-| `epsm_database` | Building evidence, ingestion, linkage, validation, queries and immutable evidence releases | Consolidate `sweden_ubem`; preserve the existing evidence schema and remove simulation/weather dependencies |
+| `epsm_data` | Versioned archetypes, constructions, operating assumptions, factors and measure definitions | Keep the package name; consolidate its representations and move engine-facing conversion to EPSM |
+| `epsm_db` | Building evidence, ingestion, linkage, validation, queries and immutable evidence releases | Rename and consolidate `sweden_ubem`; preserve the existing evidence schema and remove simulation/weather dependencies |
 | `smhi2epw` | Provider acquisition, historical AMY generation, EPW reading and provenance | Keep the current name and independent interface; make the EPSM handoff explicit |
 | `epsm_workflows` | Reusable execution, scheduling, checkpointing, attempts, failures, collection and durable study artifacts | Accept prepared cases and explicit collaborators; move named research implementations out |
 | `epsm_studies` | Named research questions, selection/calibration protocols, experiments, analysis and reports | Create the home for existing and future research studies |
+| `epsm_development` | Shared developer handbook, design agreements and acceptance stories | Keep guidance consistent with the accepted package names and responsibilities |
+| `epsm_studio` | Existing web application | Preserve its repository history; discuss integration with the Python platform separately |
 | Future `epsm_lca` | Lifecycle assessment methods and assessment-result meaning | Introduce when its methods and input/output boundaries are agreed |
 
 Use EPSM consistently as the umbrella identity. Align repository, distribution, import and command names during each rename. Check package/namespace availability before publishing; the intended names are not a claim of registry ownership.
@@ -53,7 +57,7 @@ The initial service is a **shared research database with read-only access and an
 
 ### Catalogue, Core and the EPSM interface
 
-Rename Data to Catalogue and choose one advertised representation for each definition. Keep source evidence, versioned parameters, constructions, operational profiles, factors and measures there. Conversion to Core or other engines belongs in EPSM integration modules.
+Keep the name `epsm_data` for the Catalogue and choose one advertised representation for each definition. Keep source evidence, versioned parameters, constructions, operational profiles, factors and measures there. Conversion to Core or other engines belongs in EPSM integration modules.
 
 Keep physical geometry/quantity algorithms and simulation interpretation in Core. Move definitions and application-specific lookup to their owners without changing numerical meaning accidentally. First write tests that record the current behaviour and known reference cases. Explain intentional scientific changes separately from structural cleanup.
 
