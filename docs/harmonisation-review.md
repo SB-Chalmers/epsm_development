@@ -168,20 +168,21 @@ credentials remains pending before its hosted CI can pass.
 
 ## Release PR gate (14 October 2026)
 
-The following `dev` to `main` candidates are open as drafts. Each head is the
-development merge revision in the table above; none is approved for promotion.
+The following `dev` to `main` candidates are open as drafts. They began at the
+development merge revisions in the table above; subsequent CI and evidence
+updates are identified below. None is approved for promotion.
 
 | Repository | Release review | Hosted check at opening |
 | --- | --- | --- |
-| Data | [#2](https://github.com/SB-Chalmers/epsm_data/pull/2) | [Hosted workflow addition #3](https://github.com/SB-Chalmers/epsm_data/pull/3) under review; result pending |
-| Core | [#2](https://github.com/SB-Chalmers/epsm_core/pull/2) | Failed before tests: missing `EPSM_DATA_DEPLOY_KEY` |
+| Data | [#2](https://github.com/SB-Chalmers/epsm_data/pull/2) | [Hosted workflow #3](https://github.com/SB-Chalmers/epsm_data/pull/3) merged to `dev` at `ae102d33eda79fd429fb445ec99b32dabcab8024`. [Its Python 3.11 and 3.13 PR runs](https://github.com/SB-Chalmers/epsm_data/actions/runs/38574778749) on `2d66b18` failed: 211 passed, 33 skipped, 8 failed on each because private EPSM was unavailable. Wheel step did not run. |
+| Core | [#2](https://github.com/SB-Chalmers/epsm_core/pull/2) | Failed before tests: missing `EPSM_DATA_DEPLOY_KEY`. [CI branch retarget #3](https://github.com/SB-Chalmers/epsm_core/pull/3) merged at `8a7c5abf9228e7e6c3792f1f34490aaffd1f608f`. |
 | LCA | [#2](https://github.com/SB-Chalmers/epsm_lca/pull/2) | No hosted workflow |
 | RC | [#2](https://github.com/SB-Chalmers/epsm_rc/pull/2) | No hosted workflow |
-| Database | [#2](https://github.com/SB-Chalmers/epsm_db/pull/2) | Existing suite manually dispatched on `a51ab68e0ff290d743754177d0e709a78fbf7262`; failed at collection because Core and EPSM are unavailable to the hosted runner |
+| Database | [#2](https://github.com/SB-Chalmers/epsm_db/pull/2) | [Existing suite](https://github.com/SB-Chalmers/epsm_db/actions/runs/38574452246) manually dispatched on `a51ab68e0ff290d743754177d0e709a78fbf7262`; failed at collection because Core and EPSM are unavailable to the hosted runner |
 | EPSM | [#2](https://github.com/SB-Chalmers/epsm/pull/2) | No hosted workflow |
 | Workflows | [#2](https://github.com/SB-Chalmers/epsm_workflows/pull/2) | No hosted workflow |
 | Studies | [#2](https://github.com/SB-Chalmers/epsm_studies/pull/2) | No hosted workflow |
-| Handbook | [#3](https://github.com/SB-Chalmers/epsm_development/pull/3) | Existing docs workflow has no run on the PR at opening |
+| Handbook | [#3](https://github.com/SB-Chalmers/epsm_development/pull/3) | [Docs workflow update #4](https://github.com/SB-Chalmers/epsm_development/pull/4) merged at `8efc56f2bd46d51b4145477fa6cc7c8bc3238f51`; hosted Python 3.11, 3.13 and API documentation jobs passed on the release PR |
 
 The current candidate was checked locally with `python -m pytest -q` using
 coordinated package `src` paths (package-specific exclusions and unavailable
