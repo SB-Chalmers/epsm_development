@@ -166,6 +166,35 @@ release promotion or hosted CI success.
 Core's branch and review are published. Approval for private dependency
 credentials remains pending before its hosted CI can pass.
 
+## Release PR gate (14 October 2026)
+
+The following `dev` to `main` candidates are open as drafts. Each head is the
+development merge revision in the table above; none is approved for promotion.
+
+| Repository | Release review | Hosted check at opening |
+| --- | --- | --- |
+| Data | [#2](https://github.com/SB-Chalmers/epsm_data/pull/2) | [Hosted workflow addition #3](https://github.com/SB-Chalmers/epsm_data/pull/3) under review; result pending |
+| Core | [#2](https://github.com/SB-Chalmers/epsm_core/pull/2) | Failed before tests: missing `EPSM_DATA_DEPLOY_KEY` |
+| LCA | [#2](https://github.com/SB-Chalmers/epsm_lca/pull/2) | No hosted workflow |
+| RC | [#2](https://github.com/SB-Chalmers/epsm_rc/pull/2) | No hosted workflow |
+| Database | [#2](https://github.com/SB-Chalmers/epsm_db/pull/2) | Existing suite manually dispatched on `a51ab68e0ff290d743754177d0e709a78fbf7262`; failed at collection because Core and EPSM are unavailable to the hosted runner |
+| EPSM | [#2](https://github.com/SB-Chalmers/epsm/pull/2) | No hosted workflow |
+| Workflows | [#2](https://github.com/SB-Chalmers/epsm_workflows/pull/2) | No hosted workflow |
+| Studies | [#2](https://github.com/SB-Chalmers/epsm_studies/pull/2) | No hosted workflow |
+| Handbook | [#3](https://github.com/SB-Chalmers/epsm_development/pull/3) | Existing docs workflow has no run on the PR at opening |
+
+The current candidate was checked locally with `python -m pytest -q` using
+coordinated package `src` paths (package-specific exclusions and unavailable
+services are stated above), `python -m build --wheel --no-isolation`, clean
+wheel installation followed by `python -m pip check`, installed public-import
+and retired-module checks, `python examples/platform_walkthrough.py`, and both
+installed RC and EnergyPlus evaluations. The handbook ran
+`python3 scripts/check_docs.py`, `python3 -m unittest discover -s tests -v`,
+and `python3 scripts/run_examples.py`. The same matrix must have hosted
+evidence before any `main` merge. Harmonisation branches, including the
+handbook's `codex/harmonisation-map`, remain until release merges and `dev`
+history synchronisation are complete.
+
 ## Remaining deployment and adoption work
 
 - Hosted Core CI is configured for read-only SSH dependency checkout using
