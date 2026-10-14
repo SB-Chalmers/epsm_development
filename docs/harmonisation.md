@@ -66,6 +66,20 @@ The package also contains `EPSMBuilding`, `ModelPolicy`, a `WeatherReference`, g
 
 `BuildingRecord` retains a private database URL and can query neighbours or create EPSM models. Its `Receipt` combines source completeness with model readiness. These are specific model-boundary questions for the redesign. The reader still queries internal `catalog` metadata; access using the intended restricted login needs explicit verification.
 
+The name `epsm_db` is the agreed target; the current distribution is `sweden-ubem`, its import is `sweden_ubem`, and `UBEM` is its exploration client. The existing package covers three kinds of work:
+
+| Current responsibility | Approximate package footprint | Concrete implementation |
+| --- | --- | --- |
+| Database ingestion, evidence processing, validation and shared support | 7,521 physical Python lines, 69% | Schema initialization; national source imports; component/property/EPC/context linkage; municipality/national publication; quality reports; source inspection and operational support |
+| Record retrieval, stock browsing and exports | 2,327 lines, 21% | `explore.py`, `io.py`, `records.py`, `stock.py`, `exports.py`, `epc_heating.py`, `enums.py` |
+| EPSM assembly and weather integration | 1,079 lines, 10% | `epsm.py`, `weather.py` |
+
+This is a coarse file-based partition of 10,927 lines in 39 Python source modules, including comments and docstrings. It excludes SQL, scripts, tests and notebooks and does not measure implementation effort. Evidence diagnostics straddle maintenance and exploration: counting `physical_assessment.py`, `epc_reporting.py`, `source_inspection.py` and `comparison.py` with exploration would make the split approximately 61% / 29% / 10%. Smaller files also mix responsibilities.
+
+`sweden-ubem db init` initializes the schema and normally imports the source bundle; `--schema-only` performs the schema step alone. `dataset process` derives and validates a named municipality or national evidence selection from imported database facts. Published selections retain their identities. Reprocessing source releases is maintenance work; opening `UBEM(dataset=...)` queries an existing selection and does not rerun import or processing.
+
+Existing exploration includes completeness, quality, building tables, spatial queries, maps, exports, records, catalogue matrices, stock cells and EPC heating plots. The proposed boundary should preserve basic stock browsing in Database. The open D03 question concerns ownership of catalogue-aware composition and model creation, rather than moving all exploration into EPSM. A convenient `db.stock()` experience can be exposed through the EPSM interface while sharing the database's query implementation.
+
 ### Data: epsm_data
 
 Data holds frozen archetype/construction resources, material layers, nominal/reference properties, source evidence, renovation definitions, and cohort artifacts. Current APIs include `ParametricCatalogue`, `DetailedCatalogue`, `CalibratedArchetype`, and older domain objects such as `BuildingArchetype` and `ConstructionSet`.
@@ -127,7 +141,7 @@ Ask these in small groups and record the user's actual choices. Recommendations 
 | --- | --- | --- | --- |
 | D01 | Which names should be canonical? | User confirmed epsm, epsm_db, epsm_data, epsm_core, epsm_workflows, epsm_studies, smhi2epw and epsm_development; keep Data's name and use the short Database name | Accepted, 14 October 2026 |
 | D02 | How should the existing SB-Chalmers/epsm web application be named and scoped? | User explicitly requested renaming the remote to epsm_studio; application integration scope is a later discussion | Name accepted, 14 October 2026 |
-| D03 | Should a stock remain usable with only the database library installed? | Database owns records, queries and evidence completeness; EPSM composes an enriched stock with catalogue assignments and model creation | Asked; awaiting answer |
+| D03 | Should a stock remain usable with only the database library installed? | Database owns records, stock browsing, queries, maps/exports and evidence completeness; EPSM composes an enriched stock with catalogue assignments and model creation | Asked; current implementation explained; awaiting decision |
 | D04 | Which assumptions should be reusable catalogue definitions, and which should remain study choices? | Catalogue owns sourced reusable fabric, operation, systems and completion profiles; studies retain their experimental overrides and selection protocols | Asked; awaiting answer |
 | D05 | Where should the physical Building and its authoring behavior live? | Core owns physical state and validation; EPSM exposes convenient creation, evidence mapping and scenario operations | Open |
 | D06 | What compatibility must the migration preserve? | Preserve data, numerical behavior and historical reproducibility; explicitly agree import/command aliases versus a documented API migration before renaming | Open |
