@@ -173,16 +173,16 @@ The following `dev` to `main` candidates are open as drafts. They began at the
 development merge revisions in the table above; subsequent CI and evidence
 updates are identified below. None is approved for promotion.
 
-| Repository | Release review | Hosted check at opening |
+| Repository | Release review | Hosted release check |
 | --- | --- | --- |
-| Data | [#2](https://github.com/SB-Chalmers/epsm_data/pull/2) | [Hosted workflow #3](https://github.com/SB-Chalmers/epsm_data/pull/3) merged to `dev` at `ae102d33eda79fd429fb445ec99b32dabcab8024`. [Its Python 3.11 and 3.13 PR runs](https://github.com/SB-Chalmers/epsm_data/actions/runs/38574778749) on `2d66b18` failed: 211 passed, 33 skipped, 8 failed on each because private EPSM was unavailable. Wheel step did not run. |
+| Data | [#2](https://github.com/SB-Chalmers/epsm_data/pull/2) | [Private dependency CI #4](https://github.com/SB-Chalmers/epsm_data/pull/4) merged at `eebf865d9f732570083cf02e16a7e0ca2efe01cd`. [Its review run](https://github.com/SB-Chalmers/epsm_data/actions/runs/38582046893) passed on Python 3.11 and 3.13: 247 passed, 5 skipped on 3.11; wheel install, `pip check` and public import passed. Release-head CI is running. |
 | Core | [#2](https://github.com/SB-Chalmers/epsm_core/pull/2) | Initial checks failed before tests for missing `EPSM_DATA_DEPLOY_KEY`. [CI branch retarget #3](https://github.com/SB-Chalmers/epsm_core/pull/3) merged at `8a7c5abf9228e7e6c3792f1f34490aaffd1f608f`. After the read-only credential was configured, [release PR CI](https://github.com/SB-Chalmers/epsm_core/actions/runs/38575163235) and [dev push CI](https://github.com/SB-Chalmers/epsm_core/actions/runs/38575152737) both passed on Python 3.11 and 3.13 at that revision; `gh pr checks 2` reported four passing checks. |
-| LCA | [#2](https://github.com/SB-Chalmers/epsm_lca/pull/2) | No hosted workflow |
-| RC | [#2](https://github.com/SB-Chalmers/epsm_rc/pull/2) | No hosted workflow |
-| Database | [#2](https://github.com/SB-Chalmers/epsm_db/pull/2) | [Existing suite](https://github.com/SB-Chalmers/epsm_db/actions/runs/38574452246) manually dispatched on `a51ab68e0ff290d743754177d0e709a78fbf7262`; failed at collection because Core and EPSM are unavailable to the hosted runner |
-| EPSM | [#2](https://github.com/SB-Chalmers/epsm/pull/2) | No hosted workflow |
-| Workflows | [#2](https://github.com/SB-Chalmers/epsm_workflows/pull/2) | No hosted workflow |
-| Studies | [#2](https://github.com/SB-Chalmers/epsm_studies/pull/2) | No hosted workflow |
+| LCA | [#2](https://github.com/SB-Chalmers/epsm_lca/pull/2) | [CI #3](https://github.com/SB-Chalmers/epsm_lca/pull/3) merged at `12b1a39f4f8fa689ac24334fcf0cfad219a56695`; [release-head checks](https://github.com/SB-Chalmers/epsm_lca/actions/runs/38582696105) passed on Python 3.11 and 3.13, including tests, lint, wheel and installed import. |
+| RC | [#2](https://github.com/SB-Chalmers/epsm_rc/pull/2) | [CI #3](https://github.com/SB-Chalmers/epsm_rc/pull/3) merged at `c9151d528d815610d54be586fb64a44951a521c8`; [release-head checks](https://github.com/SB-Chalmers/epsm_rc/actions/runs/38582742841) passed on Python 3.11 and 3.13, including the full suite and wheel. |
+| Database | [#2](https://github.com/SB-Chalmers/epsm_db/pull/2) | [Private dependency and PostGIS CI #3](https://github.com/SB-Chalmers/epsm_db/pull/3) merged at `485d85a6474cbf2e548b1c20226f7a0d50c31c29`; [release-head check](https://github.com/SB-Chalmers/epsm_db/actions/runs/38582941719) passed: 178 passed, 14 skipped on synthetic PostGIS fixtures; wheel, `pip check` and public imports passed. It does not validate a live national database. |
+| EPSM | [#2](https://github.com/SB-Chalmers/epsm/pull/2) | [CI #3](https://github.com/SB-Chalmers/epsm/pull/3) merged at `6b9c2effab06c8fb8477e2c2a28bbcc1cbc716b0`; [release-head checks](https://github.com/SB-Chalmers/epsm/actions/runs/38582751256) passed on Python 3.11 and 3.13, including the installed platform example. |
+| Workflows | [#2](https://github.com/SB-Chalmers/epsm_workflows/pull/2) | [CI #3](https://github.com/SB-Chalmers/epsm_workflows/pull/3) merged at `4b1ee81ad55a7409740c59d4b5337ccf0c9dab52`; [release-head checks](https://github.com/SB-Chalmers/epsm_workflows/actions/runs/38582682821) passed on Python 3.11 and 3.13, including installed imports and retired-module exclusion. |
+| Studies | [#2](https://github.com/SB-Chalmers/epsm_studies/pull/2) | [CI #3](https://github.com/SB-Chalmers/epsm_studies/pull/3) merged at `8dbb440fa6fbf210a5ca823b91a74ba09748bdf1`; [release-head checks](https://github.com/SB-Chalmers/epsm_studies/actions/runs/38581087123) passed on Python 3.11 and 3.13. |
 | Handbook | [#3](https://github.com/SB-Chalmers/epsm_development/pull/3) | [Docs workflow update #4](https://github.com/SB-Chalmers/epsm_development/pull/4) merged at `8efc56f2bd46d51b4145477fa6cc7c8bc3238f51`; hosted Python 3.11, 3.13 and API documentation jobs passed on the release PR |
 
 The current candidate was checked locally with `python -m pytest -q` using
@@ -204,7 +204,10 @@ history synchronisation are complete.
   the key and secret without explicit approval. After the user's approval, a
   read-only Data deploy key was added and its private half stored only as Core's
   Actions secret. The temporary local key files were removed. The later hosted
-  result is recorded above; other private dependency CI access remains separate.
+  result is recorded above. The remaining required private checkouts use
+  repository-specific, read-only deploy keys approved for this release. Their
+  private halves are stored as Actions secrets in the consuming repositories;
+  temporary local key files were removed.
 - Vera transport and resume have offline checks. SSH staging, Slurm submission
   and retrieval on the live cluster still require a deployment verification.
   Online SMHI acquisition also remains unverified in this pass.
