@@ -1,5 +1,7 @@
 # EPSM Ecosystem Review
 
+This is the pre-refactor snapshot. Use the [harmonisation guide](harmonisation.md) and [review register](harmonisation-review.md) for current development APIs and checks.
+
 **Snapshot: 13 October 2026.** This review records the state found during the ecosystem discussion and local audits. It is a starting point for shared development, not a claim that every checkout, release or scientific result has been independently validated.
 
 EPSM is intended to become the research group's Swedish national urban building energy modelling platform. The packages already contain useful building physics, assumptions, weather processing, evidence and study machinery. The main problem is that they grew separately: several packages assemble models or interpret the same evidence, while researchers encounter different public APIs, documentation and readiness claims.

@@ -6,6 +6,8 @@ Put short examples of individual public calls in [docstrings](docstrings-and-api
 
 Use today's public APIs in runnable examples. Keep future API ideas in clearly labelled Markdown sketches. A design sketch is not a successful integration check.
 
+The [study archive policy](study-archive-policy.md) retires outdated named investigations and their specific scripts. Small teaching examples of the maintained APIs remain active, including generic study setup, local/Vera execution, parametric designs, global sensitivity analysis and renovation search. A named illustrative example alone is not a retired study.
+
 ## A short progression
 
 Number notebooks so a new reader knows where to start. Use descriptive names and keep one main question per notebook.
@@ -62,7 +64,7 @@ Use small assertions about useful behaviour. Do not treat a coverage percentage,
 
 Start each integration notebook by explaining the handoff: the input, its units and evidence, the collaborator that owns the next operation, and the returned result. Show a single successful case before scaling up.
 
-For example, a current catalogue notebook may call `epsm_data.load_parametric_catalogue()` and inspect a selected slot. A weather notebook may call `smhi2epw.read_epw()` on a declared local fixture before generating an AMY. Label the current package names honestly until renames are implemented. Only add the planned Catalogue, Database or umbrella calls when their public APIs exist and have been tested.
+For example, a catalogue notebook may use `epsm_data.Catalogue.load()` and `catalogue.for_year(...)` to inspect a selected archetype. The parametric view remains available through `load_parametric_catalogue()`. A weather notebook may call `smhi2epw.read_epw()` on a declared local fixture before generating an AMY. The [harmonisation guide](harmonisation.md) identifies the current Building API; examples must state whether they target a development branch or a released package.
 
 An integration notebook may require EnergyPlus, a database, network access or other EPSM packages. State those requirements clearly. When the notebook supports a release promise, its dedicated release check must provide those resources and fail if they are missing. Do not catch a missing dependency and report success, silently substitute made-up results or count a skipped check as passing evidence.
 

@@ -1,5 +1,7 @@
 # EPSM development roadmap
 
+**Historical planning snapshot, 13–14 October 2026, before implementation.** This page preserves the original sequence and unresolved questions. Its proposed names, APIs and statuses are superseded by the [current harmonisation guide](harmonisation.md), [file map](harmonisation-file-map.md) and [repository review register](harmonisation-review.md).
+
 **Working direction: 13 October 2026.** This roadmap turns the [ecosystem review](ecosystem-review.md) into manageable work. It keeps useful implementations, gives each responsibility one owner and makes the platform easier for researchers and new contributors to understand.
 
 **Naming decision: 14 October 2026.** Keep `epsm_data`, use `epsm_db` for the evidence database, `epsm_development` for this handbook and `epsm_studio` for the existing web application. The [harmonisation review](harmonisation.md) records current implementation and pending responsibility decisions.
