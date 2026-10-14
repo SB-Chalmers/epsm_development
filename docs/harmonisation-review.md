@@ -23,8 +23,8 @@ not certification that every older module meets every handbook convention.
 | --- | --- | --- |
 | `epsm_data` | Shared construction classes remain Core-independent. Fixed layered-window graph roundtrips, preserved identities/order/fractions, and corrected explorer expectations after adding SE.07. One current catalogue replaces active historical override chains; preserved studies retain source history. | Construction/serialization and explorer regressions passed; all 720 established numerical source cells remain unchanged. SE.07 has independent recipes and no renovation-state selector. Final run details follow below. |
 | `epsm_core` | Fixed dropped explicit zero-window-ratio facade overrides. Preserved physical quantities and occurrence identities through targeted renovations. Unsupported geometry is reported. Fixed AMY calendar inference and weather provenance/receipt preservation after the weather handoff review. | Authoring/readiness/renovation regressions and real EnergyPlus execution passed. Hosted CI still needs private Data dependency access. Complex geometry outside the new bridge remains a declared limit. |
-| `epsm` | Fixed source overrides being mistaken for observations, evaluation artifact overwrites, editable result attributes and incomplete cache identities. Common energy accounting and automatic LCA retain separate identities and failures. | Both real annual engines ran through `Building.simulate`; immutable results, multiple evaluations, evidence comparison and path-specific LCA have regression coverage. Clean wheel installation passed; final installed platform regressions and example reruns are being recorded below. |
-| `epsm_db` | Fixed portable nested geometry decoding, Stock archetype links, optional integration dependencies and bounded inspection. Database/Stock/BuildingRecord keep one underlying evidence implementation. Model conversion delegates to EPSM. | Offline record/query/adapter regressions passed. No live schema migration or ingestion change was made. Live restricted-account, PostGIS and release-deployment checks are not inferred from offline tests. |
+| `epsm` | Fixed source overrides being mistaken for observations, evaluation artifact overwrites, editable result attributes and incomplete cache identities. Common energy accounting and automatic LCA retain separate identities and failures. | Both real annual engines ran through `Building.simulate`; immutable results, multiple evaluations, evidence comparison and path-specific LCA have regression coverage. Clean installed platform regressions, the full example and both real engines passed. The final record conversion regression preserves its coordinate reference system (CRS). |
+| `epsm_db` | Fixed portable nested geometry decoding, Stock archetype links, optional integration dependencies, coordinate reference preservation and bounded inspection. Database/Stock/BuildingRecord keep one underlying evidence implementation. Model conversion delegates to EPSM. | Offline record/query/adapter regressions passed. No live schema migration or ingestion change was made. Live restricted-account, PostGIS and release-deployment checks are not inferred from offline tests. |
 | `epsm_rc` | Preserved the standalone 5R1C numerical solver through renaming. Corrected FTX heat-recovery accounting in the Core adapter, settings identity and unsupported-input reporting. A clean wheel environment exposed a read-only solar array under pandas 3; fixed in `2139c48`. | Standalone and adapter tests passed. Reduced-order assumptions remain explicit; a successful run does not establish agreement with measured buildings or EnergyPlus. |
 | `epsm_lca` | Fixed mutable nested contributions, overflow handling and unknown quantity treatment. Missing factors or quantities remain incomplete, and like-for-like replacements retain installation/removal flows. | Assessment and EPSM integration regressions passed. Implemented modules and reference period are explicit; automatic future replacements and end-of-period demolition are outside the current method. |
 | `epsm_workflows` | Fixed local/Vera checkpoint identity, weather-change detection, remote result merge conflicts and runtime identity. Preserved successful attempts, added operation logging and bounded tree inspection. | Parametric/GSA, renovation search and offline transport checks exist. No live Vera job has run in this harmonisation pass. |
@@ -35,8 +35,8 @@ not certification that every older module meets every handbook convention.
 
 ## Evidence record
 
-This register is being completed as the final verification runs finish. Counts
-refer to stated commands and environments; rerunning a subset does not create an
+This register records the completed verification checkpoint. Counts refer to
+stated commands and environments; rerunning a subset does not create an
 additional independent full-suite count. Missing services, skipped tests and
 deselected integration tests remain visible.
 
@@ -51,9 +51,11 @@ checks; synthetic factors are unsuitable for research conclusions.
 The package test environment is Python 3.13.5 with the coordinated development
 packages installed. All nine platform packages, including the weather package,
 built and installed as wheels into a clean environment. `pip check` reported no
-broken requirements. Installed LCA and Studies tests passed; final EPSM, Workflows,
-example and engine reruns are still being recorded. A successful installation is
-reported separately from those behavioural checks.
+broken requirements. All nine package imports resolved inside the clean
+`/tmp/epsm-wheel-clean` environment. Installed package tests, the example and both
+real engines completed. The installed catalogue roundtripped all 35 current
+construction graphs, and the Studies resource smoke check resolved 9 materials.
+A successful installation is reported separately from those behavioural checks.
 
 ### Scoped package checks at this checkpoint
 
@@ -64,18 +66,21 @@ environment. They are checkpoints, not a summed platform test count.
 | --- | --- |
 | Data | Final full `pytest -q`: **251 passed, 1 skipped** in 433.56 seconds. This includes the corrected explorer failures. Shared graph checks had separately passed 20 with 1 skip. |
 | Core | The broad suite passed 744 with 9 skipped and 21 deselected; its sandbox-blocked viewer test then passed separately. The subsequent focused authoring/regression run passed 34. Weather calendar, provenance and receipt handoff checks passed 37. |
-| EPSM | Current platform regression run passed 8; actual annual EnergyPlus and RC evaluations completed as described above. |
-| Database | Offline suite passed 143 with 14 skipped and 34 deselected; a subsequent focused run passed 12. Live PostGIS checks remain separate. |
-| RC | Standalone and adapter suite passed 315 tests. After the pandas 3 solar-array correction, 7 installed adapter tests passed with pandas 3.0.6 and pvlib 0.16.1. |
+| EPSM | Clean installed platform suite passed **9**. The subsequent installed portable-record/CRS handoff suite passed **4** after the EPSM and DB wheels were refreshed. Actual annual EnergyPlus and RC evaluations and automatic LCA reproduced the values above. |
+| Database | Offline suite passed 143 with 14 skipped and 34 deselected; a subsequent focused run passed 12. The final installed portable-record/CRS handoff suite passed 4 after the EPSM and DB wheels were refreshed. Live PostGIS checks remain separate. |
+| RC | Clean installed suite passed **293**, with **23 optional legacy tests skipped** because `hplib` was absent; sandbox cache warnings were reported. All 6 installed adapter tests passed. The earlier development suite passed 315 before the new read-only-array regression. The clean environment uses pandas 3.0.6 and pvlib 0.16.1. |
 | LCA | Assessment suite passed 17 both locally and from the clean installed wheel; EPSM integration subset passed 4. |
-| Workflows | Latest focused execution/transport/resume run passed 20, including logging, remote conflicts and runtime identity. Final installed rerun is pending. |
+| Workflows | Focused execution/transport/resume suite and clean installed rerun each passed **20**, including logging, remote conflicts and runtime identity. |
 | Studies | Protocol suite passed 6, also from the clean installed wheel. Archived resource smoke check resolved 9 materials. Transfer manifests verified all 263 archived source files. |
 | smhi2epw | Offline suite passed 46. Source unchanged; no live provider acquisition was performed. |
 | Handbook | `python3 scripts/check_docs.py`: 23 Markdown files, 165 local links, 10 Python syntax examples, 35 template doctests and 3 notebook/templates with 10 cells passed. `python3 -m unittest discover -s tests -v`: 11 passed. `python3 scripts/run_examples.py`: both teaching notebooks passed. |
 
 The handbook's new footprint/quantity example was also run against the installed
 development packages. It accepts an explicit metric Shapely Polygon and retains
-quantity readiness before energy inputs are complete.
+quantity readiness before energy inputs are complete. The installed platform
+walkthrough completed record conversion, quantities, renovation, simulation, LCA
+and optimisation: **2 alternatives evaluated, 1 Pareto alternative**. Generated
+`outputs/` directories are ignored in the affected repositories.
 
 ## Development publication
 
@@ -93,16 +98,18 @@ record a merge, release promotion or hosted CI success.
 | EPSM | [epsm #1](https://github.com/SB-Chalmers/epsm/pull/1) | `dev` |
 
 Core's branch remains local while approval for private dependency credentials is
-pending. The handbook review follows this verification checkpoint.
+pending. The handbook review includes this verification checkpoint.
 
 ## Remaining deployment and adoption work
 
-- Hosted Core CI requires read access to private `epsm_data`. Automatic approval
-  review rejected creating a read-only deploy key and storing its private half as
-  a Core repository secret without explicit approval. The approval request is
-  pending; local test success is not a hosted CI result.
+- Hosted Core CI is configured for read-only SSH dependency checkout using
+  `EPSM_DATA_DEPLOY_KEY`. Automatic approval review rejected creating that key and
+  storing its private half as a Core repository secret without explicit approval.
+  No credential was created; the user approval request remains pending. Core
+  publication stays local, and local test success is not a hosted CI result.
 - Vera transport and resume have offline checks. SSH staging, Slurm submission
   and retrieval on the live cluster still require a deployment verification.
+  Online SMHI acquisition also remains unverified in this pass.
 - The new RC and LCA repositories exist privately under SB-Chalmers with checked
   baseline `main` and `dev` branches. Development changes follow the ordinary
   feature-branch review policy; this register does not claim release promotion.
