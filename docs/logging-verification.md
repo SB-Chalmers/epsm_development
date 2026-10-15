@@ -10,7 +10,7 @@ verbosity did not change RC scalars, run identity or the Building snapshot.
 | Owner | Full installed suite | Final logging-focused checks |
 | --- | --- | --- |
 | Data | 252 passed, 6 skipped | 6 passed |
-| Core | 860 passed, 9 skipped; 29 engine tests deselected | 4 passed |
+| Core | 860 passed, 9 skipped; 29 engine tests deselected | 5 passed |
 | RC | 415 passed, 28 skipped; 4 engine tests deselected | 3 passed |
 | LCA | 81 passed | 28 passed |
 | Database | 203 passed, 14 skipped | Includes real synthetic PostGIS ingestion, queries and native backup/restore |
@@ -44,14 +44,18 @@ exact source revisions before running handoff tests and notebooks.
 | Repository | Development base | Logging implementation commit |
 | --- | --- | --- |
 | `epsm_data` | `909179951815332a3b8d3bf106e06aa4f7e969dd` | `98c1f5b4cc215545e769de7ad61788c5e1a7b831` |
-| `epsm_core` | `4f7f746d1158893f73e0cf601b62fe41c35f5c73` | `c78361200a0bcbdc9b026f2858a458c1ff901fb0` |
+| `epsm_core` | `4f7f746d1158893f73e0cf601b62fe41c35f5c73` | `339f63241999050ac7038ecfd40184ce1764b89c` |
 | `epsm_rc` | `026d9fc93ad8c07913ecb56e20b57288b45dc318` | `d24c351764086f30c6c7be358d0e82a5d6019b8c` |
 | `epsm_lca` | `fb4a8b6b4da8a094d98877a08de67b78b34e426b` | `7faa48f48f8da93d1ea495595b94a8d18ce5a5cf` |
-| `epsm_db` | `5c67ad94dbc3c48bc8de8ba7a5688a37207f2c03` | `d8ab91ef7d65e083537d4a663d1fbd5c9a50427e` |
+| `epsm_db` | `5c67ad94dbc3c48bc8de8ba7a5688a37207f2c03` | `aa369ec11846d30bd74ab5c55b21e89c8dc8580a` |
 | `smhi2epw` | `434d7b26de1a6da88e156bebc39e246c615c4ba0` | `e404efd4a095037a2fc46a11a812f90dbf21fb2f` |
 | `epsm_studies` | `8abbcea3bd2c204e9e34e903ed03f3d10f0de708` | `ab14536347f7916df0e71c295f442f9f9dd409d0` |
 
 The umbrella and handbook record their own final commits through their PR heads.
+Database `dev` advanced during implementation; its metadata update to 0.2.0
+was merged into the logging branch, preserving both release and logging
+documentation. The logging changes introduce no schema migration.
+
 No stable release was promoted or tagged. GitHub branch API checks reported
 `protected: false` for `main` and `dev` in all nine affected repositories. This
 change follows the feature/PR process; repository protection remains an
