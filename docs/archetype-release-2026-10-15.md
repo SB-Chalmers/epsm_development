@@ -43,6 +43,26 @@ platform-example checks. API documentation checks remain required in hosted CI.
 These checks establish software integration with explicit teaching assumptions;
 they do not establish accuracy against observed buildings.
 
+### Completed local candidate checks
+
+An isolated Python 3.12.3 wheel installation passes dependency checks. Data passes
+356 tests with five optional skips; Core passes 970 with nine optional skips and
+29 standalone engine tests excluded; Database passes 208 with 14 optional skips;
+EPSM passes 120 without skips. The Core version assertion initially expected
+0.3.0; correcting it to 0.4.0 produced the complete passing rerun.
+
+All three Data notebooks pass with Core/EPSM absent and their imports blocked.
+Five EPSM and six LCA notebooks pass in fresh kernels. The installed platform
+handoff, both required archetype RC cases and actual EnergyPlus 24.2 pass.
+Handbook links, 11 unit tests, both learning notebooks, three installed-platform
+snippets and the Sphinx API example pass.
+
+The [candidate receipt](archetype-release-candidate-evidence-2026-10-15.json)
+records candidate revisions, wheel hashes and local results. These local checks
+do not replace the hosted Python 3.11/3.13 gates or the required independent
+maintainer approval. Dependencies still need final approved release identities
+before downstream promotion. No release tag or publication is established here.
+
 ## Hosted protection limitation and manual gates
 
 The maintainer explicitly selected manual release gates for this synchronization.

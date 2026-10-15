@@ -1,0 +1,265 @@
+{
+  "format": 1,
+  "date": "2026-10-15",
+  "scope": "Local release candidates; publication, final release pins and independent maintainer approval remain pending. Software integration only, not empirical building validation.",
+  "python": "3.12.3",
+  "packages": {
+    "epsm_data": {
+      "revision": "6d7b24dcde23353a684f58c875309f129bb9ad06",
+      "version": "0.6.0"
+    },
+    "epsm_core": {
+      "revision": "334f398325fa63a0a75267408f004a2658066bcc",
+      "version": "0.4.0"
+    },
+    "epsm_rc": {
+      "revision": "d8f42ab69e61cfe580f234b20ddc47cf6d056e59",
+      "version": "0.4.0"
+    },
+    "epsm_lca": {
+      "revision": "00141d0500e717b4f18a9d69e158f0af2aae1934",
+      "version": "0.2.0"
+    },
+    "epsm_db": {
+      "revision": "12b47d2e74c0f4b7d26d0b77eb08403cb6ed07c2",
+      "version": "0.3.0"
+    },
+    "epsm_studies": {
+      "revision": "794921797533cfa3d8bde757658fb174932027b5",
+      "version": "0.2.0"
+    },
+    "smhi2epw": {
+      "revision": "f27d70c8fb665c13ca4263ebe6337f11e45cf73d",
+      "version": "1.2.0"
+    },
+    "epsm": {
+      "revision": "cc191863aa45f0b7a97161412fb09e323b944595",
+      "version": "0.3.0"
+    }
+  },
+  "wheel_sha256": {
+    "epsm_studies-0.2.0-py3-none-any.whl": "8f93a0b07cd646fdf60afa6cada3cbc26271d69367801d1392426584c31831d7",
+    "epsm_core-0.4.0-py3-none-any.whl": "203ba0a3c9965fa091e227c3d194b8d224ee7f6db0dcea6e774b465734fe20a5",
+    "epsm_db-0.3.0-py3-none-any.whl": "f6852b72998a4e5bf6da76e1c695294c48f38412effc112c460d94f9a829cae0",
+    "epsm_data-0.6.0-py3-none-any.whl": "d7f75c3e77a67c55c1d623e862b5e7dc022185c5d4e8c7494a89da25f576d614",
+    "smhi2epw-1.2.0-py3-none-any.whl": "b30c8cb97c08b22418e80e91d737d10f3d8ce6ab595db53f2fb9ec9ea07923b0",
+    "epsm_rc-0.4.0-py3-none-any.whl": "5a2ef73dfb21fa58d42d217fc9caca24ee0f5397d83999e9f4f67755ed8d6921",
+    "epsm-0.3.0-py3-none-any.whl": "807b89d70d74c95125b581a4c8b0270ad8580c9d133fce3747776d2016a9b80a",
+    "epsm_lca-0.2.0-py3-none-any.whl": "6b662d3a20685aa292e2a09eb54674795584d2460c96e16319ac7fb694e59bad"
+  },
+  "test_results": {
+    "Data": {
+      "tests": 361,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 5,
+      "passed": 356
+    },
+    "Core": {
+      "tests": 979,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 9,
+      "passed": 970
+    },
+    "Database": {
+      "tests": 222,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 14,
+      "passed": 208
+    },
+    "EPSM": {
+      "tests": 120,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 120
+    }
+  },
+  "core_standalone_engine_tests_excluded": 29,
+  "notebooks": {
+    "data_only": 3,
+    "epsm": 5,
+    "lca": 6,
+    "handbook_learning": 2
+  },
+  "data_only": {
+    "python": "3.12.3 (v3.12.3:f6650f9ad7, Apr  9 2024, 08:18:47) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "data_version": "0.6.0",
+    "core_epsm_installed": false,
+    "core_epsm_imports_blocked": true,
+    "passed_notebooks": [
+      "01_operating_profiles.ipynb",
+      "02_author_archetype.ipynb",
+      "03_catalogue_authoring.ipynb"
+    ]
+  },
+  "required_archetype_gate": {
+    "format": 1,
+    "status": "passed",
+    "synthetic_inputs": true,
+    "live_services_used": false,
+    "wheel_imports_required": true,
+    "energyplus_version": "EnergyPlus, Version 24.2.0-94a887817b",
+    "compatibility_receipt": {
+      "format": 1,
+      "mode": "pinned",
+      "python": "3.12.3",
+      "packages": {
+        "epsm_data": {
+          "revision": "6d7b24dcde23353a684f58c875309f129bb9ad06",
+          "version": "0.6.0"
+        },
+        "epsm_core": {
+          "revision": "334f398325fa63a0a75267408f004a2658066bcc",
+          "version": "0.4.0"
+        },
+        "epsm_rc": {
+          "revision": "d8f42ab69e61cfe580f234b20ddc47cf6d056e59",
+          "version": "0.4.0"
+        },
+        "epsm_lca": {
+          "revision": "00141d0500e717b4f18a9d69e158f0af2aae1934",
+          "version": "0.2.0"
+        },
+        "epsm_db": {
+          "revision": "12b47d2e74c0f4b7d26d0b77eb08403cb6ed07c2",
+          "version": "0.3.0"
+        },
+        "epsm_studies": {
+          "revision": "794921797533cfa3d8bde757658fb174932027b5",
+          "version": "0.2.0"
+        },
+        "smhi2epw": {
+          "revision": "f27d70c8fb665c13ca4263ebe6337f11e45cf73d",
+          "version": "1.2.0"
+        },
+        "epsm": {
+          "revision": "cc191863aa45f0b7a97161412fb09e323b944595",
+          "version": "0.3.0"
+        }
+      }
+    },
+    "packages": {
+      "epsm_data": {
+        "revision": "6d7b24dcde23353a684f58c875309f129bb9ad06",
+        "version": "0.6.0",
+        "import_path": "/private/tmp/epsm-archetype-release/venv/lib/python3.12/site-packages/epsm_data/__init__.py",
+        "editable": false
+      },
+      "epsm_core": {
+        "revision": "334f398325fa63a0a75267408f004a2658066bcc",
+        "version": "0.4.0",
+        "import_path": "/private/tmp/epsm-archetype-release/venv/lib/python3.12/site-packages/epsm_core/__init__.py",
+        "editable": false
+      },
+      "epsm_rc": {
+        "revision": "d8f42ab69e61cfe580f234b20ddc47cf6d056e59",
+        "version": "0.4.0",
+        "import_path": "/private/tmp/epsm-archetype-release/venv/lib/python3.12/site-packages/epsm_rc/__init__.py",
+        "editable": false
+      },
+      "epsm_lca": {
+        "revision": "00141d0500e717b4f18a9d69e158f0af2aae1934",
+        "version": "0.2.0",
+        "import_path": "/private/tmp/epsm-archetype-release/venv/lib/python3.12/site-packages/epsm_lca/__init__.py",
+        "editable": false
+      },
+      "epsm_db": {
+        "revision": "12b47d2e74c0f4b7d26d0b77eb08403cb6ed07c2",
+        "version": "0.3.0",
+        "import_path": "/private/tmp/epsm-archetype-release/venv/lib/python3.12/site-packages/epsm_db/__init__.py",
+        "editable": false
+      },
+      "epsm_studies": {
+        "revision": "794921797533cfa3d8bde757658fb174932027b5",
+        "version": "0.2.0",
+        "import_path": "/private/tmp/epsm-archetype-release/venv/lib/python3.12/site-packages/epsm_studies/__init__.py",
+        "editable": false
+      },
+      "smhi2epw": {
+        "revision": "f27d70c8fb665c13ca4263ebe6337f11e45cf73d",
+        "version": "1.2.0",
+        "import_path": "/private/tmp/epsm-archetype-release/venv/lib/python3.12/site-packages/smhi2epw/__init__.py",
+        "editable": false
+      },
+      "epsm": {
+        "revision": "cc191863aa45f0b7a97161412fb09e323b944595",
+        "version": "0.3.0",
+        "import_path": "/private/tmp/epsm-archetype-release/venv/lib/python3.12/site-packages/epsm/__init__.py",
+        "editable": false
+      }
+    },
+    "wheels": {
+      "epsm-0.3.0-py3-none-any.whl": "807b89d70d74c95125b581a4c8b0270ad8580c9d133fce3747776d2016a9b80a",
+      "epsm_core-0.4.0-py3-none-any.whl": "203ba0a3c9965fa091e227c3d194b8d224ee7f6db0dcea6e774b465734fe20a5",
+      "epsm_data-0.6.0-py3-none-any.whl": "d7f75c3e77a67c55c1d623e862b5e7dc022185c5d4e8c7494a89da25f576d614",
+      "epsm_db-0.3.0-py3-none-any.whl": "f6852b72998a4e5bf6da76e1c695294c48f38412effc112c460d94f9a829cae0",
+      "epsm_lca-0.2.0-py3-none-any.whl": "6b662d3a20685aa292e2a09eb54674795584d2460c96e16319ac7fb694e59bad",
+      "epsm_rc-0.4.0-py3-none-any.whl": "5a2ef73dfb21fa58d42d217fc9caca24ee0f5397d83999e9f4f67755ed8d6921",
+      "epsm_studies-0.2.0-py3-none-any.whl": "8f93a0b07cd646fdf60afa6cada3cbc26271d69367801d1392426584c31831d7",
+      "smhi2epw-1.2.0-py3-none-any.whl": "b30c8cb97c08b22418e80e91d737d10f3d8ce6ab595db53f2fb9ec9ea07923b0"
+    },
+    "cases": [
+      {
+        "route": "catalogue",
+        "evaluations": [
+          {
+            "engine": "epsm_rc",
+            "id": "b4887f7078c0439fbcb52dbbce283dda",
+            "annual_delivered_energy_kwh": 52171.74763683694,
+            "requirements": []
+          },
+          {
+            "engine": "energyplus",
+            "id": "47edc136c7044bfca625d228d541bea9",
+            "annual_delivered_energy_kwh": 54959.06411813242,
+            "requirements": []
+          }
+        ],
+        "application": {
+          "format": "epsm-archetype-application-1",
+          "archetype_id": "MF_SE02_EXISTING_CALIBRATED",
+          "mode": "replace",
+          "requirements": [],
+          "unmatched": [
+            "construction:INT_WALL_NONLOADBEARING",
+            "construction:BASEMENT_WALL",
+            "operating_profile.common_use (whole-building application)"
+          ]
+        }
+      },
+      {
+        "route": "authored",
+        "evaluations": [
+          {
+            "engine": "epsm_rc",
+            "id": "f3b0fb3063d74f4e9c518fdb838a6908",
+            "annual_delivered_energy_kwh": 38673.14625109607,
+            "requirements": []
+          }
+        ],
+        "application": {
+          "format": "epsm-archetype-application-1",
+          "archetype_id": "installed:authored",
+          "mode": "replace",
+          "requirements": [],
+          "unmatched": [
+            "construction:INT_WALL_NONLOADBEARING",
+            "construction:BASEMENT_WALL"
+          ]
+        }
+      }
+    ],
+    "full_report": "Retained with the local candidate artifacts: final-archetype-handoff/archetype-compatibility-report.json"
+  },
+  "protection": {
+    "hosted_enforcement": false,
+    "reason": "GitHub HTTP 403: private repositories under Free organization plan",
+    "selected_exception": "manual passing checks and independent maintainer approval; enforcement pending hosting upgrade"
+  },
+  "earlier_failure": "Core release identity test initially expected 0.3.0. Updated to 0.4.0; corrected full suite passed.",
+  "hosted_checks": "Data PR #16 hosted Python 3.11/3.13 pinned/development checks are tracked on GitHub. Other candidate hosted runs await sequential approved dependency releases.",
+  "review": "No independent maintainer approval recorded at this checkpoint."
+}
