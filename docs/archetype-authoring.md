@@ -1,10 +1,11 @@
 # Archetype authoring and building application
 
-**Status: accepted implementation direction, 15 October 2026; implementation pending.**
-This contract defines the next development series. It does not describe an
-implemented `apply_archetype` API. The [harmonisation guide](harmonisation.md)
-records today's interfaces. The [implementation series](archetype-implementation.md)
-records the ordered changes and their verification gates.
+**Implemented on dev, 15 October 2026.** Catalogue selection and custom authoring
+use the same physical classes and building-application route. The
+[verification register](archetype-verification.md) records the merged PRs and exact
+installed package combination. These development changes do not create a release.
+The [harmonisation guide](harmonisation.md) describes the platform interfaces and
+the [implementation series](archetype-implementation.md) records the approved scope.
 
 ## Purpose and ownership
 
@@ -35,52 +36,112 @@ automatically.
 
 This hierarchy follows Djamila's original EPSM Data class diagram and
 material-to-building model. The extension preserves that composition and adds
-independently reusable definitions. The diagram is the target design, with
-ownership defined above.
+independently reusable definitions. The diagram shows composition and package ownership. `CoreBuilding` labels
+Core's existing `Building` base class; it is not a second physical model.
 
 ```mermaid
 classDiagram
-    class Archetype {
-        archetype_id
-        display_name
-        construction_year : optional
-        building_typology
-        source_references
-        notes
-        with_changes()
+    namespace Data {
+        class Archetype {
+            archetype_id
+            display_name
+            construction_year : optional
+            building_typology
+            source_references
+            notes
+            with_changes()
+        }
+        class ConstructionSet {
+            version_id
+            valid_from_year : optional
+            elements
+        }
+        class Element {
+            name
+            application
+            components
+            u_value
+        }
+        class WindowElement {
+            u_value
+            shgc
+            vt
+        }
+        class Component {
+            layers
+            shearing_layer
+        }
+        class Layer {
+            materials
+            thickness
+            is_composite
+        }
+        class Material {
+            uuid
+            conductivity
+            density
+            specific_heat
+            embodied_carbon
+        }
+        class OperatingProfile {
+            profile_id
+            values
+            source_references
+        }
+        class HVACTemplate {
+            template_id
+            values
+            source_references
+        }
+        class EnvelopePerformance {
+            infiltration_ach
+            infiltration_l_s_m2
+            infiltration_reference_basis
+            thermal_bridge_uplift_fraction
+        }
     }
-    class ConstructionSet
-    class Element
-    class Component
-    class Layer
-    class Material
-    class OperatingProfile
-    class HVACTemplate
-    class EnvelopePerformance
-    class Building {
-        geometry
-        elements
-        operation
-        hvac
-        readiness()
+    namespace Core {
+        class CoreBuilding {
+            geometry
+            elements
+            operation
+            hvac
+            assign_inputs()
+            readiness()
+        }
+        class ResolvedOperatingProfile
     }
-    class ArchetypeApplicationReport
-
+    namespace EPSM {
+        class Building {
+            archetype_applications
+            apply_archetype()
+        }
+        class ArchetypeApplicationReport
+    }
     Archetype "1" o-- "0..1" ConstructionSet : construction definitions
     Archetype "1" o-- "0..1" OperatingProfile : operating assumptions
-    Archetype "1" o-- "0..1" HVACTemplate : system assumptions
+    Archetype "1" o-- "0..1" HVACTemplate : explicit system choice
     Archetype "1" o-- "0..1" EnvelopePerformance : infiltration and thermal bridges
-    ConstructionSet "1" o-- "0..*" Element : construction roles
+    ConstructionSet "1" o-- "0..*" Element : opaque construction roles
+    ConstructionSet "1" o-- "0..1" WindowElement : whole-window performance
     Element "1" o-- "1..*" Component : outside to inside
     Component "1" o-- "1..*" Layer : ordered layer slots
     Layer "1" o-- "1..*" Material : fraction and thickness
-    Building ..> Archetype : EPSM applies definitions
-    Building ..> ArchetypeApplicationReport : EPSM retains assignments
+    OperatingProfile ..> ResolvedOperatingProfile : Core converts
+    Building --|> CoreBuilding
+    Building ..> Archetype : consumes definitions
+    Building "1" o-- "0..*" ArchetypeApplicationReport : retains assignments
 ```
 
-Extend the existing `BuildingArchetype`, publicly exposed as `Archetype`; do not
-introduce another physical hierarchy. Add optional `operating_profile`,
-`hvac_template`, `envelope_performance`, source references and notes.
+`Material` is the public alias for `OpaqueMaterial`. The diagram omits the small
+`LayerSlot` and `LayerMaterial` values that carry order, fractions and thicknesses.
+Current catalogue windows use `WindowElement` whole-window U-value and solar/visible
+properties; they do not imply a newly authored multilayer glazing assembly.
+Applying those properties preserves the Building's existing opening geometry.
+
+The existing `BuildingArchetype`, publicly exposed as `Archetype`, includes
+optional `operating_profile`, `hvac_template`, `envelope_performance`, source
+references and notes. Catalogue and custom authoring use this same hierarchy.
 `EnvelopePerformance` describes infiltration with an explicit reference basis
 and thermal-bridge assumptions. Site-specific ground configuration belongs to
 the Building.
@@ -95,6 +156,9 @@ Read-only material, construction, profile and template indexes support reuse.
 Loading physical composition does not require a successful calibration check.
 Existing effective properties, targets and limitations stay separately
 inspectable; nominal layered U-values are not effective ground properties.
+Retained identifiers containing `CALIBRATED` identify inherited recipe snapshots.
+Loading or applying them does not establish a target assessment or empirical
+calibration of a real building.
 
 Complete archetype exchange uses format version 4; readers continue to accept
 versions 1–3. Preserve material identities, fractions, physical order, profiles,
@@ -103,7 +167,7 @@ Summary dictionaries are not the lossless exchange route.
 
 ## Applying definitions to a Building
 
-**Illustrative API — pending implementation in the owning packages:**
+**Runnable with the exact development combination in the verification register:**
 
 ```python
 from epsm import Building
@@ -139,6 +203,19 @@ assignment, with explicit missing requirements. Do not guess Atemp, convert
 source-reference ACH using an unrelated volume, or choose a project calendar to
 force readiness. Weather stays an evaluation input, outside the archetype.
 
+Operating profiles use Data's public selection functions and Core's
+`resolve_operating_profile`. Office and school need explicit year, active dates
+and calendar source. BEN DHW selection requires an explicit purpose; a custom
+partial use overlays only supplied fields on an existing use.
+
+Native area-based infiltration retains its declared reference basis. For Atemp,
+the caller's explicit load-reference area is a recorded interpretation choice,
+not a new measurement. Conflicting measured basis evidence remains unresolved.
+A conditioned-floor-area policy alone does not establish Atemp. TABULA-volume
+ACH is not reinterpreted as conditioned-volume ACH. Ground inputs remain on the
+building. Whole-building common-space assumptions are unmatched until a supported
+targeted assignment is supplied.
+
 Reports identify applied, replaced, retained and unmatched inputs, definitions,
 sources and remaining requirements. Retain the report through Building save/load
 and evaluations. Earlier evaluations, source observations and renovation lineage
@@ -151,8 +228,9 @@ series.
 
 ## Acceptance scenarios
 
-These extend [UC03](../use_cases/README.md#the-common-stories). They are planned
-acceptance requirements, not passing implementation claims.
+These extend [UC03](../use_cases/README.md#the-common-stories). The
+[verification register](archetype-verification.md) maps each requirement to its
+owning tests and records the completed gates and their scope.
 
 | ID | Scenario | Observable acceptance |
 | --- | --- | --- |

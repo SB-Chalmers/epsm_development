@@ -2,7 +2,7 @@
 
 The `epsm_development` handbook is the place to agree on the words we use and the information packages pass to each other. These agreements help independently developed packages work together and give researchers a familiar interface. Database refers to `epsm_db`; Catalogue refers to `epsm_data`.
 
-**Status: agreed ownership, 14 October 2026.** The [harmonisation guide](harmonisation.md) describes the implemented development API and its limits. These shared meanings also guide future additions; individual stored formats remain owned and versioned by their packages.
+**Implemented development ownership, 15 October 2026.** The [harmonisation guide](harmonisation.md) describes the implemented development API and its limits. These shared meanings also guide future additions; individual stored formats remain owned and versioned by their packages.
 
 ## What we mean by a shared model
 
@@ -25,10 +25,14 @@ Keep those relationships clear. The ordinary API should use familiar objects and
 | Footprint | A plan outline with its coordinate system, units, holes and disconnected parts where needed |
 | Building | A physical research model with geometry, fabric, operation and systems; weather is supplied to an evaluation |
 | Assumption | A declared modelling choice, including an adopted default or override |
-| Archetype | Currently a named construction set with classification and sources. The accepted [authoring contract](archetype-authoring.md) extends it with optional reusable operating profiles, system templates and envelope assumptions; that extension is pending implementation. |
-| ConstructionSet | Reusable construction Element assignments by role, independent of geometry, operation and installed systems |
+| Archetype | An immutable composition of optional construction definitions, operating profile, HVAC template and envelope assumptions, with classification and sources. Catalogue selection and custom authoring return the same type; incomplete definitions are allowed. See the [authoring guide](archetype-authoring.md). |
+| ConstructionSet | Reusable `Element` or `WindowElement` definitions by role, independent of geometry, operation and installed systems |
 | Material / Layer / Component / Element | The shared construction hierarchy: material constituents, layered compositions, ordered components and complete construction assemblies |
-| BuildingElement | A particular physical wall, roof, floor or window with geometry and an assigned construction Element |
+| BuildingElement | A particular physical wall, roof, floor or window with geometry and an assigned `Element` or whole-window `WindowElement` |
+| OperatingProfile | Data-owned portable operating assumptions and source definitions; Core expands schedules using the caller's project calendar |
+| HVACTemplate | Data-owned reusable system definition; selecting it is an explicit modelling choice and does not identify observed installed equipment |
+| EnvelopePerformance | Data-owned infiltration value, reference basis and thermal-bridge assumptions; site-specific ground configuration remains separate |
+| ArchetypeApplicationReport | EPSM's retained record of applied, replaced, retained and unmatched choices, sources, assumptions and unresolved requirements |
 | Profile | A named set of assumptions or schedules; qualify the name when its purpose is unclear |
 | Scenario | An independent Building alternative with declared changes and an identifiable renovation path; no dates or fixed stage slots are required |
 | Evidence release | A fixed published selection of database evidence and its processing history |
@@ -55,7 +59,7 @@ Use the same names in public methods, docstrings, logs, plot legends and noteboo
 | Information | Owner | Must preserve |
 | --- | --- | --- |
 | Building Record | Database | Real building and source identities, evidence release, components, observations, subject/scope, conflicts and missing-data reasons |
-| Construction and catalogue definition | Data | Material identities, fractions, physical order, current parameters, units, applicability and sources; saved evaluations keep the values they used |
+| Construction and catalogue definition | Data | Material identities, fractions, physical order, profiles/templates, envelope assumptions, units, applicability and sources; saved evaluations keep the values they used |
 | Weather object | Core | File content identity, location and simulation calendar; smhi2epw owns acquisition, generation and their provenance |
 | Physical Building model | Core | Geometry, fabric, operation, systems, physical units, reference bases, physical occurrences and assumptions |
 | Cross-package assembly | EPSM | The mapping from evidence and chosen definitions to Core inputs, with a report of choices and unresolved requirements |
@@ -67,7 +71,7 @@ Use the same names in public methods, docstrings, logs, plot legends and noteboo
 
 Use the owning package's public objects and validators. EPSM should not maintain a second physical model with a second set of validation rules. If an adapter needs a small intermediate value, explain why and keep it limited to that conversion.
 
-Packages must remain independently usable. Database and Catalogue do not need Core to represent their evidence or definitions. Data owns the lightweight construction classes shared by Core. Lower-level packages do not import EPSM to obtain a shared type. Named, lazy legacy forwarders are temporary integration compatibility routes, not a second domain implementation. This handbook is not a Python model package.
+Packages must remain independently usable. Database and Catalogue do not need Core to represent their evidence or definitions. Data owns the lightweight construction classes shared by Core. Lower-level packages do not import EPSM to obtain a shared type. Data exposes definition selection; Core exposes physical conversion and assignment; EPSM owns their assembly. Retired integration forwarders are listed in the owning package migration guides. This handbook is not a Python model package.
 
 ## Rules that cross package boundaries
 
@@ -94,7 +98,7 @@ For LCA, declare material flows, actual factors and sources, assessment modules,
 The current local route follows this sequence:
 
 1. Database returns a Record for one building from a fixed evidence release. Its certificate is still identified as the source of certificate-level observations.
-2. The caller selects documented constructions, HVAC and operating profiles from the current Data catalogue. EPSM preserves source evidence separately from modelling overrides. A saved evaluation retains the actual selected values.
+2. The caller selects a Data catalogue archetype or authors one using the same classes, and applies it to an already configured Building through EPSM. HVAC and project calendars remain explicit choices. The application report preserves assumptions separately from source observations; saved evaluations retain the actual definitions and reports.
 3. Core receives physical inputs and checks their units, geometry and meaning. The user can inspect and edit the Building without altering its source Record.
 4. `building.simulate(engine=..., weather=...)` freezes physical inputs, weather and assessment settings internally. Core runs EnergyPlus or RC runs its reduced model. Workflows can prepare and execute the same evaluation with retained attempts.
 5. EPSM normalizes energy outputs, runs LCA and appends the combined evaluation to `building.results`. An incomplete or failed assessment preserves the completed energy result. Workflows retains case outcomes and separate cache identities.
