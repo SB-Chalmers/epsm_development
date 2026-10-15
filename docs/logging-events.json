@@ -148,6 +148,11 @@
         "event": "simulation.district"
       },
       {
+        "operation": "run_one",
+        "module": "epsm_core.district",
+        "event": "simulation.district.building"
+      },
+      {
         "operation": "preflight_energyplus",
         "module": "epsm_core.preflight",
         "event": "simulation.preflight"
