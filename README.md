@@ -65,6 +65,11 @@ python3 scripts/run_examples.py
 
 The check verifies local files and heading links, Python example syntax, notebook structure, and the runnable examples in the templates. The small test suite checks that broken links and examples are reported clearly. Future API sketches are checked for syntax only. They are not executed or counted as working platform features.
 
+With the supported EPSM packages installed, also run
+`python scripts/check_platform_examples.py` to execute the handbook’s public
+authoring snippets. This optional check needs no database, weather or engine;
+simulation snippets retain their separately stated prerequisites.
+
 The notebook runner starts each learning notebook with fresh variables using only Python. It runs this handbook's small, plain-Python notebook examples. Package notebooks that use a database, EnergyPlus or notebook display tools need their declared environment and a real notebook runner.
 
 To check the Sphinx templates as well, use an environment with the optional documentation tools:
