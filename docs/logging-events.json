@@ -388,5 +388,38 @@
         "event": "study.protocol.save"
       }
     ]
+  },
+  "explicit_events": {
+    "epsm": [
+      "evaluation.energy.cache",
+      "evaluation.energy.started",
+      "evaluation.lca.cache",
+      "evaluation.lca.failed",
+      "evaluation.saved"
+    ],
+    "epsm_core": [
+      "simulation.engine.completed",
+      "simulation.engine.started"
+    ],
+    "epsm_data": [],
+    "epsm_db": [
+      "database.ingestion.progress"
+    ],
+    "epsm_rc": [],
+    "epsm_lca": [
+      "lca.factors.selected",
+      "lca.inputs.missing",
+      "lca.renovation.failed",
+      "lca.report.load.failed",
+      "lca.report.loaded",
+      "lca.report.save.failed",
+      "lca.report.saved",
+      "lca.step.completed"
+    ],
+    "smhi2epw": [],
+    "epsm_studies": [
+      "study.protocol.reused",
+      "study.protocol.selected"
+    ]
   }
 }
