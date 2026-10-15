@@ -129,13 +129,14 @@ Keep the reasons for missing, conflicting or unavailable values. Zero is a value
 
 ### Current Building API
 
-These calls use the development API. The default is a named illustrative reference building. A footprint or record can remain incomplete while the researcher supplies its constructions, systems and profiles.
+These calls use the current API. `Building()` creates an empty draft; the named
+illustrative preset supplies explicit teaching assumptions. A footprint or record can remain incomplete while the researcher supplies its constructions, systems and profiles.
 
 ```python
 from epsm import Building
 from shapely.geometry import Polygon
 
-reference = Building()
+reference = Building(preset="illustrative-reference")
 blank = Building.empty()
 building = Building.from_footprint(
     Polygon([(0, 0), (20, 0), (20, 12), (0, 12)]),
@@ -153,7 +154,7 @@ Supply inspected weather to the calculation. It belongs to the retained evaluati
 ```python
 from epsm import Building, Weather
 
-building = Building()
+building = Building(preset="illustrative-reference")
 weather = Weather.from_epw("weather.epw")
 result = building.simulate(
     engine="energyplus", weather=weather, directory="outputs/baseline"
