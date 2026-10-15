@@ -76,5 +76,5 @@ outside this rollout; Slurm adoption remains separate.
 Tests cover output controls, JSONL, context relationships and thread isolation,
 single traceback reporting, normal host logging and installed-package handoffs.
 Package tests and physical-result comparisons remain separate from log checks.
-The coordinated verification record must state exact revisions, executed
-examples and any external integrations that could not be checked.
+See the [verification record](logging-verification.md) for exact revisions, executed
+examples and external integrations that could not be checked.
