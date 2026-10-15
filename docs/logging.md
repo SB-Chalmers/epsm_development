@@ -1,7 +1,9 @@
 # Logging across packages
 
-This change is being implemented on coordinated `codex/uniform-logging`
-branches, with review into `dev`. It is not a released package promise.
+This contract is implemented in EPSM 0.2.0, Core 0.3.0, Data 0.5.0, Database
+0.2.0, RC 0.4.0, LCA 0.2.0, Weather 1.2.0 and Studies 0.2.0. Older supported
+collaborators remain callable; the full operation trace requires these
+instrumented versions. See the [release notes](../RELEASE_NOTES.md).
 
 ## Choose output once
 
