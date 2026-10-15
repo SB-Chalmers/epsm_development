@@ -39,9 +39,9 @@ This is software integration evidence, not a release or empirical validation.
 | 11 installed gates | [EPSM #18](https://github.com/SB-Chalmers/epsm/pull/18) | `c9c27bd54d6ef02791bdc8610bd198854093b320` |
 | 12 Data cleanup | [Data #15](https://github.com/SB-Chalmers/epsm_data/pull/15) | `9f69479c1d3914d1517670d3139b822d9c88f5f3` |
 | 13 Core cleanup | [Core #30](https://github.com/SB-Chalmers/epsm_core/pull/30) | `0794e365448f6348dd25c7d9a7dd3aa9f8979525` |
+| 14 acceptance | [Development #21](https://github.com/SB-Chalmers/epsm_development/pull/21) | This handbook PR; merge revision recorded by GitHub |
 
-The final handbook PR is linked after creation; its merge identity is available
-from that PR. Every implementation PR was
+The final handbook PR records its own merge identity in GitHub. Every implementation PR was
 reviewed by a separate agent and merged normally after its required hosted checks.
 Those automated reviews are identified as agent reviews, not human approvals.
 Earlier Actions billing startup failures were not counted as passes. Historical
