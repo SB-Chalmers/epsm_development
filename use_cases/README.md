@@ -22,6 +22,19 @@ Read the [package layout](../docs/project-layout.md) and [engineering style](../
 
 A story can be supported by several smaller tests. For example, UC04 includes passing an existing weather file between packages without going online. It also includes generating weather when explicitly requested; that step may need network access. Record which route was exercised; do not give the whole story a passing label because only one part ran.
 
+## Planned archetype extension
+
+UC03 will gain one operation for applying a catalogue or custom archetype to an
+existing geometrically configured Building. The accepted
+[authoring contract and class diagram](../docs/archetype-authoring.md) define
+AC01–AC11 for authoring, exchange, assignment, source preservation and installed
+engine handoffs. These acceptance scenarios are pending implementation; they do
+not change the evidence status of today's separate-assignment route above.
+
+The [implementation series](../docs/archetype-implementation.md) specifies the
+ordered PRs and the gate for retiring overlapping APIs. Each owning package adds
+tests and runnable examples as its behaviour becomes available.
+
 ## Where the work lives
 
 Keep tests of a package's rules with that package. Core tests its geometry, simulation and result meaning; Database tests evidence and restricted queries; Catalogue tests definitions and their source evidence; Weather tests acquisition and weather processing; Workflows tests execution and retained attempts.

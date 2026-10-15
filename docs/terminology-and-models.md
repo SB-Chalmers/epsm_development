@@ -25,7 +25,8 @@ Keep those relationships clear. The ordinary API should use familiar objects and
 | Footprint | A plan outline with its coordinate system, units, holes and disconnected parts where needed |
 | Building | A physical research model with geometry, fabric, operation and systems; weather is supplied to an evaluation |
 | Assumption | A declared modelling choice, including an adopted default or override |
-| Archetype | A named construction set with classification, applicability and source references; HVAC and operating profiles are separate choices |
+| Archetype | Currently a named construction set with classification and sources. The accepted [authoring contract](archetype-authoring.md) extends it with optional reusable operating profiles, system templates and envelope assumptions; that extension is pending implementation. |
+| ConstructionSet | Reusable construction Element assignments by role, independent of geometry, operation and installed systems |
 | Material / Layer / Component / Element | The shared construction hierarchy: material constituents, layered compositions, ordered components and complete construction assemblies |
 | BuildingElement | A particular physical wall, roof, floor or window with geometry and an assigned construction Element |
 | Profile | A named set of assumptions or schedules; qualify the name when its purpose is unclear |
