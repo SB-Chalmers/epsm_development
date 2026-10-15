@@ -29,6 +29,13 @@ checks against those tags, and publish GitHub release notes, wheels and verifica
 receipts. Do not publish to a package index. Bring released history back into
 `dev` through reviewed synchronization pull requests.
 
+The maintainer subsequently explicitly authorized the agent to merge Data
+preparation PR #16 instead of waiting for independent approval. It merged
+normally at `a0cc339ace364f9426b6eff9c39ef666cb698169`, preserving the exact
+checked candidate tree. This is human merge authorization, not an independent
+GitHub approval. Data release PR #17 targets `main`; its required checks and the
+remaining sequence's review authorization are tracked separately.
+
 ## Required verification
 
 Use Python 3.11 and 3.13 for the hosted package matrices. Require clean wheel
