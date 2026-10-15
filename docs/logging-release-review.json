@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-15",
+  "authorization": "Maintainer explicitly requested manual review, merging the logging PRs, and promotion into main.",
+  "review_findings_fixed": [
+    "RC completion records bind the calculated run identity and retain hour counts.",
+    "LCA completion records retain completeness and requirement or step counts.",
+    "Database ingestion method source text is preserved to avoid needless changes to its source-projection hash.",
+    "District engine completion records remain DEBUG while district lifecycle summaries remain INFO."
+  ],
+  "packages": {
+    "epsm": {
+      "version": "0.2.0",
+      "source_revision": "cdd5dc82753ae1ecd6a1efbf992821f13eaed8c4",
+      "source_tree": "1f7f1bb79f16ae098d0ff4b6b16d23f5c7ee59e8",
+      "wheel_sha256": "20bad76cbfc6c46bb3a191eae4185f7fe63ddc4330c849fe24b2078380779601"
+    },
+    "epsm_core": {
+      "version": "0.3.0",
+      "source_revision": "88ac5499ba41efb44e099f3579c19f64c50f62e5",
+      "source_tree": "71e81fe658f31746c88baca65553f6a0df87fcab",
+      "wheel_sha256": "8e9204a280c6a2f2a22c147a008025118a23c3130c2d4433084939092b997cb1"
+    },
+    "epsm_data": {
+      "version": "0.5.0",
+      "source_revision": "ac2c7b998f1b92d14650e578f31441d8e78c5f30",
+      "source_tree": "2f4e026611cc3f29f8d971b07487bdc7dad7c9c0",
+      "wheel_sha256": "a4d21c3415e389efc2aa2c9a8ea8858c0285983f93d2a5907e8a0cb9aa23263c"
+    },
+    "epsm_db": {
+      "version": "0.2.0",
+      "source_revision": "6c1a38f8e4d2b1ef8bbeefc13d334a92ef89d59d",
+      "source_tree": "f15af251c444423982b1ce97c5c66190c7b0fbef",
+      "wheel_sha256": "64370d55152a9b955884192e3f3db32f3a137db65cf18505438885ecc601c51c"
+    },
+    "epsm_rc": {
+      "version": "0.4.0",
+      "source_revision": "d49c8047fa47522873f1d09dfb389db90fde43aa",
+      "source_tree": "422ee4def66862c61e757ba759c92ce323ba209d",
+      "wheel_sha256": "4fab3d4018191c6837024dcf312ff936e484ae4bdd10ab8a2966f29597d73c27"
+    },
+    "epsm_lca": {
+      "version": "0.2.0",
+      "source_revision": "aff0330b0eed51477e3de3ba786f4c3fbc38c941",
+      "source_tree": "8db7eee198b7a3b7c6a6dcfd2131f42b9a34135f",
+      "wheel_sha256": "adeb838cd9061496fc46ae2344d97d96e5caed264dc7d04030acfef9bf6a11d9"
+    },
+    "smhi2epw": {
+      "version": "1.2.0",
+      "source_revision": "eced17d8c1946c42a0068e3066e39e1f709f2e37",
+      "source_tree": "346de1461ec3bb7b067ee29fedf2b6311bb6c99f",
+      "wheel_sha256": "deb82e4d2c8ec2b66b117cd1bbc65ce1f49e69a12628dc241754fc2c78b87fb2"
+    },
+    "epsm_studies": {
+      "version": "0.2.0",
+      "source_revision": "8856f2e17987fbad701c4593997da9bf4855bb37",
+      "source_tree": "3dda28c18f680095c620901134d3f02e8e831e80",
+      "wheel_sha256": "411f8f4a609348609d8b132d5ea80145499b5e36126d14da6d5d0b0d66fa89a3"
+    }
+  },
+  "hosted_checks": "Several jobs never started because GitHub reported failed account payments or an increased spending limit was needed. These are not passes.",
+  "limitations": [
+    "Local release validation uses Python 3.13 on macOS ARM64. Hosted multi-platform and Python-version matrices remain unverified where they could not run.",
+    "National source data, live weather providers and Slurm were not exercised.",
+    "Main and dev were reported unprotected; this task does not change repository protection or billing."
+  ],
+  "checks": {
+    "Data": "263 passed, 6 skipped",
+    "Core": "891 passed, 9 skipped, including real EnergyPlus cases",
+    "RC": "420 passed, 28 skipped, including required engine comparisons",
+    "LCA": "83 passed and 9 installed doctests",
+    "Database": "203 passed, 14 skipped with isolated PostgreSQL/PostGIS and native backup/restore",
+    "Weather": "265 offline passed, 7 pinned-engine cases passed; live provider cases excluded; mypy and Ruff passed",
+    "Studies": "10 passed",
+    "EPSM": "45 passed, including 18 controls and handoffs",
+    "examples": "Four EPSM notebooks, five LCA notebooks, one Data notebook and Weather engine notebook passed in fresh kernels",
+    "weather_to_core": "94 linked events and compiled model artifact",
+    "handbook": "29 Markdown files, 202 links, 14 Python syntax examples, 35 template doctests, 11 unit tests and 2 notebooks passed"
+  },
+  "engines": {
+    "Core and RC": "24.2.0-e7ecb2d53b macOS ARM64",
+    "Weather": "24.2.0-94a887817b macOS ARM64",
+    "weather_archive_sha256": "4e41937564737d1b8e496e09a53f9c8692f97fb077ad1cc7310f697c0d2d6423"
+  }
+}

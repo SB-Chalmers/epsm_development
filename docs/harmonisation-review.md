@@ -1,5 +1,44 @@
 # Harmonisation repository review
 
+## Stabilization status, 15 October 2026
+
+The current stabilization combination is Core/RC 0.3.0, EPSM/Database 0.2.0,
+LCA 0.2.0, Data 0.4.0, Studies 0.1.0 and smhi2epw 1.1.1. Exact source pins live
+in the [EPSM compatibility manifest](https://github.com/SB-Chalmers/epsm/blob/dev/compatibility.json).
+The [stabilization record](stabilization-2026-10-15.md) links the focused changes
+and local wheel evidence. Each compatibility run uploads its resolved commit identities and installed
+versions, including the EPSM commit represented by `self` in that manifest.
+Use those receipts with the run conclusion when citing verification.
+
+Current behavior includes explicit illustrative presets and RC policies, physical
+record and stock conversion, and complete portable source evidence in saved
+Buildings and evaluations. A missing input produces an inspectable draft;
+conversion does not simulate or acquire weather. Cell assignments remain
+assumptions, construction and system selections remain explicit, and failed
+records retain receipts. The former stock conversion is `to_epsm_legacy`.
+
+[EPSM compatibility CI](https://github.com/SB-Chalmers/epsm/actions/workflows/tests.yml)
+tests installed wheels on Python 3.11 and 3.13 with both pinned and supported
+`dev` dependencies. Its required handoff covers record and stock conversion,
+three annual RC states, renovation LCA, and saved/reloaded results. Package
+workflows provide their own regression checks, including disposable PostGIS
+checks for Database. A missing required dependency fails these checks.
+
+National source ingestion, dataset acceptance and dataset publication are separate
+operations. Transport tests and a script checksum establish delivery behavior;
+they do not establish completed national ingestion, accepted record quality, or
+publication. This stabilization does not restart the national pipeline or migrate
+a live database. Database wheel resources include the existing schema SQL and
+source inventory; source datasets remain external.
+
+Software execution is not scientific validation. RC approximations, unresolved
+record evidence, certificate/subject scope, assumed construction and climate
+factors, and LCA module boundaries must remain visible. Weather acquisition and
+measured-building validation require separate evidence. Workflows and Studio are
+excluded from this stabilization; their entries below are historical.
+
+## Historical review: 14 October 2026
+
 **Review date: 14 October 2026.** Each repository has a dedicated review agent.
 Reviews run in batches because only three worker agents can run concurrently.
 The reference is this `epsm_development` handbook, particularly
@@ -13,7 +52,7 @@ development route is not a stable release or evidence of prediction accuracy.
 The [architecture guide](harmonisation.md) describes its supported scope; the
 [file map](harmonisation-file-map.md) records transfers and archive destinations.
 
-## Current archive and review status
+## Archive and review status at that checkpoint
 
 **Scope update, 14 October 2026, after the checkpoint below.** Reusable Workflows
 execution, parametric/GSA and renovation search remain active, as does Studies
@@ -229,7 +268,7 @@ after their release merges and `dev` history sync. Data's divergent historical
 `DEV` was retained. Local checkout branches with unpublished work were left
 untouched.
 
-## Remaining deployment and adoption work
+## Historical deployment and adoption notes
 
 - Hosted Core CI uses read-only SSH dependency checkout via
   `EPSM_DATA_DEPLOY_KEY`. Automatic approval review initially rejected creating

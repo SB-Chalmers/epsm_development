@@ -41,6 +41,12 @@ are separate choices. Layers preserve parallel fractions and constituent
 thicknesses; components preserve explicit order. Immutable value objects offer
 validated replacement methods. A Building owns independent assignments.
 
+The accepted [archetype authoring contract](archetype-authoring.md) extends this
+model with optional operation, system and envelope definitions and one EPSM
+application operation. That extension is pending in the
+[ordered implementation series](archetype-implementation.md); the runnable APIs
+below remain the current route until the new package checks pass.
+
 Data's Element is a construction recipe. Core's BuildingElement is an actual
 physical wall, roof, floor or window with geometry and an assignment. Material
 inventory traverses those physical elements. It does not count thermal zones as
@@ -73,11 +79,19 @@ measurement evidence for post-2021 buildings.
 ```python
 from epsm import Building, Weather
 
-building = Building()  # Named illustrative reference preset.
+building = Building(preset="illustrative-reference")  # Explicit teaching inputs.
 blank = Building.empty()
 inventory = building.quantities().by_material()
 readiness = building.readiness(engine="energyplus")
 
+```
+
+With an inspected EPW and EnergyPlus installed:
+
+```python
+from epsm import Building, Weather
+
+building = Building(preset="illustrative-reference")
 weather = Weather.from_epw("weather.epw")
 result = building.simulate(engine="energyplus", weather=weather)
 print(result.energy.scalars)
@@ -86,9 +100,26 @@ print(building.results.latest)
 ```
 
 The example requires an EPW and EnergyPlus installation. `engine="epsm_rc"` uses
-the reduced-order adapter. `Building.from_footprint(...)` and
+the reduced-order adapter and requires explicit energy settings:
+
+```python
+from epsm_rc import RCSettings
+
+rc = RCSettings.from_policy(
+    "epsm_rc_5r1c_v1",
+    airflow_policy="sensible_only_unlimited_supply",
+    ground_policy="conductance_multiplier",
+)
+# Requires the Building and Weather above.
+result = building.simulate(engine="epsm_rc", weather=weather, settings=rc)
+```
+
+These settings explicitly omit latent recovery and supply-temperature limits and
+approximate ground transfer. They are energy-model assumptions, separate from
+LCA assessment settings. `Building.from_footprint(...)` and
 `Building.from_record(record, ...)` author known inputs and expose missing ones.
-The default reference is illustrative, not a measured or calibrated building.
+The named reference preset is illustrative, not a measured or calibrated building.
+`Building()` and `Building.empty()` both start empty.
 
 `building.results` is always a collection. Each evaluation freezes its inputs,
 retains weather and settings, and contains energy, LCA, quantities and diagnostics.

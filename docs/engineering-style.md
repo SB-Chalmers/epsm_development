@@ -129,13 +129,14 @@ Keep the reasons for missing, conflicting or unavailable values. Zero is a value
 
 ### Current Building API
 
-These calls use the development API. The default is a named illustrative reference building. A footprint or record can remain incomplete while the researcher supplies its constructions, systems and profiles.
+These calls use the current API. `Building()` creates an empty draft; the named
+illustrative preset supplies explicit teaching assumptions. A footprint or record can remain incomplete while the researcher supplies its constructions, systems and profiles.
 
 ```python
 from epsm import Building
 from shapely.geometry import Polygon
 
-reference = Building()
+reference = Building(preset="illustrative-reference")
 blank = Building.empty()
 building = Building.from_footprint(
     Polygon([(0, 0), (20, 0), (20, 12), (0, 12)]),
@@ -153,7 +154,7 @@ Supply inspected weather to the calculation. It belongs to the retained evaluati
 ```python
 from epsm import Building, Weather
 
-building = Building()
+building = Building(preset="illustrative-reference")
 weather = Weather.from_epw("weather.epw")
 result = building.simulate(
     engine="energyplus", weather=weather, directory="outputs/baseline"
@@ -282,7 +283,7 @@ A handler decides where a log goes, such as the terminal or a file. On import, a
 
 The command-line interface (CLI), application or an explicitly invoked notebook setup configures logging. Python's [logging reference](https://docs.python.org/3.11/library/logging.html) explains how child loggers pass records to their parents, called propagation.
 
-The umbrella will provide one explicit function for configuring logging. Its exact name is still to be designed. When the application selects this EPSM-managed setup, the default destinations are:
+The coordinated logging change defines explicit `epsm.configure_logging()` and `epsm.reset_logging()` functions. See [Logging across packages](logging.md) for the development contract, controls and adoption status. When the application selects this EPSM-managed setup, the default destinations are:
 
 - An INFO console handler on stderr with short, readable messages. Stderr is the terminal stream used for status and errors, separate from command output.
 - A DEBUG JSONL file handler when the caller supplies a study/output directory. JSONL stores one JSON record per line.

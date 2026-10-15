@@ -6,7 +6,7 @@ The agreed package names are `epsm`, `epsm_db`, `epsm_data`, `epsm_core`, `epsm_
 
 The handbook is written for the people who build and use EPSM. Coding agents follow the same instructions. Start with one small task, find the package that owns it, and write a test that shows the behaviour you want.
 
-**Status:** Working draft v0.3, 14 October 2026. The coordinated EPSM packages have tagged releases; see the [review register](docs/harmonisation-review.md) for exact commits, supported scope and verification. Reusable study and execution tools remain active; outdated named studies and their specific scripts are archived under the [study archive decision](docs/study-archive-policy.md). Code labelled **illustrative API** shows a possible user experience; it is not an API you can use today.
+**Status:** Handbook v0.4.0, 15 October 2026. The [logging release verification](docs/logging-verification.md) records the implemented contract and manual release checks. See the [stabilization status](docs/stabilization-2026-10-15.md) for the current package combination and verification, and the [review register](docs/harmonisation-review.md) for dated historical releases and checks. Reusable study and execution tools remain active; outdated named studies and their specific scripts are archived under the [study archive decision](docs/study-archive-policy.md). Code labelled **illustrative API** shows a possible user experience; it is not an API you can use today.
 
 ## Start here
 
@@ -37,6 +37,7 @@ Coding agents should also read [AGENTS.md](AGENTS.md).
 | Review current packages and file transfers | [Harmonisation guide](docs/harmonisation.md), [file map](docs/harmonisation-file-map.md) and [review register](docs/harmonisation-review.md) |
 | Distinguish maintained study tools from archived research | [Study archive decision](docs/study-archive-policy.md) |
 | Understand Study, Workflow, Record and Building | [Shared terms and models](docs/terminology-and-models.md) |
+| Follow archetype authoring and application work | [Accepted contract and class diagram](docs/archetype-authoring.md), [ordered implementation series](docs/archetype-implementation.md) |
 | Add consistent 2D plots and 3D previews | [Plots and previews](docs/plotting-and-previews.md) |
 | Write tests before changing code | [Test-driven development](docs/engineering-style.md#test-driven-development) |
 | Write clear instructions | [Writing for people](docs/writing-guide.md) |
@@ -48,6 +49,7 @@ Coding agents should also read [AGENTS.md](AGENTS.md).
 | Read and write data, or pass it to another package | [I/O modules and package APIs](docs/io-and-api.md) |
 | Add a notebook that teaches a package | [Examples guide](docs/examples-and-use-cases.md) |
 | Find a shared example of a research task | [Common use cases](use_cases/README.md) |
+| Follow the coordinated logging implementation | [Logging across packages](docs/logging.md) |
 | Add logging that works across packages | [Uniform logging](docs/engineering-style.md#uniform-logging) |
 | Give an object a helpful `repr` | [Representation and inspection](docs/engineering-style.md#object-representation-and-inspection) |
 | Start a module or public object | [Templates](docs/templates/README.md) |
@@ -64,6 +66,11 @@ python3 scripts/run_examples.py
 ```
 
 The check verifies local files and heading links, Python example syntax, notebook structure, and the runnable examples in the templates. The small test suite checks that broken links and examples are reported clearly. Future API sketches are checked for syntax only. They are not executed or counted as working platform features.
+
+With the supported EPSM packages installed, also run
+`python scripts/check_platform_examples.py` to execute the handbook’s public
+authoring snippets. This optional check needs no database, weather or engine;
+simulation snippets retain their separately stated prerequisites.
 
 The notebook runner starts each learning notebook with fresh variables using only Python. It runs this handbook's small, plain-Python notebook examples. Package notebooks that use a database, EnergyPlus or notebook display tools need their declared environment and a real notebook runner.
 

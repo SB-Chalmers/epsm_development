@@ -1,0 +1,425 @@
+{
+  "schema_version": 1,
+  "lifecycle_suffixes": [
+    "started",
+    "completed",
+    "failed",
+    "cancelled"
+  ],
+  "owners": {
+    "epsm": [
+      {
+        "operation": "building_from_record",
+        "module": "epsm.records",
+        "event": "building.assemble"
+      },
+      {
+        "operation": "from_record",
+        "module": "epsm.building",
+        "event": "building.record.convert"
+      },
+      {
+        "operation": "resolve_building_archetype",
+        "module": "epsm.catalogue_application",
+        "event": "catalogue.resolve"
+      },
+      {
+        "operation": "simulate",
+        "module": "epsm.building",
+        "event": "evaluation"
+      }
+    ],
+    "epsm_data": [
+      {
+        "operation": "load_calibrated_archetype",
+        "module": "epsm_data.layered",
+        "event": "catalogue.archetype.load"
+      },
+      {
+        "operation": "export_construction_sets",
+        "module": "epsm_data.usecases.export_outputs",
+        "event": "catalogue.construction.export"
+      },
+      {
+        "operation": "resolve_construction",
+        "module": "epsm_data.parametric",
+        "event": "catalogue.construction.resolve"
+      },
+      {
+        "operation": "export_consumption_contracts",
+        "module": "epsm_data.usecases.export_outputs",
+        "event": "catalogue.consumption.export"
+      },
+      {
+        "operation": "load_detailed_catalogue",
+        "module": "epsm_data.detailed",
+        "event": "catalogue.detailed.load"
+      },
+      {
+        "operation": "export_json",
+        "module": "epsm_data.usecases.export_outputs",
+        "event": "catalogue.export"
+      },
+      {
+        "operation": "load",
+        "module": "epsm_data.catalogue",
+        "event": "catalogue.load"
+      },
+      {
+        "operation": "load_parametric_catalogue",
+        "module": "epsm_data.parametric",
+        "event": "catalogue.parametric.load"
+      },
+      {
+        "operation": "load_renovation_package",
+        "module": "epsm_data.renovation",
+        "event": "catalogue.renovation.load"
+      },
+      {
+        "operation": "get",
+        "module": "epsm_data.catalogue",
+        "event": "catalogue.select"
+      },
+      {
+        "operation": "get",
+        "module": "epsm_data.catalogue",
+        "event": "catalogue.select"
+      },
+      {
+        "operation": "for_year",
+        "module": "epsm_data.catalogue",
+        "event": "catalogue.select.year"
+      },
+      {
+        "operation": "get_slot",
+        "module": "epsm_data.parametric",
+        "event": "catalogue.slot.resolve"
+      },
+      {
+        "operation": "review",
+        "module": "epsm_data.detailed",
+        "event": "catalogue.validate"
+      }
+    ],
+    "epsm_core": [
+      {
+        "operation": "to_spec",
+        "module": "epsm_core.building",
+        "event": "building.spec.convert"
+      },
+      {
+        "operation": "to_spec",
+        "module": "epsm_core.building",
+        "event": "building.spec.convert"
+      },
+      {
+        "operation": "prepare_geometry",
+        "module": "epsm_core.preparation",
+        "event": "geometry.prepare"
+      },
+      {
+        "operation": "compile",
+        "module": "epsm_core.compiler",
+        "event": "model.compile"
+      },
+      {
+        "operation": "to_spec",
+        "module": "epsm_core.building_adapter",
+        "event": "model.convert"
+      },
+      {
+        "operation": "write",
+        "module": "epsm_core.compiler",
+        "event": "model.write"
+      },
+      {
+        "operation": "run",
+        "module": "epsm_core.runner",
+        "event": "simulation"
+      },
+      {
+        "operation": "run_building",
+        "module": "epsm_core.building_adapter",
+        "event": "simulation.building"
+      },
+      {
+        "operation": "run",
+        "module": "epsm_core.district",
+        "event": "simulation.district"
+      },
+      {
+        "operation": "run_one",
+        "module": "epsm_core.district",
+        "event": "simulation.district.building"
+      },
+      {
+        "operation": "preflight_energyplus",
+        "module": "epsm_core.preflight",
+        "event": "simulation.preflight"
+      },
+      {
+        "operation": "read_results",
+        "module": "epsm_core.results",
+        "event": "simulation.results.read"
+      }
+    ],
+    "epsm_rc": [
+      {
+        "operation": "simulate_building",
+        "module": "epsm_rc.platform",
+        "event": "energy.rc"
+      },
+      {
+        "operation": "from_geojson_multi",
+        "module": "epsm_rc.gis_footprint",
+        "event": "geometry.gis.geojson.batch.load"
+      },
+      {
+        "operation": "from_geojson",
+        "module": "epsm_rc.gis_footprint",
+        "event": "geometry.gis.geojson.load"
+      },
+      {
+        "operation": "from_osm",
+        "module": "epsm_rc.gis_footprint",
+        "event": "geometry.gis.osm.load"
+      },
+      {
+        "operation": "from_shapefile",
+        "module": "epsm_rc.gis_footprint",
+        "event": "geometry.gis.shapefile.load"
+      }
+    ],
+    "epsm_lca": [
+      {
+        "operation": "assess",
+        "module": "epsm_lca.assessment",
+        "event": "lca.assessment"
+      },
+      {
+        "operation": "assess_renovation",
+        "module": "epsm_lca.renovation",
+        "event": "lca.renovation"
+      },
+      {
+        "operation": "load_report",
+        "module": "epsm_lca.io",
+        "event": "lca.report.load"
+      },
+      {
+        "operation": "save_report",
+        "module": "epsm_lca.io",
+        "event": "lca.report.save"
+      }
+    ],
+    "epsm_db": [
+      {
+        "operation": "process_dataset",
+        "module": "sweden_ubem.selection",
+        "event": "database.dataset.process"
+      },
+      {
+        "operation": "validate_dataset",
+        "module": "sweden_ubem.database",
+        "event": "database.dataset.validate"
+      },
+      {
+        "operation": "export",
+        "module": "sweden_ubem.explore",
+        "event": "database.export"
+      },
+      {
+        "operation": "export_dataset",
+        "module": "sweden_ubem.exports",
+        "event": "database.export"
+      },
+      {
+        "operation": "prepare_partition",
+        "module": "sweden_ubem.selection",
+        "event": "database.partition.prepare"
+      },
+      {
+        "operation": "from_address",
+        "module": "sweden_ubem.io",
+        "event": "database.query.address"
+      },
+      {
+        "operation": "all",
+        "module": "sweden_ubem.io",
+        "event": "database.query.all"
+      },
+      {
+        "operation": "from_bbox",
+        "module": "sweden_ubem.io",
+        "event": "database.query.bbox"
+      },
+      {
+        "operation": "within_boundary",
+        "module": "sweden_ubem.io",
+        "event": "database.query.boundary"
+      },
+      {
+        "operation": "from_deso",
+        "module": "sweden_ubem.io",
+        "event": "database.query.deso"
+      },
+      {
+        "operation": "from_footprint",
+        "module": "sweden_ubem.io",
+        "event": "database.query.footprint"
+      },
+      {
+        "operation": "from_municipality",
+        "module": "sweden_ubem.io",
+        "event": "database.query.municipality"
+      },
+      {
+        "operation": "nearest",
+        "module": "sweden_ubem.io",
+        "event": "database.query.nearest"
+      },
+      {
+        "operation": "from_point",
+        "module": "sweden_ubem.io",
+        "event": "database.query.point"
+      },
+      {
+        "operation": "from_property",
+        "module": "sweden_ubem.io",
+        "event": "database.query.property"
+      },
+      {
+        "operation": "within_radius",
+        "module": "sweden_ubem.io",
+        "event": "database.query.radius"
+      },
+      {
+        "operation": "from_regso",
+        "module": "sweden_ubem.io",
+        "event": "database.query.regso"
+      },
+      {
+        "operation": "from_uuid",
+        "module": "sweden_ubem.io",
+        "event": "database.query.uuid"
+      },
+      {
+        "operation": "from_uuids",
+        "module": "sweden_ubem.io",
+        "event": "database.query.uuids"
+      },
+      {
+        "operation": "initialize_sources",
+        "module": "sweden_ubem.ingest",
+        "event": "database.source.ingest"
+      },
+      {
+        "operation": "to_epsm",
+        "module": "sweden_ubem.stock",
+        "event": "database.stock.convert"
+      },
+      {
+        "operation": "iter_records",
+        "module": "sweden_ubem.stock",
+        "event": "database.stock.read"
+      },
+      {
+        "operation": "iter_records",
+        "module": "sweden_ubem.stock",
+        "event": "database.stock.read"
+      }
+    ],
+    "smhi2epw": [
+      {
+        "operation": "compile_epw",
+        "module": "smhi2epw.compiler",
+        "event": "weather.compile"
+      },
+      {
+        "operation": "write_epw",
+        "module": "smhi2epw.export",
+        "event": "weather.export"
+      },
+      {
+        "operation": "ingest",
+        "module": "smhi2epw.ingestion",
+        "event": "weather.ingest"
+      },
+      {
+        "operation": "read_epw",
+        "module": "smhi2epw.reader",
+        "event": "weather.inspect"
+      },
+      {
+        "operation": "fetch_metobs_parameter",
+        "module": "smhi2epw.ingestion",
+        "event": "weather.provider.metobs.fetch"
+      },
+      {
+        "operation": "get_text",
+        "module": "smhi2epw.ingestion",
+        "event": "weather.provider.request"
+      },
+      {
+        "operation": "fetch_strang_parameter",
+        "module": "smhi2epw.ingestion",
+        "event": "weather.provider.strang.fetch"
+      },
+      {
+        "operation": "prepare",
+        "module": "smhi2epw.automatic",
+        "event": "weather.recover"
+      },
+      {
+        "operation": "get_station_metadata",
+        "module": "smhi2epw.ingestion",
+        "event": "weather.station.inspect"
+      },
+      {
+        "operation": "find_nearest_station",
+        "module": "smhi2epw.ingestion",
+        "event": "weather.station.select"
+      }
+    ],
+    "epsm_studies": [
+      {
+        "operation": "save",
+        "module": "epsm_studies.study",
+        "event": "study.protocol.save"
+      }
+    ]
+  },
+  "explicit_events": {
+    "epsm": [
+      "evaluation.energy.cache",
+      "evaluation.energy.started",
+      "evaluation.lca.cache",
+      "evaluation.lca.failed",
+      "evaluation.saved"
+    ],
+    "epsm_core": [
+      "simulation.engine.completed",
+      "simulation.engine.started"
+    ],
+    "epsm_data": [],
+    "epsm_db": [
+      "database.ingestion.progress"
+    ],
+    "epsm_rc": [],
+    "epsm_lca": [
+      "lca.factors.selected",
+      "lca.inputs.missing",
+      "lca.renovation.failed",
+      "lca.report.load.failed",
+      "lca.report.loaded",
+      "lca.report.save.failed",
+      "lca.report.saved",
+      "lca.step.completed"
+    ],
+    "smhi2epw": [],
+    "epsm_studies": [
+      "study.protocol.reused",
+      "study.protocol.selected"
+    ]
+  }
+}
