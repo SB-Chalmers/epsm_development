@@ -1,3 +1,9 @@
+# Release 0.5.0 — 15 October 2026
+
+The handbook records the implemented archetype authoring, application, consumer migration and API cleanup, including the AC01–AC11 acceptance register and migration routes.
+
+The coordinated release candidates are Data 0.6.0, Core 0.4.0, Database 0.3.0 and EPSM 0.3.0. See [release preparation and review gates](docs/archetype-release-2026-10-15.md). Earlier verification records remain dated and unchanged; candidate preparation does not establish publication or maintainer approval.
+
 # Release 0.4.0 — 15 October 2026
 
 Implemented logging API, event registry, migration guidance and coordinated verification evidence.
