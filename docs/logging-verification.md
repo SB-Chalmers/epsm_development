@@ -33,6 +33,20 @@ synthetic fixtures and native backup tools. They did not access national source
 data. Live provider acquisition, local EnergyPlus execution and Slurm execution
 were not performed. Skipped tests and unperformed integrations remain unverified.
 
+## Hosted review gates
+
+The coordinated PRs remain drafts. GitHub refused to allocate runners for
+several jobs, with an annotation stating that recent account payments failed
+or the spending limit needs increasing. These jobs have no runner name, no
+executed steps and no test logs; their failures do not establish a code failure.
+Examples are the [LCA job](https://github.com/SB-Chalmers/epsm_lca/actions/runs/38687755896/job/116266412272),
+[RC job](https://github.com/SB-Chalmers/epsm_rc/actions/runs/38687746613/job/116266384382)
+and [Studies job](https://github.com/SB-Chalmers/epsm_studies/actions/runs/38687764463/job/116266438940).
+
+Hosted checks must be rerun after the account issue is resolved before claiming
+that the PRs have passed their hosted review gates. Local checks are recorded
+separately above. No stable-branch promotion is part of this work.
+
 ## Source revisions
 
 All feature branches started from freshly fetched lowercase `dev` and target
