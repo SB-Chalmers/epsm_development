@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-15",
+  "python": "3.12.3",
+  "installation": "isolated virtual environment; all eight EPSM imports verified inside site-packages",
+  "sources": {
+    "epsm_data": {
+      "revision": "909179951815332a3b8d3bf106e06aa4f7e969dd",
+      "version": "0.4.0"
+    },
+    "epsm_core": {
+      "revision": "4f7f746d1158893f73e0cf601b62fe41c35f5c73",
+      "version": "0.3.0"
+    },
+    "epsm_rc": {
+      "revision": "026d9fc93ad8c07913ecb56e20b57288b45dc318",
+      "version": "0.3.0"
+    },
+    "epsm_lca": {
+      "revision": "fb4a8b6b4da8a094d98877a08de67b78b34e426b",
+      "version": "0.2.0"
+    },
+    "epsm_db": {
+      "revision": "ea3e292908c9b0a97029b401e6cc18ff4cd6620a",
+      "version": "0.2.0"
+    },
+    "epsm_studies": {
+      "revision": "8abbcea3bd2c204e9e34e903ed03f3d10f0de708",
+      "version": "0.1.0"
+    },
+    "smhi2epw": {
+      "revision": "434d7b26de1a6da88e156bebc39e246c615c4ba0",
+      "version": "1.1.1"
+    },
+    "epsm": {
+      "revision": "0a00331d7336df5d97bc82c911eb5b531c276f17",
+      "version": "0.2.0"
+    }
+  },
+  "checks": {
+    "pip_check": "passed",
+    "epsm_tests": 27,
+    "lca_tests": 78,
+    "lca_docstring_examples": 9,
+    "core_public_examples": 5,
+    "epsm_fresh_notebooks": 3,
+    "lca_fresh_notebooks": 7,
+    "db_offline_tests": {
+      "passed": 164,
+      "skipped": 14,
+      "deselected": 34
+    },
+    "annual_record_and_stock_handoff": {
+      "states": 3,
+      "energy_kwh": [
+        97517.93561470005,
+        88030.72548049863,
+        36505.99634502746
+      ],
+      "assessment_complete": true,
+      "wheel_imports_required": true,
+      "live_services_used": false
+    }
+  },
+  "limits": [
+    "The three energy values belong to the synthetic stock handoff, not the separate illustrative LCA notebook case.",
+    "PostGIS checks run separately in hosted disposable services. National source assets are unavailable to the local offline subset.",
+    "No live national operation or weather-provider acquisition was performed.",
+    "Software execution does not establish scientific accuracy."
+  ]
+}

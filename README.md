@@ -6,7 +6,7 @@ The agreed package names are `epsm`, `epsm_db`, `epsm_data`, `epsm_core`, `epsm_
 
 The handbook is written for the people who build and use EPSM. Coding agents follow the same instructions. Start with one small task, find the package that owns it, and write a test that shows the behaviour you want.
 
-**Status:** Working draft v0.3, 14 October 2026. The coordinated EPSM packages have tagged releases; see the [review register](docs/harmonisation-review.md) for exact commits, supported scope and verification. Reusable study and execution tools remain active; outdated named studies and their specific scripts are archived under the [study archive decision](docs/study-archive-policy.md). Code labelled **illustrative API** shows a possible user experience; it is not an API you can use today.
+**Status:** Working draft v0.3, 15 October 2026. See the [stabilization status](docs/stabilization-2026-10-15.md) for the current package combination and verification, and the [review register](docs/harmonisation-review.md) for dated historical releases and checks. Reusable study and execution tools remain active; outdated named studies and their specific scripts are archived under the [study archive decision](docs/study-archive-policy.md). Code labelled **illustrative API** shows a possible user experience; it is not an API you can use today.
 
 ## Start here
 
