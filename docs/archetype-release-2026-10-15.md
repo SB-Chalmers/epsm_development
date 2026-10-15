@@ -1,96 +1,104 @@
-# Archetype release preparation — 15 October 2026
+# Archetype releases — 15 October 2026
 
-**Status: release candidates; not published.** Development acceptance remains in
-the [verification register](archetype-verification.md). This preparation changes
-versions, dependency requirements and release documentation, without changing
-physical recipes or scientific algorithms. The preceding release records remain
-dated historical evidence.
+Data, Core, Database and EPSM are published on GitHub in the order below. Their
+release and synchronization PRs used normal merge commits. Remote `main` and
+`dev` have identical file contents; their history commits may differ. Handbook
+0.5.0 completes the sequence using its own verified tag and source archive.
+No package-index publication is included.
 
-## Release sequence
-
-| Order | Repository | Candidate version | Development acceptance revision |
+| Repository | Version | Released main commit | Publication |
 | --- | --- | --- | --- |
-| 1 | Data | 0.6.0 | `9f69479c1d3914d1517670d3139b822d9c88f5f3` |
-| 2 | Core | 0.4.0 | `0794e365448f6348dd25c7d9a7dd3aa9f8979525` |
-| 3 | Database | 0.3.0 | `9abe1d7e38475d824c2d52c5001b154baf23fa1a` |
-| 4 | EPSM | 0.3.0 | `c9c27bd54d6ef02791bdc8610bd198854093b320` |
-| 5 | Handbook | 0.5.0 | `8aab6e40872f53679a96f63ccbb5014441a92873` |
+| Data | 0.6.0 | `bc8449402b9e0dbe0ea85ff76c954cf36d209f86` | [GitHub release](https://github.com/SB-Chalmers/epsm_data/releases/tag/v0.6.0) |
+| Core | 0.4.0 | `76b9c93978d26d5f27f0616b51fbb1ca19fb6801` | [GitHub release](https://github.com/SB-Chalmers/epsm_core/releases/tag/v0.4.0) |
+| Database | 0.3.0 | `9e29a575f5495b76d5a8553bbe6e20dd4f0e1ff0` | [GitHub release](https://github.com/SB-Chalmers/epsm_db/releases/tag/v0.3.0) |
+| EPSM | 0.3.0 | `5c81c88168cf3e1d70756c3ed6f1c534bfc0592e` | [GitHub release](https://github.com/SB-Chalmers/epsm/releases/tag/v0.3.0) |
 
-Prepare each change on `codex/archetype-release` from current lowercase `dev`
-and submit it to `dev`. Before promoting the next package, replace its dependency
-pins with the exact approved release commits and rerun the candidate checks.
-Candidate or earlier development receipts do not establish tagged-release success.
+The [release receipt](archetype-release-evidence-2026-10-15.json) retains exact
+revisions, versions, wheel/source hashes, tagged workflow links and local result
+counts. Each GitHub release carries its own verification receipt and artifacts.
+The [development acceptance register](archetype-verification.md) and
+[candidate receipt](archetype-release-candidate-evidence-2026-10-15.json) remain
+dated historical evidence; their earlier source identities are not relabelled
+as release commits.
 
-The release pull request targets `main` from `dev`. Require successful checks
-on the actual candidate and one independent maintainer approval before each
-merge. The author cannot provide their own independent approval. Use normal
-release merges, tag the resulting `main` commits with the versions above, run
-checks against those tags, and publish GitHub release notes, wheels and verification
-receipts. Do not publish to a package index. Bring released history back into
-`dev` through reviewed synchronization pull requests.
+## Changes and migration
 
-The maintainer subsequently explicitly authorized the agent to merge Data
-preparation PR #16 instead of waiting for independent approval. It merged
-normally at `a0cc339ace364f9426b6eff9c39ef666cb698169`, preserving the exact
-checked candidate tree. This is human merge authorization, not an independent
-GitHub approval. Data release PR #17 targets `main`; its required checks and the
-remaining sequence's review authorization are tracked separately.
+This sequence versions the already merged archetype authoring, shared application,
+atomic assignments, consumer migrations and API removals. It adds no scientific
+algorithm, physical recipe or public API beyond that merged development work.
+Use the current public `Catalogue`, authored archetypes and `Building.apply_archetype`
+routes documented in [archetype authoring](archetype-authoring.md). Removed
+loader and profile APIs require migration; each package's release notes retains
+the exact removal details. Previous release notes and tags remain intact.
 
-The maintainer then explicitly requested resolution of all PRs and pruning of
-completed fix branches. For this dated release sequence, that request authorizes
-the agent to resolve checked PRs without waiting for a separate GitHub approval.
-Required checks and normal release merges remain mandatory; no independent
-approval is fabricated or claimed. Completed branches are archived before pruning,
-and unfinished local fixes and historical development branches remain preserved.
+EPSM requires Data >=0.6.0 and Core >=0.4.0; its optional Database dependency
+requires >=0.3.0. Database's Data/Core integration floors match those versions;
+its EPSM extra retains >=0.2.0 as requested. The verified coordinated combination
+uses EPSM 0.3.0. This receipt does not establish every older optional EPSM/Data
+combination. EPSM's platform manifest, logging manifest and logging workflow use
+the exact Data/Core/Database release commits above. The Database release's
+pre-existing EPSM compatibility checkout is retained for its earlier compatibility
+lane; the full released combination is verified by EPSM's tagged platform jobs.
+RC, LCA, Studies and Weather retain their existing releases and exact source pins.
 
-## Required verification
+## Verification
 
-Use Python 3.11 and 3.13 for the hosted package matrices. Require clean wheel
-installation and dependency checks, maintained lint checks, isolated Data imports
-and notebooks, Core tests, Database synthetic PostGIS tests, and EPSM's installed
-RC, EnergyPlus 24.2 and fresh-kernel examples. Record exact source revisions,
-versions, wheel hashes, engine identity and pass/fail/skip counts. Required checks
-cannot be replaced by skips or by an earlier commit's passing workflow.
+All required hosted package jobs passed on Python 3.11 and 3.13, with pinned and
+development dependency lanes. Tagged workflows verify the released commits before
+publication. EPSM also requires both logging-wheel jobs. Each complete workflow
+must succeed; canceled duplicate runs are not counted as passing.
 
-The handbook requires its documentation, unit, learning-notebook and installed
-platform-example checks. API documentation checks remain required in hosted CI.
-These checks establish software integration with explicit teaching assumptions;
-they do not establish accuracy against observed buildings.
+The tagged Data jobs each report 356 passed and 5 skipped; Database reports
+208 passed and 14 skipped. Core reports 801 passed, 178 skipped and 29 deselected
+in each hosted lane; its broader locally provisioned run is recorded separately
+below. EPSM reports 120 passed without skips in each platform lane and 18 passed
+in each logging lane. These distinct counts are retained in the release receipt.
 
-### Completed local candidate checks
+The hosted gates cover clean wheel installation and dependency consistency,
+maintained lint, Data's independent import/notebook checks, Core's suite,
+Database synthetic PostGIS and backup/restore, and EPSM's installed handoffs,
+actual RC/EnergyPlus 24.2 runs and fresh-kernel EPSM/LCA notebooks.
+The handbook runs documentation and examples on Python 3.11/3.13 and its separate
+API-documentation job. Its installed-platform snippets also run locally.
 
-An isolated Python 3.12.3 wheel installation passes dependency checks. Data passes
-356 tests with five optional skips; Core passes 970 with nine optional skips and
-29 standalone engine tests excluded; Database passes 208 with 14 optional skips;
-EPSM passes 120 without skips. The Core version assertion initially expected
-0.3.0; correcting it to 0.4.0 produced the complete passing rerun.
+Historical local candidate runs on Python 3.12.3 passed Data 356 (5 optional skips),
+Core 970 (9 optional skips; 29 standalone engine tests excluded), Database 208
+(14 optional skips) and EPSM 120 (no skips). All three Data notebooks ran with
+Core/EPSM absent and blocked, five EPSM and six LCA notebooks ran in fresh kernels,
+and both handbook learning notebooks, 11 handbook unit tests and three installed
+public snippets passed. Initial Core version-test failure and the complete
+corrected rerun remain recorded in the candidate evidence.
 
-All three Data notebooks pass with Core/EPSM absent and their imports blocked.
-Five EPSM and six LCA notebooks pass in fresh kernels. The installed platform
-handoff, both required archetype RC cases and actual EnergyPlus 24.2 pass.
-Handbook links, 11 unit tests, both learning notebooks, three installed-platform
-snippets and the Sphinx API example pass.
+The final released wheels were installed together in the isolated local
+environment and passed dependency consistency and the installed Database-to-RC
+and renovation-LCA handoff. The catalogue and authored archetype RC cases and a
+real EnergyPlus 24.2 case passed again. The local executable identified itself as
+`EnergyPlus, Version 24.2.0-94a887817b`; hosted jobs retain their actual executable
+identity in the uploaded reports. All eight runtime wheel payloads are byte-for-byte
+identical to the last locally checked candidates. Artifact hashes may differ
+because the builds retain final release metadata and source identities.
 
-The [candidate receipt](archetype-release-candidate-evidence-2026-10-15.json)
-records candidate revisions, wheel hashes and local results. These local checks
-do not replace the hosted Python 3.11/3.13 gates or the required independent
-maintainer approval. Dependencies still need final approved release identities
-before downstream promotion. No release tag or publication is established here.
+These checks establish software integration under explicit teaching assumptions.
+They do not establish scientific accuracy against observed buildings. Required
+checks were not replaced by skips, and jobs that initially failed to start due to
+billing were subsequently rerun successfully rather than counted as passes.
 
-## Hosted protection limitation and manual gates
+## Review and manual protection gates
 
-The maintainer explicitly selected manual release gates for this synchronization.
-On 15 October 2026, GitHub reported administrator access but rejected both classic
-branch protection and repository rulesets with HTTP 403: the private repositories
-are under the organization's Free plan. Hosted protection is **not enforced**.
-No repository is made public and no billing setting is changed by this release.
+The maintainer explicitly authorized the agent to merge and then to resolve all
+PRs and prune completed fix branches. For this dated sequence, that instruction
+replaces waiting for a separate GitHub approval. No independent GitHub approval
+is claimed. Required successful checks and normal release merges remain mandatory.
 
-After the hosting plan permits enforcement, configure both `main` and `dev` to
-require pull requests, one independent maintainer approval, dismissal of stale
-approvals and successful current checks. Block force pushes and branch deletion;
-allow normal merge commits and avoid a linear-history requirement.
+GitHub reported administrator access but returned HTTP 403 for classic branch
+protection and repository rulesets: these private repositories use the
+organization's Free plan. Hosted protection is **not enforced**. Its intended
+configuration remains pending a plan upgrade: protect both `main` and `dev`, require
+PRs, one independent maintainer approval, dismissal of stale approvals and current
+required checks; block force pushes and branch deletion; allow normal merge
+commits without a linear-history rule. No billing or visibility setting changed.
 
-| Repository | Required checks on the actual candidate |
+| Repository | Intended required checks |
 | --- | --- |
 | Data | Four `package` jobs: Python 3.11/3.13, pinned/development dependencies |
 | Core | Four `unit` jobs: Python 3.11/3.13, pinned/development dependencies |
@@ -98,21 +106,29 @@ allow normal merge commits and avoid a linear-history requirement.
 | EPSM | `combination`, four `platform` jobs and both `logging` jobs |
 | Handbook | `documentation (3.11)`, `documentation (3.13)`, `api-documentation` |
 
-Read exact check names from each candidate; EPSM matrix names contain source pins
-and change when those pins change. Manual review verifies current checks and an
-independent maintainer approval before merging. Do not claim the unavailable
-hosted settings provide an enforced guarantee.
+Exact matrix names are retained in the tagged receipts. A code, metadata or pin
+change requires new checks. A normal merge that changes only history can reuse
+the successful source's checks after comparing the complete file tree; it does
+not require repeating the same matrix. Those history-only merges use `[skip ci]`.
+Each released tag still receives one explicit full verification before publication.
+Do not dispatch another full workflow when a sufficient tag-triggered run already
+exists. The handbook avoids duplicate branch-push/PR runs and cancels superseded
+runs for the same PR or ref.
 
-## Preserve local work
+## Preserved work and cleanup
 
-The Database primary checkout has an unrelated `shm_size: 2g` deployment edit.
-Keep that edit outside the release and verify its content after any safe
-fast-forward. Weather has two local commits not on remote `main`; leave them
-unpublished and unchanged. RC, LCA, Studies, Weather, Workflows and Studio receive
-no release changes in this series.
+The Database primary checkout's unrelated `shm_size: 2g` deployment edit stays
+outside this release; its original content hash is checked before and after any
+safe fast-forward. Weather's two unpushed commits remain unpublished and unchanged.
+Weather, RC, LCA, Studies, Workflows and Studio receive no release changes.
 
-On the case-insensitive Data checkout, preserve historical uppercase `DEV` and
-fetch lowercase `dev` through the separate `origin-dev` remote alias. Do not
-create a conflicting local lowercase branch. Preserve existing feature branches,
-worktrees and published tags. Final synchronization requires matching file trees
-on remote `main` and `dev`; a synchronization merge may leave distinct commit IDs.
+Data's historical uppercase `DEV` remains untouched. Lowercase `dev` is fetched
+through the dedicated `origin-dev` alias to avoid the case-insensitive tracking
+collision; no conflicting local lowercase branch is created.
+
+Only proven completed fix branches are pruned, with archive references retained.
+Six unfinished local fixes and the Database preservation branch remain. Existing
+worktree files and historical branches remain available. Studio PR #27 was closed
+as obsolete after checking its conflicting, outdated fixtures and placeholder
+workflow; its exact patch and head were preserved rather than merged as working
+coverage. Cleanup is recorded separately in the workspace audit.
