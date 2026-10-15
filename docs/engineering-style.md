@@ -283,7 +283,7 @@ A handler decides where a log goes, such as the terminal or a file. On import, a
 
 The command-line interface (CLI), application or an explicitly invoked notebook setup configures logging. Python's [logging reference](https://docs.python.org/3.11/library/logging.html) explains how child loggers pass records to their parents, called propagation.
 
-The umbrella will provide one explicit function for configuring logging. Its exact name is still to be designed. When the application selects this EPSM-managed setup, the default destinations are:
+The coordinated logging change defines explicit `epsm.configure_logging()` and `epsm.reset_logging()` functions. See [Logging across packages](logging.md) for the development contract, controls and adoption status. When the application selects this EPSM-managed setup, the default destinations are:
 
 - An INFO console handler on stderr with short, readable messages. Stderr is the terminal stream used for status and errors, separate from command output.
 - A DEBUG JSONL file handler when the caller supplies a study/output directory. JSONL stores one JSON record per line.
