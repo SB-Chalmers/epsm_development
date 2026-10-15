@@ -36,6 +36,13 @@ checked candidate tree. This is human merge authorization, not an independent
 GitHub approval. Data release PR #17 targets `main`; its required checks and the
 remaining sequence's review authorization are tracked separately.
 
+The maintainer then explicitly requested resolution of all PRs and pruning of
+completed fix branches. For this dated release sequence, that request authorizes
+the agent to resolve checked PRs without waiting for a separate GitHub approval.
+Required checks and normal release merges remain mandatory; no independent
+approval is fabricated or claimed. Completed branches are archived before pruning,
+and unfinished local fixes and historical development branches remain preserved.
+
 ## Required verification
 
 Use Python 3.11 and 3.13 for the hosted package matrices. Require clean wheel
