@@ -2,11 +2,17 @@ name: Check the handbook
 
 on:
   push:
+    tags: ['v*']
   pull_request:
+    branches: [dev, main]
   workflow_dispatch:
 
 permissions:
   contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   documentation:

@@ -1,0 +1,476 @@
+{
+  "format": 1,
+  "date": "2026-10-15",
+  "scope": "Merged development combination; software integration using explicit synthetic assumptions, not empirical building validation or a release.",
+  "source_revisions": {
+    "epsm_data": "9f69479c1d3914d1517670d3139b822d9c88f5f3",
+    "epsm_core": "0794e365448f6348dd25c7d9a7dd3aa9f8979525",
+    "epsm_rc": "89c0ea2140555ab1d783e5b3a8f180d7925944f9",
+    "epsm_lca": "b42931784b99b6b9bb76052761fd714df48b5589",
+    "epsm_db": "9abe1d7e38475d824c2d52c5001b154baf23fa1a",
+    "epsm_studies": "e55cfe173240e5e37d6ec80411cac1cce18446c6",
+    "smhi2epw": "fd21431afdb0c918d7a2745cd49bd8ddba91fc6a",
+    "epsm": "c9c27bd54d6ef02791bdc8610bd198854093b320"
+  },
+  "local": {
+    "python": "3.12.3",
+    "energyplus_version": "EnergyPlus, Version 24.2.0-94a887817b",
+    "packages": {
+      "epsm_data": {
+        "revision": "9f69479c1d3914d1517670d3139b822d9c88f5f3",
+        "version": "0.5.0",
+        "import_path": "/private/tmp/epsm-archetype-acceptance-venv/lib/python3.12/site-packages/epsm_data/__init__.py",
+        "editable": false
+      },
+      "epsm_core": {
+        "revision": "0794e365448f6348dd25c7d9a7dd3aa9f8979525",
+        "version": "0.3.0",
+        "import_path": "/private/tmp/epsm-archetype-acceptance-venv/lib/python3.12/site-packages/epsm_core/__init__.py",
+        "editable": false
+      },
+      "epsm_rc": {
+        "revision": "89c0ea2140555ab1d783e5b3a8f180d7925944f9",
+        "version": "0.4.0",
+        "import_path": "/private/tmp/epsm-archetype-acceptance-venv/lib/python3.12/site-packages/epsm_rc/__init__.py",
+        "editable": false
+      },
+      "epsm_lca": {
+        "revision": "b42931784b99b6b9bb76052761fd714df48b5589",
+        "version": "0.2.0",
+        "import_path": "/private/tmp/epsm-archetype-acceptance-venv/lib/python3.12/site-packages/epsm_lca/__init__.py",
+        "editable": false
+      },
+      "epsm_db": {
+        "revision": "9abe1d7e38475d824c2d52c5001b154baf23fa1a",
+        "version": "0.2.0",
+        "import_path": "/private/tmp/epsm-archetype-acceptance-venv/lib/python3.12/site-packages/epsm_db/__init__.py",
+        "editable": false
+      },
+      "epsm_studies": {
+        "revision": "e55cfe173240e5e37d6ec80411cac1cce18446c6",
+        "version": "0.2.0",
+        "import_path": "/private/tmp/epsm-archetype-acceptance-venv/lib/python3.12/site-packages/epsm_studies/__init__.py",
+        "editable": false
+      },
+      "smhi2epw": {
+        "revision": "fd21431afdb0c918d7a2745cd49bd8ddba91fc6a",
+        "version": "1.2.0",
+        "import_path": "/private/tmp/epsm-archetype-acceptance-venv/lib/python3.12/site-packages/smhi2epw/__init__.py",
+        "editable": false
+      },
+      "epsm": {
+        "revision": "c9c27bd54d6ef02791bdc8610bd198854093b320",
+        "version": "0.2.0",
+        "import_path": "/private/tmp/epsm-archetype-acceptance-venv/lib/python3.12/site-packages/epsm/__init__.py",
+        "editable": false
+      }
+    },
+    "wheel_sha256": {
+      "epsm-0.2.0-py3-none-any.whl": "e4e574ea703f2b8c8e803996f927502db4f4a47163b32a49c29bb82c6e690d6b",
+      "epsm_core-0.3.0-py3-none-any.whl": "8a9a835438c4ff2b1b61d763c03be79ed256d85217bd5263166b44059029f0d3",
+      "epsm_data-0.5.0-py3-none-any.whl": "14384b66ca10d80c0c75de159ac3204a900e2b94af8bd1f644275994f9346f83",
+      "epsm_db-0.2.0-py3-none-any.whl": "4bd1613fe97e05173d0325c5da3b37ba9daed29b06823f1c767287d4c3e14d60",
+      "epsm_lca-0.2.0-py3-none-any.whl": "9d2e797c89463b0b951c9e96f6e873ac8bb415b4c936c8f1395b630b3194ae1f",
+      "epsm_rc-0.4.0-py3-none-any.whl": "6744a0061ec984f279068218b00edd4aebce87ace928b8e41df5204ef1234e29",
+      "epsm_studies-0.2.0-py3-none-any.whl": "ab04bf1f798a117d6ef121d5d04d90a3ee21413cfdb5bd04fed5700c2a7cb7bf",
+      "smhi2epw-1.2.0-py3-none-any.whl": "2da37931cc6d094df325e30f0268256164b140aae720a7dbf51cc3882f0f58dd"
+    },
+    "status": "passed",
+    "required_engine_skips": 0,
+    "cases": [
+      {
+        "route": "catalogue",
+        "application_requirements": [],
+        "unmatched": [
+          "construction:INT_WALL_NONLOADBEARING",
+          "construction:BASEMENT_WALL",
+          "operating_profile.common_use (whole-building application)"
+        ],
+        "evaluations": [
+          {
+            "engine": "epsm_rc",
+            "id": "84d5fe0c7874489cad3d9b4ed3bb9251",
+            "annual_delivered_energy_kwh": 52171.74763683694,
+            "requirements": []
+          },
+          {
+            "engine": "energyplus",
+            "id": "9a744384c97e487cacf44e33fc9af99a",
+            "annual_delivered_energy_kwh": 54959.06411813242,
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "route": "authored",
+        "application_requirements": [],
+        "unmatched": [
+          "construction:INT_WALL_NONLOADBEARING",
+          "construction:BASEMENT_WALL"
+        ],
+        "evaluations": [
+          {
+            "engine": "epsm_rc",
+            "id": "76898d3af1f847cbb025cee1dfb70243",
+            "annual_delivered_energy_kwh": 38673.14625109607,
+            "requirements": []
+          }
+        ]
+      }
+    ],
+    "full_report_sha256": "2bb255807a337e4811c26e8540472283433b9dde6e64ccf083e349e02005ca49",
+    "retained_full_report": "/private/tmp/epsm-archetype-final-sources/epsm/build/archetype-handoff/archetype-compatibility-report.json"
+  },
+  "local_tests": {
+    "epsm": {
+      "passed": 120,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 59.13,
+      "logging_integration_enabled": true
+    },
+    "core": {
+      "passed": 970,
+      "failed": 0,
+      "optional_skipped": 9,
+      "standalone_engine_deselected": 29,
+      "seconds": 90.41,
+      "geometry_extra": "py-straight-skeleton==0.1.0",
+      "viewer_localhost_permission": true
+    },
+    "construction_baseline": {
+      "canonical_configurations": 95,
+      "physical_equal": 95
+    },
+    "pip_check": "No broken requirements found.",
+    "epsm_fresh_notebooks": [
+      "00_geometry_and_archetype.ipynb",
+      "01_building_and_data.ipynb",
+      "02_renovation_materials.ipynb",
+      "03_actual_energy_and_climate.ipynb",
+      "05_logging.ipynb"
+    ],
+    "data_fresh_notebooks": [
+      "01_operating_profiles.ipynb",
+      "02_author_archetype.ipynb",
+      "03_catalogue_authoring.ipynb"
+    ],
+    "record_renovation_handoff": {
+      "wheel_imports_required": true,
+      "record_id": "shared-certificate-building",
+      "states": 3,
+      "energy_kwh": [
+        97517.93561470005,
+        88030.72548049863,
+        36505.99634502746
+      ],
+      "assessment_complete": true,
+      "live_services_used": false
+    },
+    "db_synthetic": {
+      "passed": 16,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 2.8
+    }
+  },
+  "data_only": {
+    "data_revision": "9f69479c1d3914d1517670d3139b822d9c88f5f3",
+    "wheel_sha256": "14384b66ca10d80c0c75de159ac3204a900e2b94af8bd1f644275994f9346f83",
+    "core_installed": false,
+    "epsm_installed": false,
+    "notebooks": [
+      {
+        "name": "01_operating_profiles.ipynb",
+        "code_cells": 4,
+        "result": "passed",
+        "fresh_kernel": true,
+        "consumer_import_blocker": true,
+        "source_sha256": "1ca476b5929f908885e954efbdaebdbc92b7dfe26e280356752b2790f83c47ad"
+      },
+      {
+        "name": "02_author_archetype.ipynb",
+        "code_cells": 4,
+        "result": "passed",
+        "fresh_kernel": true,
+        "consumer_import_blocker": true,
+        "source_sha256": "9a4f28e717f8d01ab578338e9fc9fde0bb22f29a141f387346567d784332b4dd"
+      },
+      {
+        "name": "03_catalogue_authoring.ipynb",
+        "code_cells": 5,
+        "result": "passed",
+        "fresh_kernel": true,
+        "consumer_import_blocker": true,
+        "source_sha256": "9a6cafb28387c3b9d0fe9ceb7db552bfe2744499fa5c8d200ae221b8c8c91872"
+      }
+    ],
+    "pip_check": "No broken requirements found."
+  },
+  "hosted": {
+    "run_url": "https://github.com/SB-Chalmers/epsm/actions/runs/38715287389",
+    "conclusion": "success",
+    "job_count": 5,
+    "matrix": [
+      "3.11/pinned",
+      "3.13/pinned",
+      "3.11/dev",
+      "3.13/dev"
+    ],
+    "development_lanes": {
+      "3.11": {
+        "python": "3.11.17",
+        "energyplus_version": "EnergyPlus, Version 24.2.0-e7ecb2d53b",
+        "packages": {
+          "epsm_data": {
+            "revision": "9f69479c1d3914d1517670d3139b822d9c88f5f3",
+            "version": "0.5.0",
+            "import_path": "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/epsm_data/__init__.py",
+            "editable": false
+          },
+          "epsm_core": {
+            "revision": "0794e365448f6348dd25c7d9a7dd3aa9f8979525",
+            "version": "0.3.0",
+            "import_path": "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/epsm_core/__init__.py",
+            "editable": false
+          },
+          "epsm_rc": {
+            "revision": "89c0ea2140555ab1d783e5b3a8f180d7925944f9",
+            "version": "0.4.0",
+            "import_path": "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/epsm_rc/__init__.py",
+            "editable": false
+          },
+          "epsm_lca": {
+            "revision": "b42931784b99b6b9bb76052761fd714df48b5589",
+            "version": "0.2.0",
+            "import_path": "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/epsm_lca/__init__.py",
+            "editable": false
+          },
+          "epsm_db": {
+            "revision": "9abe1d7e38475d824c2d52c5001b154baf23fa1a",
+            "version": "0.2.0",
+            "import_path": "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/epsm_db/__init__.py",
+            "editable": false
+          },
+          "epsm_studies": {
+            "revision": "e55cfe173240e5e37d6ec80411cac1cce18446c6",
+            "version": "0.2.0",
+            "import_path": "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/epsm_studies/__init__.py",
+            "editable": false
+          },
+          "smhi2epw": {
+            "revision": "fd21431afdb0c918d7a2745cd49bd8ddba91fc6a",
+            "version": "1.2.0",
+            "import_path": "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/smhi2epw/__init__.py",
+            "editable": false
+          },
+          "epsm": {
+            "revision": "c9c27bd54d6ef02791bdc8610bd198854093b320",
+            "version": "0.2.0",
+            "import_path": "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/epsm/__init__.py",
+            "editable": false
+          }
+        },
+        "wheel_sha256": {
+          "epsm-0.2.0-py3-none-any.whl": "db9837474b158367e285703240f09fd2c91229025854ed4632dc49b647e55086",
+          "epsm_core-0.3.0-py3-none-any.whl": "23bf625242d8b106848cee2322323a7b8b471caaed72370e2162482cc06c0f38",
+          "epsm_data-0.5.0-py3-none-any.whl": "dc11743a210358ae42f4f567a6460931c3208847cfcaf4367d2a43daf6e2e3e0",
+          "epsm_db-0.2.0-py3-none-any.whl": "f6abc54a2f20cca6d0b6e1a2c768e717eaab67cec6508ac0caad5382371bcf73",
+          "epsm_lca-0.2.0-py3-none-any.whl": "060259c488da709f720a457fd08f57d8a91f32c56474a9417c267d383729ebce",
+          "epsm_rc-0.4.0-py3-none-any.whl": "764a9b3f5db92b289a3bfdf1c3304d5700d4b1fc377a540cc5f8ba3aa1cefd7c",
+          "epsm_studies-0.2.0-py3-none-any.whl": "7966aacbbf5beb97e12c563b3395f64c39c7b3b40b50c9b8343b93377a22c2f9",
+          "smhi2epw-1.2.0-py3-none-any.whl": "efda9f737dad3b945f470cdbabecddfe15434b33b25f3d5904a1b7ab81c99cbf"
+        },
+        "status": "passed",
+        "required_engine_skips": 0,
+        "cases": [
+          {
+            "route": "catalogue",
+            "application_requirements": [],
+            "unmatched": [
+              "construction:INT_WALL_NONLOADBEARING",
+              "construction:BASEMENT_WALL",
+              "operating_profile.common_use (whole-building application)"
+            ],
+            "evaluations": [
+              {
+                "engine": "epsm_rc",
+                "id": "2a900ca8325846a5b8effa72b60ca4be",
+                "annual_delivered_energy_kwh": 52171.74763683633,
+                "requirements": []
+              },
+              {
+                "engine": "energyplus",
+                "id": "90d17162817b4e239e2deb1155e44313",
+                "annual_delivered_energy_kwh": 54959.06416623971,
+                "requirements": []
+              }
+            ]
+          },
+          {
+            "route": "authored",
+            "application_requirements": [],
+            "unmatched": [
+              "construction:INT_WALL_NONLOADBEARING",
+              "construction:BASEMENT_WALL"
+            ],
+            "evaluations": [
+              {
+                "engine": "epsm_rc",
+                "id": "5905bc13f53749c7b770578d353a4a62",
+                "annual_delivered_energy_kwh": 38673.14625109607,
+                "requirements": []
+              }
+            ]
+          }
+        ],
+        "full_report_sha256": "b25a9fcd7899b792e6ddd277e3d056cf77c07a6ebaf9009d0d7c693ab447b975",
+        "retained_full_report": "/private/tmp/epsm-archetype-final-hosted/3.11-dev/archetype-handoff/archetype-compatibility-report.json"
+      },
+      "3.13": {
+        "python": "3.13.16",
+        "energyplus_version": "EnergyPlus, Version 24.2.0-e7ecb2d53b",
+        "packages": {
+          "epsm_data": {
+            "revision": "9f69479c1d3914d1517670d3139b822d9c88f5f3",
+            "version": "0.5.0",
+            "import_path": "/opt/hostedtoolcache/Python/3.13.16/x64/lib/python3.13/site-packages/epsm_data/__init__.py",
+            "editable": false
+          },
+          "epsm_core": {
+            "revision": "0794e365448f6348dd25c7d9a7dd3aa9f8979525",
+            "version": "0.3.0",
+            "import_path": "/opt/hostedtoolcache/Python/3.13.16/x64/lib/python3.13/site-packages/epsm_core/__init__.py",
+            "editable": false
+          },
+          "epsm_rc": {
+            "revision": "89c0ea2140555ab1d783e5b3a8f180d7925944f9",
+            "version": "0.4.0",
+            "import_path": "/opt/hostedtoolcache/Python/3.13.16/x64/lib/python3.13/site-packages/epsm_rc/__init__.py",
+            "editable": false
+          },
+          "epsm_lca": {
+            "revision": "b42931784b99b6b9bb76052761fd714df48b5589",
+            "version": "0.2.0",
+            "import_path": "/opt/hostedtoolcache/Python/3.13.16/x64/lib/python3.13/site-packages/epsm_lca/__init__.py",
+            "editable": false
+          },
+          "epsm_db": {
+            "revision": "9abe1d7e38475d824c2d52c5001b154baf23fa1a",
+            "version": "0.2.0",
+            "import_path": "/opt/hostedtoolcache/Python/3.13.16/x64/lib/python3.13/site-packages/epsm_db/__init__.py",
+            "editable": false
+          },
+          "epsm_studies": {
+            "revision": "e55cfe173240e5e37d6ec80411cac1cce18446c6",
+            "version": "0.2.0",
+            "import_path": "/opt/hostedtoolcache/Python/3.13.16/x64/lib/python3.13/site-packages/epsm_studies/__init__.py",
+            "editable": false
+          },
+          "smhi2epw": {
+            "revision": "fd21431afdb0c918d7a2745cd49bd8ddba91fc6a",
+            "version": "1.2.0",
+            "import_path": "/opt/hostedtoolcache/Python/3.13.16/x64/lib/python3.13/site-packages/smhi2epw/__init__.py",
+            "editable": false
+          },
+          "epsm": {
+            "revision": "c9c27bd54d6ef02791bdc8610bd198854093b320",
+            "version": "0.2.0",
+            "import_path": "/opt/hostedtoolcache/Python/3.13.16/x64/lib/python3.13/site-packages/epsm/__init__.py",
+            "editable": false
+          }
+        },
+        "wheel_sha256": {
+          "epsm-0.2.0-py3-none-any.whl": "7e397b962d293c6b4f73ed4194e836fc24e6af07e3ee7d57137fd4ad902fdf06",
+          "epsm_core-0.3.0-py3-none-any.whl": "fb793deae06b2805c4471df0f2aa8e76184cdf34c7dd17a2b10cd78aac03df0f",
+          "epsm_data-0.5.0-py3-none-any.whl": "d3cd0a27a4108dedae15d80e419386ea0bceec7c1f75d6eaf96db992b0f76430",
+          "epsm_db-0.2.0-py3-none-any.whl": "d544e9a3e1254fa723a1f52ae63014e3b59f897a82b5fefbf997aa599019e48c",
+          "epsm_lca-0.2.0-py3-none-any.whl": "9cd3c77740dd9810f1d06cb7db1c43776d437257660f15d698f3211311a39735",
+          "epsm_rc-0.4.0-py3-none-any.whl": "e5da8dfac54778506b5226ceaa76210c2008cee1b815ce84b6a0ffa3e548e493",
+          "epsm_studies-0.2.0-py3-none-any.whl": "cf3b3fff04e56c8a4d7da6e9f4ba6bbe0f4a36c6f8b068c065692d1536826a92",
+          "smhi2epw-1.2.0-py3-none-any.whl": "bde7acfb8ce76935c712e7a0d0b885f8e02bda94aca703588ecdc7187c0bdcbc"
+        },
+        "status": "passed",
+        "required_engine_skips": 0,
+        "cases": [
+          {
+            "route": "catalogue",
+            "application_requirements": [],
+            "unmatched": [
+              "construction:INT_WALL_NONLOADBEARING",
+              "construction:BASEMENT_WALL",
+              "operating_profile.common_use (whole-building application)"
+            ],
+            "evaluations": [
+              {
+                "engine": "epsm_rc",
+                "id": "0042ffc912e642d7ad90aa7481a2b756",
+                "annual_delivered_energy_kwh": 52171.74763683694,
+                "requirements": []
+              },
+              {
+                "engine": "energyplus",
+                "id": "fa504e4479404c10a40954206e80c37e",
+                "annual_delivered_energy_kwh": 54959.06416625829,
+                "requirements": []
+              }
+            ]
+          },
+          {
+            "route": "authored",
+            "application_requirements": [],
+            "unmatched": [
+              "construction:INT_WALL_NONLOADBEARING",
+              "construction:BASEMENT_WALL"
+            ],
+            "evaluations": [
+              {
+                "engine": "epsm_rc",
+                "id": "8300e19654e94a0397789a0a5d7fe843",
+                "annual_delivered_energy_kwh": 38673.14625109607,
+                "requirements": []
+              }
+            ]
+          }
+        ],
+        "full_report_sha256": "839a90e723cd5bd92e187aa2a3883b743277537f5b092f8d9a349cd561499636",
+        "retained_full_report": "/private/tmp/epsm-archetype-final-hosted/3.13-dev/archetype-handoff/archetype-compatibility-report.json"
+      }
+    }
+  },
+  "commands": [
+    "python -m build --wheel --no-isolation --outdir /private/tmp/epsm-archetype-final-wheels <exact-detached-source>",
+    "python -m pip install /private/tmp/epsm-archetype-final-wheels/*.whl pytest ruff nbclient nbformat ipykernel matplotlib py-straight-skeleton==0.1.0",
+    "python -m pip check",
+    "python scripts/record_compatibility.py --mode dev --output build/compatibility-receipt.json",
+    "EPSM_LOGGING_INTEGRATION=1 python -m pytest tests -q -o pythonpath=",
+    "python -m pytest -q -c /dev/null -p no:cacheprovider <merged-Core>/tests/core -m \"not energyplus\"",
+    "python scripts/check_archetype_handoff.py --require-wheels --directory build/archetype-handoff --wheels /private/tmp/epsm-archetype-final-wheels --compatibility-receipt build/compatibility-receipt.json --energyplus-exe /Applications/OpenStudio-3.9.0/EnergyPlus/energyplus-24.2.0",
+    "python scripts/check_installed_platform.py --require-wheels --directory build/installed-handoff",
+    "python scripts/run_examples.py --integration --logging",
+    "python -m pytest -q -c /dev/null -p no:cacheprovider <merged-DB>/tests/test_catalogue_inspection.py <merged-DB>/tests/test_stock_assignments.py <merged-DB>/tests/test_physical_stock_conversion.py",
+    "python /private/tmp/verify-data-final-notebooks.py",
+    "python /private/tmp/compare-archetype-baseline.py"
+  ],
+  "earlier_environment_failures": [
+    {
+      "scope": "Core13 initial broader installed attempt, before final fresh combination",
+      "failed": 15,
+      "passed": 946,
+      "skipped": 18,
+      "deselected": 29,
+      "causes": [
+        "14 missing optional geometry dependency",
+        "1 sandbox permission for localhost viewer server"
+      ],
+      "resolution": "Installed declared geometry extra and reran with localhost permission; corrected run passed970/9optional/29deselected. This earlier failure is not counted as passing evidence."
+    }
+  ],
+  "limitations": [
+    "No live database or online weather acquisition exercised.",
+    "Actual authored RC and catalogue RC/EnergyPlus cases establish software handoff, not empirical accuracy.",
+    "Common-use targeted profiles, mixed-use automatic assignment and automatic holidays remain outside scope.",
+    "Pinned hosted lanes intentionally retain a previously verified compatible pre-cleanup combination; exact new revisions are confirmed in both development receipts.",
+    "Nine optional Core tests and 29 separately excluded standalone engine tests are not engine acceptance passes; the required archetype gate actually runs RC/EnergyPlus with zero skips."
+  ]
+}

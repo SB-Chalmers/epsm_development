@@ -1,8 +1,9 @@
 # EPSM harmonisation
 
-**Release update, 14 October 2026.** The agreed object model is implemented
-in the coordinated tagged package releases. This page describes the APIs and
-their present limits; the release does not establish scientific validation.
+**Development update, 15 October 2026.**
+This page combines the existing released platform with the archetype development
+route. The [archetype register](archetype-verification.md) records exact tested
+revisions; these changes do not create a release or establish scientific validity.
 See the [file map](harmonisation-file-map.md) for ownership
 changes and remaining migration work. The [review register](harmonisation-review.md) records per-repository findings and verification.
 
@@ -36,16 +37,19 @@ schema. Studio replacement is outside this implementation.
 ## Construction and physical data
 
 The shared graph is `Material → Layer → Component → Element → ConstructionSet`.
-An Archetype is a named/classified construction set. HVAC and operation profiles
-are separate choices. Layers preserve parallel fractions and constituent
-thicknesses; components preserve explicit order. Immutable value objects offer
-validated replacement methods. A Building owns independent assignments.
+An Archetype composes optional constructions, operating profiles, system templates
+and envelope assumptions with classification and sources. `Catalogue.get()` and
+`for_year()` return the same `Archetype` type used for custom authoring. Layers
+preserve parallel fractions and constituent thicknesses; components preserve
+explicit order. Immutable `with_changes()` edits isolate shared definitions.
+A Building owns independent assignments.
 
-The accepted [archetype authoring contract](archetype-authoring.md) extends this
-model with optional operation, system and envelope definitions and one EPSM
-application operation. That extension is pending in the
-[ordered implementation series](archetype-implementation.md); the runnable APIs
-below remain the current route until the new package checks pass.
+The [archetype authoring guide](archetype-authoring.md) describes complete format-4
+exchange, older saved-format readers and application. Data selects definitions;
+Core converts operating profiles, expands schedules and commits validated physical
+assignments atomically. EPSM applies the composition and retains its report.
+Construction loading does not require a successful calibration target match;
+`Catalogue.assess()` exposes that separate reference assessment.
 
 Data's Element is a construction recipe. Core's BuildingElement is an actual
 physical wall, roof, floor or window with geometry and an assignment. Material
@@ -125,6 +129,31 @@ The named reference preset is illustrative, not a measured or calibrated buildin
 retains weather and settings, and contains energy, LCA, quantities and diagnostics.
 Editing the Building preserves earlier results. `for_current_state(building)`
 filters matching evaluations. Energy and LCA cache identities are separate.
+
+## Apply a reusable archetype
+
+```python
+from epsm import Building
+from epsm_core import Footprint
+from epsm_data import Catalogue
+
+building = Building.from_footprint(
+    Footprint.rectangle(12, 8), storeys=2, storey_height_m=2.8
+)
+geometry = building.geometry
+archetype = Catalogue.load().for_year("multi_family", 1970)
+report = building.apply_archetype(archetype, calendar={"calendar_year": 2023})
+assert building.geometry == geometry
+assert Building.from_dict(building.to_dict()).archetype_applications
+print(report.archetype_id, report.requirements)
+```
+
+This intentionally partial example supplies no installed HVAC, site ground or
+verified Atemp. The report exposes those requirements. `replace` updates supplied
+roles and sections; omitted sections stay unchanged. `fill_missing` fills only
+unassigned elements and absent choices. Invalid supplied values leave the Building
+unchanged. Existing opening placement, window ratios and historical evaluations
+remain intact. A geometry policy alone does not establish an Atemp reference.
 
 ## Renovation and assessment
 
