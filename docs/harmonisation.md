@@ -41,6 +41,12 @@ are separate choices. Layers preserve parallel fractions and constituent
 thicknesses; components preserve explicit order. Immutable value objects offer
 validated replacement methods. A Building owns independent assignments.
 
+The accepted [archetype authoring contract](archetype-authoring.md) extends this
+model with optional operation, system and envelope definitions and one EPSM
+application operation. That extension is pending in the
+[ordered implementation series](archetype-implementation.md); the runnable APIs
+below remain the current route until the new package checks pass.
+
 Data's Element is a construction recipe. Core's BuildingElement is an actual
 physical wall, roof, floor or window with geometry and an assignment. Material
 inventory traverses those physical elements. It does not count thermal zones as

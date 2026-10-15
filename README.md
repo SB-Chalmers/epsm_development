@@ -37,6 +37,7 @@ Coding agents should also read [AGENTS.md](AGENTS.md).
 | Review current packages and file transfers | [Harmonisation guide](docs/harmonisation.md), [file map](docs/harmonisation-file-map.md) and [review register](docs/harmonisation-review.md) |
 | Distinguish maintained study tools from archived research | [Study archive decision](docs/study-archive-policy.md) |
 | Understand Study, Workflow, Record and Building | [Shared terms and models](docs/terminology-and-models.md) |
+| Follow archetype authoring and application work | [Accepted contract and class diagram](docs/archetype-authoring.md), [ordered implementation series](docs/archetype-implementation.md) |
 | Add consistent 2D plots and 3D previews | [Plots and previews](docs/plotting-and-previews.md) |
 | Write tests before changing code | [Test-driven development](docs/engineering-style.md#test-driven-development) |
 | Write clear instructions | [Writing for people](docs/writing-guide.md) |
