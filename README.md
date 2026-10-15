@@ -48,6 +48,7 @@ Coding agents should also read [AGENTS.md](AGENTS.md).
 | Read and write data, or pass it to another package | [I/O modules and package APIs](docs/io-and-api.md) |
 | Add a notebook that teaches a package | [Examples guide](docs/examples-and-use-cases.md) |
 | Find a shared example of a research task | [Common use cases](use_cases/README.md) |
+| Follow the coordinated logging implementation | [Logging across packages](docs/logging.md) |
 | Add logging that works across packages | [Uniform logging](docs/engineering-style.md#uniform-logging) |
 | Give an object a helpful `repr` | [Representation and inspection](docs/engineering-style.md#object-representation-and-inspection) |
 | Start a module or public object | [Templates](docs/templates/README.md) |
