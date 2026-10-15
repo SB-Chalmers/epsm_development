@@ -2,7 +2,7 @@
 
 This is the shared index of useful things a researcher should be able to do with EPSM. Each story gives the collaborating packages a common target, even when their implementations are developed independently.
 
-**Status: development acceptance routes, 14 October 2026.** The table records supported local routes and remaining checks. Commands, results and limitations appear in the [repository review register](../docs/harmonisation-review.md). The earlier [ecosystem review](../docs/ecosystem-review.md) is a historical snapshot.
+**Development acceptance routes, 15 October 2026.** The table records supported local routes and remaining checks. Commands, results and limitations appear in the [repository review register](../docs/harmonisation-review.md). The earlier [ecosystem review](../docs/ecosystem-review.md) is a historical snapshot.
 
 Read the [package layout](../docs/project-layout.md) and [engineering style](../docs/engineering-style.md) for where implementations and tests belong. The package names below follow the agreed ownership. Reusable study setup and execution remain active; outdated named studies and their legacy imports follow the [study archive decision](../docs/study-archive-policy.md).
 
@@ -12,7 +12,7 @@ Read the [package layout](../docs/project-layout.md) and [engineering style](../
 | --- | --- | --- | --- | --- |
 | UC01 | Start a Building from a footprint | EPSM interface; Core geometry/model | A polygon with coordinate reference, units and supplied floor information becomes an inspectable Building. Missing assumptions remain visible; weather is supplied at evaluation. | Local Core authoring/readiness tests pass; supported geometry is stated in the harmonisation guide |
 | UC02 | Retrieve a building Record | Database retrieval; EPSM integration | A read-only account uses a building ID and fixed database release to retrieve components, source history, conflicts and missing-data reasons. The Record can be saved or passed on without a database connection. | Portable record/completeness tests pass; live restricted-account and release-pinning checks remain separate deployment work |
-| UC03 | Apply declared assumptions | Catalogue definitions; EPSM assembly; Core validation | An incomplete Building accepts an explicit construction set, HVAC and operating profile. Source observations remain unchanged. | Shared graph, isolated assignment and evidence-override regressions pass; installed checks are recorded separately |
+| UC03 | Apply declared assumptions | Catalogue definitions; EPSM assembly; Core validation | A geometrically configured Building accepts a catalogue or custom archetype through one atomic operation. Partial definitions report missing requirements; source observations and earlier evaluations remain unchanged. | Authoring, atomic assignment, source/history preservation and installed RC/EnergyPlus evidence are tracked in the [archetype register](../docs/archetype-verification.md) |
 | UC04 | Select usable weather | `smhi2epw` weather; EPSM handoff; Core calendar checks | A supplied EPW and explicit calendar produce a weather reference with provenance and content identity. Generation is a separately requested operation. | Existing EPW/calendar handoff is exercised by local real engines; new online acquisition is not implied |
 | UC05 | Simulate and inspect results | Core/RC execution; EPSM common energy boundary and Results | A complete model and fixed weather produce a retained run and readable metrics/diagnostics. Thermal demand and delivered energy retain their different meanings and units. | Both engines ran through the public Building interface; saved evaluations and incomplete/failed LCA are tested |
 | UC06 | Run a small Study | Studies PaperStudy; Workflows execution; EPSM evaluation | A small prepared cohort and explicit configuration produce an outcome for every attempted case, retained run identities and a useful study summary. | Prepared local execution and PaperStudy protocols are implemented; installed/deployment evidence is recorded separately |
@@ -22,18 +22,16 @@ Read the [package layout](../docs/project-layout.md) and [engineering style](../
 
 A story can be supported by several smaller tests. For example, UC04 includes passing an existing weather file between packages without going online. It also includes generating weather when explicitly requested; that step may need network access. Record which route was exercised; do not give the whole story a passing label because only one part ran.
 
-## Planned archetype extension
+## Archetype authoring and application
 
-UC03 will gain one operation for applying a catalogue or custom archetype to an
-existing geometrically configured Building. The accepted
-[authoring contract and class diagram](../docs/archetype-authoring.md) define
+UC03 uses one operation for applying a catalogue or custom archetype to an
+existing geometrically configured Building. The
+[authoring guide and class diagram](../docs/archetype-authoring.md) define
 AC01–AC11 for authoring, exchange, assignment, source preservation and installed
-engine handoffs. These acceptance scenarios are pending implementation; they do
-not change the evidence status of today's separate-assignment route above.
-
-The [implementation series](../docs/archetype-implementation.md) specifies the
-ordered PRs and the gate for retiring overlapping APIs. Each owning package adds
-tests and runnable examples as its behaviour becomes available.
+engine handoffs. The [verification register](../docs/archetype-verification.md)
+records the completed archetype gates and exact tested combination; broader deployment and scientific limits remain explicit.
+The [implementation series](../docs/archetype-implementation.md) records ordered
+PRs and the gate for retiring overlapping APIs.
 
 ## Where the work lives
 

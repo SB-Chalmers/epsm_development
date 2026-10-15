@@ -1,9 +1,11 @@
 # Archetype implementation series
 
-**Status: step 1 prepared for review, 15 October 2026.**
-The [authoring contract](archetype-authoring.md) is the implementation direction.
-This documentation change does not establish an implemented application API or
-package test result. Migration adapters stay until consumers have moved.
+**Approved plan, 15 October 2026.** This page preserves the ordered implementation
+scope and merge gates. The [verification register](archetype-verification.md)
+records merged steps and final installed evidence; this plan alone establishes
+no passing package or engine result. The [authoring guide](archetype-authoring.md)
+describes the corresponding interfaces. Migration adapters remain until the
+consumer and installed gates pass.
 
 ## Branch and review discipline
 
@@ -19,7 +21,8 @@ versions and tags are a separate release process.
 
 ## Ordered changes
 
-All steps after the first are pending. Branches below omit the `codex/` prefix.
+The table records the approved sequence, rather than live completion status.
+See the verification register for completed merges. Branch names omit `codex/`.
 
 | Step | Repository | Branch | Change and merge evidence |
 | --- | --- | --- | --- |
