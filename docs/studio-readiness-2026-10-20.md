@@ -44,6 +44,9 @@ checks identify the reviewed owner runs; the separate final EPSM evidence appear
 below. The EPSM foundation at
 `9f82d5b94d768e9cf38f03bf8623d69e402b636a` established the manifest interface but
 is not the final 0.3.1 release.
+The earlier metadata-guard foundation
+`b91d3567e3f88b5da97e0597e4a3751419c9ce70` is an ancestor of the final EPSM
+release, rather than an outstanding independent feature branch.
 
 | Repository | Published version | Released main commit | Owner checks |
 | --- | --- | --- | --- |
@@ -62,6 +65,9 @@ job and both installed-wheel lanes. The
 [owner publication receipts](studio-readiness-owner-releases-2026-10-20.json)
 retain distribution hashes and verified GitHub asset digests. Their release
 manifests distinguish local artifact builds from CI verification.
+Across these six private GitHub releases, all 27 uploaded asset digests were
+verified. Those assets remain separate from source checkouts and from any public
+package registry publication.
 
 Archive inspection found that Workflows' first 0.3.0 source tag had no root
 license or distribution license metadata. It was left unchanged. The separate
@@ -155,6 +161,28 @@ kernel were shut down. A fresh Node 22.23.3 consumer installed the published npm
 archive and used its public root and geometry exports. Rebuilding the downloaded
 source archive with Node unavailable produced identical wheel member bytes.
 
+## Consumer adoption and active guidance
+
+Consumer adoption reads the released EPSM manifest on the next normal owner CI
+run. The consumer itself remains the reviewed checkout; its collaborators use
+the captured manifest's exact revisions. The final adoption record must identify
+that captured manifest SHA, the checked owner head and resulting main commit.
+Runtime release tags remain immutable when later CI or documentation changes
+reach main.
+
+The owner follow-ups correct active installation and display guidance without
+changing scientific code. Data points its archetype migration guide at the
+central version record. Database examples use Core scene data and the separate
+Viewer, retaining existing geometry provenance when appending assumptions. RC
+installation instructions use the central supported combination. Core and EPSM
+guidance names the extracted display operations rather than removed Core display
+methods. Each follow-up needs its normal owner checks; an earlier owner run is
+not relabelled as checking a later edit.
+
+These reviews and checks are still in progress at this candidate checkpoint.
+Their final identities and the subsequent metadata audit are required before the
+handbook's release review.
+
 ## Energy and database limits
 
 The common purchased-energy boundary covers **space heating and ventilation fan
@@ -214,3 +242,18 @@ checks and all six actual browser checks before the owner CI run.
    its checked source in coordination. The final handbook identity belongs to its
    release tag and publication receipt. Only completed gates replace the current
    **IN PROGRESS** status.
+
+## Handbook publication evidence
+
+The eventual [Handbook 0.5.1 release assets](https://github.com/SB-Chalmers/epsm_development/releases/tag/v0.5.1)
+will retain the released tag/main commit and tree, actual tested checkout and
+hosted handbook run, final platform metadata reports, consumer identities and
+remote source audit references. Its source archive and evidence archive will have
+checksums. Publication remains pending until the gates above pass.
+
+The publication receipt records identities learned after this source was checked.
+It verifies the source and evidence assets without attempting to hash itself.
+Recording that receipt as a release asset avoids another source edit solely to
+refer to the source's own future tag or CI run. Identical-tree release promotion
+must be verified explicitly, and a failed, skipped or absent required check does
+not count as passing evidence.
