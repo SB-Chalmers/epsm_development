@@ -1,0 +1,116 @@
+{
+  "format": 1,
+  "scope": "Changed paths between immutable tested release pins and later main; full-cohort pins are not advanced by this audit.",
+  "comparisons": {
+    "epsm_core": {
+      "tested_pin": "b197e092eb0423de5a9547873a0f596493ab7536",
+      "main": "118b87fb197fc09eef03c9f0505a73ce80758652",
+      "commits_ahead": 10,
+      "files": [
+        {
+          "path": ".github/workflows/tests.yml",
+          "status": "modified"
+        },
+        {
+          "path": "docs/usage.md",
+          "status": "modified"
+        }
+      ]
+    },
+    "epsm_data": {
+      "tested_pin": "bc8449402b9e0dbe0ea85ff76c954cf36d209f86",
+      "main": "1cc0394a718df24d529a7a7d09f37bcedafc3f6f",
+      "commits_ahead": 8,
+      "files": [
+        {
+          "path": ".github/workflows/tests.yml",
+          "status": "modified"
+        },
+        {
+          "path": "docs/archetype-api-migration.md",
+          "status": "modified"
+        }
+      ]
+    },
+    "epsm_db": {
+      "tested_pin": "9e29a575f5495b76d5a8553bbe6e20dd4f0e1ff0",
+      "main": "eaee0553839cceadb2ee64dd669272eb26040d62",
+      "commits_ahead": 12,
+      "files": [
+        {
+          "path": ".github/workflows/tests.yml",
+          "status": "modified"
+        },
+        {
+          "path": "README.md",
+          "status": "modified"
+        },
+        {
+          "path": "docs/catalogue_inspection.md",
+          "status": "modified"
+        },
+        {
+          "path": "notebooks/explore_stock.ipynb",
+          "status": "modified"
+        }
+      ]
+    },
+    "epsm_lca": {
+      "tested_pin": "00141d0500e717b4f18a9d69e158f0af2aae1934",
+      "main": "4ea956c8355dc4efa30ce0a2240a880bd1e864e5",
+      "commits_ahead": 10,
+      "files": [
+        {
+          "path": ".github/workflows/tests.yml",
+          "status": "modified"
+        },
+        {
+          "path": "docs/verification.md",
+          "status": "modified"
+        },
+        {
+          "path": "examples/README.md",
+          "status": "modified"
+        }
+      ]
+    },
+    "epsm_rc": {
+      "tested_pin": "6464f7d832d5ff3093fa754c0dc4d0d2930450dc",
+      "main": "1a15e99619971a662a89e7780e544c9c2f12b619",
+      "commits_ahead": 14,
+      "files": [
+        {
+          "path": ".github/workflows/tests.yml",
+          "status": "modified"
+        },
+        {
+          "path": "README.md",
+          "status": "modified"
+        },
+        {
+          "path": "examples/12_prepared_radiation.ipynb",
+          "status": "modified"
+        },
+        {
+          "path": "examples/13_shared_wall_boundaries.ipynb",
+          "status": "modified"
+        },
+        {
+          "path": "examples/README.md",
+          "status": "modified"
+        }
+      ]
+    },
+    "epsm_workflows": {
+      "tested_pin": "c558edfeee9a8bf93aabe07ef3834e99aab20cce",
+      "main": "32ea8c27405bf4e3b562de394f92ae05b17cc0bc",
+      "commits_ahead": 6,
+      "files": [
+        {
+          "path": ".github/workflows/tests.yml",
+          "status": "modified"
+        }
+      ]
+    }
+  }
+}

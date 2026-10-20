@@ -1,0 +1,308 @@
+{
+  "findings": [
+    {
+      "code": "candidate_drift",
+      "level": "info",
+      "message": "Main differs from the tested combination; integration remains unverified",
+      "package": "epsm_core"
+    },
+    {
+      "code": "candidate_drift",
+      "level": "info",
+      "message": "Main differs from the tested combination; integration remains unverified",
+      "package": "epsm_data"
+    },
+    {
+      "code": "candidate_drift",
+      "level": "info",
+      "message": "Main differs from the tested combination; integration remains unverified",
+      "package": "epsm_db"
+    },
+    {
+      "code": "candidate_drift",
+      "level": "info",
+      "message": "Main differs from the tested combination; integration remains unverified",
+      "package": "epsm_lca"
+    },
+    {
+      "code": "candidate_drift",
+      "level": "info",
+      "message": "Main differs from the tested combination; integration remains unverified",
+      "package": "epsm_rc"
+    },
+    {
+      "code": "candidate_drift",
+      "level": "info",
+      "message": "Main differs from the tested combination; integration remains unverified",
+      "package": "epsm_workflows"
+    }
+  ],
+  "format": 1,
+  "marker_environment": {
+    "implementation_name": "cpython",
+    "os_name": "posix",
+    "platform_machine": "x86_64",
+    "platform_python_implementation": "CPython",
+    "platform_release": "",
+    "platform_system": "Linux",
+    "platform_version": "",
+    "sys_platform": "linux"
+  },
+  "mode": "main",
+  "packages": {
+    "epsm": {
+      "effective_extras": [
+        "all",
+        "rc"
+      ],
+      "extras": [
+        "all"
+      ],
+      "integration_status": "unverified",
+      "repository": "SB-Chalmers/epsm",
+      "requirements": [
+        "epsm_core<0.9,>=0.8.0",
+        "epsm_data>=0.6.0",
+        "epsm_db>=0.3.0",
+        "epsm_lca>=0.2.0",
+        "epsm_rc<0.9,>=0.8.2",
+        "epsm_studies<0.4,>=0.3.0",
+        "epsm_workflows<0.4,>=0.3.1",
+        "smhi2epw>=1.1.1"
+      ],
+      "requires_python": ">=3.11",
+      "revision": "a320b9a5db5754c4cd7bbc38b57cf5f42888013e",
+      "selected_ref": "refs/heads/main",
+      "status": "checked",
+      "supported": {
+        "revision": "self",
+        "role": "scientific",
+        "version": "0.3.1"
+      },
+      "version": "0.3.1"
+    },
+    "epsm_core": {
+      "effective_extras": [
+        "geometry"
+      ],
+      "extras": [
+        "geometry"
+      ],
+      "integration_status": "unverified",
+      "repository": "SB-Chalmers/epsm_core",
+      "requirements": [
+        "epsm_data>=0.6.0",
+        "jsonschema<5,>=4.23",
+        "numpy<3,>=2",
+        "py-straight-skeleton==0.1.0",
+        "pydantic<3,>=2.10",
+        "shapely<3,>=2.1"
+      ],
+      "requires_python": ">=3.11",
+      "revision": "118b87fb197fc09eef03c9f0505a73ce80758652",
+      "selected_ref": "refs/heads/main",
+      "status": "checked",
+      "supported": {
+        "revision": "b197e092eb0423de5a9547873a0f596493ab7536",
+        "role": "scientific",
+        "version": "0.8.0"
+      },
+      "version": "0.8.0"
+    },
+    "epsm_data": {
+      "effective_extras": [],
+      "extras": [],
+      "integration_status": "unverified",
+      "repository": "SB-Chalmers/epsm_data",
+      "requirements": [],
+      "requires_python": ">=3.11",
+      "revision": "1cc0394a718df24d529a7a7d09f37bcedafc3f6f",
+      "selected_ref": "refs/heads/main",
+      "status": "checked",
+      "supported": {
+        "revision": "bc8449402b9e0dbe0ea85ff76c954cf36d209f86",
+        "role": "scientific",
+        "version": "0.6.0"
+      },
+      "version": "0.6.0"
+    },
+    "epsm_db": {
+      "effective_extras": [
+        "catalogue",
+        "epsm",
+        "weather"
+      ],
+      "extras": [
+        "catalogue",
+        "epsm",
+        "weather"
+      ],
+      "integration_status": "unverified",
+      "repository": "SB-Chalmers/epsm_db",
+      "requirements": [
+        "epsm>=0.2.0",
+        "epsm_core>=0.4.0",
+        "epsm_data>=0.6.0",
+        "geopandas<2,>=1",
+        "psycopg[binary]<4,>=3.2",
+        "pyarrow<26,>=23",
+        "pyogrio<1,>=0.11",
+        "pyproj<4,>=3.5",
+        "shapely<3,>=2.1",
+        "smhi2epw"
+      ],
+      "requires_python": ">=3.11",
+      "revision": "eaee0553839cceadb2ee64dd669272eb26040d62",
+      "selected_ref": "refs/heads/main",
+      "status": "checked",
+      "supported": {
+        "revision": "9e29a575f5495b76d5a8553bbe6e20dd4f0e1ff0",
+        "role": "scientific",
+        "version": "0.3.0"
+      },
+      "version": "0.3.0"
+    },
+    "epsm_lca": {
+      "effective_extras": [
+        "integration"
+      ],
+      "extras": [
+        "integration"
+      ],
+      "integration_status": "unverified",
+      "repository": "SB-Chalmers/epsm_lca",
+      "requirements": [
+        "epsm[rc]>=0.2.0",
+        "epsm_core>=0.2.0",
+        "epsm_data>=0.4.0"
+      ],
+      "requires_python": ">=3.11",
+      "revision": "4ea956c8355dc4efa30ce0a2240a880bd1e864e5",
+      "selected_ref": "refs/heads/main",
+      "status": "checked",
+      "supported": {
+        "revision": "00141d0500e717b4f18a9d69e158f0af2aae1934",
+        "role": "scientific",
+        "version": "0.2.0"
+      },
+      "version": "0.2.0"
+    },
+    "epsm_rc": {
+      "effective_extras": [
+        "platform"
+      ],
+      "extras": [
+        "platform"
+      ],
+      "integration_status": "unverified",
+      "repository": "SB-Chalmers/epsm_rc",
+      "requirements": [
+        "epsm_core<0.9,>=0.7.1",
+        "epsm_data<0.7,>=0.6.0",
+        "numpy>=1.24.0",
+        "pandas>=2.0.0",
+        "pvlib>=0.10.0",
+        "shapely>=2.0.0"
+      ],
+      "requires_python": ">=3.10",
+      "revision": "1a15e99619971a662a89e7780e544c9c2f12b619",
+      "selected_ref": "refs/heads/main",
+      "status": "checked",
+      "supported": {
+        "revision": "6464f7d832d5ff3093fa754c0dc4d0d2930450dc",
+        "role": "scientific",
+        "version": "0.8.2"
+      },
+      "version": "0.8.2"
+    },
+    "epsm_studies": {
+      "effective_extras": [],
+      "extras": [],
+      "integration_status": "unverified",
+      "repository": "SB-Chalmers/epsm_studies",
+      "requirements": [],
+      "requires_python": ">=3.11",
+      "revision": "16ed6bd0bd63cee588f6e7ad951d71f8f9543ecb",
+      "selected_ref": "refs/heads/main",
+      "status": "checked",
+      "supported": {
+        "revision": "16ed6bd0bd63cee588f6e7ad951d71f8f9543ecb",
+        "role": "scientific",
+        "version": "0.3.0"
+      },
+      "version": "0.3.0"
+    },
+    "epsm_viewer": {
+      "effective_extras": [],
+      "extras": [],
+      "integration_status": "unverified",
+      "repository": "SB-Chalmers/epsm_viewer",
+      "requirements": [],
+      "requires_python": ">=3.11",
+      "revision": "f2c847b9cd44280b7cf21803acfefa6e49e78b1b",
+      "selected_ref": "refs/heads/main",
+      "status": "checked",
+      "supported": {
+        "revision": "f2c847b9cd44280b7cf21803acfefa6e49e78b1b",
+        "role": "display",
+        "version": "0.1.0"
+      },
+      "version": "0.1.0"
+    },
+    "epsm_workflows": {
+      "effective_extras": [
+        "epsm",
+        "weather"
+      ],
+      "extras": [
+        "epsm",
+        "weather"
+      ],
+      "integration_status": "unverified",
+      "repository": "SB-Chalmers/epsm_workflows",
+      "requirements": [
+        "epsm",
+        "epsm_core>=0.2.0",
+        "epsm_data>=0.4.0",
+        "smhi2epw"
+      ],
+      "requires_python": ">=3.11",
+      "revision": "32ea8c27405bf4e3b562de394f92ae05b17cc0bc",
+      "selected_ref": "refs/heads/main",
+      "status": "checked",
+      "supported": {
+        "revision": "c558edfeee9a8bf93aabe07ef3834e99aab20cce",
+        "role": "scientific",
+        "version": "0.3.1"
+      },
+      "version": "0.3.1"
+    },
+    "smhi2epw": {
+      "effective_extras": [],
+      "extras": [],
+      "integration_status": "unverified",
+      "repository": "SB-Chalmers/smhi2epw",
+      "requirements": [
+        "numpy>=1.24",
+        "pandas>=1.5.3",
+        "pvlib<0.17,>=0.16.1",
+        "requests>=2.28"
+      ],
+      "requires_python": ">=3.11",
+      "revision": "f27d70c8fb665c13ca4263ebe6337f11e45cf73d",
+      "selected_ref": "refs/heads/main",
+      "status": "checked",
+      "supported": {
+        "revision": "f27d70c8fb665c13ca4263ebe6337f11e45cf73d",
+        "role": "scientific",
+        "version": "1.2.0"
+      },
+      "version": "1.2.0"
+    }
+  },
+  "python": [
+    "3.11",
+    "3.13"
+  ],
+  "status": "passed"
+}
