@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "status": "runtime_checks_passed_consumers_pending",
+  "status": "passed",
   "released_revision": "58327ba60f379a51129bc5cd743f1f7c74e38723",
   "tag": "v0.3.1",
   "reviewed_head_revision": "f86fa11367dfde230aa1ef555a86fa20309befda",
@@ -393,5 +393,25 @@
     "scene_objects": 6,
     "display_modules_loaded": false,
     "pip_check": "passed"
+  },
+  "post_adoption_metadata_guard": {
+    "url": "https://github.com/SB-Chalmers/epsm/actions/runs/39440134413",
+    "revision": "a320b9a5db5754c4cd7bbc38b57cf5f42888013e",
+    "status": "passed",
+    "mode": "main",
+    "package_count": 10,
+    "candidate_drift_info_count": 6,
+    "error_count": 0,
+    "warning_count": 0,
+    "ci_reference_finding_count": 0,
+    "runtime_validation": "not_run",
+    "latest_main_combination_jointly_tested": false,
+    "supported_manifest_pins_unchanged": true,
+    "reports": {
+      "metadata": "studio-readiness-metadata-candidates-2026-10-20.json",
+      "ci_references": "studio-readiness-ci-references-2026-10-20.json",
+      "consumers": "studio-readiness-consumer-adoption-2026-10-20.json",
+      "remote_package_audit": "studio-readiness-remote-audit-2026-10-20.json"
+    }
   }
 }

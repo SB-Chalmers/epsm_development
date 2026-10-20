@@ -1,9 +1,10 @@
 # Studio readiness release preparation — 20 October 2026
 
-**Status: IN PROGRESS.** This is the Handbook **0.5.1 candidate** record. It is
-not a declaration that the complete platform release is finished. The owner
-releases and final EPSM 0.3.1 combination have passed their required checks and
-been tagged. Consumer adoption and the handbook release remain pending. The
+**Runtime readiness: complete within the stated scope.** This Handbook **0.5.1**
+source records the published owner releases, final EPSM 0.3.1 combination,
+six consumer owner runs, reviewed active documentation follow-ups and final
+coordinated metadata audit. The handbook's own hosted checks, tag and publication
+identities belong to its release assets when published. The
 [15 October release record](archetype-release-2026-10-15.md) remains the dated
 evidence for the preceding coordinated release.
 
@@ -30,11 +31,11 @@ implementation gates. Nothing here establishes a replacement deployment.
 
 | Component | Prepared scope | Evidence and remaining gate |
 | --- | --- | --- |
-| Handbook 0.5.1 | Current ownership, private Viewer delivery and central compatibility guidance | Local documentation checks recorded below; final main commit, hosted checks and tag pending |
+| Handbook 0.5.1 | Current ownership, private Viewer delivery and central compatibility guidance | Required local checks recorded below; its publication receipt supplies hosted-check and released-source identities |
 | Core 0.8.0 | Scene-data boundary and removal of embedded display routes | Published owner source and checks, including the final updated platform cohort, are recorded below |
 | Viewer 0.1.0 | Standalone TypeScript renderer, optional Python helpers and self-contained artifacts | Tagged source, all three owner CI jobs and authenticated private release-artifact checks passed |
 | EPSM 0.3.1 | Central supported manifest, metadata audit and consumer matrix interface | Published main/tag, checked distributions and durable receipts; scientific, display and metadata checks passed |
-| Consumer repositories | Read the central manifest on their next normal CI run | Each repository's reviewed adoption and its own checks remain distinct evidence |
+| Consumer repositories | Read the central manifest on their next normal CI run | All six reviewed owner runs passed and were promoted; final metadata and CI-reference audits passed |
 | Database environment | Portable evidence through the owning Database API | The identity and readiness of a proposed “GIS Lake” environment are **unconfirmed** |
 
 ## Owner releases
@@ -119,7 +120,7 @@ Its actual tested GitHub PR merge checkout was
 and the final released main share tree
 `fedd99461702d9a8d8b88121a6a2475cb9ac94e2`; release promotion preserved the tested
 contents rather than relabelling the earlier receipt SHA. Consumer adoption
-checks are still running and remain a separate gate.
+checks remain separate evidence below.
 
 The [private EPSM release](https://github.com/SB-Chalmers/epsm/releases/tag/v0.3.1)
 contains its wheel, source archive, manifest, checksum file and a durable
@@ -170,18 +171,76 @@ that captured manifest SHA, the checked owner head and resulting main commit.
 Runtime release tags remain immutable when later CI or documentation changes
 reach main.
 
-The owner follow-ups correct active installation and display guidance without
+The owner follow-ups corrected active installation and display guidance without
 changing scientific code. Data points its archetype migration guide at the
 central version record. Database examples use Core scene data and the separate
 Viewer, retaining existing geometry provenance when appending assumptions. RC
 installation instructions use the central supported combination. Core and EPSM
 guidance names the extracted display operations rather than removed Core display
-methods. Each follow-up needs its normal owner checks; an earlier owner run is
-not relabelled as checking a later edit.
+methods. Each follow-up passed its normal owner checks; an earlier owner run is
+not relabelled as checking a later edit. The
+[consumer evidence](studio-readiness-consumer-adoption-2026-10-20.json) records
+the resulting branches separately from the fixed runtime release tags above.
 
-These reviews and checks are still in progress at this candidate checkpoint.
-Their final identities and the subsequent metadata audit are required before the
-handbook's release review.
+| Consumer | Latest main after adoption and active-guide corrections | Final owner checks |
+| --- | --- | --- |
+| Core | `118b87fb197fc09eef03c9f0505a73ce80758652` | [Core 54](https://github.com/SB-Chalmers/epsm_core/pull/54), [run](https://github.com/SB-Chalmers/epsm_core/actions/runs/39437999086) |
+| Data | `1cc0394a718df24d529a7a7d09f37bcedafc3f6f` | [Data 19](https://github.com/SB-Chalmers/epsm_data/pull/19), [run](https://github.com/SB-Chalmers/epsm_data/actions/runs/39436321609) |
+| Database | `eaee0553839cceadb2ee64dd669272eb26040d62` | [Database 22](https://github.com/SB-Chalmers/epsm_db/pull/22), [run](https://github.com/SB-Chalmers/epsm_db/actions/runs/39437101533) |
+| RC | `1a15e99619971a662a89e7780e544c9c2f12b619` | [RC 64](https://github.com/SB-Chalmers/epsm_rc/pull/64), [run](https://github.com/SB-Chalmers/epsm_rc/actions/runs/39437644275) |
+| LCA | `4ea956c8355dc4efa30ce0a2240a880bd1e864e5` | [LCA 17](https://github.com/SB-Chalmers/epsm_lca/pull/17), [run](https://github.com/SB-Chalmers/epsm_lca/actions/runs/39436506360) |
+| Workflows | `32ea8c27405bf4e3b562de394f92ae05b17cc0bc` | [Workflows 10](https://github.com/SB-Chalmers/epsm_workflows/pull/10), [run](https://github.com/SB-Chalmers/epsm_workflows/actions/runs/39431209027) |
+
+EPSM's own display-guide correction passed
+[its normal platform/display run](https://github.com/SB-Chalmers/epsm/actions/runs/39437661328)
+and [metadata run](https://github.com/SB-Chalmers/epsm/actions/runs/39437661034).
+Its later main is `a320b9a5db5754c4cd7bbc38b57cf5f42888013e`; the published 0.3.1
+tag remains `58327ba60f379a51129bc5cd743f1f7c74e38723`. None of these CI or
+documentation promotions moves a released runtime tag or silently changes the
+supported manifest's scientific pins.
+
+Final Data owner CI passed all three jobs. Python 3.11 reported 356 passed and
+five explicit optional skips, followed by a successful installed-wheel check.
+Its Python 3.13 lane also passed. Logs from all six final consumer runs verified
+the actual captured manifest revision
+`58327ba60f379a51129bc5cd743f1f7c74e38723` and consumer selection. A separate
+[remote package audit](studio-readiness-remote-audit-2026-10-20.json) checked nine
+repositories: all 60 scoped pull requests were merged, main and dev had equal
+file trees, fixed tags were unchanged and Viewer remained private. This is the
+package checkpoint before handbook publication.
+
+The [Data CI history](studio-readiness-data-ci-history-2026-10-20.json) retains
+two earlier incomplete runs. Both required lanes in
+[39431465143](https://github.com/SB-Chalmers/epsm_data/actions/runs/39431465143)
+exceeded the introduced 20-minute limit. Python 3.11 finished pytest at
+cancellation, but its installed-wheel gate did not run; that run is not passing
+evidence. The timeout alone was raised to 30 minutes. The subsequent
+[39434697408](https://github.com/SB-Chalmers/epsm_data/actions/runs/39434697408)
+was cancelled when the necessary active-guide correction superseded its head.
+Only final head `ecdad5dd1a045fbce6fce28e73d3690678345061` and successful run
+`39436321609` provide Data adoption acceptance evidence.
+
+## Final lightweight metadata audit
+
+The final [metadata run](https://github.com/SB-Chalmers/epsm/actions/runs/39440134413)
+passed at EPSM main `a320b9a5db5754c4cd7bbc38b57cf5f42888013e`. Its raw
+[package report](studio-readiness-metadata-candidates-2026-10-20.json) inspected
+ten packages and contains six informational `candidate_drift` findings, with no
+warnings or errors. Core, Data, Database, LCA, RC and Workflows main branches now
+include the reviewed CI/documentation follow-ups after their immutable tested
+release revisions. Their individual owner checks passed; these latest main heads
+are not a jointly tested replacement cohort.
+The separate [changed-path comparisons](studio-readiness-followup-diffs-2026-10-20.json)
+confirm that these six follow-ups changed workflows and documentation, without
+runtime-module or dependency-metadata changes. Those comparisons explain the
+drift; they do not advance the supported pins.
+
+The raw [CI-reference audit](studio-readiness-ci-references-2026-10-20.json)
+passed with zero findings and explicitly records `runtime_validation: not_run`.
+This lightweight audit checks metadata and CI references; the scientific and
+display evidence remains the separately identified installed runs above. The
+supported manifest still contains the exact verified release pins. Neither
+informational drift nor a passing metadata check silently replaces those pins.
 
 ## Energy and database limits
 
@@ -206,15 +265,25 @@ The first handbook increment preserves the earlier three Viewer-boundary edits
 as commit `d99b315`. On that commit, the required checks passed: 31 Markdown files,
 220 local links, 15 Python syntax examples, 35 template doctest examples, all 11
 handbook unit tests and both learning notebooks. These are handbook checks, not
-engine or database integration evidence. The final 0.5.1 candidate must be checked
-again after this record is complete.
+engine or database integration evidence. They remain separate from the final
+source checks below.
 
 The earlier 0.5.1 documentation candidate also passed
 `python3 scripts/check_docs.py` (33 Markdown files, 229 local links, 15 Python
 syntax examples and 35 template doctest examples), all 11 tests from
 `python3 -m unittest discover -s tests -v`, and both learning notebooks from
 `python3 scripts/run_examples.py`. API-documentation templates and their renderer
-were not changed. Final hosted release checks are still pending.
+were not changed. The publication receipt is the final record of the handbook's
+own hosted checks.
+
+For the final 0.5.1 source, all three required local commands passed:
+`python3 scripts/check_docs.py`,
+`python3 -m unittest discover -s tests -v`, and
+`python3 scripts/run_examples.py`. They checked 33 Markdown files, 239 local
+links, 15 Python syntax examples, 35 template doctest examples and three
+notebooks/templates containing ten Python cells. All 11 unit tests and both
+learning notebooks passed. The unchanged API templates and renderer retain their
+separate required hosted rendering job.
 
 The Viewer preparation was checked locally with Node 22.23.3: 11 Node geometry
 and version tests and six actual Chromium/WebGL tests passed. Its installed wheel
@@ -233,23 +302,15 @@ retains its public operations, synthetic geometry assumptions, Core wheel hash
 and scene/schema hashes. The final fixture passed schema validation, all 11 Node
 checks and all six actual browser checks before the owner CI run.
 
-## Remaining release gates
-
-1. Complete the six consumer adoption reviews and checks. Record their actual
-   tested manifest SHA and resulting main commits. No earlier passing run is
-   relabelled as checking that adoption.
-2. Run the final handbook checks and normal release review, then tag and publish
-   its checked source in coordination. The final handbook identity belongs to its
-   release tag and publication receipt. Only completed gates replace the current
-   **IN PROGRESS** status.
-
 ## Handbook publication evidence
 
 The eventual [Handbook 0.5.1 release assets](https://github.com/SB-Chalmers/epsm_development/releases/tag/v0.5.1)
-will retain the released tag/main commit and tree, actual tested checkout and
+retain the released tag/main commit and tree, actual tested checkout and
 hosted handbook run, final platform metadata reports, consumer identities and
 remote source audit references. Its source archive and evidence archive will have
-checksums. Publication remains pending until the gates above pass.
+checksums. Before publication, this source receives its normal feature-to-dev
+review and all three handbook CI jobs, followed by coordinated dev-to-main
+promotion and its version tag. Read the published receipt for those outcomes.
 
 The publication receipt records identities learned after this source was checked.
 It verifies the source and evidence assets without attempting to hash itself.

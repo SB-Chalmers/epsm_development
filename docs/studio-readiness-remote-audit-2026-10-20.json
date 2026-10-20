@@ -1,0 +1,87 @@
+{
+  "status": "passed",
+  "repositories": {
+    "epsm": {
+      "main": "a320b9a5db5754c4cd7bbc38b57cf5f42888013e",
+      "dev": "9cc966038c800b1e6258925ee32af4dc01462e67",
+      "tree": "4aa817f99f058856682d18a96aa459b140d64017",
+      "tag": "v0.3.1",
+      "tag_commit": "58327ba60f379a51129bc5cd743f1f7c74e38723",
+      "scoped_prs_merged": 9,
+      "private": true
+    },
+    "epsm_core": {
+      "main": "118b87fb197fc09eef03c9f0505a73ce80758652",
+      "dev": "7c4eb75efdfb8df5b86f8ed95ba03a2047c5b5fd",
+      "tree": "89ac484d28288f823c30be3e7c327f9a7756970d",
+      "tag": "v0.8.0",
+      "tag_commit": "b197e092eb0423de5a9547873a0f596493ab7536",
+      "scoped_prs_merged": 9,
+      "private": true
+    },
+    "epsm_data": {
+      "main": "1cc0394a718df24d529a7a7d09f37bcedafc3f6f",
+      "dev": "065c1f9aab5e5baa881e11dcb19834521181d7de",
+      "tree": "e4112d985aeab341193267677f71e5ac68162589",
+      "tag": "v0.6.0",
+      "tag_commit": "bc8449402b9e0dbe0ea85ff76c954cf36d209f86",
+      "scoped_prs_merged": 3,
+      "private": true
+    },
+    "epsm_db": {
+      "main": "eaee0553839cceadb2ee64dd669272eb26040d62",
+      "dev": "2fbc6306cb791469148f1de6cb848f7903337187",
+      "tree": "78eaf5a1562b3364b15b4ad81fae9f7580fcccbf",
+      "tag": "v0.3.0",
+      "tag_commit": "9e29a575f5495b76d5a8553bbe6e20dd4f0e1ff0",
+      "scoped_prs_merged": 6,
+      "private": true
+    },
+    "epsm_lca": {
+      "main": "4ea956c8355dc4efa30ce0a2240a880bd1e864e5",
+      "dev": "8d2a56541778f7285a83b69f8670e3b1b8a66fd2",
+      "tree": "e87851aaefd5e2434e63b5767304dee6566dc791",
+      "tag": "v0.2.0",
+      "tag_commit": "00141d0500e717b4f18a9d69e158f0af2aae1934",
+      "scoped_prs_merged": 6,
+      "private": true
+    },
+    "epsm_rc": {
+      "main": "1a15e99619971a662a89e7780e544c9c2f12b619",
+      "dev": "804cb83fd3b93efa8f2c7a0bec3e890ea6e96597",
+      "tree": "e1f8a17af5967d7e21e2300b0cb77cf87fc35fec",
+      "tag": "v0.8.2",
+      "tag_commit": "6464f7d832d5ff3093fa754c0dc4d0d2930450dc",
+      "scoped_prs_merged": 12,
+      "private": true
+    },
+    "epsm_studies": {
+      "main": "16ed6bd0bd63cee588f6e7ad951d71f8f9543ecb",
+      "dev": "587f9088ae44391e01e9012ca78f17ba76bf1208",
+      "tree": "0c422dc14671a0857f56c0df2d88a5c9c281e1c8",
+      "tag": "v0.3.0",
+      "tag_commit": "16ed6bd0bd63cee588f6e7ad951d71f8f9543ecb",
+      "scoped_prs_merged": 3,
+      "private": true
+    },
+    "epsm_viewer": {
+      "main": "f2c847b9cd44280b7cf21803acfefa6e49e78b1b",
+      "dev": "cc18f819d274bc41d842ff70a30033853180c0b5",
+      "tree": "5c090a9b0542e3ed3091221afe903c9ed84f6d61",
+      "tag": "v0.1.0",
+      "tag_commit": "f2c847b9cd44280b7cf21803acfefa6e49e78b1b",
+      "scoped_prs_merged": 3,
+      "private": true
+    },
+    "epsm_workflows": {
+      "main": "32ea8c27405bf4e3b562de394f92ae05b17cc0bc",
+      "dev": "649634d15a4dc7e92fd1d660626a1ddbbefe3cd0",
+      "tree": "3b32ff7fe84cff137b020ccd33f70c07f69f2794",
+      "tag": "v0.3.1",
+      "tag_commit": "c558edfeee9a8bf93aabe07ef3834e99aab20cce",
+      "scoped_prs_merged": 9,
+      "private": true
+    }
+  },
+  "merged_pr_count": 60
+}

@@ -1,7 +1,7 @@
 {
   "format": 1,
   "status": "published_owner_releases_only",
-  "full_epsm_cohort": "runtime_checks_passed_consumers_pending",
+  "full_epsm_cohort": "runtime_consumer_and_metadata_checks_passed",
   "packages": {
     "epsm_core": {
       "url": "https://github.com/SB-Chalmers/epsm_core/releases/tag/v0.8.0",
