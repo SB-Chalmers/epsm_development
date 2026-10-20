@@ -346,5 +346,40 @@
     "python-3.13/installed-handoff/compatibility-report.json": "29e2d8d1dc721da9cf71bcb9c171ae82d978d3ebc10617b689b750a89991aff4",
     "python-3.13/logging-verification.json": "d9f5ebd39bcd8a3acc83d4c3fda37bcd1e192e99696b34011067a9ee71ac8317",
     "python-3.13/workflow-handoff/workflow-compatibility-report.json": "b3678bf28f77b0b9c3f3a1107abccd5e12df9491469e864b80c28538d5ef67f0"
+  },
+  "durable_release": {
+    "url": "https://github.com/SB-Chalmers/epsm/releases/tag/v0.3.1",
+    "assets": [
+      {
+        "name": "epsm-0.3.1-py3-none-any.whl",
+        "size": 50622,
+        "digest": "sha256:aee3342eb9836b8fea3c24f06381f4ed79b3f4e9beb88102b911eacd93d3d17a",
+        "url": "https://github.com/SB-Chalmers/epsm/releases/download/v0.3.1/epsm-0.3.1-py3-none-any.whl"
+      },
+      {
+        "name": "epsm-0.3.1.tar.gz",
+        "size": 83858,
+        "digest": "sha256:7ef2a4ef11d6fc368c144e969713bbc2a4681855d3e8426c756a7c3aa796ab48",
+        "url": "https://github.com/SB-Chalmers/epsm/releases/download/v0.3.1/epsm-0.3.1.tar.gz"
+      },
+      {
+        "name": "release-evidence.sha256",
+        "size": 353,
+        "digest": "sha256:d871183ce63c162fbcd9f8642dfafb721bbfa63b83540095529b9c444e4f323b",
+        "url": "https://github.com/SB-Chalmers/epsm/releases/download/v0.3.1/release-evidence.sha256"
+      },
+      {
+        "name": "release-evidence.zip",
+        "size": 78331,
+        "digest": "sha256:f1389890388f0eb050c5dae755509f94b6b04c945228b1ba9e2469d4f05f4149",
+        "url": "https://github.com/SB-Chalmers/epsm/releases/download/v0.3.1/release-evidence.zip"
+      },
+      {
+        "name": "release-manifest.json",
+        "size": 2239,
+        "digest": "sha256:bd9c87d9a4438aa34936f165af477d473c76eaaac5a4a3c162e1a4127dff71e2",
+        "url": "https://github.com/SB-Chalmers/epsm/releases/download/v0.3.1/release-manifest.json"
+      }
+    ]
   }
 }

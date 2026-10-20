@@ -33,7 +33,7 @@ implementation gates. Nothing here establishes a replacement deployment.
 | Handbook 0.5.1 | Current ownership, private Viewer delivery and central compatibility guidance | Local documentation checks recorded below; final main commit, hosted checks and tag pending |
 | Core 0.8.0 | Scene-data boundary and removal of embedded display routes | Published owner source and checks, including the final updated platform cohort, are recorded below |
 | Viewer 0.1.0 | Standalone TypeScript renderer, optional Python helpers and self-contained artifacts | Tagged source, all three owner CI jobs and authenticated private release-artifact checks passed |
-| EPSM 0.3.1 | Central supported manifest, metadata audit and consumer matrix interface | Final main/tag and scientific, display and metadata checks passed; durable release assets are being published |
+| EPSM 0.3.1 | Central supported manifest, metadata audit and consumer matrix interface | Published main/tag, checked distributions and durable receipts; scientific, display and metadata checks passed |
 | Consumer repositories | Read the central manifest on their next normal CI run | Each repository's reviewed adoption and its own checks remain distinct evidence |
 | Database environment | Portable evidence through the owning Database API | The identity and readiness of a proposed “GIS Lake” environment are **unconfirmed** |
 
@@ -52,6 +52,7 @@ is not the final 0.3.1 release.
 | Workflows | [0.3.1](https://github.com/SB-Chalmers/epsm_workflows/releases/tag/v0.3.1) | `c558edfeee9a8bf93aabe07ef3834e99aab20cce` | [Workflows license-patch checks](https://github.com/SB-Chalmers/epsm_workflows/actions/runs/39429171696) |
 | Studies | [0.3.0](https://github.com/SB-Chalmers/epsm_studies/releases/tag/v0.3.0) | `16ed6bd0bd63cee588f6e7ad951d71f8f9543ecb` | [Studies checks](https://github.com/SB-Chalmers/epsm_studies/actions/runs/39423762626) |
 | Viewer | [0.1.0](https://github.com/SB-Chalmers/epsm_viewer/releases/tag/v0.1.0) | `f2c847b9cd44280b7cf21803acfefa6e49e78b1b` | [Build and installed-wheel checks](https://github.com/SB-Chalmers/epsm_viewer/actions/runs/39425944812) |
+| EPSM | [0.3.1](https://github.com/SB-Chalmers/epsm/releases/tag/v0.3.1) | `58327ba60f379a51129bc5cd743f1f7c74e38723` | [Scientific/display checks](https://github.com/SB-Chalmers/epsm/actions/runs/39429999507), [metadata](https://github.com/SB-Chalmers/epsm/actions/runs/39429999530) |
 
 Core's two platform lanes each reported 1,079 passed and eight explicitly optional
 skips; those skips are not counted as passing integrations. RC's platform lanes
@@ -113,6 +114,13 @@ and the final released main share tree
 `fedd99461702d9a8d8b88121a6a2475cb9ac94e2`; release promotion preserved the tested
 contents rather than relabelling the earlier receipt SHA. Consumer adoption
 checks are still running and remain a separate gate.
+
+The [private EPSM release](https://github.com/SB-Chalmers/epsm/releases/tag/v0.3.1)
+contains its wheel, source archive, manifest, checksum file and a durable
+`release-evidence.zip`. All five asset digests were verified. The evidence archive
+retains both compact scientific receipts, display and metadata evidence, and the
+source-promotion identities. The distributions were built from a clean immutable
+tag checkout and their runtime modules were checked against that released source.
 
 ## Verified private Viewer delivery
 
@@ -196,9 +204,7 @@ checks and all six actual browser checks before the owner CI run.
 1. Complete the six consumer adoption reviews and checks. Record their actual
    tested manifest SHA and resulting main commits. No earlier passing run is
    relabelled as checking that adoption.
-2. Confirm EPSM's durable release assets and checksum verification, retaining the
-   compact receipts and their original tested source identities.
-3. Run the final handbook checks and normal release review, then tag and publish
+2. Run the final handbook checks and normal release review, then tag and publish
    its checked source in coordination. The final handbook identity belongs to its
    release tag and publication receipt. Only completed gates replace the current
    **IN PROGRESS** status.

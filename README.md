@@ -8,7 +8,7 @@ The handbook is written for the people who build and use EPSM. Coding agents fol
 
 **Status:** Preparing Handbook v0.5.1, 20 October 2026. The
 [Studio readiness record](docs/studio-readiness-2026-10-20.md) records the released
-owner packages and tagged EPSM 0.3.1 combination. Its scientific, display and
+owner packages and published EPSM 0.3.1 combination. Its scientific, display and
 metadata checks passed; consumer adoption and the handbook release remain
 **IN PROGRESS**. The [platform compatibility guide](docs/platform-compatibility.md)
 defines EPSM's central manifest and how consumers adopt it on their next normal

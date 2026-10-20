@@ -60,6 +60,22 @@
         "SHA256SUMS": "23132d3ecb9387c333db9e3877b4cb734b9a200df4b0c8f24d7881481e2a2aa4"
       },
       "github_asset_digests_verified": true
+    },
+    "epsm": {
+      "url": "https://github.com/SB-Chalmers/epsm/releases/tag/v0.3.1",
+      "tag": "v0.3.1",
+      "source_revision": "58327ba60f379a51129bc5cd743f1f7c74e38723",
+      "source_tree": "fedd99461702d9a8d8b88121a6a2475cb9ac94e2",
+      "source_ci": "https://github.com/SB-Chalmers/epsm/actions/runs/39429999507",
+      "sha256": {
+        "epsm-0.3.1-py3-none-any.whl": "aee3342eb9836b8fea3c24f06381f4ed79b3f4e9beb88102b911eacd93d3d17a",
+        "epsm-0.3.1.tar.gz": "7ef2a4ef11d6fc368c144e969713bbc2a4681855d3e8426c756a7c3aa796ab48",
+        "release-evidence.sha256": "d871183ce63c162fbcd9f8642dfafb721bbfa63b83540095529b9c444e4f323b",
+        "release-evidence.zip": "f1389890388f0eb050c5dae755509f94b6b04c945228b1ba9e2469d4f05f4149",
+        "release-manifest.json": "bd9c87d9a4438aa34936f165af477d473c76eaaac5a4a3c162e1a4127dff71e2"
+      },
+      "github_asset_digests_verified": true,
+      "module_bytes_match_release_source": true
     }
   }
 }
