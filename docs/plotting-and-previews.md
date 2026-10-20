@@ -55,7 +55,12 @@ physical geometry calculations into a frontend adapter.
 
 Install the separately built `epsm_viewer` Python wheel for browser display;
 install its `notebook` extra for notebook display. It is optional and is not
-assumed to be published on a package index. With that package installed:
+published on a package index. The private
+[Viewer repository](https://github.com/SB-Chalmers/epsm_viewer) owns the npm
+tarball, Python wheel and source archive. Its `docs/release.md` explains authenticated
+artifact download and installation. Check the
+[readiness record](studio-readiness-2026-10-20.md) before assuming a release or CI
+artifact exists. With the checked wheel installed:
 
 ```python
 from epsm_core import Footprint, GeometrySpec

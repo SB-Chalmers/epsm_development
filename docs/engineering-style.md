@@ -64,6 +64,12 @@ and validation. Studio owns conversions needed by its UI; Viewer receives neutra
 scene dictionaries without importing Core. Earlier dated release and review
 records retain the package ownership and evidence that applied at their dates.
 
+All web adapters belong to Studio. Each library exposes documented operations
+that Studio can call directly with ordinary values or portable records; it does
+not acquire a Studio-specific HTTP layer. Viewer renders loaded scenes. Core
+owns the physical rules and `epsm.scene/1` data, and the application decides when
+to retrieve, save, display or execute work.
+
 `epsm` calls and connects these libraries. Core imports Data’s lightweight construction classes; those imports do not load a catalogue. Database and Catalogue represent their own objects without Core or EPSM. New lower-level implementations must not depend on EPSM. Existing optional compatibility forwarders are named migration exceptions and load EPSM only when that legacy integration is requested. Workflows receives prepared cases and explicit services or evaluators.
 
 A user-facing workflow may request records through an EPSM integration step. That does not move database retrieval or building assembly into the Workflows library.
