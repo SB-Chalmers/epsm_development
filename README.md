@@ -2,7 +2,7 @@
 
 This is our handbook for building EPSM, the Swedish building-stock research platform. The coding guides, package review, templates, example notebooks and plans are kept here in one repository.
 
-The agreed package names are `epsm`, `epsm_db`, `epsm_data`, `epsm_core`, `epsm_workflows`, `epsm_studies`, `epsm_rc`, `epsm_lca` and `smhi2epw`. This handbook is `epsm_development`; the existing web application is `epsm_studio`. These names were confirmed on 14 October 2026. See the [harmonisation guide](docs/harmonisation.md) for the implemented model and the [repository review register](docs/harmonisation-review.md) for checks and remaining limitations.
+The agreed package names are `epsm`, `epsm_db`, `epsm_data`, `epsm_core`, `epsm_workflows`, `epsm_studies`, `epsm_rc`, `epsm_lca` and `smhi2epw`. This handbook is `epsm_development`; the web application is `epsm_studio`. These names were confirmed on 14 October 2026. The current source boundary adds `epsm_viewer` on 20 October 2026 for 3D browser/notebook display; Core supplies scene data and Studio owns application adapters. See the [plot and preview guide](docs/plotting-and-previews.md), [harmonisation guide](docs/harmonisation.md), and [repository review register](docs/harmonisation-review.md). Dated release and review snapshots retain their original evidence.
 
 The handbook is written for the people who build and use EPSM. Coding agents follow the same instructions. Start with one small task, find the package that owns it, and write a test that shows the behaviour you want.
 

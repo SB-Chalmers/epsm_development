@@ -53,8 +53,16 @@ Write down the job of every package and module. Before adding a feature, identif
 | `epsm_workflows` | Reusable experiment designs, renovation search, prepared cases, local and Slurm execution, checkpoints, attempts, failures, collection and durable study-result artifacts | Source ingestion, direct catalogue selection, physical calculations and engine compilation |
 | `epsm_studies` | Generic PaperStudy protocol setup and persistence; named research records and archives | Reusable execution, parametric/GSA and renovation search in Workflows; physical calculations in their owning packages |
 | `epsm_lca` | Lifecycle assessment methods and the meaning of assessment results | Physical quantities, factor catalogues and study orchestration |
+| `epsm_viewer` | TypeScript browser rendering and optional Python display of neutral scene dictionaries | Physical geometry, scientific validation, source retrieval and application adapters |
+| `epsm_studio` | Web application, authenticated sessions, forms, settings, application adapters and user-requested jobs | Package-owned scientific calculations and Viewer rendering |
 
 These are the agreed package boundaries; the [harmonisation guide](harmonisation.md) records the current implementation. The package names were confirmed on 14 October 2026. Legacy import names remain only where a documented compatibility route is needed. Outdated named study implementations and their imports are archived under the [study archive decision](study-archive-policy.md); generic study tools remain maintained. The handbook is `epsm_development` and the web application is `epsm_studio`. AMY means actual meteorological year: weather for a selected historical year. EPW is the weather file format; epJSON and IDF are EnergyPlus building-model formats.
+
+The 20 October 2026 viewer extraction adds `epsm_viewer` to the current source
+boundary. Core exposes ready-to-consume scene data and keeps physical geometry
+and validation. Studio owns conversions needed by its UI; Viewer receives neutral
+scene dictionaries without importing Core. Earlier dated release and review
+records retain the package ownership and evidence that applied at their dates.
 
 `epsm` calls and connects these libraries. Core imports Data’s lightweight construction classes; those imports do not load a catalogue. Database and Catalogue represent their own objects without Core or EPSM. New lower-level implementations must not depend on EPSM. Existing optional compatibility forwarders are named migration exceptions and load EPSM only when that legacy integration is requested. Workflows receives prepared cases and explicit services or evaluators.
 
@@ -263,7 +271,11 @@ Use [I/O and package APIs](io-and-api.md) for the full rules and the [I/O templa
 
 ## Plots and previews
 
-Use `.plot()` for 2D figures and `.view()` for 3D previews where meaningful. Keep rendering in a focused module in the owning package. Use the shared palette, labels and terminology. Follow [Plots and 3D previews](plotting-and-previews.md) for return types, display choices, notebook use and checks.
+Use `.plot()` for 2D figures where meaningful. Core exposes `.scene()` data;
+`epsm_viewer` owns 3D browser and notebook display, while Studio owns application
+adapters. Use the shared palette, labels and terminology. Follow
+[Plots and 3D previews](plotting-and-previews.md) for return types, explicit display,
+notebook use and checks.
 
 ## Uniform logging
 
