@@ -122,6 +122,12 @@ retains both compact scientific receipts, display and metadata evidence, and the
 source-promotion identities. The distributions were built from a clean immutable
 tag checkout and their runtime modules were checked against that released source.
 
+A subsequent authenticated download matched the published wheel's manifest hash
+and installed into the isolated cohort environment. Dependency consistency and a
+public EPSM Building scene smoke check passed: six objects used `epsm.scene/1`,
+with no Viewer or widget modules loaded. This download check is distinct from
+the broader installed-package CI evidence above.
+
 ## Verified private Viewer delivery
 
 Viewer's private GitHub release contains the npm tarball, Python wheel, source

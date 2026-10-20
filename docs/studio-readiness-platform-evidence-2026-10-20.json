@@ -381,5 +381,17 @@
         "url": "https://github.com/SB-Chalmers/epsm/releases/download/v0.3.1/release-manifest.json"
       }
     ]
+  },
+  "downloaded_wheel_installation": {
+    "status": "passed",
+    "download": "authenticated gh release download v0.3.1",
+    "wheel": "epsm-0.3.1-py3-none-any.whl",
+    "sha256": "aee3342eb9836b8fea3c24f06381f4ed79b3f4e9beb88102b911eacd93d3d17a",
+    "version": "0.3.1",
+    "import_path": "/private/tmp/epsm-studio-readiness/cohort-env/lib/python3.12/site-packages/epsm/__init__.py",
+    "scene_schema": "epsm.scene/1",
+    "scene_objects": 6,
+    "display_modules_loaded": false,
+    "pip_check": "passed"
   }
 }
