@@ -1,7 +1,7 @@
 # Platform compatibility and consumer CI
 
-**Status: release contract, 20 October 2026.** The interface is prepared in EPSM's
-compatibility-guard work. The
+**Status: release contract, 20 October 2026.** The central interface is on EPSM
+`main`; the next supported package combination is still being checked. The
 [readiness record](studio-readiness-2026-10-20.md) tracks its promotion and each
 consumer's adoption. This page does not certify an untested package combination.
 

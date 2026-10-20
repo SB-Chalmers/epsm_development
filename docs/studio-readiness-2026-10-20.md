@@ -1,9 +1,9 @@
 # Studio readiness release preparation — 20 October 2026
 
 **Status: IN PROGRESS.** This is the Handbook **0.5.1 candidate** record. It is
-not a declaration that all packages have been merged, tagged or published. Final
-release commits, hosted checks and artifact identities remain to be supplied by
-the release coordinator. The
+not a declaration that the complete platform release is finished. The owner
+releases below have been tagged; the final EPSM 0.3.1 cohort, consumer adoption
+checks and handbook release still need their evidence. The
 [15 October release record](archetype-release-2026-10-15.md) remains the dated
 evidence for the preceding coordinated release.
 
@@ -31,19 +31,52 @@ implementation gates. Nothing here establishes a replacement deployment.
 | Component | Prepared scope | Evidence and remaining gate |
 | --- | --- | --- |
 | Handbook 0.5.1 | Current ownership, private Viewer delivery and central compatibility guidance | Local documentation checks recorded below; final main commit, hosted checks and tag pending |
-| Core 0.8 | Scene-data boundary and removal of embedded display routes | Final release SHA and required package evidence pending from release coordinator |
-| Viewer 0.1.0 | Standalone TypeScript renderer, optional Python helpers and self-contained artifacts | Local candidate checks below; final Core fixture provenance, remote CI, main SHA and publication pending |
-| EPSM platform | Central supported manifest, metadata audit and consumer matrix interface | Final reviewed pins, complete installed scientific checks and release identity pending |
+| Core 0.8.0 | Scene-data boundary and removal of embedded display routes | Tagged source and owner checks recorded below; full updated platform cohort remains separate |
+| Viewer 0.1.0 | Standalone TypeScript renderer, optional Python helpers and self-contained artifacts | Tagged source, all three owner CI jobs and authenticated private release-artifact checks passed |
+| EPSM 0.3.1 candidate | Central supported manifest, metadata audit and consumer matrix interface | Final reviewed pins, complete installed scientific/display checks and release identity pending |
 | Consumer repositories | Read the central manifest on their next normal CI run | Each repository's reviewed adoption and its own checks remain distinct evidence |
 | Database environment | Portable evidence through the owning Database API | The identity and readiness of a proposed “GIS Lake” environment are **unconfirmed** |
 
-The private [Viewer repository](https://github.com/SB-Chalmers/epsm_viewer) exists.
-Its preparation commits are `486b396` and `f87d499`, after the extraction baseline
-`adf0252`. These are candidate identities, not released main SHAs. The npm package
-has `private: true`; there is no public npm or PyPI publication in this preparation.
-Viewer's `docs/release.md` records authenticated GitHub workflow-artifact download
-and a future release-asset recipe. CI artifacts expire after 14 days; durable
-release assets require an actual checked release.
+## Owner releases and private Viewer delivery
+
+These source tags have been promoted by the release coordinator. The linked
+checks identify the reviewed owner runs; they do not claim that the new complete
+EPSM combination has passed. The EPSM foundation at
+`9f82d5b94d768e9cf38f03bf8623d69e402b636a` established the manifest interface but
+is not the final 0.3.1 release.
+
+| Repository | Source version | Released main commit | Owner checks |
+| --- | --- | --- | --- |
+| Core | [0.8.0](https://github.com/SB-Chalmers/epsm_core/tree/v0.8.0) | `b197e092eb0423de5a9547873a0f596493ab7536` | [Core checks](https://github.com/SB-Chalmers/epsm_core/actions/runs/39424191033) |
+| RC | [0.8.2](https://github.com/SB-Chalmers/epsm_rc/tree/v0.8.2) | `6464f7d832d5ff3093fa754c0dc4d0d2930450dc` | [RC checks](https://github.com/SB-Chalmers/epsm_rc/actions/runs/39423285081) |
+| Workflows | [0.3.0](https://github.com/SB-Chalmers/epsm_workflows/tree/v0.3.0) | `e464ce8f8d9756c95ac165759d1427ba3f289e52` | [Workflows checks](https://github.com/SB-Chalmers/epsm_workflows/actions/runs/39424924626) |
+| Studies | [0.3.0](https://github.com/SB-Chalmers/epsm_studies/tree/v0.3.0) | `16ed6bd0bd63cee588f6e7ad951d71f8f9543ecb` | [Studies checks](https://github.com/SB-Chalmers/epsm_studies/actions/runs/39423762626) |
+| Viewer | [0.1.0](https://github.com/SB-Chalmers/epsm_viewer/releases/tag/v0.1.0) | `f2c847b9cd44280b7cf21803acfefa6e49e78b1b` | [Build and installed-wheel checks](https://github.com/SB-Chalmers/epsm_viewer/actions/runs/39425944812) |
+
+Viewer's private GitHub release contains the npm tarball, Python wheel, source
+archive and `SHA256SUMS` from its green CI artifacts. The npm package has
+`private: true`; no public npm or PyPI publication was performed. Authenticate an
+account that can read the repository, then download the actual release assets:
+
+```sh
+gh release download v0.1.0 --repo SB-Chalmers/epsm_viewer \
+  --pattern 'epsm_viewer-0.1.0*' --pattern SHA256SUMS --dir viewer-artifacts
+```
+
+The [download verification receipt](viewer-release-download-proof-2026-10-20.json)
+records release ID `418402614`, all four asset IDs, exact hashes, runtime versions
+and isolated install paths. All three distribution files matched `SHA256SUMS`;
+all four downloads also matched GitHub's asset digest and size. The tag API
+resolved to the released main commit above.
+
+The downloaded wheel installed into a fresh Python 3.11.13 environment with Core
+absent. Resources, MIT notices, dependency consistency and fresh-kernel notebook
+display passed. Actual JupyterLab 4.6.4 rendering under Chromium 143.0.7499.4
+verified WebGL, selection metadata and canvas disposal after `widget.close()`,
+with zero page errors or external network requests. The temporary server and
+kernel were shut down. A fresh Node 22.23.3 consumer installed the published npm
+archive and used its public root and geometry exports. Rebuilding the downloaded
+source archive with Node unavailable produced identical wheel member bytes.
 
 ## Energy and database limits
 
@@ -85,21 +118,27 @@ present, and both environments passed dependency consistency. An independent npm
 consumer installed the tarball successfully. Inspection verified version metadata,
 public entrypoints, resources and licenses in the npm tarball, wheel and source
 archive. A clean source-archive rebuild with Node unavailable produced identical
-wheel member bytes. These results precede the final Core fixture update and do
-not replace hosted checks on the final release commit.
+wheel member bytes. These earlier candidate results remain separate from the
+subsequent hosted and published-artifact checks above.
+
+The final Viewer fixture and schema were captured through an installed Core
+0.8.0 wheel from the exact released main commit. The
+[tagged provenance record](https://github.com/SB-Chalmers/epsm_viewer/blob/v0.1.0/tests/fixtures/core-scene.provenance.json)
+retains its public operations, synthetic geometry assumptions, Core wheel hash
+and scene/schema hashes. The final fixture passed schema validation, all 11 Node
+checks and all six actual browser checks before the owner CI run.
 
 ## Complete this record before promotion
 
 1. Add final source revisions, declared versions, hosted check URLs and artifact
    identities for each changed package. Record failures, skips and missing
    prerequisites explicitly; do not count a canceled run as passing.
-2. Replace the earlier Viewer fixture candidate provenance with the final Core
-   scene/schema SHA and rerun the relevant display checks.
-3. Run the complete installed EPSM combination once with required real engine,
+2. Run the complete installed EPSM combination once with required real engine,
    database and notebook prerequisites. Preserve each scientific owner's gates.
-4. Promote reviewed changes through `dev` and normal release merges into `main`,
+   Record the separate Core-to-Viewer display handoff at the final supported pins.
+3. Promote remaining reviewed changes through `dev` and normal release merges into `main`,
    then tag and publish checked artifacts in coordination. Consumers adopt the
    resulting manifest on their next normal CI run; no cross-repository fan-out is
    needed.
-5. Rerun the handbook checks, record its final main SHA and hosted results, and
+4. Rerun the handbook checks, record its final main SHA and hosted results, and
    only then replace **IN PROGRESS** with the actual completed release state.

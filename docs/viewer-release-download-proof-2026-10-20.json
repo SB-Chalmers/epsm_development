@@ -1,0 +1,110 @@
+{
+  "format": 1,
+  "status": "passed",
+  "repository": "SB-Chalmers/epsm_viewer",
+  "release_id": 418402614,
+  "tag": "v0.1.0",
+  "release_commit": "f2c847b9cd44280b7cf21803acfefa6e49e78b1b",
+  "published_at": "2026-10-20T12:58:44Z",
+  "download_method": "authenticated gh release download v0.1.0 --repo SB-Chalmers/epsm_viewer",
+  "directory": "/private/tmp/epsm-viewer-release-proof.euZWhu",
+  "assets": [
+    {
+      "browser_download_url": "https://github.com/SB-Chalmers/epsm_viewer/releases/download/v0.1.0/epsm_viewer-0.1.0-py3-none-any.whl",
+      "digest": "sha256:c4183bef81b9c64804ac0a947c5b80f976c4bee51aad58e4e8183c706cf1542a",
+      "id": 659342544,
+      "name": "epsm_viewer-0.1.0-py3-none-any.whl",
+      "size": 296428,
+      "sha256": "c4183bef81b9c64804ac0a947c5b80f976c4bee51aad58e4e8183c706cf1542a"
+    },
+    {
+      "browser_download_url": "https://github.com/SB-Chalmers/epsm_viewer/releases/download/v0.1.0/epsm_viewer-0.1.0.tar.gz",
+      "digest": "sha256:62929963bd8e190aa2a3e9cc74102d22406eba19dd5d86736fbd1a5f9b0519c5",
+      "id": 659342557,
+      "name": "epsm_viewer-0.1.0.tar.gz",
+      "size": 298877,
+      "sha256": "62929963bd8e190aa2a3e9cc74102d22406eba19dd5d86736fbd1a5f9b0519c5"
+    },
+    {
+      "browser_download_url": "https://github.com/SB-Chalmers/epsm_viewer/releases/download/v0.1.0/epsm_viewer-0.1.0.tgz",
+      "digest": "sha256:3b0ccf97e2c43550fac3f4a8f76ca0bcefede97fd58fcbaf169821814bd1cb45",
+      "id": 659342555,
+      "name": "epsm_viewer-0.1.0.tgz",
+      "size": 439778,
+      "sha256": "3b0ccf97e2c43550fac3f4a8f76ca0bcefede97fd58fcbaf169821814bd1cb45"
+    },
+    {
+      "browser_download_url": "https://github.com/SB-Chalmers/epsm_viewer/releases/download/v0.1.0/SHA256SUMS",
+      "digest": "sha256:1f53bf35b756d24ad64fa6d6c304a7a03943fce9d25ad96cd8f1122a743cd8b7",
+      "id": 659342550,
+      "name": "SHA256SUMS",
+      "size": 280,
+      "sha256": "1f53bf35b756d24ad64fa6d6c304a7a03943fce9d25ad96cd8f1122a743cd8b7"
+    }
+  ],
+  "checksums": "all three distributions match SHA256SUMS and all four GitHub asset digests match",
+  "checks": {
+    "npm_consumer": {
+      "status": "passed",
+      "node_version": "v22.23.3",
+      "consumer": "/private/tmp/epsm-viewer-release-proof.euZWhu/npm-consumer",
+      "entrypoint": "file:///private/tmp/epsm-viewer-release-proof.euZWhu/npm-consumer/node_modules/epsm_viewer/dist/index.js",
+      "geometry_entrypoint": "file:///private/tmp/epsm-viewer-release-proof.euZWhu/npm-consumer/node_modules/epsm_viewer/dist/geometry.js",
+      "objects": 1,
+      "triangles": 2
+    },
+    "python_notebook": {
+      "status": "passed",
+      "python": "3.11.13",
+      "import_path": "/private/tmp/epsm-viewer-release-proof.euZWhu/python-env/lib/python3.11/site-packages/epsm_viewer/__init__.py",
+      "versions": {
+        "epsm_viewer": "0.1.0",
+        "anywidget": "0.11.0",
+        "ipywidgets": "8.1.9",
+        "jupyterlab": "4.6.4",
+        "nbclient": "0.11.0"
+      },
+      "core_installed": false,
+      "notebook": "release-preview.ipynb",
+      "fresh_kernel": true,
+      "widget_mime": true,
+      "saved_widget_state": true,
+      "packaged_resources_and_licenses": true,
+      "pip_check": "passed"
+    },
+    "actual_jupyterlab_widget": {
+      "status": "passed",
+      "browser": "143.0.7499.4",
+      "node": "v22.23.3",
+      "real_jupyterlab_widget": true,
+      "selection_metadata": true,
+      "webgl": {
+        "width": 618,
+        "height": 309,
+        "webgl2": true,
+        "lost": false
+      },
+      "close_released_canvas": true,
+      "external_network_requests": [],
+      "page_errors": [],
+      "screenshot": "jupyterlab-widget.png"
+    },
+    "no_node_source_rebuild": {
+      "status": "passed",
+      "node_available": false,
+      "method": "Empty PATH with only absolute Python executable; clean extracted published source archive",
+      "wheel_member_bytes_identical": true,
+      "rebuilt_wheel": "/private/tmp/epsm-viewer-release-proof.euZWhu/rebuilt/epsm_viewer-0.1.0-py3-none-any.whl"
+    }
+  },
+  "tag_verified": {
+    "sha": "f2c847b9cd44280b7cf21803acfefa6e49e78b1b",
+    "type": "commit"
+  },
+  "screenshot_sha256": "c7f47212f10b37daaaa3d0de61f0e715b2ace10b5e44afc1642f58b4cf531593",
+  "runtime_executables": {
+    "python": "/private/tmp/epsm-viewer-release-proof.euZWhu/python-env/bin/python",
+    "node": "/private/tmp/epsm-viewer-node22/node_modules/node/bin/node"
+  },
+  "public_registry_publication": false
+}
