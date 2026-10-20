@@ -2,7 +2,7 @@ name: Check the handbook
 
 on:
   push:
-    tags: ['v*']
+    branches: [main]
   pull_request:
     branches: [dev, main]
   workflow_dispatch:
@@ -17,11 +17,14 @@ concurrency:
 jobs:
   documentation:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     strategy:
       matrix:
         python: ['3.11', '3.13']
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
@@ -34,8 +37,11 @@ jobs:
 
   api-documentation:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
