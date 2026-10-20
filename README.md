@@ -7,12 +7,13 @@ The agreed package names are `epsm`, `epsm_db`, `epsm_data`, `epsm_core`, `epsm_
 The handbook is written for the people who build and use EPSM. Coding agents follow the same instructions. Start with one small task, find the package that owns it, and write a test that shows the behaviour you want.
 
 **Status:** Preparing Handbook v0.5.1, 20 October 2026. The
-[Studio readiness record](docs/studio-readiness-2026-10-20.md) is **IN PROGRESS**
-until the coordinated final source revisions, checks and publications are
-recorded. The [platform compatibility guide](docs/platform-compatibility.md)
+[Studio readiness record](docs/studio-readiness-2026-10-20.md) records the released
+owner packages and tagged EPSM 0.3.1 combination. Its scientific, display and
+metadata checks passed; consumer adoption and the handbook release remain
+**IN PROGRESS**. The [platform compatibility guide](docs/platform-compatibility.md)
 defines EPSM's central manifest and how consumers adopt it on their next normal
-CI run. Viewer is delivered through private GitHub artifacts, with publication
-status stated in the readiness record.
+CI run. Viewer 0.1.0 is available through authenticated private GitHub release
+downloads, with its actual installation evidence in the readiness record.
 
 The latest published handbook is v0.5.0. The
 [archetype release record](docs/archetype-release-2026-10-15.md) identifies its

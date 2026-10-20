@@ -2,8 +2,8 @@
 
 **Status: IN PROGRESS.** This is the Handbook **0.5.1 candidate** record. It is
 not a declaration that the complete platform release is finished. The owner
-releases below have been tagged; the final EPSM 0.3.1 cohort, consumer adoption
-checks and handbook release still need their evidence. The
+releases and final EPSM 0.3.1 combination have passed their required checks and
+been tagged. Consumer adoption and the handbook release remain pending. The
 [15 October release record](archetype-release-2026-10-15.md) remains the dated
 evidence for the preceding coordinated release.
 
@@ -31,17 +31,17 @@ implementation gates. Nothing here establishes a replacement deployment.
 | Component | Prepared scope | Evidence and remaining gate |
 | --- | --- | --- |
 | Handbook 0.5.1 | Current ownership, private Viewer delivery and central compatibility guidance | Local documentation checks recorded below; final main commit, hosted checks and tag pending |
-| Core 0.8.0 | Scene-data boundary and removal of embedded display routes | Tagged source and owner checks recorded below; full updated platform cohort remains separate |
+| Core 0.8.0 | Scene-data boundary and removal of embedded display routes | Published owner source and checks, including the final updated platform cohort, are recorded below |
 | Viewer 0.1.0 | Standalone TypeScript renderer, optional Python helpers and self-contained artifacts | Tagged source, all three owner CI jobs and authenticated private release-artifact checks passed |
-| EPSM 0.3.1 candidate | Central supported manifest, metadata audit and consumer matrix interface | Final reviewed pins, complete installed scientific/display checks and release identity pending |
+| EPSM 0.3.1 | Central supported manifest, metadata audit and consumer matrix interface | Final main/tag and scientific, display and metadata checks passed; durable release assets are being published |
 | Consumer repositories | Read the central manifest on their next normal CI run | Each repository's reviewed adoption and its own checks remain distinct evidence |
 | Database environment | Portable evidence through the owning Database API | The identity and readiness of a proposed “GIS Lake” environment are **unconfirmed** |
 
-## Owner releases and private Viewer delivery
+## Owner releases
 
 These source tags have been promoted by the release coordinator. The linked
-checks identify the reviewed owner runs; they do not claim that the new complete
-EPSM combination has passed. The EPSM foundation at
+checks identify the reviewed owner runs; the separate final EPSM evidence appears
+below. The EPSM foundation at
 `9f82d5b94d768e9cf38f03bf8623d69e402b636a` established the manifest interface but
 is not the final 0.3.1 release.
 
@@ -73,6 +73,48 @@ EPSM candidate check with Workflows 0.3.0
 [metadata check](https://github.com/SB-Chalmers/epsm/actions/runs/39427470984), but
 remains historical pre-patch evidence. It is not the final proof for the licensed
 0.3.1 combination.
+
+## Final EPSM combination checks
+
+EPSM 0.3.1 is tagged at
+[`58327ba60f379a51129bc5cd743f1f7c74e38723`](https://github.com/SB-Chalmers/epsm/tree/v0.3.1).
+The [final scientific and display run](https://github.com/SB-Chalmers/epsm/actions/runs/39429999507)
+and [metadata guard](https://github.com/SB-Chalmers/epsm/actions/runs/39429999530)
+passed. The [compact evidence summary](studio-readiness-platform-evidence-2026-10-20.json)
+retains actual versions, revisions, wheel hashes, engine identities and receipt
+hashes. It records the licensed Workflows 0.3.1 combination; the earlier green
+0.3.0 candidate remains historical evidence above.
+
+Python 3.11.17 and 3.13.16 each passed 246 platform tests without skips. Each lane
+also ran five EPSM and six LCA notebooks from fresh kernels. The metadata guard
+passed 83 pure tests. Installed handoffs used the actual EnergyPlus 24.2.0
+executable and RC, with catalogue and authored archetypes, portable synthetic
+records and retained renovation assessments. They did not use a live database
+service or establish national data coverage.
+
+For each engine, a two-row grid and six-row paired Jansen design completed with
+explicit settings, frozen inputs and retained results. Controlled failure/retry
+checks kept the failed attempt; the paired plan had seven attempts and six design
+rows. Resume added no attempts, and the baseline remained unchanged. These small
+fixtures verify execution, preservation and recovery. They do not validate
+sensitivity-index accuracy; the receipt explicitly records
+`sensitivity_accuracy_validated: false`.
+
+A separate Python 3.13 display job used installed Core 0.8.0 and Viewer 0.1.0.
+The public Core scene passed Python Viewer's public `write_scene` and JavaScript
+Viewer's public `prepareScene`: 12 source objects produced 24 drawing triangles
+with identities, metadata and input data retained. The scene contract was
+`epsm.scene/1`, metres and Z up. Scientific workers did not install Viewer or Node.
+
+The run's feature head was `f86fa11367dfde230aa1ef555a86fa20309befda`.
+Its actual tested GitHub PR merge checkout was
+`c99b83e330ddea2038d866ea09bf0d89a2ef890e`, which the receipts retain. That checkout
+and the final released main share tree
+`fedd99461702d9a8d8b88121a6a2475cb9ac94e2`; release promotion preserved the tested
+contents rather than relabelling the earlier receipt SHA. Consumer adoption
+checks are still running and remain a separate gate.
+
+## Verified private Viewer delivery
 
 Viewer's private GitHub release contains the npm tarball, Python wheel, source
 archive and `SHA256SUMS` from its green CI artifacts. The npm package has
@@ -125,7 +167,7 @@ handbook unit tests and both learning notebooks. These are handbook checks, not
 engine or database integration evidence. The final 0.5.1 candidate must be checked
 again after this record is complete.
 
-The current 0.5.1 documentation candidate also passed
+The earlier 0.5.1 documentation candidate also passed
 `python3 scripts/check_docs.py` (33 Markdown files, 229 local links, 15 Python
 syntax examples and 35 template doctest examples), all 11 tests from
 `python3 -m unittest discover -s tests -v`, and both learning notebooks from
@@ -149,17 +191,14 @@ retains its public operations, synthetic geometry assumptions, Core wheel hash
 and scene/schema hashes. The final fixture passed schema validation, all 11 Node
 checks and all six actual browser checks before the owner CI run.
 
-## Complete this record before promotion
+## Remaining release gates
 
-1. Add final source revisions, declared versions, hosted check URLs and artifact
-   identities for each changed package. Record failures, skips and missing
-   prerequisites explicitly; do not count a canceled run as passing.
-2. Run the complete installed EPSM combination once with required real engine,
-   database and notebook prerequisites. Preserve each scientific owner's gates.
-   Record the separate Core-to-Viewer display handoff at the final supported pins.
-3. Promote remaining reviewed changes through `dev` and normal release merges into `main`,
-   then tag and publish checked artifacts in coordination. Consumers adopt the
-   resulting manifest on their next normal CI run; no cross-repository fan-out is
-   needed.
-4. Rerun the handbook checks, record its final main SHA and hosted results, and
-   only then replace **IN PROGRESS** with the actual completed release state.
+1. Complete the six consumer adoption reviews and checks. Record their actual
+   tested manifest SHA and resulting main commits. No earlier passing run is
+   relabelled as checking that adoption.
+2. Confirm EPSM's durable release assets and checksum verification, retaining the
+   compact receipts and their original tested source identities.
+3. Run the final handbook checks and normal release review, then tag and publish
+   its checked source in coordination. The final handbook identity belongs to its
+   release tag and publication receipt. Only completed gates replace the current
+   **IN PROGRESS** status.
