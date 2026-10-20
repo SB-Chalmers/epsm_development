@@ -1,0 +1,122 @@
+{
+  "format": 1,
+  "status": "passed",
+  "final_head": "ecdad5dd1a045fbce6fce28e73d3690678345061",
+  "final_runs": [
+    {
+      "conclusion": "success",
+      "createdAt": "2026-10-20T14:07:00Z",
+      "databaseId": 39436321609,
+      "headSha": "ecdad5dd1a045fbce6fce28e73d3690678345061",
+      "status": "completed",
+      "url": "https://github.com/SB-Chalmers/epsm_data/actions/runs/39436321609",
+      "workflowName": "Data release checks"
+    }
+  ],
+  "final_checks": [
+    {
+      "name": "combination",
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS",
+      "details_url": "https://github.com/SB-Chalmers/epsm_data/actions/runs/39436321609/job/118674550355"
+    },
+    {
+      "name": "package (3.11, pinned)",
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS",
+      "details_url": "https://github.com/SB-Chalmers/epsm_data/actions/runs/39436321609/job/118674659346"
+    },
+    {
+      "name": "package (3.13, pinned)",
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS",
+      "details_url": "https://github.com/SB-Chalmers/epsm_data/actions/runs/39436321609/job/118674659404"
+    }
+  ],
+  "manifest_revision": "58327ba60f379a51129bc5cd743f1f7c74e38723",
+  "previous_incomplete_runs": [
+    {
+      "reason": "Both required package lanes exceeded the introduced 20-minute job limit; corrected only timeout to30minutes.",
+      "head_revision": "5e8b9c7c86ae28a19bdde077bfd622a10ff696c6",
+      "run": {
+        "conclusion": "cancelled",
+        "createdAt": "2026-10-20T13:33:45Z",
+        "databaseId": 39431465143,
+        "headSha": "5e8b9c7c86ae28a19bdde077bfd622a10ff696c6",
+        "status": "completed",
+        "url": "https://github.com/SB-Chalmers/epsm_data/actions/runs/39431465143",
+        "workflowName": "Data release checks"
+      },
+      "run_jobs": [
+        {
+          "id": 118657301101,
+          "name": "combination",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/SB-Chalmers/epsm_data/actions/runs/39431465143/job/118657301101"
+        },
+        {
+          "id": 118657396807,
+          "name": "package (3.13, pinned)",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "url": "https://github.com/SB-Chalmers/epsm_data/actions/runs/39431465143/job/118657396807",
+          "last_pytest_progress": {
+            "percentage": 79,
+            "timestamp": "2026-10-20T13:52:09.0430533Z"
+          }
+        },
+        {
+          "id": 118657396821,
+          "name": "package (3.11, pinned)",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "url": "https://github.com/SB-Chalmers/epsm_data/actions/runs/39431465143/job/118657396821",
+          "test_summaries": [
+            "356 passed, 5 skipped in 1182.21s (0:19:42)"
+          ],
+          "validation_status": "Incomplete: pytest finished at cancellation; installed-wheel gate skipped."
+        }
+      ],
+      "manifest_revision": "58327ba60f379a51129bc5cd743f1f7c74e38723",
+      "timeout_annotation": "The job has exceeded the maximum execution time of 20m0s",
+      "validation_status": "Timed out; excluded from current passing evidence."
+    },
+    {
+      "reason": "Superseded by a necessary active documentation correction on the same PR; no passing evidence claimed.",
+      "head_revision": "24aa07312f203d72eb5ad1ab0e9367bb8d23646c",
+      "run": {
+        "conclusion": "cancelled",
+        "createdAt": "2026-10-20T13:55:56Z",
+        "databaseId": 39434697408,
+        "headSha": "24aa07312f203d72eb5ad1ab0e9367bb8d23646c",
+        "status": "completed",
+        "url": "https://github.com/SB-Chalmers/epsm_data/actions/runs/39434697408",
+        "workflowName": "Data release checks"
+      },
+      "run_jobs": [
+        {
+          "id": 118668529962,
+          "name": "combination",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 118668606761,
+          "name": "package (3.13, pinned)",
+          "status": "completed",
+          "conclusion": "cancelled"
+        },
+        {
+          "id": 118668606819,
+          "name": "package (3.11, pinned)",
+          "status": "completed",
+          "conclusion": "cancelled"
+        }
+      ],
+      "manifest_revision": "58327ba60f379a51129bc5cd743f1f7c74e38723",
+      "validation_status": "Superseded; excluded from current passing evidence."
+    }
+  ],
+  "scope": "Only the final head and final successful run provide acceptance evidence; the previous timeout and superseded runs are historical."
+}

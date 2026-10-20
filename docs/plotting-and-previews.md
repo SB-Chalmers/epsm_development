@@ -1,18 +1,27 @@
 # Plots and 3D previews
 
-A researcher should be able to inspect a building, construction or result without learning a different plotting interface in every package. Use `.plot()` for 2D figures and `.view()` for 3D previews where the object has something useful to show.
+A researcher should be able to inspect a building, construction or result without learning a different plotting interface in every package. Use `.plot()` for 2D figures where the object has something useful to show. Core produces `.scene()` data; the separate `epsm_viewer` package displays 3D scenes.
 
-**Status: shared design rules for adoption.** Existing packages differ in return types and display behaviour. The examples labelled illustrative below describe the intended interface, not methods already available everywhere.
+**Status: current viewer ownership updated 20 October 2026; shared 2D design rules remain for adoption.** Existing 2D packages differ in return types and display behaviour. Examples labelled illustrative are not methods already available everywhere. Earlier dated release and review snapshots retain their historical ownership and evidence.
 
-## Keep rendering with the owner
+## Keep scientific data with its owner
 
-Use a focused `plotting.py` module for a small 2D renderer. Use a `visualization/` package when 2D plots, 3D scenes and style adapters need separate files. Public objects delegate their `.plot()` and `.view()` methods to that implementation.
+Use a focused `plotting.py` module for a small 2D renderer. Each package supplies
+the geometry, metrics, units and diagnostic calculations it owns. Catalogue can
+draw construction sections, Database evidence coverage, Weather weather series,
+and Workflows study outcomes. Add a plot only where it serves a real use case.
 
-Each package renders the information it owns. Catalogue draws construction sections and assumptions; Core draws physical geometry and simulation results; Database can show evidence coverage; Weather can show weather series; Workflows can show study outcomes. Add an operation only where it serves a real use case. Packages and modules do not need empty renderers or a meaningless `.view()`.
+Core exposes physical geometry and inspection metadata as portable scene data.
+`epsm_viewer` owns the TypeScript renderer and optional Python display helpers.
+Its input is a neutral `epsm.scene/1` dictionary; it does not import Core, select
+assumptions, fetch records or run a simulation. Studio owns adapters between
+package APIs and its UI. A scene method in Core remains a data operation, with no
+browser, notebook widget, output directory or server.
 
-Rendering may select or arrange already available data. Reuse the owner's geometry, metrics and diagnostic calculations. A plot must not quietly fetch records, choose assumptions or run a simulation to fill missing data. Keep missing values and conflicts visible.
-
-The EPSM wrapper delegates to these renderers. Lower-level packages remain usable without the wrapper. Keep optional plotting/viewer imports local to the operation, and give a clear message describing the required extra if it is missing.
+Rendering may select or arrange loaded data. Preserve missing values and
+conflicts. The EPSM wrapper may delegate to existing public operations; lower-level
+packages remain usable without it. Optional display dependencies are explicit.
+A missing viewer must produce an actionable error, not a silent backend switch.
 
 ## Make `.plot()` predictable
 
@@ -36,24 +45,49 @@ Saving is explicit and its path belongs to the caller. For a comparison, use mat
 
 A returned Figure supports Matplotlib's normal inspection and export operations. See [Matplotlib figures and axes](https://matplotlib.org/stable/users/explain/figure/axes_intro.html). New methods should document and test the chosen return type rather than alternate between a Figure, a table and `None`.
 
-## Make `.view()` the 3D entry point
+## Pass scene data to the 3D viewer
 
-Use `.view()` for a physical 3D preview. Reuse Core's scene construction for Core geometry instead of rebuilding the same surfaces in each package.
+Core's `GeometrySpec.scene(facade=..., context=...)`, `BuildingSpec.scene()` and
+physical `Building.scene()` generate ready-to-consume geometry and metadata.
+Core's `scene_data(model, report, diagnostics, preparation)` handles an already
+loaded compiled model. Studio uses those public operations rather than copying
+physical geometry calculations into a frontend adapter.
 
-Support the simplest notebook route first where the package can do so. Make a browser backend an explicit choice. State what each backend returns, how it displays, whether it writes files or starts a local server, and how the caller closes or cleans up the preview. Do not silently switch backends when a dependency is missing.
-
-**Illustrative API:** the intended choices are:
+Install the separately built `epsm_viewer` Python wheel for browser display;
+install its `notebook` extra for notebook display. It is optional and is not
+published on a package index. The private
+[Viewer repository](https://github.com/SB-Chalmers/epsm_viewer) owns the npm
+tarball, Python wheel and source archive. Its `docs/release.md` explains authenticated
+artifact download and installation. Check the
+[readiness record](studio-readiness-2026-10-20.md) before assuming a release or CI
+artifact exists. With the checked wheel installed:
 
 ```python
-preview = building.view(backend="notebook")
-browser_preview = building.view(backend="browser", launch_browser=False)
+from epsm_core import Footprint, GeometrySpec
+from epsm_viewer import scene_widget, view_scene
+
+geometry = GeometrySpec.from_footprint(
+    Footprint.rectangle(12, 8), storeys=2, storey_height_m=3,
+)
+scene = geometry.scene()
+widget = scene_widget(scene)  # display(widget) in a live notebook.
+widget.close()  # Close when finished inspecting.
+with view_scene(scene, directory="output/preview", launch_browser=False) as preview:
+    print(preview.url)  # Keep this context open while using the URL.
 ```
 
-The exact backend argument and common preview interface still need to be agreed. Existing Core `.view()` returns a `ViewerHandle` and can write files, start a server and launch a browser. Its `.widget()` uses the same scene for a notebook preview. Harmonise those routes through one documented entry point before advertising the illustrative calls.
+`scene_widget` returns a live widget; `view_scene` returns a context-managed local
+server handle; `write_scene(scene, directory=...)` explicitly writes a static
+bundle. These helpers belong to Viewer. Core's earlier `.view()`/`.widget()`
+methods, `preview_geometry`, and `epsm-core view` are removed by the extraction.
+Dated screenshots and validation records of those earlier APIs remain historical
+evidence, not verification of the extracted renderer.
 
-Show physical scale, axes and orientation. Identify the building, selected geometry and model revision. Explain excluded geometry or incomplete surfaces. A clipped, unloaded or missing part must not appear to be a verified complete model.
-
-`repr()`, `str()` and ordinary object inspection must never start a renderer, write preview files or launch a server. A preview is an explicit operation.
+Show physical scale, axes and orientation. Identify the building, selected
+geometry and model revision. Explain excluded geometry or incomplete surfaces.
+A clipped, unloaded or missing part must not appear to be a verified complete
+model. `repr()`, `str()` and ordinary object inspection must never start a
+renderer, write preview files or launch a server.
 
 ## Use one visual style
 
@@ -84,7 +118,7 @@ The handbook owns the palette definition. Package renderers own small adapters f
 
 Start with tests of the returned Figure or scene data. Check labels, units, colour tokens, selected values, missing/conflict cues, no input mutation and no change to global style. Check that a caller-supplied axis survives the call. An export smoke test can draw a small figure with a noninteractive backend.
 
-For 3D, check that the scene matches the owning geometry, keeps identifiers and coordinates, and that a browser preview can close its server and release resources. Use real rendering for an advertised browser or notebook route. Mocking the whole renderer does not establish that the preview works.
+For 3D, Core checks that exported scenes match its geometry and preserve identifiers, coordinates and units. Viewer checks triangulation, selection, display controls and resource cleanup. Studio checks its package adapters and user flow. Use real rendering for an advertised browser or notebook route; mocking the renderer does not establish that the preview works.
 
 Avoid exact image comparisons across platforms for every plot. Use a few reviewed reference images when layout or geometry needs that check. Keep numerical/scientific reference tests separate from rendering tests.
 
@@ -92,6 +126,6 @@ Add a small `examples/` notebook showing the default plot, a labelled comparison
 
 ## What needs to change first
 
-The current Catalogue `BuildingArchetype.plot()` returns a Figure but displays by default. Core result charts currently live in demo helpers; `SimulationResult` has no public `.plot()` yet. Core's browser and notebook previews already share scene construction. The packages use separate material, chart and surface colours.
+The current Catalogue `BuildingArchetype.plot()` returns a Figure but displays by default. Core result charts currently live in demo helpers; `SimulationResult` has no public `.plot()` yet. Core's scene-data methods now separate physical geometry from Viewer display. The packages use separate material, chart and surface colours.
 
-Start by moving reusable result drawing to Core, preserving Catalogue's evidence-aware section drawing, making display choices explicit, and adapting both renderers to the shared palette. Treat return-type or display changes as API changes with tests and migration notes.
+For 2D adoption, move reusable result drawing to its owner, preserve Catalogue's evidence-aware section drawing and make display choices explicit. Viewer owns browser palette adaptation; it does not move scientific calculations out of Core. Treat return-type or display changes as API changes with tests and migration notes.

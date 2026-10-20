@@ -1,0 +1,264 @@
+{
+  "format": 1,
+  "status": "passed",
+  "scope": "Normal owner CI with central selection; each consumer retained its checkout under test. Main/dev tree equality comes from the promotion ledger and is independently checked in the remote audit.",
+  "manifest_revision": "58327ba60f379a51129bc5cd743f1f7c74e38723",
+  "consumers": {
+    "epsm_core": {
+      "source_pr": "https://github.com/SB-Chalmers/epsm_core/pull/54",
+      "source_checks": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-20T14:18:28Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_core/actions/runs/39437999086/job/118680047995",
+          "name": "combination",
+          "startedAt": "2026-10-20T14:18:21Z",
+          "status": "COMPLETED",
+          "workflowName": "Core tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-20T14:23:03Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_core/actions/runs/39437999086/job/118680129966",
+          "name": "unit (3.11, pinned)",
+          "startedAt": "2026-10-20T14:18:30Z",
+          "status": "COMPLETED",
+          "workflowName": "Core tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-20T14:24:58Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_core/actions/runs/39437999086/job/118680130036",
+          "name": "unit (3.13, pinned)",
+          "startedAt": "2026-10-20T14:18:30Z",
+          "status": "COMPLETED",
+          "workflowName": "Core tests"
+        }
+      ],
+      "run_id": 39437999086,
+      "main_revision": "118b87fb197fc09eef03c9f0505a73ce80758652",
+      "dev_revision": "7c4eb75efdfb8df5b86f8ed95ba03a2047c5b5fd",
+      "identical_tree": "89ac484d28288f823c30be3e7c327f9a7756970d",
+      "captured_manifest_revision": "58327ba60f379a51129bc5cd743f1f7c74e38723",
+      "manifest_checkout_and_consumer_selection_verified_in_log": true
+    },
+    "epsm_rc": {
+      "source_pr": "https://github.com/SB-Chalmers/epsm_rc/pull/64",
+      "source_checks": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-20T14:16:06Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_rc/actions/runs/39437644275/job/118678797992",
+          "name": "combination",
+          "startedAt": "2026-10-20T14:16:00Z",
+          "status": "COMPLETED",
+          "workflowName": "RC release checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-20T14:16:49Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_rc/actions/runs/39437644275/job/118678798275",
+          "name": "standalone",
+          "startedAt": "2026-10-20T14:16:00Z",
+          "status": "COMPLETED",
+          "workflowName": "RC release checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-20T14:19:47Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_rc/actions/runs/39437644275/job/118678875736",
+          "name": "package (3.11)",
+          "startedAt": "2026-10-20T14:16:09Z",
+          "status": "COMPLETED",
+          "workflowName": "RC release checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-20T14:21:07Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_rc/actions/runs/39437644275/job/118678877024",
+          "name": "package (3.13)",
+          "startedAt": "2026-10-20T14:16:09Z",
+          "status": "COMPLETED",
+          "workflowName": "RC release checks"
+        }
+      ],
+      "run_id": 39437644275,
+      "main_revision": "1a15e99619971a662a89e7780e544c9c2f12b619",
+      "dev_revision": "804cb83fd3b93efa8f2c7a0bec3e890ea6e96597",
+      "identical_tree": "e1f8a17af5967d7e21e2300b0cb77cf87fc35fec",
+      "captured_manifest_revision": "58327ba60f379a51129bc5cd743f1f7c74e38723",
+      "manifest_checkout_and_consumer_selection_verified_in_log": true
+    },
+    "epsm_lca": {
+      "source_pr": "https://github.com/SB-Chalmers/epsm_lca/pull/17",
+      "source_checks": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-20T14:08:23Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_lca/actions/runs/39436506360/job/118674797090",
+          "name": "combination",
+          "startedAt": "2026-10-20T14:08:16Z",
+          "status": "COMPLETED",
+          "workflowName": "LCA release checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-20T14:09:27Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_lca/actions/runs/39436506360/job/118674885129",
+          "name": "package (3.11, pinned)",
+          "startedAt": "2026-10-20T14:08:25Z",
+          "status": "COMPLETED",
+          "workflowName": "LCA release checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-20T14:09:28Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_lca/actions/runs/39436506360/job/118674885588",
+          "name": "package (3.13, pinned)",
+          "startedAt": "2026-10-20T14:08:25Z",
+          "status": "COMPLETED",
+          "workflowName": "LCA release checks"
+        }
+      ],
+      "run_id": 39436506360,
+      "main_revision": "4ea956c8355dc4efa30ce0a2240a880bd1e864e5",
+      "dev_revision": "8d2a56541778f7285a83b69f8670e3b1b8a66fd2",
+      "identical_tree": "e87851aaefd5e2434e63b5767304dee6566dc791",
+      "captured_manifest_revision": "58327ba60f379a51129bc5cd743f1f7c74e38723",
+      "manifest_checkout_and_consumer_selection_verified_in_log": true
+    },
+    "epsm_data": {
+      "source_pr": "https://github.com/SB-Chalmers/epsm_data/pull/19",
+      "source_checks": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-20T14:07:57Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_data/actions/runs/39436321609/job/118674550355",
+          "name": "combination",
+          "startedAt": "2026-10-20T14:07:48Z",
+          "status": "COMPLETED",
+          "workflowName": "Data release checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-20T14:28:02Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_data/actions/runs/39436321609/job/118674659346",
+          "name": "package (3.11, pinned)",
+          "startedAt": "2026-10-20T14:08:02Z",
+          "status": "COMPLETED",
+          "workflowName": "Data release checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-20T14:30:02Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_data/actions/runs/39436321609/job/118674659404",
+          "name": "package (3.13, pinned)",
+          "startedAt": "2026-10-20T14:08:01Z",
+          "status": "COMPLETED",
+          "workflowName": "Data release checks"
+        }
+      ],
+      "run_id": 39436321609,
+      "main_revision": "1cc0394a718df24d529a7a7d09f37bcedafc3f6f",
+      "dev_revision": "065c1f9aab5e5baa881e11dcb19834521181d7de",
+      "identical_tree": "e4112d985aeab341193267677f71e5ac68162589",
+      "captured_manifest_revision": "58327ba60f379a51129bc5cd743f1f7c74e38723",
+      "manifest_checkout_and_consumer_selection_verified_in_log": true
+    },
+    "epsm_db": {
+      "source_pr": "https://github.com/SB-Chalmers/epsm_db/pull/22",
+      "source_checks": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-20T14:12:23Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_db/actions/runs/39437101533/job/118676895505",
+          "name": "combination",
+          "startedAt": "2026-10-20T14:12:17Z",
+          "status": "COMPLETED",
+          "workflowName": "Evidence database tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-20T14:15:05Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_db/actions/runs/39437101533/job/118676974927",
+          "name": "synthetic (3.11, pinned)",
+          "startedAt": "2026-10-20T14:12:26Z",
+          "status": "COMPLETED",
+          "workflowName": "Evidence database tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-20T14:15:15Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_db/actions/runs/39437101533/job/118676974946",
+          "name": "synthetic (3.13, pinned)",
+          "startedAt": "2026-10-20T14:12:26Z",
+          "status": "COMPLETED",
+          "workflowName": "Evidence database tests"
+        }
+      ],
+      "run_id": 39437101533,
+      "main_revision": "eaee0553839cceadb2ee64dd669272eb26040d62",
+      "dev_revision": "2fbc6306cb791469148f1de6cb848f7903337187",
+      "identical_tree": "78eaf5a1562b3364b15b4ad81fae9f7580fcccbf",
+      "captured_manifest_revision": "58327ba60f379a51129bc5cd743f1f7c74e38723",
+      "manifest_checkout_and_consumer_selection_verified_in_log": true
+    },
+    "epsm_workflows": {
+      "source_pr": "https://github.com/SB-Chalmers/epsm_workflows/pull/10",
+      "source_checks": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-20T13:32:14Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_workflows/actions/runs/39431209027/job/118656438529",
+          "name": "combination",
+          "startedAt": "2026-10-20T13:32:06Z",
+          "status": "COMPLETED",
+          "workflowName": "Workflows release checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-20T13:33:23Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_workflows/actions/runs/39431209027/job/118656527685",
+          "name": "package (3.11)",
+          "startedAt": "2026-10-20T13:32:16Z",
+          "status": "COMPLETED",
+          "workflowName": "Workflows release checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-20T13:33:29Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_workflows/actions/runs/39431209027/job/118656527666",
+          "name": "package (3.13)",
+          "startedAt": "2026-10-20T13:32:16Z",
+          "status": "COMPLETED",
+          "workflowName": "Workflows release checks"
+        }
+      ],
+      "run_id": 39431209027,
+      "main_revision": "32ea8c27405bf4e3b562de394f92ae05b17cc0bc",
+      "dev_revision": "649634d15a4dc7e92fd1d660626a1ddbbefe3cd0",
+      "identical_tree": "3b32ff7fe84cff137b020ccd33f70c07f69f2794",
+      "captured_manifest_revision": "58327ba60f379a51129bc5cd743f1f7c74e38723",
+      "manifest_checkout_and_consumer_selection_verified_in_log": true
+    }
+  }
+}

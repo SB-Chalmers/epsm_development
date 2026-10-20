@@ -1,3 +1,23 @@
+# Release 0.5.1 — 20 October 2026
+
+This documentation release records the Core scene-data boundary, separate
+private Viewer delivery, Studio application ownership and EPSM's central
+compatibility-manifest contract. The six published runtime releases retain
+checked distributions and durable evidence. The six consumer owner runs and
+active documentation follow-ups passed, followed by the final coordinated
+metadata audit. See the [readiness record](docs/studio-readiness-2026-10-20.md)
+for exact evidence and the distinction between tested release pins and later
+documentation/CI main commits.
+
+The shared purchased-energy scope is space heating and ventilation fan
+electricity. Unavailable coverage remains explicit. “GIS Lake” is unconfirmed;
+these software checks do not establish live database readiness, national data
+coverage or empirical prediction accuracy. Legacy production Studio is unchanged.
+
+The handbook tag, released source and hosted check identities belong to its
+publication receipt when published. Historical release and verification records
+remain dated.
+
 # Release 0.5.0 — 15 October 2026
 
 The handbook records the implemented archetype authoring, shared application,
