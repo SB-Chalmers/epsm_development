@@ -1,0 +1,65 @@
+{
+  "format": 1,
+  "status": "published_owner_releases_only",
+  "full_epsm_cohort": "pending",
+  "packages": {
+    "epsm_core": {
+      "url": "https://github.com/SB-Chalmers/epsm_core/releases/tag/v0.8.0",
+      "tag": "v0.8.0",
+      "source_revision": "b197e092eb0423de5a9547873a0f596493ab7536",
+      "source_tree": "486dcf62616b76b7b90693fd4d302b844b257dd9",
+      "source_ci": "https://github.com/SB-Chalmers/epsm_core/actions/runs/39424191033",
+      "directory": "/private/tmp/epsm-studio-readiness/core-release",
+      "sha256": {
+        "epsm_core-0.8.0-py3-none-any.whl": "4ef947233c7bf15349d5aecff9b61a57dcb81923b42bbece64c23430f0118058",
+        "epsm_core-0.8.0.tar.gz": "c96b352881d30b591c762231b140b81fb0eac7b22b455b2f906d5f0bf106a940",
+        "release-evidence.sha256": "906c15761e11469e54ca7e7fb7ad9925380c57b54ba94d85243ade560325c844",
+        "release-evidence.zip": "ac521e9aa532bfcba1780af65009b749574d47b5ed35b41789c74f46577c90d4",
+        "release-manifest.json": "5399b102a582c45ef2691df783b224f9156e3c3384b30d17d164224fe8904de7"
+      },
+      "github_asset_digests_verified": true
+    },
+    "epsm_rc": {
+      "url": "https://github.com/SB-Chalmers/epsm_rc/releases/tag/v0.8.2",
+      "tag": "v0.8.2",
+      "source_revision": "6464f7d832d5ff3093fa754c0dc4d0d2930450dc",
+      "source_tree": "17bbd47f32ec73759db0b378f23bceb484138c18",
+      "source_ci": "https://github.com/SB-Chalmers/epsm_rc/actions/runs/39423285081",
+      "directory": "/private/tmp/epsm-studio-readiness/rc-release",
+      "sha256": {
+        "epsm_rc-0.8.2-py3-none-any.whl": "1e381dbe07343ac1ee5a76d1ec4fac14ad9e6a6d8ee1d61f37826704fa2e6344",
+        "epsm_rc-0.8.2.tar.gz": "9d09070998867fc3137a38eb153e9ee7db41dc758bc11bb78c4d26b758b1d844",
+        "release-evidence.sha256": "f0cfd8cc2f026966b452189bb360660cb625556fe5919f10227cbadd77b35b0b",
+        "release-evidence.zip": "0866029a658fbc2b2e30c92e6a8b707703f255062fd261973c8b7d3952eb1c80",
+        "release-manifest.json": "2496eaf3ac3078394328db60023ee424c6efdba606373a1d07707e2d2c13a229"
+      },
+      "github_asset_digests_verified": true
+    },
+    "epsm_studies": {
+      "tag": "v0.3.0",
+      "source_revision": "16ed6bd0bd63cee588f6e7ad951d71f8f9543ecb",
+      "source_ci": "https://github.com/SB-Chalmers/epsm_studies/actions/runs/39423762626",
+      "url": "https://github.com/SB-Chalmers/epsm_studies/releases/tag/v0.3.0",
+      "assets_sha256": {
+        "epsm_studies-0.3.0-py3-none-any.whl": "7d1504d57b54026e7a26c56f1225e8b53720a4867da36c842d4ab39a0dbcfb7f",
+        "epsm_studies-0.3.0.tar.gz": "79bab92b8b8ab0b4da38cedac678885c721388db709870a83618e5e72d0f230f",
+        "release-manifest.json": "a70e639831011b414e0b1a8f080232646c154788f2ec76a03062a142057ab9f7",
+        "SHA256SUMS": "e412aa2af58778c21a393758fda9559a7e755ee05530f8720d3d0cd95b481448"
+      },
+      "github_asset_digests_verified": true
+    },
+    "epsm_workflows": {
+      "tag": "v0.3.1",
+      "source_revision": "c558edfeee9a8bf93aabe07ef3834e99aab20cce",
+      "source_ci": "https://github.com/SB-Chalmers/epsm_workflows/actions/runs/39429171696",
+      "url": "https://github.com/SB-Chalmers/epsm_workflows/releases/tag/v0.3.1",
+      "assets_sha256": {
+        "epsm_workflows-0.3.1-py3-none-any.whl": "e013ef65217d523d3f40a5921db7a68b7d74b03235a7b8e55682ff7e9cf6f251",
+        "epsm_workflows-0.3.1.tar.gz": "149fd8041530c0b97190105b849c5869b0b2c2df35b127ba38035047d91e88ab",
+        "release-manifest.json": "cb660dbce682e9771a1ae9520ea7b6ed9fdb6c678f6bf656855dc5d62575345a",
+        "SHA256SUMS": "23132d3ecb9387c333db9e3877b4cb734b9a200df4b0c8f24d7881481e2a2aa4"
+      },
+      "github_asset_digests_verified": true
+    }
+  }
+}

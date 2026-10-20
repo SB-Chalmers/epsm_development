@@ -45,13 +45,34 @@ EPSM combination has passed. The EPSM foundation at
 `9f82d5b94d768e9cf38f03bf8623d69e402b636a` established the manifest interface but
 is not the final 0.3.1 release.
 
-| Repository | Source version | Released main commit | Owner checks |
+| Repository | Published version | Released main commit | Owner checks |
 | --- | --- | --- | --- |
-| Core | [0.8.0](https://github.com/SB-Chalmers/epsm_core/tree/v0.8.0) | `b197e092eb0423de5a9547873a0f596493ab7536` | [Core checks](https://github.com/SB-Chalmers/epsm_core/actions/runs/39424191033) |
-| RC | [0.8.2](https://github.com/SB-Chalmers/epsm_rc/tree/v0.8.2) | `6464f7d832d5ff3093fa754c0dc4d0d2930450dc` | [RC checks](https://github.com/SB-Chalmers/epsm_rc/actions/runs/39423285081) |
-| Workflows | [0.3.0](https://github.com/SB-Chalmers/epsm_workflows/tree/v0.3.0) | `e464ce8f8d9756c95ac165759d1427ba3f289e52` | [Workflows checks](https://github.com/SB-Chalmers/epsm_workflows/actions/runs/39424924626) |
-| Studies | [0.3.0](https://github.com/SB-Chalmers/epsm_studies/tree/v0.3.0) | `16ed6bd0bd63cee588f6e7ad951d71f8f9543ecb` | [Studies checks](https://github.com/SB-Chalmers/epsm_studies/actions/runs/39423762626) |
+| Core | [0.8.0](https://github.com/SB-Chalmers/epsm_core/releases/tag/v0.8.0) | `b197e092eb0423de5a9547873a0f596493ab7536` | [Core checks](https://github.com/SB-Chalmers/epsm_core/actions/runs/39424191033) |
+| RC | [0.8.2](https://github.com/SB-Chalmers/epsm_rc/releases/tag/v0.8.2) | `6464f7d832d5ff3093fa754c0dc4d0d2930450dc` | [RC checks](https://github.com/SB-Chalmers/epsm_rc/actions/runs/39423285081) |
+| Workflows | [0.3.1](https://github.com/SB-Chalmers/epsm_workflows/releases/tag/v0.3.1) | `c558edfeee9a8bf93aabe07ef3834e99aab20cce` | [Workflows license-patch checks](https://github.com/SB-Chalmers/epsm_workflows/actions/runs/39429171696) |
+| Studies | [0.3.0](https://github.com/SB-Chalmers/epsm_studies/releases/tag/v0.3.0) | `16ed6bd0bd63cee588f6e7ad951d71f8f9543ecb` | [Studies checks](https://github.com/SB-Chalmers/epsm_studies/actions/runs/39423762626) |
 | Viewer | [0.1.0](https://github.com/SB-Chalmers/epsm_viewer/releases/tag/v0.1.0) | `f2c847b9cd44280b7cf21803acfefa6e49e78b1b` | [Build and installed-wheel checks](https://github.com/SB-Chalmers/epsm_viewer/actions/runs/39425944812) |
+
+Core's two platform lanes each reported 1,079 passed and eight explicitly optional
+skips; those skips are not counted as passing integrations. RC's platform lanes
+each reported 583 passed without skips. Workflows 0.3.1 passed all 70 owner tests
+on Python 3.11 and 3.13. Studies' two Python lanes passed. Viewer passed its build
+job and both installed-wheel lanes. The
+[owner publication receipts](studio-readiness-owner-releases-2026-10-20.json)
+retain distribution hashes and verified GitHub asset digests. Their release
+manifests distinguish local artifact builds from CI verification.
+
+Archive inspection found that Workflows' first 0.3.0 source tag had no root
+license or distribution license metadata. It was left unchanged. The separate
+0.3.1 patch includes MIT notices in both distributions and uses the existing
+EPSM Development contributors holder notice. Its runtime source is byte-identical
+to 0.3.0 apart from the authoritative package version. Public signatures,
+scientific behaviour and prepared schema 3 are unchanged. The first complete
+EPSM candidate check with Workflows 0.3.0
+[passed](https://github.com/SB-Chalmers/epsm/actions/runs/39427470932), alongside its
+[metadata check](https://github.com/SB-Chalmers/epsm/actions/runs/39427470984), but
+remains historical pre-patch evidence. It is not the final proof for the licensed
+0.3.1 combination.
 
 Viewer's private GitHub release contains the npm tarball, Python wheel, source
 archive and `SHA256SUMS` from its green CI artifacts. The npm package has
