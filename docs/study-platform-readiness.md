@@ -86,6 +86,31 @@ discrete/categorical choices. Bounds policies are `truncate` and `validate`;
 integer inputs are discrete and continuous marginals are never silently rounded.
 Correlated requests are represented but explicitly unsupported.
 
+## Reuse decisions
+
+| Requirement | Decision and authoritative operation | Added campaign boundary |
+| --- | --- | --- |
+| Research protocol | Extend Studies; preserve `PaperStudy` and its saved records | Outer `StudySpec`, immutable revisions and a delegating `Study` entry point |
+| Physical input descriptions | Reuse Core `model_json_schema`, Data definitions and public assignment operations | Workflows composes discovery and registered bindings; no parallel physical model |
+| Grid and LHS | Reuse Workflows `grid` and `latin_hypercube` | Map unit probabilities through declared marginals and independent scope seeds |
+| Monte Carlo and distributions | Extend Workflows design; existing sensitivity callbacks stay intact | Portable marginals, bounds policies and scoped independent draws; no new sensitivity estimator |
+| Physical renovation | Reuse `Building.renovate`, retained history and Data recipes | Named alternatives and frozen baseline/engine pairings; sensitivity edits create no installation event |
+| Subject assembly | Reuse `Building.from_footprint` / `Building.from_record` and Core footprint factories | Typed explicit source requests and subject/group selection |
+| Weather | Reuse supplied Core Weather and the existing weather-owner batch/morphing commits | Assignment, manifest/receipt retention and source-year/future-period axes |
+| Readiness and outputs | Extend owner Core/RC readiness and existing output declarations | Public output catalogues and EPSM composition; unsupported requirements block preparation |
+| Evaluation calculation | Reuse EPSM `Building.simulate` and Core/RC/LCA methods | Retain resolved physical/weather/calendar identity; no new energy or impact calculation |
+| Evaluation persistence | Extend EPSM `Evaluation.to_dict` / `from_dict` | Checksummed relative bundle references and external arrays, preserving ordinary public return types |
+| Execution | Reuse schema-3 `PreparedEvaluation`, local execution, Vera, attempts and retries | Verified inspection/attempt access, bundle references and graceful local cancellation |
+| Permanent results | New Studies archive operation over verified Workflows evidence | Immutable snapshots, every planned outcome, lazy index and independent reopening |
+| Post-study evaluation | Reuse `compare_energy_results` and owner metric meanings | Selection, coverage, descriptive summaries, temporal aggregation, explicit portfolio totals, baseline differences and export |
+| Python, CLI and notebooks | Extend existing package entry points | Thin adapters to the same public lifecycle operations |
+| Cross-package verification | Extend EPSM compatibility manifest, matrix and receipts | Clean committed-source capture, wheel cohorts, candidate selection and the six-evaluation gate |
+
+The acceptance tests below check these handoffs. Owner suites remain responsible
+for their physical and numerical methods. Active source/ref reconciliation and
+later installed evidence are separate: matching package version text alone does
+not prove that two checkouts or wheel files are identical.
+
 Current dependency ownership is Data → Core → RC/LCA, followed by EPSM assembly
 and evaluation, Workflows execution, and Studies interpretation. Database and
 Weather supply independent inputs. Optional integration extras can reference the
