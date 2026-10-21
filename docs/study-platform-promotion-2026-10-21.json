@@ -1,7 +1,7 @@
 {
   "format": "epsm-study-platform-promotion/1",
-  "recorded_at": "2026-10-21T11:37:33.142198+00:00",
-  "status": "five peer owners merged into dev; peer-development cohort checks running; EPSM remains open",
+  "recorded_at": "2026-10-21T12:55:49.678041+00:00",
+  "status": "actual complete development and release-preparation cohorts passed; five owner main releases merged; exact-main verification running; EPSM supported manifest unchanged",
   "authorization": {
     "ci_access": "User replied proceed to the explicit six-key setup question",
     "integration_and_release": "Original task explicitly requests staged development/main promotion"
@@ -446,6 +446,1633 @@
           "morphing"
         ]
       }
+    }
+  },
+  "later_cohorts": {
+    "peer-dev-01": {
+      "311": {
+        "status": "passed",
+        "manifest_sha256": "e560cc1eb1f80b7c76f75ea2e00aea4d12c67a7624ff05638fe2ac667e3a58ce",
+        "packages": {
+          "epsm": {
+            "revision": "9a17b760232d6b6f7259e2a02a6a4a294b14f5a5",
+            "version": "0.4.0"
+          },
+          "epsm_data": {
+            "revision": "bc8449402b9e0dbe0ea85ff76c954cf36d209f86",
+            "version": "0.6.0"
+          },
+          "epsm_core": {
+            "revision": "6f7282eb4381c2d49717ec9ede92c9eae6b14504",
+            "version": "0.8.2"
+          },
+          "epsm_rc": {
+            "revision": "3db4ef93e71ea9b14ea65ca0f954a8db6ed2798e",
+            "version": "0.9.0"
+          },
+          "epsm_lca": {
+            "revision": "00141d0500e717b4f18a9d69e158f0af2aae1934",
+            "version": "0.2.0"
+          },
+          "epsm_db": {
+            "revision": "9e29a575f5495b76d5a8553bbe6e20dd4f0e1ff0",
+            "version": "0.3.0"
+          },
+          "epsm_workflows": {
+            "revision": "cbb487b316d202fb18c86c95ff2a98056f6511b3",
+            "version": "0.4.0"
+          },
+          "epsm_studies": {
+            "revision": "2177cdd7452666d612b397025da2f41de9bfa0b5",
+            "version": "0.4.0"
+          },
+          "smhi2epw": {
+            "revision": "a2c91a15e9b8a9a08dfae7a35e24060567347b3b",
+            "version": "1.3.0"
+          }
+        },
+        "wheels": {
+          "epsm": {
+            "filename": "epsm-0.4.0-py3-none-any.whl",
+            "version": "0.4.0",
+            "sha256": "401f166e1013b5ace241b4b9009d8bf66cb3ce73fa354c846cc1598c3e4058a0"
+          },
+          "epsm_data": {
+            "filename": "epsm_data-0.6.0-py3-none-any.whl",
+            "version": "0.6.0",
+            "sha256": "f7e3686ac4273d5c6d0a88541afc1df22abe86f5b9786f161ac74bfa2e6b0121"
+          },
+          "epsm_core": {
+            "filename": "epsm_core-0.8.2-py3-none-any.whl",
+            "version": "0.8.2",
+            "sha256": "50ef99d6d16bd13c92c08ff1adbe713ad0a9f29d66cf1f366fc7a9b97131a4f8"
+          },
+          "epsm_rc": {
+            "filename": "epsm_rc-0.9.0-py3-none-any.whl",
+            "version": "0.9.0",
+            "sha256": "6ad7b9a57190ee6e3eac2b9e7fd42105061e8aa5a26a94058ef937b7a9492684"
+          },
+          "epsm_lca": {
+            "filename": "epsm_lca-0.2.0-py3-none-any.whl",
+            "version": "0.2.0",
+            "sha256": "8e9780b7342985bf79405a16c249b1d7a170b273076ed8c4fde908f13a653a0b"
+          },
+          "epsm_db": {
+            "filename": "epsm_db-0.3.0-py3-none-any.whl",
+            "version": "0.3.0",
+            "sha256": "ae5ee279f11bf39d92f64991ab73538f85d1b17c66bc9b3e2fbe9d4660ba6e15"
+          },
+          "epsm_workflows": {
+            "filename": "epsm_workflows-0.4.0-py3-none-any.whl",
+            "version": "0.4.0",
+            "sha256": "19195da14da694d5cf12b635afa34cca712fd402d8e5f7743e67ce21b2d09655"
+          },
+          "epsm_studies": {
+            "filename": "epsm_studies-0.4.0-py3-none-any.whl",
+            "version": "0.4.0",
+            "sha256": "c1ebb3e04b9924ce6956cd2f6fccf409c112caeaf504948dd9973fa5d6b8ccbd"
+          },
+          "smhi2epw": {
+            "filename": "smhi2epw-1.3.0-py3-none-any.whl",
+            "version": "1.3.0",
+            "sha256": "dd673d14b18f49161e274e24376411b2071ee7c109f0428e6b2f84889e9fd8a9"
+          }
+        },
+        "scenarios": {
+          "installed-platform": {
+            "required": true,
+            "status": "passed"
+          },
+          "study-platform": {
+            "required": true,
+            "status": "passed"
+          },
+          "archetype-handoff": {
+            "required": true,
+            "status": "passed"
+          },
+          "workflow-handoff": {
+            "required": true,
+            "status": "passed"
+          }
+        }
+      },
+      "313": {
+        "status": "passed",
+        "manifest_sha256": "e560cc1eb1f80b7c76f75ea2e00aea4d12c67a7624ff05638fe2ac667e3a58ce",
+        "packages": {
+          "epsm": {
+            "revision": "9a17b760232d6b6f7259e2a02a6a4a294b14f5a5",
+            "version": "0.4.0"
+          },
+          "epsm_data": {
+            "revision": "bc8449402b9e0dbe0ea85ff76c954cf36d209f86",
+            "version": "0.6.0"
+          },
+          "epsm_core": {
+            "revision": "6f7282eb4381c2d49717ec9ede92c9eae6b14504",
+            "version": "0.8.2"
+          },
+          "epsm_rc": {
+            "revision": "3db4ef93e71ea9b14ea65ca0f954a8db6ed2798e",
+            "version": "0.9.0"
+          },
+          "epsm_lca": {
+            "revision": "00141d0500e717b4f18a9d69e158f0af2aae1934",
+            "version": "0.2.0"
+          },
+          "epsm_db": {
+            "revision": "9e29a575f5495b76d5a8553bbe6e20dd4f0e1ff0",
+            "version": "0.3.0"
+          },
+          "epsm_workflows": {
+            "revision": "cbb487b316d202fb18c86c95ff2a98056f6511b3",
+            "version": "0.4.0"
+          },
+          "epsm_studies": {
+            "revision": "2177cdd7452666d612b397025da2f41de9bfa0b5",
+            "version": "0.4.0"
+          },
+          "smhi2epw": {
+            "revision": "a2c91a15e9b8a9a08dfae7a35e24060567347b3b",
+            "version": "1.3.0"
+          }
+        },
+        "wheels": {
+          "epsm": {
+            "filename": "epsm-0.4.0-py3-none-any.whl",
+            "version": "0.4.0",
+            "sha256": "67d27dd9e2498c218b4281b8a2f79c0a63127d7a97555a7ad72f27ec8623184a"
+          },
+          "epsm_data": {
+            "filename": "epsm_data-0.6.0-py3-none-any.whl",
+            "version": "0.6.0",
+            "sha256": "d3c63e5cab5e7b44d98d109e69bd3e25d4c871ccc3abf21c662a9415d9ff1a6e"
+          },
+          "epsm_core": {
+            "filename": "epsm_core-0.8.2-py3-none-any.whl",
+            "version": "0.8.2",
+            "sha256": "ce118b0e9702a57fa1c61a91e3cd6e97c7e56f8697b51ba76e866c4a2ab44386"
+          },
+          "epsm_rc": {
+            "filename": "epsm_rc-0.9.0-py3-none-any.whl",
+            "version": "0.9.0",
+            "sha256": "33c0c188e6de9b191ab1a37f870a7b03e23907d00ca041553466315fb517213d"
+          },
+          "epsm_lca": {
+            "filename": "epsm_lca-0.2.0-py3-none-any.whl",
+            "version": "0.2.0",
+            "sha256": "f0a1b2e8e4b89861b8a6a154dc28d0c45d0dff06290acb3520d671d23145e6c3"
+          },
+          "epsm_db": {
+            "filename": "epsm_db-0.3.0-py3-none-any.whl",
+            "version": "0.3.0",
+            "sha256": "38deceff693d55d926a08e217ee9305cfd9a3b88b440fc1963fbc51ae45a82ce"
+          },
+          "epsm_workflows": {
+            "filename": "epsm_workflows-0.4.0-py3-none-any.whl",
+            "version": "0.4.0",
+            "sha256": "833e13172f12a551e04b1d156f7c99c7404094d161080e1baad47e389462578f"
+          },
+          "epsm_studies": {
+            "filename": "epsm_studies-0.4.0-py3-none-any.whl",
+            "version": "0.4.0",
+            "sha256": "82aa1282743ffa6e138a961b81f86b8731a728f5f66bab787120f51d87077f66"
+          },
+          "smhi2epw": {
+            "filename": "smhi2epw-1.3.0-py3-none-any.whl",
+            "version": "1.3.0",
+            "sha256": "415b142456d40de739690f91e0ad63fcaad0909aff4a3067dbd77fade58c839b"
+          }
+        },
+        "scenarios": {
+          "installed-platform": {
+            "required": true,
+            "status": "passed"
+          },
+          "study-platform": {
+            "required": true,
+            "status": "passed"
+          },
+          "archetype-handoff": {
+            "required": true,
+            "status": "passed"
+          },
+          "workflow-handoff": {
+            "required": true,
+            "status": "passed"
+          }
+        }
+      }
+    },
+    "dev-01": {
+      "311": {
+        "status": "passed",
+        "manifest_sha256": "12bacb9ef435e16219c081c8c9bdc67c0534aa5c38d682cbe807cac8626b145a",
+        "packages": {
+          "epsm": {
+            "revision": "1b9b433c1c01ae45a3d2a8786481c6faea9e5ee9",
+            "version": "0.4.0"
+          },
+          "epsm_data": {
+            "revision": "bc8449402b9e0dbe0ea85ff76c954cf36d209f86",
+            "version": "0.6.0"
+          },
+          "epsm_core": {
+            "revision": "6f7282eb4381c2d49717ec9ede92c9eae6b14504",
+            "version": "0.8.2"
+          },
+          "epsm_rc": {
+            "revision": "3db4ef93e71ea9b14ea65ca0f954a8db6ed2798e",
+            "version": "0.9.0"
+          },
+          "epsm_lca": {
+            "revision": "00141d0500e717b4f18a9d69e158f0af2aae1934",
+            "version": "0.2.0"
+          },
+          "epsm_db": {
+            "revision": "9e29a575f5495b76d5a8553bbe6e20dd4f0e1ff0",
+            "version": "0.3.0"
+          },
+          "epsm_workflows": {
+            "revision": "cbb487b316d202fb18c86c95ff2a98056f6511b3",
+            "version": "0.4.0"
+          },
+          "epsm_studies": {
+            "revision": "2177cdd7452666d612b397025da2f41de9bfa0b5",
+            "version": "0.4.0"
+          },
+          "smhi2epw": {
+            "revision": "a2c91a15e9b8a9a08dfae7a35e24060567347b3b",
+            "version": "1.3.0"
+          }
+        },
+        "wheels": {
+          "epsm": {
+            "filename": "epsm-0.4.0-py3-none-any.whl",
+            "version": "0.4.0",
+            "sha256": "bdf182e5083154a1b34c328ed02f8c98613a991aa89fa94b0e23aa23eb7ea727"
+          },
+          "epsm_data": {
+            "filename": "epsm_data-0.6.0-py3-none-any.whl",
+            "version": "0.6.0",
+            "sha256": "247af69c333173a107000926c8f9459e605737d9f7fa922eff6be0a8fa927371"
+          },
+          "epsm_core": {
+            "filename": "epsm_core-0.8.2-py3-none-any.whl",
+            "version": "0.8.2",
+            "sha256": "7db4884c9e8f52198eb0eaed200de5cd93eed61db895443e9329c9241bd7538d"
+          },
+          "epsm_rc": {
+            "filename": "epsm_rc-0.9.0-py3-none-any.whl",
+            "version": "0.9.0",
+            "sha256": "1fa625f1572c4ac5b9a0a291769a9212ea896b7248c229349b2a2b48dc46aa5c"
+          },
+          "epsm_lca": {
+            "filename": "epsm_lca-0.2.0-py3-none-any.whl",
+            "version": "0.2.0",
+            "sha256": "acd9a79dd24e8569c0a0a752e51eabb74f32c545421af3a9de6327ad2278831a"
+          },
+          "epsm_db": {
+            "filename": "epsm_db-0.3.0-py3-none-any.whl",
+            "version": "0.3.0",
+            "sha256": "410370c6d62721b8f7fa2d1bfc27b3c7296e2be508e62fe2526e7fc96c743947"
+          },
+          "epsm_workflows": {
+            "filename": "epsm_workflows-0.4.0-py3-none-any.whl",
+            "version": "0.4.0",
+            "sha256": "2c889d0b0cb5cf127ba9d799b3064b146453eca46e93257b43b5f249c456479a"
+          },
+          "epsm_studies": {
+            "filename": "epsm_studies-0.4.0-py3-none-any.whl",
+            "version": "0.4.0",
+            "sha256": "c59eb7dd603b5c3405ea7e7e59a425724bdbe06436c91a160b8ce78c48cbee96"
+          },
+          "smhi2epw": {
+            "filename": "smhi2epw-1.3.0-py3-none-any.whl",
+            "version": "1.3.0",
+            "sha256": "471a360c7fa7f7894870e441fbeea3c849043637b0faae04e2262a0d549e631a"
+          }
+        },
+        "scenarios": {
+          "installed-platform": {
+            "required": true,
+            "status": "passed"
+          },
+          "study-platform": {
+            "required": true,
+            "status": "passed"
+          },
+          "archetype-handoff": {
+            "required": true,
+            "status": "passed"
+          },
+          "workflow-handoff": {
+            "required": true,
+            "status": "passed"
+          }
+        }
+      },
+      "313": {
+        "status": "passed",
+        "manifest_sha256": "12bacb9ef435e16219c081c8c9bdc67c0534aa5c38d682cbe807cac8626b145a",
+        "packages": {
+          "epsm": {
+            "revision": "1b9b433c1c01ae45a3d2a8786481c6faea9e5ee9",
+            "version": "0.4.0"
+          },
+          "epsm_data": {
+            "revision": "bc8449402b9e0dbe0ea85ff76c954cf36d209f86",
+            "version": "0.6.0"
+          },
+          "epsm_core": {
+            "revision": "6f7282eb4381c2d49717ec9ede92c9eae6b14504",
+            "version": "0.8.2"
+          },
+          "epsm_rc": {
+            "revision": "3db4ef93e71ea9b14ea65ca0f954a8db6ed2798e",
+            "version": "0.9.0"
+          },
+          "epsm_lca": {
+            "revision": "00141d0500e717b4f18a9d69e158f0af2aae1934",
+            "version": "0.2.0"
+          },
+          "epsm_db": {
+            "revision": "9e29a575f5495b76d5a8553bbe6e20dd4f0e1ff0",
+            "version": "0.3.0"
+          },
+          "epsm_workflows": {
+            "revision": "cbb487b316d202fb18c86c95ff2a98056f6511b3",
+            "version": "0.4.0"
+          },
+          "epsm_studies": {
+            "revision": "2177cdd7452666d612b397025da2f41de9bfa0b5",
+            "version": "0.4.0"
+          },
+          "smhi2epw": {
+            "revision": "a2c91a15e9b8a9a08dfae7a35e24060567347b3b",
+            "version": "1.3.0"
+          }
+        },
+        "wheels": {
+          "epsm": {
+            "filename": "epsm-0.4.0-py3-none-any.whl",
+            "version": "0.4.0",
+            "sha256": "33c17ac4f2ed25b94a6dbd9a9c3d151f5595e5c6bf5cd709cadd5229f8a3aaa7"
+          },
+          "epsm_data": {
+            "filename": "epsm_data-0.6.0-py3-none-any.whl",
+            "version": "0.6.0",
+            "sha256": "0cc001c2d8a593ed558b8a67f0e1e432335f8ba784aae107b5697546e61dba3b"
+          },
+          "epsm_core": {
+            "filename": "epsm_core-0.8.2-py3-none-any.whl",
+            "version": "0.8.2",
+            "sha256": "2100a1d41905249edfea58807688343b66df2037a58f4a32a464c723b7640b3f"
+          },
+          "epsm_rc": {
+            "filename": "epsm_rc-0.9.0-py3-none-any.whl",
+            "version": "0.9.0",
+            "sha256": "1976bb59fa6556261e3faa02ed2d7346d996725533354859e4fc565a95e5d831"
+          },
+          "epsm_lca": {
+            "filename": "epsm_lca-0.2.0-py3-none-any.whl",
+            "version": "0.2.0",
+            "sha256": "b5710f3cb5179dee370dc667831969b60c9335f2dca60cecb8bde74b280faaae"
+          },
+          "epsm_db": {
+            "filename": "epsm_db-0.3.0-py3-none-any.whl",
+            "version": "0.3.0",
+            "sha256": "cf0583747aea2aa120f15c242e1e5bbb313b0b14eefd59607229f8a388763b84"
+          },
+          "epsm_workflows": {
+            "filename": "epsm_workflows-0.4.0-py3-none-any.whl",
+            "version": "0.4.0",
+            "sha256": "e1202da8a1ed931a154ca2448778ab7c234b9e7d6d545934c544cb9c69cb94fc"
+          },
+          "epsm_studies": {
+            "filename": "epsm_studies-0.4.0-py3-none-any.whl",
+            "version": "0.4.0",
+            "sha256": "cd23cf83ed2d479a831d8b3c3f5f2259d69c4e42b45ab3550c1b1a3bb76bcf2f"
+          },
+          "smhi2epw": {
+            "filename": "smhi2epw-1.3.0-py3-none-any.whl",
+            "version": "1.3.0",
+            "sha256": "a33106c9018429931ac29c36a9c22c2cd786c03579be85884aa7ed526b477fdd"
+          }
+        },
+        "scenarios": {
+          "installed-platform": {
+            "required": true,
+            "status": "passed"
+          },
+          "study-platform": {
+            "required": true,
+            "status": "passed"
+          },
+          "archetype-handoff": {
+            "required": true,
+            "status": "passed"
+          },
+          "workflow-handoff": {
+            "required": true,
+            "status": "passed"
+          }
+        }
+      }
+    },
+    "release-prep-01": {
+      "311": {
+        "status": "passed",
+        "manifest_sha256": "e122afd4b05617719d9b530105f018ff919b284c9de6608c7a8d25e28b348595",
+        "packages": {
+          "epsm": {
+            "revision": "7214923233438b118c9365053d114eaa22aeca6b",
+            "version": "0.4.0"
+          },
+          "epsm_data": {
+            "revision": "bc8449402b9e0dbe0ea85ff76c954cf36d209f86",
+            "version": "0.6.0"
+          },
+          "epsm_core": {
+            "revision": "6f7282eb4381c2d49717ec9ede92c9eae6b14504",
+            "version": "0.8.2"
+          },
+          "epsm_rc": {
+            "revision": "af2817ce12d74792fa5d008a05b0fc4bbf19a39a",
+            "version": "0.9.0"
+          },
+          "epsm_lca": {
+            "revision": "00141d0500e717b4f18a9d69e158f0af2aae1934",
+            "version": "0.2.0"
+          },
+          "epsm_db": {
+            "revision": "9e29a575f5495b76d5a8553bbe6e20dd4f0e1ff0",
+            "version": "0.3.0"
+          },
+          "epsm_workflows": {
+            "revision": "3722933ca04d233e5be82694a635c52563396ebc",
+            "version": "0.4.0"
+          },
+          "epsm_studies": {
+            "revision": "56aa5e3fdfb16974951964ef85707157eaf5116e",
+            "version": "0.4.0"
+          },
+          "smhi2epw": {
+            "revision": "abc591e9e2efb54c3f484b4a907998034bf0bf7d",
+            "version": "1.3.0"
+          }
+        },
+        "wheels": {
+          "epsm": {
+            "filename": "epsm-0.4.0-py3-none-any.whl",
+            "version": "0.4.0",
+            "sha256": "1ff2ad0458eb2f3c910351db10c38880d5637ba775a0c3c81e1dc8c35e829816"
+          },
+          "epsm_data": {
+            "filename": "epsm_data-0.6.0-py3-none-any.whl",
+            "version": "0.6.0",
+            "sha256": "8e9fca6624459ca23cf4f1c124b0fbb21d84c52338b7fdf1455b868f31c976c5"
+          },
+          "epsm_core": {
+            "filename": "epsm_core-0.8.2-py3-none-any.whl",
+            "version": "0.8.2",
+            "sha256": "ae30c24ff54df8405dab7844346a9b087e628008fc73442d5d1f0025d28b25e7"
+          },
+          "epsm_rc": {
+            "filename": "epsm_rc-0.9.0-py3-none-any.whl",
+            "version": "0.9.0",
+            "sha256": "4c2fecaaa1470636365b284a2788ca0407eba545cae2896f7b7f0a492b4bcb7d"
+          },
+          "epsm_lca": {
+            "filename": "epsm_lca-0.2.0-py3-none-any.whl",
+            "version": "0.2.0",
+            "sha256": "8df1586317c6930b64997202bfc5186c2911890cdbeb384d50545e7903cfdddf"
+          },
+          "epsm_db": {
+            "filename": "epsm_db-0.3.0-py3-none-any.whl",
+            "version": "0.3.0",
+            "sha256": "e36a6e6dec8d4eaaf12588f0b63d00e20367400890319f67db1a3064f7f5a5c7"
+          },
+          "epsm_workflows": {
+            "filename": "epsm_workflows-0.4.0-py3-none-any.whl",
+            "version": "0.4.0",
+            "sha256": "a9f139428f595017d1b21d717ee934fb03e24bf34961949b395bcd079ecc4226"
+          },
+          "epsm_studies": {
+            "filename": "epsm_studies-0.4.0-py3-none-any.whl",
+            "version": "0.4.0",
+            "sha256": "c685e12a7fe612100083dd423b25b4986df1a573ff22f110956e59fd15100d8d"
+          },
+          "smhi2epw": {
+            "filename": "smhi2epw-1.3.0-py3-none-any.whl",
+            "version": "1.3.0",
+            "sha256": "1a16e3d05948de55dad731555e44372bc9c847b24c49476bd09552fea5b13872"
+          }
+        },
+        "scenarios": {
+          "installed-platform": {
+            "required": true,
+            "status": "passed"
+          },
+          "study-platform": {
+            "required": true,
+            "status": "passed"
+          },
+          "archetype-handoff": {
+            "required": true,
+            "status": "passed"
+          },
+          "workflow-handoff": {
+            "required": true,
+            "status": "passed"
+          }
+        }
+      },
+      "313": {
+        "status": "passed",
+        "manifest_sha256": "e122afd4b05617719d9b530105f018ff919b284c9de6608c7a8d25e28b348595",
+        "packages": {
+          "epsm": {
+            "revision": "7214923233438b118c9365053d114eaa22aeca6b",
+            "version": "0.4.0"
+          },
+          "epsm_data": {
+            "revision": "bc8449402b9e0dbe0ea85ff76c954cf36d209f86",
+            "version": "0.6.0"
+          },
+          "epsm_core": {
+            "revision": "6f7282eb4381c2d49717ec9ede92c9eae6b14504",
+            "version": "0.8.2"
+          },
+          "epsm_rc": {
+            "revision": "af2817ce12d74792fa5d008a05b0fc4bbf19a39a",
+            "version": "0.9.0"
+          },
+          "epsm_lca": {
+            "revision": "00141d0500e717b4f18a9d69e158f0af2aae1934",
+            "version": "0.2.0"
+          },
+          "epsm_db": {
+            "revision": "9e29a575f5495b76d5a8553bbe6e20dd4f0e1ff0",
+            "version": "0.3.0"
+          },
+          "epsm_workflows": {
+            "revision": "3722933ca04d233e5be82694a635c52563396ebc",
+            "version": "0.4.0"
+          },
+          "epsm_studies": {
+            "revision": "56aa5e3fdfb16974951964ef85707157eaf5116e",
+            "version": "0.4.0"
+          },
+          "smhi2epw": {
+            "revision": "abc591e9e2efb54c3f484b4a907998034bf0bf7d",
+            "version": "1.3.0"
+          }
+        },
+        "wheels": {
+          "epsm": {
+            "filename": "epsm-0.4.0-py3-none-any.whl",
+            "version": "0.4.0",
+            "sha256": "fc3ad2ffd8916f44917c138bb082d446fbbc66b776e15958f87842e495ce823a"
+          },
+          "epsm_data": {
+            "filename": "epsm_data-0.6.0-py3-none-any.whl",
+            "version": "0.6.0",
+            "sha256": "588227ae00e4f5c77ca4bbc4aa92277fa5762a54234a410c7e622a485112848b"
+          },
+          "epsm_core": {
+            "filename": "epsm_core-0.8.2-py3-none-any.whl",
+            "version": "0.8.2",
+            "sha256": "1f2d93777b27b8e1603ebe90ae9e52ac1d13d797c5453534c5bd0f21ae58677d"
+          },
+          "epsm_rc": {
+            "filename": "epsm_rc-0.9.0-py3-none-any.whl",
+            "version": "0.9.0",
+            "sha256": "c9afdfa689b49f0446c877feb2f90e32de774e3f6903e01810b43854bfd9c4cf"
+          },
+          "epsm_lca": {
+            "filename": "epsm_lca-0.2.0-py3-none-any.whl",
+            "version": "0.2.0",
+            "sha256": "f7bd5c1a7776e8fce24faacf841a0464cd1ec0d9f58802bb7b98d02cdacb8cc2"
+          },
+          "epsm_db": {
+            "filename": "epsm_db-0.3.0-py3-none-any.whl",
+            "version": "0.3.0",
+            "sha256": "271577add48044905180db1fa0f6357380bc92d5eca4fdbf796a1ea70f02f5a9"
+          },
+          "epsm_workflows": {
+            "filename": "epsm_workflows-0.4.0-py3-none-any.whl",
+            "version": "0.4.0",
+            "sha256": "314eadda68f9a88c556619ea03404d5299bd196c1087fd14c8c3d9fe11618ec7"
+          },
+          "epsm_studies": {
+            "filename": "epsm_studies-0.4.0-py3-none-any.whl",
+            "version": "0.4.0",
+            "sha256": "c685e12a7fe612100083dd423b25b4986df1a573ff22f110956e59fd15100d8d"
+          },
+          "smhi2epw": {
+            "filename": "smhi2epw-1.3.0-py3-none-any.whl",
+            "version": "1.3.0",
+            "sha256": "ca31dbabee934a2871040d19676eae158f99e4dfa503c128f0c95984bc0912d4"
+          }
+        },
+        "scenarios": {
+          "installed-platform": {
+            "required": true,
+            "status": "passed"
+          },
+          "study-platform": {
+            "required": true,
+            "status": "passed"
+          },
+          "archetype-handoff": {
+            "required": true,
+            "status": "passed"
+          },
+          "workflow-handoff": {
+            "required": true,
+            "status": "passed"
+          }
+        }
+      }
+    },
+    "release-ready-dev-01": {
+      "311": {
+        "status": "passed",
+        "manifest_sha256": "44bcbdd0cf908cfdc86c131af6c96fc9a3773b8a19c653c6470b7efc67a30fe6",
+        "packages": {
+          "epsm": {
+            "revision": "6bd36b64f6967f34bfd72afaa632be7b2caa7fed",
+            "version": "0.4.0"
+          },
+          "epsm_data": {
+            "revision": "bc8449402b9e0dbe0ea85ff76c954cf36d209f86",
+            "version": "0.6.0"
+          },
+          "epsm_core": {
+            "revision": "6f7282eb4381c2d49717ec9ede92c9eae6b14504",
+            "version": "0.8.2"
+          },
+          "epsm_rc": {
+            "revision": "a34b626441bb90b23938520c9b5ffbb169bf140c",
+            "version": "0.9.0"
+          },
+          "epsm_lca": {
+            "revision": "00141d0500e717b4f18a9d69e158f0af2aae1934",
+            "version": "0.2.0"
+          },
+          "epsm_db": {
+            "revision": "9e29a575f5495b76d5a8553bbe6e20dd4f0e1ff0",
+            "version": "0.3.0"
+          },
+          "epsm_workflows": {
+            "revision": "59943e986b7ca09c93a776572e157d3e986cea9d",
+            "version": "0.4.0"
+          },
+          "epsm_studies": {
+            "revision": "5a3d07055f23bbaaf89829ffc0970cc256065df9",
+            "version": "0.4.0"
+          },
+          "smhi2epw": {
+            "revision": "cc019cf57b36db62f5056ba10834378d1733380b",
+            "version": "1.3.0"
+          }
+        },
+        "wheels": {
+          "epsm": {
+            "filename": "epsm-0.4.0-py3-none-any.whl",
+            "version": "0.4.0",
+            "sha256": "296f225e97463b9b6b1dc77057d97063c300843b85a46fcd3cfdc42e49579d14"
+          },
+          "epsm_data": {
+            "filename": "epsm_data-0.6.0-py3-none-any.whl",
+            "version": "0.6.0",
+            "sha256": "e1fcf09adb6b9c586fee6621d13f1adc68d4ab3ac333f7e3f83fe630c6179966"
+          },
+          "epsm_core": {
+            "filename": "epsm_core-0.8.2-py3-none-any.whl",
+            "version": "0.8.2",
+            "sha256": "8d672adbf10f2f9b9b8dc17e75525ef068b1639ae5cf377bfb6c7b2cc357702e"
+          },
+          "epsm_rc": {
+            "filename": "epsm_rc-0.9.0-py3-none-any.whl",
+            "version": "0.9.0",
+            "sha256": "f606dad424d17680248b76a48ca976085defa9358baee23277d5f480bb73e3ea"
+          },
+          "epsm_lca": {
+            "filename": "epsm_lca-0.2.0-py3-none-any.whl",
+            "version": "0.2.0",
+            "sha256": "1959e3a1b5da4f8ea2658b92cce453f5d2ff58e11f9f602403972b5ed586e5bf"
+          },
+          "epsm_db": {
+            "filename": "epsm_db-0.3.0-py3-none-any.whl",
+            "version": "0.3.0",
+            "sha256": "1a5fa4708b2be69483adb2afc4784fdc15039db9b40863ea54d29e5c3c2470f3"
+          },
+          "epsm_workflows": {
+            "filename": "epsm_workflows-0.4.0-py3-none-any.whl",
+            "version": "0.4.0",
+            "sha256": "b4a8807545fb77e876c9428d20fa62e6d4c5ad0d80d84e03f4e26c2b2fee463f"
+          },
+          "epsm_studies": {
+            "filename": "epsm_studies-0.4.0-py3-none-any.whl",
+            "version": "0.4.0",
+            "sha256": "e8a10b5b82e5918e8d1e3a6dc41e61bae9a0e39346488ff1d7fddc5fb9bd5a89"
+          },
+          "smhi2epw": {
+            "filename": "smhi2epw-1.3.0-py3-none-any.whl",
+            "version": "1.3.0",
+            "sha256": "b0bd67fb67095cc0f44c9dc67faec420c47e180e978aa71645f2ac03fff75787"
+          }
+        },
+        "scenarios": {
+          "installed-platform": {
+            "required": true,
+            "status": "passed"
+          },
+          "study-platform": {
+            "required": true,
+            "status": "passed"
+          },
+          "archetype-handoff": {
+            "required": true,
+            "status": "passed"
+          },
+          "workflow-handoff": {
+            "required": true,
+            "status": "passed"
+          }
+        }
+      },
+      "313": {
+        "status": "passed",
+        "manifest_sha256": "44bcbdd0cf908cfdc86c131af6c96fc9a3773b8a19c653c6470b7efc67a30fe6",
+        "packages": {
+          "epsm": {
+            "revision": "6bd36b64f6967f34bfd72afaa632be7b2caa7fed",
+            "version": "0.4.0"
+          },
+          "epsm_data": {
+            "revision": "bc8449402b9e0dbe0ea85ff76c954cf36d209f86",
+            "version": "0.6.0"
+          },
+          "epsm_core": {
+            "revision": "6f7282eb4381c2d49717ec9ede92c9eae6b14504",
+            "version": "0.8.2"
+          },
+          "epsm_rc": {
+            "revision": "a34b626441bb90b23938520c9b5ffbb169bf140c",
+            "version": "0.9.0"
+          },
+          "epsm_lca": {
+            "revision": "00141d0500e717b4f18a9d69e158f0af2aae1934",
+            "version": "0.2.0"
+          },
+          "epsm_db": {
+            "revision": "9e29a575f5495b76d5a8553bbe6e20dd4f0e1ff0",
+            "version": "0.3.0"
+          },
+          "epsm_workflows": {
+            "revision": "59943e986b7ca09c93a776572e157d3e986cea9d",
+            "version": "0.4.0"
+          },
+          "epsm_studies": {
+            "revision": "5a3d07055f23bbaaf89829ffc0970cc256065df9",
+            "version": "0.4.0"
+          },
+          "smhi2epw": {
+            "revision": "cc019cf57b36db62f5056ba10834378d1733380b",
+            "version": "1.3.0"
+          }
+        },
+        "wheels": {
+          "epsm": {
+            "filename": "epsm-0.4.0-py3-none-any.whl",
+            "version": "0.4.0",
+            "sha256": "78f34f3bea3cfb210fc26f8cf2b811427e74cc0e321fbbef878f39ca67a0298e"
+          },
+          "epsm_data": {
+            "filename": "epsm_data-0.6.0-py3-none-any.whl",
+            "version": "0.6.0",
+            "sha256": "a742cfd3287c7e42850b0e8616b97866822bd8dd639e59881bd17ae9c7fbe623"
+          },
+          "epsm_core": {
+            "filename": "epsm_core-0.8.2-py3-none-any.whl",
+            "version": "0.8.2",
+            "sha256": "d182515556b0c3d9fa09109160140ead58a41629873e3afbe63a62bd7026f827"
+          },
+          "epsm_rc": {
+            "filename": "epsm_rc-0.9.0-py3-none-any.whl",
+            "version": "0.9.0",
+            "sha256": "329c78cd857ecbfe359b2d68bbb2b8758c62f9c64ba4f2be9970a37320994c9b"
+          },
+          "epsm_lca": {
+            "filename": "epsm_lca-0.2.0-py3-none-any.whl",
+            "version": "0.2.0",
+            "sha256": "1c1115715ec2011e618ffe7cf10227f1ee033e075e2e2958e6b9a1dfac2632bf"
+          },
+          "epsm_db": {
+            "filename": "epsm_db-0.3.0-py3-none-any.whl",
+            "version": "0.3.0",
+            "sha256": "1044d70730f129d8caed2e024d036bb10c807af0dcbcdfee1d5276e20f2b6f90"
+          },
+          "epsm_workflows": {
+            "filename": "epsm_workflows-0.4.0-py3-none-any.whl",
+            "version": "0.4.0",
+            "sha256": "74208f55e5713f6e19ac6f118cf66db6f2c8089c53439683cf2ace2303b6f2da"
+          },
+          "epsm_studies": {
+            "filename": "epsm_studies-0.4.0-py3-none-any.whl",
+            "version": "0.4.0",
+            "sha256": "5e31fb99c87e0561d7cfb9df4efecc9531a2991d4bb8bd10ba3879ad319cd33e"
+          },
+          "smhi2epw": {
+            "filename": "smhi2epw-1.3.0-py3-none-any.whl",
+            "version": "1.3.0",
+            "sha256": "713860aa14576d3874565f3277a9cfec839f0547ce19da536f500ac1d0bafaa6"
+          }
+        },
+        "scenarios": {
+          "installed-platform": {
+            "required": true,
+            "status": "passed"
+          },
+          "study-platform": {
+            "required": true,
+            "status": "passed"
+          },
+          "archetype-handoff": {
+            "required": true,
+            "status": "passed"
+          },
+          "workflow-handoff": {
+            "required": true,
+            "status": "passed"
+          }
+        }
+      }
+    }
+  },
+  "owner_main_merges": {
+    "epsm_core": {
+      "main": "1ea867d849b808bc9f879f2fb740c54a51754295",
+      "dev": "6f7282eb4381c2d49717ec9ede92c9eae6b14504",
+      "tree_matches_verified_dev": true
+    },
+    "smhi2epw": {
+      "main": "6792b2a4d1bc6a7bdcd1bd77b35dd0ff704f2b29",
+      "dev": "cc019cf57b36db62f5056ba10834378d1733380b",
+      "tree_matches_verified_dev": true
+    },
+    "epsm_rc": {
+      "main": "8837d3e8afd2d5be70172fd88d74598f1eba74ff",
+      "dev": "a34b626441bb90b23938520c9b5ffbb169bf140c",
+      "tree_matches_verified_dev": true
+    },
+    "epsm_workflows": {
+      "main": "433a8b6d461ad2016e6f8c046aeaeb16b2861787",
+      "dev": "59943e986b7ca09c93a776572e157d3e986cea9d",
+      "tree_matches_verified_dev": true
+    },
+    "epsm_studies": {
+      "main": "d38ffc053cc4e9f88cb86e15018bf6ce309a65a9",
+      "dev": "5a3d07055f23bbaaf89829ffc0970cc256065df9",
+      "tree_matches_verified_dev": true
+    }
+  },
+  "main_merge_preflight": {
+    "epsm_core": {
+      "main_before": "0e8eafb69a398d18316f0d28844448514b77768d",
+      "dev": "6f7282eb4381c2d49717ec9ede92c9eae6b14504",
+      "prospective_tree": "60b3ab43585f648d7f8f551a1f155651a2b4579c",
+      "dev_tree": "60b3ab43585f648d7f8f551a1f155651a2b4579c",
+      "conflicts": false
+    },
+    "smhi2epw": {
+      "main_before": "f27d70c8fb665c13ca4263ebe6337f11e45cf73d",
+      "dev": "cc019cf57b36db62f5056ba10834378d1733380b",
+      "prospective_tree": "69431216c938831ce5df4656790f03868e68bb82",
+      "dev_tree": "69431216c938831ce5df4656790f03868e68bb82",
+      "conflicts": false
+    },
+    "epsm_rc": {
+      "main_before": "308a39d6381604842fdf96352abfb4f1165c6400",
+      "dev": "a34b626441bb90b23938520c9b5ffbb169bf140c",
+      "prospective_tree": "0409bc8e084bc424a821abbbcd12b7a371f82228",
+      "dev_tree": "0409bc8e084bc424a821abbbcd12b7a371f82228",
+      "conflicts": false
+    },
+    "epsm_workflows": {
+      "main_before": "32ea8c27405bf4e3b562de394f92ae05b17cc0bc",
+      "dev": "59943e986b7ca09c93a776572e157d3e986cea9d",
+      "prospective_tree": "2316615f3fd16385ecf8bea193cdaa8bb24b2c2c",
+      "dev_tree": "2316615f3fd16385ecf8bea193cdaa8bb24b2c2c",
+      "conflicts": false
+    },
+    "epsm_studies": {
+      "main_before": "16ed6bd0bd63cee588f6e7ad951d71f8f9543ecb",
+      "dev": "5a3d07055f23bbaaf89829ffc0970cc256065df9",
+      "prospective_tree": "e1fbcc59273dfc26ce19de7f160ea3cc16d5f8d6",
+      "dev_tree": "e1fbcc59273dfc26ce19de7f160ea3cc16d5f8d6",
+      "conflicts": false
+    }
+  },
+  "independent_archive": {
+    "status": "passed",
+    "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 11:23:37) [Clang 14.0.6 ]",
+    "archive_id": "51a5bacd172dcf24762f1cd2fe70e651508a92f64fe478adf65af1d8fc1f087f",
+    "coverage": {
+      "total": 6,
+      "succeeded": 6,
+      "failed": 0,
+      "not_run": 0,
+      "running": 0,
+      "unverified_results": 0,
+      "complete_results": 6,
+      "complete": true,
+      "outputs": {
+        "delivered_energy": {
+          "available": 6,
+          "missing": 0,
+          "required": true
+        },
+        "lca": {
+          "available": 6,
+          "missing": 0,
+          "required": true
+        },
+        "space_heating_demand_kwh": {
+          "available": 6,
+          "missing": 0,
+          "required": true
+        }
+      }
+    },
+    "verification": {
+      "id": "51a5bacd172dcf24762f1cd2fe70e651508a92f64fe478adf65af1d8fc1f087f",
+      "verified_files": 297
+    },
+    "execution_libraries_absent": [
+      "epsm",
+      "epsm_workflows",
+      "epsm_core",
+      "epsm_rc",
+      "epsm_lca",
+      "epsm_data",
+      "smhi2epw",
+      "epsm_db"
+    ],
+    "hourly_cases": 6,
+    "engine_pairs": 3,
+    "baseline_changes": 4,
+    "cross_python_writer": "3.11",
+    "reader": "3.13"
+  },
+  "release_preparation_checks": {
+    "epsm_studies": {
+      "baseRefOid": "16ed6bd0bd63cee588f6e7ad951d71f8f9543ecb",
+      "headRefOid": "5a3d07055f23bbaaf89829ffc0970cc256065df9",
+      "isDraft": false,
+      "mergeCommit": null,
+      "mergeable": "MERGEABLE",
+      "number": 15,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:36:36Z",
+          "conclusion": "CANCELLED",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_studies/actions/runs/39600964181/job/119225038502",
+          "name": "combination",
+          "startedAt": "2026-10-21T12:36:34Z",
+          "status": "COMPLETED",
+          "workflowName": "Studies release checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:36:46Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_studies/actions/runs/39600967033/job/119225053304",
+          "name": "combination",
+          "startedAt": "2026-10-21T12:36:38Z",
+          "status": "COMPLETED",
+          "workflowName": "Studies release checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:36:36Z",
+          "conclusion": "CANCELLED",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_studies/actions/runs/39600964181/job/119225038654",
+          "name": "package (3.11)",
+          "startedAt": "2026-10-21T12:36:34Z",
+          "status": "COMPLETED",
+          "workflowName": "Studies release checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:36:56Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_studies/actions/runs/39600967033/job/119225053864",
+          "name": "package (3.11)",
+          "startedAt": "2026-10-21T12:36:38Z",
+          "status": "COMPLETED",
+          "workflowName": "Studies release checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:36:36Z",
+          "conclusion": "CANCELLED",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_studies/actions/runs/39600964181/job/119225038899",
+          "name": "package (3.13)",
+          "startedAt": "2026-10-21T12:36:34Z",
+          "status": "COMPLETED",
+          "workflowName": "Studies release checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:36:56Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_studies/actions/runs/39600967033/job/119225053647",
+          "name": "package (3.13)",
+          "startedAt": "2026-10-21T12:36:38Z",
+          "status": "COMPLETED",
+          "workflowName": "Studies release checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:36:36Z",
+          "conclusion": "CANCELLED",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_studies/actions/runs/39600964181/job/119225052947",
+          "name": "installed integration (${{ matrix.python }})",
+          "startedAt": "2026-10-21T12:36:36Z",
+          "status": "COMPLETED",
+          "workflowName": "Studies release checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:37:43Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_studies/actions/runs/39600967033/job/119225124741",
+          "name": "installed integration (3.11)",
+          "startedAt": "2026-10-21T12:36:47Z",
+          "status": "COMPLETED",
+          "workflowName": "Studies release checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:37:58Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_studies/actions/runs/39600967033/job/119225124823",
+          "name": "installed integration (3.13)",
+          "startedAt": "2026-10-21T12:36:58Z",
+          "status": "COMPLETED",
+          "workflowName": "Studies release checks"
+        }
+      ],
+      "url": "https://github.com/SB-Chalmers/epsm_studies/pull/15"
+    },
+    "epsm": {
+      "baseRefOid": "1b9b433c1c01ae45a3d2a8786481c6faea9e5ee9",
+      "headRefOid": "e205f3afa5208066cdd804db9bbf75718756adc7",
+      "isDraft": false,
+      "mergeCommit": {
+        "oid": "6bd36b64f6967f34bfd72afaa632be7b2caa7fed"
+      },
+      "mergeable": "UNKNOWN",
+      "number": 32,
+      "state": "MERGED",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:33:26Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm/actions/runs/39600526981/job/119223570124",
+          "name": "combination",
+          "startedAt": "2026-10-21T12:33:19Z",
+          "status": "COMPLETED",
+          "workflowName": "EPSM supported package checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:33:56Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm/actions/runs/39600526815/job/119223568699",
+          "name": "metadata",
+          "startedAt": "2026-10-21T12:33:19Z",
+          "status": "COMPLETED",
+          "workflowName": "Platform metadata guard"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:39:47Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm/actions/runs/39600526981/job/119223636008",
+          "name": "platform (3.11, pinned)",
+          "startedAt": "2026-10-21T12:33:29Z",
+          "status": "COMPLETED",
+          "workflowName": "EPSM supported package checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:40:42Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm/actions/runs/39600526981/job/119223635895",
+          "name": "platform (3.13, pinned)",
+          "startedAt": "2026-10-21T12:33:28Z",
+          "status": "COMPLETED",
+          "workflowName": "EPSM supported package checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:34:00Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm/actions/runs/39600526981/job/119223635898",
+          "name": "display (3.13, pinned)",
+          "startedAt": "2026-10-21T12:33:28Z",
+          "status": "COMPLETED",
+          "workflowName": "EPSM supported package checks"
+        }
+      ],
+      "url": "https://github.com/SB-Chalmers/epsm/pull/32"
+    },
+    "epsm_rc": {
+      "baseRefOid": "308a39d6381604842fdf96352abfb4f1165c6400",
+      "headRefOid": "a34b626441bb90b23938520c9b5ffbb169bf140c",
+      "isDraft": false,
+      "mergeCommit": null,
+      "mergeable": "MERGEABLE",
+      "number": 71,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:36:23Z",
+          "conclusion": "CANCELLED",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_rc/actions/runs/39600936843/job/119224944529",
+          "name": "combination",
+          "startedAt": "2026-10-21T12:36:22Z",
+          "status": "COMPLETED",
+          "workflowName": "RC release checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:36:34Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_rc/actions/runs/39600937298/job/119224953447",
+          "name": "combination",
+          "startedAt": "2026-10-21T12:36:26Z",
+          "status": "COMPLETED",
+          "workflowName": "RC release checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:36:23Z",
+          "conclusion": "CANCELLED",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_rc/actions/runs/39600936843/job/119224945054",
+          "name": "standalone",
+          "startedAt": "2026-10-21T12:36:22Z",
+          "status": "COMPLETED",
+          "workflowName": "RC release checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:37:08Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_rc/actions/runs/39600937298/job/119224953121",
+          "name": "standalone",
+          "startedAt": "2026-10-21T12:36:26Z",
+          "status": "COMPLETED",
+          "workflowName": "RC release checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:36:23Z",
+          "conclusion": "CANCELLED",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_rc/actions/runs/39600936843/job/119224952053",
+          "name": "package (${{ matrix.python }})",
+          "startedAt": "2026-10-21T12:36:23Z",
+          "status": "COMPLETED",
+          "workflowName": "RC release checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:40:48Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_rc/actions/runs/39600937298/job/119225040900",
+          "name": "package (3.11)",
+          "startedAt": "2026-10-21T12:36:36Z",
+          "status": "COMPLETED",
+          "workflowName": "RC release checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:42:46Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_rc/actions/runs/39600937298/job/119225040984",
+          "name": "package (3.13)",
+          "startedAt": "2026-10-21T12:36:36Z",
+          "status": "COMPLETED",
+          "workflowName": "RC release checks"
+        }
+      ],
+      "url": "https://github.com/SB-Chalmers/epsm_rc/pull/71"
+    },
+    "epsm_workflows": {
+      "baseRefOid": "32ea8c27405bf4e3b562de394f92ae05b17cc0bc",
+      "headRefOid": "59943e986b7ca09c93a776572e157d3e986cea9d",
+      "isDraft": false,
+      "mergeCommit": null,
+      "mergeable": "MERGEABLE",
+      "number": 15,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:36:29Z",
+          "conclusion": "CANCELLED",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_workflows/actions/runs/39600950231/job/119224990099",
+          "name": "combination",
+          "startedAt": "2026-10-21T12:36:28Z",
+          "status": "COMPLETED",
+          "workflowName": "Workflows release checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:36:42Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_workflows/actions/runs/39600952293/job/119225000985",
+          "name": "combination",
+          "startedAt": "2026-10-21T12:36:32Z",
+          "status": "COMPLETED",
+          "workflowName": "Workflows release checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:36:29Z",
+          "conclusion": "CANCELLED",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_workflows/actions/runs/39600950231/job/119225000271",
+          "name": "package (${{ matrix.python }})",
+          "startedAt": "2026-10-21T12:36:30Z",
+          "status": "COMPLETED",
+          "workflowName": "Workflows release checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:37:58Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_workflows/actions/runs/39600952293/job/119225100687",
+          "name": "package (3.11)",
+          "startedAt": "2026-10-21T12:36:45Z",
+          "status": "COMPLETED",
+          "workflowName": "Workflows release checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:38:05Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_workflows/actions/runs/39600952293/job/119225100740",
+          "name": "package (3.13)",
+          "startedAt": "2026-10-21T12:36:45Z",
+          "status": "COMPLETED",
+          "workflowName": "Workflows release checks"
+        }
+      ],
+      "url": "https://github.com/SB-Chalmers/epsm_workflows/pull/15"
+    },
+    "epsm_core": {
+      "baseRefOid": "0e8eafb69a398d18316f0d28844448514b77768d",
+      "headRefOid": "6f7282eb4381c2d49717ec9ede92c9eae6b14504",
+      "isDraft": false,
+      "mergeCommit": null,
+      "mergeable": "MERGEABLE",
+      "number": 60,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:19:13Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_core/actions/runs/39598622550/job/119217123819",
+          "name": "combination",
+          "startedAt": "2026-10-21T12:19:04Z",
+          "status": "COMPLETED",
+          "workflowName": "Core tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:27:32Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_core/actions/runs/39598622550/job/119217204952",
+          "name": "unit (3.11, pinned)",
+          "startedAt": "2026-10-21T12:19:15Z",
+          "status": "COMPLETED",
+          "workflowName": "Core tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:27:40Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/epsm_core/actions/runs/39598622550/job/119217205147",
+          "name": "unit (3.13, pinned)",
+          "startedAt": "2026-10-21T12:19:15Z",
+          "status": "COMPLETED",
+          "workflowName": "Core tests"
+        }
+      ],
+      "url": "https://github.com/SB-Chalmers/epsm_core/pull/60"
+    },
+    "smhi2epw": {
+      "baseRefOid": "f27d70c8fb665c13ca4263ebe6337f11e45cf73d",
+      "headRefOid": "cc019cf57b36db62f5056ba10834378d1733380b",
+      "isDraft": false,
+      "mergeCommit": null,
+      "mergeable": "MERGEABLE",
+      "number": 9,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:38:33Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/smhi2epw/actions/runs/39600924807/job/119224902350",
+          "name": "test (3.11)",
+          "startedAt": "2026-10-21T12:36:19Z",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:33:57Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/smhi2epw/actions/runs/39600211943/job/119222495564",
+          "name": "test (3.11)",
+          "startedAt": "2026-10-21T12:30:59Z",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:38:31Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/smhi2epw/actions/runs/39600924807/job/119224901778",
+          "name": "test (3.12)",
+          "startedAt": "2026-10-21T12:36:19Z",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:33:50Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/smhi2epw/actions/runs/39600211943/job/119222495333",
+          "name": "test (3.12)",
+          "startedAt": "2026-10-21T12:30:59Z",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:39:14Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/smhi2epw/actions/runs/39600924807/job/119224901640",
+          "name": "test (3.13)",
+          "startedAt": "2026-10-21T12:36:18Z",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:34:04Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/smhi2epw/actions/runs/39600211943/job/119222495242",
+          "name": "test (3.13)",
+          "startedAt": "2026-10-21T12:30:59Z",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:38:25Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/smhi2epw/actions/runs/39600924807/job/119224901957",
+          "name": "test (3.14)",
+          "startedAt": "2026-10-21T12:36:18Z",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:34:02Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/smhi2epw/actions/runs/39600211943/job/119222495337",
+          "name": "test (3.14)",
+          "startedAt": "2026-10-21T12:30:59Z",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:39:12Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/smhi2epw/actions/runs/39600924807/job/119224901789",
+          "name": "minimum-dependencies",
+          "startedAt": "2026-10-21T12:36:18Z",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:33:08Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/smhi2epw/actions/runs/39600211943/job/119222494718",
+          "name": "minimum-dependencies",
+          "startedAt": "2026-10-21T12:30:59Z",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:36:38Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/smhi2epw/actions/runs/39600924807/job/119224901631",
+          "name": "package",
+          "startedAt": "2026-10-21T12:36:18Z",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:31:15Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/smhi2epw/actions/runs/39600211943/job/119222495407",
+          "name": "package",
+          "startedAt": "2026-10-21T12:30:59Z",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:37:46Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/smhi2epw/actions/runs/39600924807/job/119224901890",
+          "name": "documentation",
+          "startedAt": "2026-10-21T12:36:18Z",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:32:39Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/smhi2epw/actions/runs/39600211943/job/119222495104",
+          "name": "documentation",
+          "startedAt": "2026-10-21T12:30:59Z",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:36:16Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://github.com/SB-Chalmers/smhi2epw/actions/runs/39600924807/job/119224903322",
+          "name": "network",
+          "startedAt": "2026-10-21T12:36:17Z",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:30:57Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://github.com/SB-Chalmers/smhi2epw/actions/runs/39600211943/job/119222496248",
+          "name": "network",
+          "startedAt": "2026-10-21T12:30:57Z",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:40:14Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/smhi2epw/actions/runs/39600924807/job/119225067469",
+          "name": "wheel",
+          "startedAt": "2026-10-21T12:36:40Z",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:34:49Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/smhi2epw/actions/runs/39600211943/job/119222638035",
+          "name": "wheel",
+          "startedAt": "2026-10-21T12:31:17Z",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:38:01Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/smhi2epw/actions/runs/39600924807/job/119225067416",
+          "name": "energyplus",
+          "startedAt": "2026-10-21T12:36:40Z",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:32:53Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/smhi2epw/actions/runs/39600211943/job/119222638380",
+          "name": "energyplus",
+          "startedAt": "2026-10-21T12:31:18Z",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:40:23Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/smhi2epw/actions/runs/39600924807/job/119226683503",
+          "name": "release-gate",
+          "startedAt": "2026-10-21T12:40:19Z",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:34:54Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SB-Chalmers/smhi2epw/actions/runs/39600211943/job/119224253731",
+          "name": "release-gate",
+          "startedAt": "2026-10-21T12:34:51Z",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:40:23Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://github.com/SB-Chalmers/smhi2epw/actions/runs/39600924807/job/119226760398",
+          "name": "publish-docs",
+          "startedAt": "2026-10-21T12:40:24Z",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:34:54Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://github.com/SB-Chalmers/smhi2epw/actions/runs/39600211943/job/119224291640",
+          "name": "publish-docs",
+          "startedAt": "2026-10-21T12:34:54Z",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:40:23Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://github.com/SB-Chalmers/smhi2epw/actions/runs/39600924807/job/119226760243",
+          "name": "publish-pypi",
+          "startedAt": "2026-10-21T12:40:24Z",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:34:54Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://github.com/SB-Chalmers/smhi2epw/actions/runs/39600211943/job/119224291671",
+          "name": "publish-pypi",
+          "startedAt": "2026-10-21T12:34:54Z",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:40:23Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://github.com/SB-Chalmers/smhi2epw/actions/runs/39600924807/job/119226760123",
+          "name": "publish",
+          "startedAt": "2026-10-21T12:40:24Z",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-21T12:34:54Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://github.com/SB-Chalmers/smhi2epw/actions/runs/39600211943/job/119224290933",
+          "name": "publish",
+          "startedAt": "2026-10-21T12:34:54Z",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        }
+      ],
+      "url": "https://github.com/SB-Chalmers/smhi2epw/pull/9"
     }
   }
 }

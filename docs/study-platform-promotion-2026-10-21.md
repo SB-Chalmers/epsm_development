@@ -57,10 +57,36 @@ or scientific change was needed.
 | Workflows | `cbb487b316d202fb18c86c95ff2a98056f6511b3` |
 | Studies | `2177cdd7452666d612b397025da2f41de9bfa0b5` |
 
-EPSM's open feature source `9a17b760232d6b6f7259e2a02a6a4a294b14f5a5`
-now pins these actual peer merges. Its coordinated installed and hosted checks
-are running before the final EPSM development merge. The supported release
-manifest remains unchanged.
+## Complete development verification
 
-No campaign `main` merge, tag or release has occurred. Studio remains unchanged.
-Authentication, projects and UI integration remain a later application campaign.
+EPSM feature PR 31 and all peer feature PRs merged into development normally.
+The actual full development cohort passed the installed platform, six-evaluation
+study, archetype handoff and workflow handoff on Python 3.11 and 3.13. Release
+notes and package descriptions were then finalized through separate development
+PRs. Those release-preparation wheels and the actual complete release-ready
+development heads passed the same four gates on both Python versions. The
+machine-readable receipt retains their separate revisions and wheel hashes.
+
+A stronger archive check created a fresh Python 3.13 environment containing only
+Studies and NumPy. It reopened a relocated archive written by Python 3.11,
+verified all 297 files, read all six hourly arrays, produced three engine
+comparisons and four baseline differences, and exported CSV/JSON. EPSM, Core,
+RC, LCA, Workflows, Data, DB and Weather were absent from that environment.
+
+## Owner main promotion
+
+Core PR 60, Weather PR 9, RC PR 71, Workflows PR 15 and Studies PR 15 merged
+normally from development into main after the release-ready development gates
+passed. Each prospective merge had no conflicts and every actual main tree
+exactly matches its checked development tree. Actual revision identities and
+preflight trees are retained in the accompanying receipt.
+
+Exact-main wheel and owner checks are running before new release tags are
+created. Automatic RC, Workflows and Studies main runs selected the preceding
+supported cohort and failed its expected dependency resolution; those failures
+remain separate from the explicit candidate checks. EPSM's supported manifest
+remains unchanged until actual released peer artifacts pass verification.
+
+Studio remains unchanged. Authentication, projects and UI integration remain a
+later application campaign. Publication and released-history synchronization
+will be recorded here as they complete; this entry does not claim them yet.
