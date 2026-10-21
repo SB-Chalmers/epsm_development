@@ -1346,7 +1346,7 @@
     ]
   },
   "publication_state_scope": "The original publication object below is immutable as-of-local-capture state at recorded_at; see publication_phase for subsequent pushed branches and draft pull requests.",
-  "last_updated_at": "2026-10-21T10:50:26.892951+00:00",
+  "last_updated_at": "2026-10-21T11:11:16.035273+00:00",
   "publication_phase": {
     "observed_at": "2026-10-21T10:50:26.892951+00:00",
     "readback_method": "gh pr view, gh run view, gh variable get and gh pr checks --required; no remote mutation by the monitoring agent",
@@ -1705,5 +1705,955 @@
       "disposition": "Offline owner suite passed after trusted cwd/test-helper setup.34 mandatory PostGIS cases were explicitly excluded because UBEM_TEST_ADMIN_URL was absent; they did not pass and do not establish live database integration.14 optional EPW compiler cases remain skipped."
     },
     "platform_gate_status": "All four required final04 installed scenarios passed in both supported Python lanes; these extra owner-test dispositions do not change those receipt results."
+  },
+  "follow_up_verification": {
+    "feature-05": {
+      "role": "intermediate",
+      "manifest": {
+        "path": "/private/tmp/epsm-study-platform/candidate-feature-05.json",
+        "sha256": "13096c5f92b0f8f6d06529b552d2de5eac4ab6ef365bb0126ab23f875b44aa84"
+      },
+      "canonical_manifest_digest": "22632f6c53b5ea0da53ed419e919203f285033c934b347c4a520ae067a25a51d",
+      "packages": {
+        "epsm": {
+          "source": "/private/tmp/epsm-study-platform/epsm",
+          "revision": "9def4aed9b442f2517fdd697bf77d890d2c5f33a",
+          "version": "0.4.0",
+          "extras": [
+            "all",
+            "examples"
+          ]
+        },
+        "epsm_data": {
+          "source": "/private/tmp/epsm-study-platform/epsm_data",
+          "revision": "bc8449402b9e0dbe0ea85ff76c954cf36d209f86",
+          "version": "0.6.0",
+          "extras": []
+        },
+        "epsm_core": {
+          "source": "/private/tmp/epsm-study-platform/epsm_core",
+          "revision": "71e04ecccd2c431a45c8a72f03f7534d5f8774f1",
+          "version": "0.8.2",
+          "extras": [
+            "geometry"
+          ]
+        },
+        "epsm_rc": {
+          "source": "/private/tmp/epsm-study-platform/epsm_rc",
+          "revision": "c4df386ec8ae2fa35c7f315826fbb30b9a1137a9",
+          "version": "0.9.0",
+          "extras": [
+            "platform",
+            "heatpump",
+            "gis"
+          ]
+        },
+        "epsm_lca": {
+          "source": "/private/tmp/epsm-study-platform/epsm_lca",
+          "revision": "00141d0500e717b4f18a9d69e158f0af2aae1934",
+          "version": "0.2.0",
+          "extras": [
+            "integration"
+          ]
+        },
+        "epsm_db": {
+          "source": "/private/tmp/epsm-study-platform/epsm_db",
+          "revision": "9e29a575f5495b76d5a8553bbe6e20dd4f0e1ff0",
+          "version": "0.3.0",
+          "extras": [
+            "catalogue",
+            "epsm",
+            "weather"
+          ]
+        },
+        "epsm_workflows": {
+          "source": "/private/tmp/epsm-study-platform/epsm_workflows",
+          "revision": "11c16829f0e27cc09db4f8b7a36be67a1c9bd412",
+          "version": "0.4.0",
+          "extras": [
+            "epsm",
+            "weather",
+            "epc"
+          ]
+        },
+        "epsm_studies": {
+          "source": "/private/tmp/epsm-study-platform/epsm_studies",
+          "revision": "7332f23c4f98f8fcb70acbe5ffbe4ef01bb07321",
+          "version": "0.4.0",
+          "extras": [
+            "workflows",
+            "results",
+            "dev"
+          ]
+        },
+        "smhi2epw": {
+          "source": "/private/tmp/epsm-study-platform/smhi2epw",
+          "revision": "b8d37aa3931c2df5bf08c2c307fefa869055ee92",
+          "version": "1.3.0",
+          "extras": [
+            "morphing"
+          ]
+        }
+      },
+      "lanes": {
+        "py311": {
+          "status": "passed",
+          "python": "3.11.13 (main, Jul 28 2025, 11:09:10) [Clang 17.0.0 (clang-1700.0.13.5)]",
+          "receipt": {
+            "path": "/private/tmp/epsm-study-platform/feature-05-py311/receipt.json",
+            "sha256": "e266385c79ec8b4186d924db2462e9f479a6884764a09833a22e3e7ee412fd75"
+          },
+          "manifest_sha256": "22632f6c53b5ea0da53ed419e919203f285033c934b347c4a520ae067a25a51d",
+          "scenarios": {
+            "installed-platform": {
+              "required": true,
+              "status": "passed"
+            },
+            "study-platform": {
+              "required": true,
+              "status": "passed"
+            },
+            "archetype-handoff": {
+              "required": true,
+              "status": "passed"
+            },
+            "workflow-handoff": {
+              "required": true,
+              "status": "passed"
+            }
+          },
+          "wheels": {
+            "epsm": {
+              "filename": "epsm-0.4.0-py3-none-any.whl",
+              "version": "0.4.0",
+              "sha256": "d5f2a8d83cfd9bd9b70ffa02e7b89bf3c0b702972d1a9a045b863223d15dcce4"
+            },
+            "epsm_data": {
+              "filename": "epsm_data-0.6.0-py3-none-any.whl",
+              "version": "0.6.0",
+              "sha256": "74baa2f318303b38f25a205418f8f08ac4e26c1e1742ad23bdde59388efbc17b"
+            },
+            "epsm_core": {
+              "filename": "epsm_core-0.8.2-py3-none-any.whl",
+              "version": "0.8.2",
+              "sha256": "03ac2dc3d6abf1955b526114f4cc06231e3cef02cafa95feb70c0f339ad3a1a6"
+            },
+            "epsm_rc": {
+              "filename": "epsm_rc-0.9.0-py3-none-any.whl",
+              "version": "0.9.0",
+              "sha256": "928eb7de7557dbaa121791eae7b959e4041523e5ba8e9f7a80e06e444af75e89"
+            },
+            "epsm_lca": {
+              "filename": "epsm_lca-0.2.0-py3-none-any.whl",
+              "version": "0.2.0",
+              "sha256": "b34220b14902f5834ba2077b94961c5ac83cb77bc97c64b37fb27b8ef9321a6d"
+            },
+            "epsm_db": {
+              "filename": "epsm_db-0.3.0-py3-none-any.whl",
+              "version": "0.3.0",
+              "sha256": "21bd05c20da3defad993bc8ad21943eb9564126c1ea80a2d6af025e38b8c3ed8"
+            },
+            "epsm_workflows": {
+              "filename": "epsm_workflows-0.4.0-py3-none-any.whl",
+              "version": "0.4.0",
+              "sha256": "d150df381de8e6482116d2663a3cef32080622b81114c55be1949c644dfaad4f"
+            },
+            "epsm_studies": {
+              "filename": "epsm_studies-0.4.0-py3-none-any.whl",
+              "version": "0.4.0",
+              "sha256": "d19d82cfa248e0115def64ea794143bf68d49c233c40cec2a6d6d246b1eb7a98"
+            },
+            "smhi2epw": {
+              "filename": "smhi2epw-1.3.0-py3-none-any.whl",
+              "version": "1.3.0",
+              "sha256": "d0e396a896dcdf901cb975201a2570933e4a04916c8267fa5aafbf70b0dc073f"
+            }
+          },
+          "installed_imports_proved": true,
+          "study_report": {
+            "path": "/private/tmp/epsm-study-platform/feature-05-py311/scenarios/study-platform/study-compatibility-report.json",
+            "sha256": "951af721340db3945295058d1421531b467c374dd00b405027d27d1694f5d758"
+          },
+          "study": {
+            "study_id": "db9912abab7a46fad761f460f1a12c45b3a3f3178f2172f77132620de21f02db",
+            "plan_id": "58a476fb31ac31b23bd6fdf640fd508bafa7f17e42deb9dd6ae94040ec035a42",
+            "archive_id": "f2bb6128b3847d76bf7b4e7d4d06737e286ab1e53344d9a633032f9213eb39e0",
+            "coverage": {
+              "total": 6,
+              "succeeded": 6,
+              "failed": 0,
+              "not_run": 0,
+              "running": 0,
+              "unverified_results": 0,
+              "complete_results": 6,
+              "complete": true,
+              "outputs": {
+                "delivered_energy": {
+                  "available": 6,
+                  "missing": 0,
+                  "required": true
+                },
+                "lca": {
+                  "available": 6,
+                  "missing": 0,
+                  "required": true
+                },
+                "space_heating_demand_kwh": {
+                  "available": 6,
+                  "missing": 0,
+                  "required": true
+                }
+              }
+            },
+            "engine_comparison_count": 3,
+            "baseline_change_count": 4,
+            "portable_reopen": {
+              "archive_id": "f2bb6128b3847d76bf7b4e7d4d06737e286ab1e53344d9a633032f9213eb39e0",
+              "coverage": {
+                "total": 6,
+                "succeeded": 6,
+                "failed": 0,
+                "not_run": 0,
+                "running": 0,
+                "unverified_results": 0,
+                "complete_results": 6,
+                "complete": true,
+                "outputs": {
+                  "delivered_energy": {
+                    "available": 6,
+                    "missing": 0,
+                    "required": true
+                  },
+                  "lca": {
+                    "available": 6,
+                    "missing": 0,
+                    "required": true
+                  },
+                  "space_heating_demand_kwh": {
+                    "available": 6,
+                    "missing": 0,
+                    "required": true
+                  }
+                }
+              },
+              "verification": {
+                "id": "f2bb6128b3847d76bf7b4e7d4d06737e286ab1e53344d9a633032f9213eb39e0",
+                "verified_files": 297
+              },
+              "execution_imports_used": false
+            }
+          }
+        },
+        "py313": {
+          "status": "passed",
+          "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 11:23:37) [Clang 14.0.6 ]",
+          "receipt": {
+            "path": "/private/tmp/epsm-study-platform/feature-05-py313/receipt.json",
+            "sha256": "e657f6bf2adddf6b851eef5ec0605d162ab1cc1008ad839dbf0d13396c30cc9f"
+          },
+          "manifest_sha256": "22632f6c53b5ea0da53ed419e919203f285033c934b347c4a520ae067a25a51d",
+          "scenarios": {
+            "installed-platform": {
+              "required": true,
+              "status": "passed"
+            },
+            "study-platform": {
+              "required": true,
+              "status": "passed"
+            },
+            "archetype-handoff": {
+              "required": true,
+              "status": "passed"
+            },
+            "workflow-handoff": {
+              "required": true,
+              "status": "passed"
+            }
+          },
+          "wheels": {
+            "epsm": {
+              "filename": "epsm-0.4.0-py3-none-any.whl",
+              "version": "0.4.0",
+              "sha256": "d5f2a8d83cfd9bd9b70ffa02e7b89bf3c0b702972d1a9a045b863223d15dcce4"
+            },
+            "epsm_data": {
+              "filename": "epsm_data-0.6.0-py3-none-any.whl",
+              "version": "0.6.0",
+              "sha256": "9fb20d13486843229764a3f8389a0c519d9c004d0f0307c985c9c88acadaa74d"
+            },
+            "epsm_core": {
+              "filename": "epsm_core-0.8.2-py3-none-any.whl",
+              "version": "0.8.2",
+              "sha256": "849f69bce184f906f6f75a9fffbc5cc8f4441e6b18e6ced213bd976ba09befd8"
+            },
+            "epsm_rc": {
+              "filename": "epsm_rc-0.9.0-py3-none-any.whl",
+              "version": "0.9.0",
+              "sha256": "14669ea5d07fdf79ca6473cb46eb91f0e52af945c079a5816f06b043f2c1abe2"
+            },
+            "epsm_lca": {
+              "filename": "epsm_lca-0.2.0-py3-none-any.whl",
+              "version": "0.2.0",
+              "sha256": "f221fc31ece7e7f560069d834d723f7de54e427e0461d503412600c1fc3579fb"
+            },
+            "epsm_db": {
+              "filename": "epsm_db-0.3.0-py3-none-any.whl",
+              "version": "0.3.0",
+              "sha256": "15d08c9df087b60926392dc4c48886c0b1498cad7cb224388026247552d6b193"
+            },
+            "epsm_workflows": {
+              "filename": "epsm_workflows-0.4.0-py3-none-any.whl",
+              "version": "0.4.0",
+              "sha256": "712207812432bded75018b29cb83cd81b51aa8cd7cd7a5d49402f4e86a7e454e"
+            },
+            "epsm_studies": {
+              "filename": "epsm_studies-0.4.0-py3-none-any.whl",
+              "version": "0.4.0",
+              "sha256": "5c57e2e3d263d1208a2e697436b3d80cd2491f2e0f8ef3fffdd7fd768ab8ac65"
+            },
+            "smhi2epw": {
+              "filename": "smhi2epw-1.3.0-py3-none-any.whl",
+              "version": "1.3.0",
+              "sha256": "5eb1b02bab07ca63ff964613c681b3b33fdbd17e9437d6c8b15674f6c71d09ba"
+            }
+          },
+          "installed_imports_proved": true,
+          "study_report": {
+            "path": "/private/tmp/epsm-study-platform/feature-05-py313/scenarios/study-platform/study-compatibility-report.json",
+            "sha256": "84a631e5e7b7500f9947fdb957d132ec78d419cde10bbbdefa232f92a399461b"
+          },
+          "study": {
+            "study_id": "12fcb14b896ee091a677cdf0e80b3822dceb55d22b90eb79b8b86aade36d48b4",
+            "plan_id": "912c2418231f0b4b12d3a85a75dc08ac965df4f53a458cf160271a297544b296",
+            "archive_id": "e29c42f00455b90172905e616b4c4a97381c80db048233887bfb52c4d8f20373",
+            "coverage": {
+              "total": 6,
+              "succeeded": 6,
+              "failed": 0,
+              "not_run": 0,
+              "running": 0,
+              "unverified_results": 0,
+              "complete_results": 6,
+              "complete": true,
+              "outputs": {
+                "delivered_energy": {
+                  "available": 6,
+                  "missing": 0,
+                  "required": true
+                },
+                "lca": {
+                  "available": 6,
+                  "missing": 0,
+                  "required": true
+                },
+                "space_heating_demand_kwh": {
+                  "available": 6,
+                  "missing": 0,
+                  "required": true
+                }
+              }
+            },
+            "engine_comparison_count": 3,
+            "baseline_change_count": 4,
+            "portable_reopen": {
+              "archive_id": "e29c42f00455b90172905e616b4c4a97381c80db048233887bfb52c4d8f20373",
+              "coverage": {
+                "total": 6,
+                "succeeded": 6,
+                "failed": 0,
+                "not_run": 0,
+                "running": 0,
+                "unverified_results": 0,
+                "complete_results": 6,
+                "complete": true,
+                "outputs": {
+                  "delivered_energy": {
+                    "available": 6,
+                    "missing": 0,
+                    "required": true
+                  },
+                  "lca": {
+                    "available": 6,
+                    "missing": 0,
+                    "required": true
+                  },
+                  "space_heating_demand_kwh": {
+                    "available": 6,
+                    "missing": 0,
+                    "required": true
+                  }
+                }
+              },
+              "verification": {
+                "id": "e29c42f00455b90172905e616b4c4a97381c80db048233887bfb52c4d8f20373",
+                "verified_files": 297
+              },
+              "execution_imports_used": false
+            }
+          }
+        }
+      }
+    },
+    "feature-06": {
+      "role": "final verified local candidate",
+      "manifest": {
+        "path": "/private/tmp/epsm-study-platform/candidate-feature-06.json",
+        "sha256": "dc066647aa7e45f3220ad4613ddf866b568e9bcf99cd380c13f848168408a226"
+      },
+      "canonical_manifest_digest": "6773dd8b281a63c42a8bf1110e645c055ed9a875a3fa211173d78915b341a20f",
+      "packages": {
+        "epsm": {
+          "source": "/private/tmp/epsm-study-platform/epsm",
+          "revision": "7fe51c540edc9f489956a8af7e42a733d56d87ce",
+          "version": "0.4.0",
+          "extras": [
+            "all",
+            "examples"
+          ]
+        },
+        "epsm_data": {
+          "source": "/private/tmp/epsm-study-platform/epsm_data",
+          "revision": "bc8449402b9e0dbe0ea85ff76c954cf36d209f86",
+          "version": "0.6.0",
+          "extras": []
+        },
+        "epsm_core": {
+          "source": "/private/tmp/epsm-study-platform/epsm_core",
+          "revision": "34c5ac1633129cec20172d02967fdccbbc38c84d",
+          "version": "0.8.2",
+          "extras": [
+            "geometry"
+          ]
+        },
+        "epsm_rc": {
+          "source": "/private/tmp/epsm-study-platform/epsm_rc",
+          "revision": "c4df386ec8ae2fa35c7f315826fbb30b9a1137a9",
+          "version": "0.9.0",
+          "extras": [
+            "platform",
+            "heatpump",
+            "gis"
+          ]
+        },
+        "epsm_lca": {
+          "source": "/private/tmp/epsm-study-platform/epsm_lca",
+          "revision": "00141d0500e717b4f18a9d69e158f0af2aae1934",
+          "version": "0.2.0",
+          "extras": [
+            "integration"
+          ]
+        },
+        "epsm_db": {
+          "source": "/private/tmp/epsm-study-platform/epsm_db",
+          "revision": "9e29a575f5495b76d5a8553bbe6e20dd4f0e1ff0",
+          "version": "0.3.0",
+          "extras": [
+            "catalogue",
+            "epsm",
+            "weather"
+          ]
+        },
+        "epsm_workflows": {
+          "source": "/private/tmp/epsm-study-platform/epsm_workflows",
+          "revision": "11c16829f0e27cc09db4f8b7a36be67a1c9bd412",
+          "version": "0.4.0",
+          "extras": [
+            "epsm",
+            "weather",
+            "epc"
+          ]
+        },
+        "epsm_studies": {
+          "source": "/private/tmp/epsm-study-platform/epsm_studies",
+          "revision": "7332f23c4f98f8fcb70acbe5ffbe4ef01bb07321",
+          "version": "0.4.0",
+          "extras": [
+            "workflows",
+            "results",
+            "dev"
+          ]
+        },
+        "smhi2epw": {
+          "source": "/private/tmp/epsm-study-platform/smhi2epw",
+          "revision": "b8d37aa3931c2df5bf08c2c307fefa869055ee92",
+          "version": "1.3.0",
+          "extras": [
+            "morphing"
+          ]
+        }
+      },
+      "lanes": {
+        "py311": {
+          "status": "passed",
+          "python": "3.11.13 (main, Jul 28 2025, 11:09:10) [Clang 17.0.0 (clang-1700.0.13.5)]",
+          "receipt": {
+            "path": "/private/tmp/epsm-study-platform/feature-06-py311/receipt.json",
+            "sha256": "5e0b9881a78c2fadb844dc3c608f187ae2d211d9f7934a9bb99325267d2baefa"
+          },
+          "manifest_sha256": "6773dd8b281a63c42a8bf1110e645c055ed9a875a3fa211173d78915b341a20f",
+          "scenarios": {
+            "installed-platform": {
+              "required": true,
+              "status": "passed"
+            },
+            "study-platform": {
+              "required": true,
+              "status": "passed"
+            },
+            "archetype-handoff": {
+              "required": true,
+              "status": "passed"
+            },
+            "workflow-handoff": {
+              "required": true,
+              "status": "passed"
+            }
+          },
+          "wheels": {
+            "epsm": {
+              "filename": "epsm-0.4.0-py3-none-any.whl",
+              "version": "0.4.0",
+              "sha256": "75050887b53606dbc517304bfc28c09f7b501db3b6bc74af5f3469dc3ac3b90c"
+            },
+            "epsm_data": {
+              "filename": "epsm_data-0.6.0-py3-none-any.whl",
+              "version": "0.6.0",
+              "sha256": "e88cdc631388751de4de5f2569d9aca7447480bd56e2e645a6cb45d73b5cf0d7"
+            },
+            "epsm_core": {
+              "filename": "epsm_core-0.8.2-py3-none-any.whl",
+              "version": "0.8.2",
+              "sha256": "12ef5b6812c7274dfc02958d509867997b71f180b1e456f3acfb46e17fbf4917"
+            },
+            "epsm_rc": {
+              "filename": "epsm_rc-0.9.0-py3-none-any.whl",
+              "version": "0.9.0",
+              "sha256": "933e0fd501e84850199fbb315115ac381da4bef0c879d65bf40ef92befc7c31b"
+            },
+            "epsm_lca": {
+              "filename": "epsm_lca-0.2.0-py3-none-any.whl",
+              "version": "0.2.0",
+              "sha256": "6065f96cf7024d6d4cee6473b5698f99a57e316e50b5bfef716ee8b9e1a716a7"
+            },
+            "epsm_db": {
+              "filename": "epsm_db-0.3.0-py3-none-any.whl",
+              "version": "0.3.0",
+              "sha256": "1e711401be9e6cee530601642ae62ec1426f0652a5141b3d231b4eab8f87fcc7"
+            },
+            "epsm_workflows": {
+              "filename": "epsm_workflows-0.4.0-py3-none-any.whl",
+              "version": "0.4.0",
+              "sha256": "ed78af8abdf0e0a4f91d4c185346d0eda48558e4c12e548f808d5dc979e5d7ff"
+            },
+            "epsm_studies": {
+              "filename": "epsm_studies-0.4.0-py3-none-any.whl",
+              "version": "0.4.0",
+              "sha256": "af9e16ffd2f6e1b563cdee99029af3515996733e1111e95ebd4f5c720d811aaf"
+            },
+            "smhi2epw": {
+              "filename": "smhi2epw-1.3.0-py3-none-any.whl",
+              "version": "1.3.0",
+              "sha256": "776f98960d3a0d8540136127cb51fe8a3b3490ac7655f1cabe75907faef7894b"
+            }
+          },
+          "installed_imports_proved": true,
+          "study_report": {
+            "path": "/private/tmp/epsm-study-platform/feature-06-py311/scenarios/study-platform/study-compatibility-report.json",
+            "sha256": "332718756b94c941be40cc5ddf1055e85b942586f946d8608ef07272966ab865"
+          },
+          "study": {
+            "study_id": "d07e15b2dcfd5b0c11b31f5442dba5fc36c4a2ebfac833a8aa399fcafcc39e0c",
+            "plan_id": "21deeb0c5a247f9d003c400f4ba1f117e211025396467c1b75c54b0d35f6f5e6",
+            "archive_id": "424689cbf82ddf8d321f3e2e9508d21f4b927ca35d95bb8d18895c5ba34b59e4",
+            "coverage": {
+              "total": 6,
+              "succeeded": 6,
+              "failed": 0,
+              "not_run": 0,
+              "running": 0,
+              "unverified_results": 0,
+              "complete_results": 6,
+              "complete": true,
+              "outputs": {
+                "delivered_energy": {
+                  "available": 6,
+                  "missing": 0,
+                  "required": true
+                },
+                "lca": {
+                  "available": 6,
+                  "missing": 0,
+                  "required": true
+                },
+                "space_heating_demand_kwh": {
+                  "available": 6,
+                  "missing": 0,
+                  "required": true
+                }
+              }
+            },
+            "engine_comparison_count": 3,
+            "baseline_change_count": 4,
+            "portable_reopen": {
+              "archive_id": "424689cbf82ddf8d321f3e2e9508d21f4b927ca35d95bb8d18895c5ba34b59e4",
+              "coverage": {
+                "total": 6,
+                "succeeded": 6,
+                "failed": 0,
+                "not_run": 0,
+                "running": 0,
+                "unverified_results": 0,
+                "complete_results": 6,
+                "complete": true,
+                "outputs": {
+                  "delivered_energy": {
+                    "available": 6,
+                    "missing": 0,
+                    "required": true
+                  },
+                  "lca": {
+                    "available": 6,
+                    "missing": 0,
+                    "required": true
+                  },
+                  "space_heating_demand_kwh": {
+                    "available": 6,
+                    "missing": 0,
+                    "required": true
+                  }
+                }
+              },
+              "verification": {
+                "id": "424689cbf82ddf8d321f3e2e9508d21f4b927ca35d95bb8d18895c5ba34b59e4",
+                "verified_files": 297
+              },
+              "execution_imports_used": false
+            }
+          }
+        },
+        "py313": {
+          "status": "passed",
+          "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 11:23:37) [Clang 14.0.6 ]",
+          "receipt": {
+            "path": "/private/tmp/epsm-study-platform/feature-06-py313/receipt.json",
+            "sha256": "80c8c82cc29190bb9c97cf0cff58b2ce0c9fb2930ab07edf01533594ec288ef2"
+          },
+          "manifest_sha256": "6773dd8b281a63c42a8bf1110e645c055ed9a875a3fa211173d78915b341a20f",
+          "scenarios": {
+            "installed-platform": {
+              "required": true,
+              "status": "passed"
+            },
+            "study-platform": {
+              "required": true,
+              "status": "passed"
+            },
+            "archetype-handoff": {
+              "required": true,
+              "status": "passed"
+            },
+            "workflow-handoff": {
+              "required": true,
+              "status": "passed"
+            }
+          },
+          "wheels": {
+            "epsm": {
+              "filename": "epsm-0.4.0-py3-none-any.whl",
+              "version": "0.4.0",
+              "sha256": "75050887b53606dbc517304bfc28c09f7b501db3b6bc74af5f3469dc3ac3b90c"
+            },
+            "epsm_data": {
+              "filename": "epsm_data-0.6.0-py3-none-any.whl",
+              "version": "0.6.0",
+              "sha256": "2534966a2fd97bc73bcaf67146ce867638d825a21cb627d4a069a93d3fadd4d2"
+            },
+            "epsm_core": {
+              "filename": "epsm_core-0.8.2-py3-none-any.whl",
+              "version": "0.8.2",
+              "sha256": "f985fea632c429b417ea6f32ab228db80470116a57ec9303e050881dd0a7a50b"
+            },
+            "epsm_rc": {
+              "filename": "epsm_rc-0.9.0-py3-none-any.whl",
+              "version": "0.9.0",
+              "sha256": "9dd8095fba8db3770128faf4e0a6359b0573c80e37d1e1f1e60cb79b037844f5"
+            },
+            "epsm_lca": {
+              "filename": "epsm_lca-0.2.0-py3-none-any.whl",
+              "version": "0.2.0",
+              "sha256": "1e65b5d76b5e341c43920be730720996ac6d5806cda5552d6e776657283696a8"
+            },
+            "epsm_db": {
+              "filename": "epsm_db-0.3.0-py3-none-any.whl",
+              "version": "0.3.0",
+              "sha256": "c09a1fecb87af29146961fd2b423c06b16758caf15b4a2bfc010df1ba7e60a79"
+            },
+            "epsm_workflows": {
+              "filename": "epsm_workflows-0.4.0-py3-none-any.whl",
+              "version": "0.4.0",
+              "sha256": "b26b017ac3161e66a775422f240b2de2e2d47db58243f46b008ca80cc4f27fe9"
+            },
+            "epsm_studies": {
+              "filename": "epsm_studies-0.4.0-py3-none-any.whl",
+              "version": "0.4.0",
+              "sha256": "d8a123dd887896d73633be164bd4947c6f1fb03c613264c053258bfd285641a4"
+            },
+            "smhi2epw": {
+              "filename": "smhi2epw-1.3.0-py3-none-any.whl",
+              "version": "1.3.0",
+              "sha256": "1d540341ec8f642e37c8964a11b2a11abedca36ba91b25af61f47cbce9acc159"
+            }
+          },
+          "installed_imports_proved": true,
+          "study_report": {
+            "path": "/private/tmp/epsm-study-platform/feature-06-py313/scenarios/study-platform/study-compatibility-report.json",
+            "sha256": "2a38ff05cb2207c057c9b792f28e7f9d94f66945d8b50016a0178bf0c8ff06bd"
+          },
+          "study": {
+            "study_id": "ab923cdd1ca331c932ba8d83e27558937ea10dc94d6fd7aaa02239544516bc7d",
+            "plan_id": "966c4332f9c33768e8d185a72a8ccebbb7fa8b112f3b41d4f22541a5fb45495e",
+            "archive_id": "c3211c19d82a716b1337e738626b58f13a2889e679762cb8724e1bc6fac9bc3d",
+            "coverage": {
+              "total": 6,
+              "succeeded": 6,
+              "failed": 0,
+              "not_run": 0,
+              "running": 0,
+              "unverified_results": 0,
+              "complete_results": 6,
+              "complete": true,
+              "outputs": {
+                "delivered_energy": {
+                  "available": 6,
+                  "missing": 0,
+                  "required": true
+                },
+                "lca": {
+                  "available": 6,
+                  "missing": 0,
+                  "required": true
+                },
+                "space_heating_demand_kwh": {
+                  "available": 6,
+                  "missing": 0,
+                  "required": true
+                }
+              }
+            },
+            "engine_comparison_count": 3,
+            "baseline_change_count": 4,
+            "portable_reopen": {
+              "archive_id": "c3211c19d82a716b1337e738626b58f13a2889e679762cb8724e1bc6fac9bc3d",
+              "coverage": {
+                "total": 6,
+                "succeeded": 6,
+                "failed": 0,
+                "not_run": 0,
+                "running": 0,
+                "unverified_results": 0,
+                "complete_results": 6,
+                "complete": true,
+                "outputs": {
+                  "delivered_energy": {
+                    "available": 6,
+                    "missing": 0,
+                    "required": true
+                  },
+                  "lca": {
+                    "available": 6,
+                    "missing": 0,
+                    "required": true
+                  },
+                  "space_heating_demand_kwh": {
+                    "available": 6,
+                    "missing": 0,
+                    "required": true
+                  }
+                }
+              },
+              "verification": {
+                "id": "c3211c19d82a716b1337e738626b58f13a2889e679762cb8724e1bc6fac9bc3d",
+                "verified_files": 297
+              },
+              "execution_imports_used": false
+            }
+          }
+        }
+      },
+      "status": "passed all four required scenarios in both Python lanes"
+    },
+    "source_equivalence": {
+      "method": "git diff --exit-code OLD NEW -- src pyproject.toml",
+      "result": "exit0, no diff, independently read back for both owners",
+      "owners": {
+        "epsm": {
+          "old": "6380e38f2ff2c68d506ddcdd62b6271777576e70",
+          "new": "7fe51c540edc9f489956a8af7e42a733d56d87ce"
+        },
+        "epsm_core": {
+          "old": "71e04ecccd2c431a45c8a72f03f7534d5f8774f1",
+          "new": "34c5ac1633129cec20172d02967fdccbbc38c84d"
+        }
+      },
+      "coverage_relabelled": false,
+      "changes_outside_scientific_sources": [
+        "EPSM CI display manifest argument and metadata checkout history",
+        "Core standalone output-capability test reuses owner synthetic weather fixture",
+        "Central candidate Core pin refresh"
+      ]
+    },
+    "hosted_follow_up": {
+      "workflows": {
+        "run_id": 39588731799,
+        "url": "https://github.com/SB-Chalmers/epsm_workflows/actions/runs/39588731799",
+        "source_head": "11c16829f0e27cc09db4f8b7a36be67a1c9bd412",
+        "candidate_selector_confirmed_in_job_log": "7fe51c540edc9f489956a8af7e42a733d56d87ce",
+        "status": "completed",
+        "conclusion": "success",
+        "jobs": {
+          "combination": "success",
+          "package (3.11)": "success",
+          "package (3.13)": "success"
+        }
+      },
+      "handbook": {
+        "run_id": 39587677152,
+        "url": "https://github.com/SB-Chalmers/epsm_development/actions/runs/39587677152",
+        "source_head": "ee190f6476012c524720384ddf26d2782c95a80e",
+        "status": "completed",
+        "conclusion": "success",
+        "jobs": {
+          "documentation (3.11)": "success",
+          "documentation (3.13)": "success",
+          "api-documentation": "success"
+        },
+        "later_addendum_needs_fresh_hosted_checks": true
+      },
+      "studies": {
+        "known_private_checkout_failure_unresolved": true,
+        "rerun": false,
+        "keys_created": 0,
+        "secrets_created": 0
+      },
+      "promotion": {
+        "all_seven_prs_draft": true,
+        "dev_merges": false,
+        "main_merges": false,
+        "tags_created": false,
+        "releases_created": false,
+        "studio_changed": false
+      },
+      "core": {
+        "url": "https://github.com/SB-Chalmers/epsm_core/actions/runs/39588590788",
+        "run_id": 39588590788,
+        "source_head": "34c5ac1633129cec20172d02967fdccbbc38c84d",
+        "status": "completed",
+        "conclusion": "success",
+        "jobs": {
+          "combination": "success",
+          "unit (3.11, pinned)": "success",
+          "unit (3.13, pinned)": "success"
+        }
+      },
+      "rc": {
+        "url": "https://github.com/SB-Chalmers/epsm_rc/actions/runs/39588721778",
+        "run_id": 39588721778,
+        "source_head": "c4df386ec8ae2fa35c7f315826fbb30b9a1137a9",
+        "status": "completed",
+        "conclusion": "success",
+        "jobs": {
+          "combination": "success",
+          "standalone": "success",
+          "package (3.11)": "success",
+          "package (3.13)": "success"
+        },
+        "candidate_selector": "7fe51c540edc9f489956a8af7e42a733d56d87ce"
+      },
+      "epsm": {
+        "url": "https://github.com/SB-Chalmers/epsm/actions/runs/39588689186",
+        "run_id": 39588689186,
+        "source_head": "7fe51c540edc9f489956a8af7e42a733d56d87ce",
+        "status": "completed",
+        "conclusion": "success",
+        "jobs": {
+          "combination": "success",
+          "platform (3.11, pinned)": "success",
+          "platform (3.13, pinned)": "success",
+          "display (3.13, pinned)": "success"
+        },
+        "hosted_full_suites": {
+          "python3.11": {
+            "passed": 346,
+            "skipped_summary": 0,
+            "job_url": "https://github.com/SB-Chalmers/epsm/actions/runs/39588689186/job/119184510861"
+          },
+          "python3.13": {
+            "passed": 346,
+            "skipped_summary": 0,
+            "job_url": "https://github.com/SB-Chalmers/epsm/actions/runs/39588689186/job/119184510838"
+          },
+          "includes_new_ci_regression_tests": 3,
+          "new_coverage_measurement": false,
+          "historical_343_test_coverage_row_preserved": true
+        }
+      },
+      "epsm_metadata": {
+        "url": "https://github.com/SB-Chalmers/epsm/actions/runs/39588689349",
+        "run_id": 39588689349,
+        "source_head": "7fe51c540edc9f489956a8af7e42a733d56d87ce",
+        "status": "completed",
+        "conclusion": "success",
+        "jobs": {
+          "metadata": "success"
+        }
+      },
+      "weather": {
+        "url": "https://github.com/SB-Chalmers/smhi2epw/actions/runs/39586829408",
+        "run_id": 39586829408,
+        "source_head": "b8d37aa3931c2df5bf08c2c307fefa869055ee92",
+        "status": "completed",
+        "conclusion": "success",
+        "jobs": {
+          "documentation": "success",
+          "test (3.11)": "success",
+          "test (3.12)": "success",
+          "test (3.13)": "success",
+          "test (3.14)": "success",
+          "minimum-dependencies": "success",
+          "package": "success",
+          "wheel": "success",
+          "energyplus": "success",
+          "release-gate": "success",
+          "network": "skipped",
+          "publish": "skipped",
+          "publish-docs": "skipped",
+          "publish-pypi": "skipped"
+        },
+        "network_evidence": "Separate recorded local installed Weather owner tests; skipped hosted job is not a pass"
+      }
+    },
+    "current_publication_readback": {
+      "observed_at": "2026-10-21T11:11:16.035273+00:00",
+      "updated_heads": {
+        "epsm": "7fe51c540edc9f489956a8af7e42a733d56d87ce",
+        "epsm_core": "34c5ac1633129cec20172d02967fdccbbc38c84d"
+      },
+      "remaining_scientific_pr_heads_unchanged": true,
+      "both_updated_prs_read_back_open_draft_target_dev": true,
+      "candidate_selector_name": "EPSM_CANDIDATE_MANIFEST_SHA",
+      "candidate_selectors": {
+        "epsm": "7fe51c540edc9f489956a8af7e42a733d56d87ce",
+        "epsm_rc": "7fe51c540edc9f489956a8af7e42a733d56d87ce",
+        "epsm_workflows": "7fe51c540edc9f489956a8af7e42a733d56d87ce",
+        "epsm_studies": "7fe51c540edc9f489956a8af7e42a733d56d87ce"
+      },
+      "studies_credential_block_unchanged": true,
+      "keys_created": 0,
+      "secrets_created": 0,
+      "merges": false,
+      "tags": false,
+      "releases": false,
+      "studio_changes": false
+    }
   }
 }

@@ -234,3 +234,69 @@ the handbook's checks or maintainer review. The pull requests remain drafts.
 The six deploy-key/Actions-secret creation actions remain unperformed while
 human authorization is pending. There have been no campaign merges into `dev`
 or `main`, tags, releases or Studio changes.
+
+## Follow-up candidates 05 and 06
+
+The preceding publication update records the first posted heads and their actual
+hosted results. Subsequent CI repairs produced two new candidate captures; the
+earlier receipts and source identities remain unchanged.
+
+| Capture | EPSM revision | Core revision | Python 3.11 | Python 3.13 |
+| --- | --- | --- | --- | --- |
+| Intermediate 05 | `9def4aed9b442f2517fdd697bf77d890d2c5f33a` | `71e04ecccd2c431a45c8a72f03f7534d5f8774f1` | All four scenarios passed | All four scenarios passed |
+| Final 06 | `7fe51c540edc9f489956a8af7e42a733d56d87ce` | `34c5ac1633129cec20172d02967fdccbbc38c84d` | All four scenarios passed | All four scenarios passed |
+
+The remaining seven package revisions and all nine candidate version numbers
+are unchanged from final04. Intermediate 05's canonical manifest digest is
+`22632f6c53b5ea0da53ed419e919203f285033c934b347c4a520ae067a25a51d`
+and its raw-file SHA256 is
+`13096c5f92b0f8f6d06529b552d2de5eac4ab6ef365bb0126ab23f875b44aa84`.
+Final 06's canonical manifest digest is
+`6773dd8b281a63c42a8bf1110e645c055ed9a875a3fa211173d78915b341a20f`
+and its raw-file SHA256 is
+`dc066647aa7e45f3220ad4613ddf866b568e9bcf99cd380c13f848168408a226`.
+The companion record retains each completed lane's actual receipt and wheel
+checksums, scenario results, study archive identity and independent reopening.
+
+The EPSM changes repaired its hosted display command's missing manifest argument
+and metadata checkout history, then refreshed the checked Core candidate pin.
+Core's output-capability test now reuses its own synthetic-weather fixture,
+without importing the optional RC package into a standalone Core test. These
+changes affect CI and test setup. Read-only comparisons confirm that `src/` and
+`pyproject.toml` are byte-identical between the final04 and final06 revisions in
+both EPSM and Core. The historical owner coverage figures above keep their
+original measured heads; they are not relabelled as a new final06 coverage run.
+
+Workflows' [manual final06 run](https://github.com/SB-Chalmers/epsm_workflows/actions/runs/39588731799)
+passed combination selection and both Python 3.11 and 3.13 installed-package
+jobs at the unchanged `11c16829` source. Its job log confirms the full EPSM
+candidate selection `7fe51c540edc9f489956a8af7e42a733d56d87ce`.
+The pushed Handbook `ee190f6` also passed both documentation lanes and its API
+build in [its hosted run](https://github.com/SB-Chalmers/epsm_development/actions/runs/39587677152).
+This follow-up addendum creates a later documentation head that needs fresh
+hosted checks after it is pushed.
+
+The final [Core run](https://github.com/SB-Chalmers/epsm_core/actions/runs/39588590788)
+passed combination selection and both unit-test lanes at `34c5ac1`. RC's
+[final candidate run](https://github.com/SB-Chalmers/epsm_rc/actions/runs/39588721778)
+passed combination selection, standalone checks and both package lanes at
+`c4df386`. EPSM's [final supported-package run](https://github.com/SB-Chalmers/epsm/actions/runs/39588689186)
+passed combination selection, display and both platform lanes at `7fe51c5`;
+its [metadata run](https://github.com/SB-Chalmers/epsm/actions/runs/39588689349)
+also passed. Both EPSM hosted full suites reported 346 passed, including the
+three new CI regression tests, with no skipped-test summary. These are new
+hosted test results, not a new coverage measurement: the 343-test final04 owner
+coverage row above retains its original provenance.
+
+Weather's [candidate CI run](https://github.com/SB-Chalmers/smhi2epw/actions/runs/39586829408)
+passed its release gate, Python 3.11 through 3.14 tests, minimum dependencies,
+package/wheel, documentation and EnergyPlus jobs at `b8d37aa`. Its optional
+network job and publication jobs were skipped; the separate recorded local
+owner run supplies the provider-network evidence. All four candidate selector
+variables now read back as `7fe51c540edc9f489956a8af7e42a733d56d87ce`.
+
+Studies' known private-repository checkout failure remains unresolved and was
+not rerun. No deploy keys or Actions secrets have been created. All seven pull
+requests remain drafts, with no campaign merges, tags, releases or Studio
+changes. A successful local candidate and another package's hosted pass do not
+replace the blocked Studies integration checks or maintainer review.
