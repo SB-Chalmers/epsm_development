@@ -26,7 +26,21 @@ An urgent released-version fix starts on `hotfix/<short-name>` from `main`. Test
 
 ### Shared branch settings
 
-Protect `main` and `dev` with pull requests, required checks and review. Do not force-push or delete them. Keep `main` as the default branch and choose `dev` as the target for ordinary development pull requests.
+Where supported, protect `main` and `dev` with pull requests and one required
+`ci` check. Request another maintainer's review when available. Do not require
+repeated updates after unrelated development merges. Do not force-push or delete
+the shared branches. Keep `main` as the default and target ordinary PRs to `dev`.
+
+Run one development job per PR revision on Python 3.13 (Node.js 22 for frontend
+work). Cancel superseded PR runs. Do not duplicate the suite on feature pushes,
+merge pushes or label changes. Run full release verification explicitly before
+tagging or publishing, using the same immutable dependencies throughout.
+Run affected integrations before merging changes to their behaviour.
+
+Delete completed feature and `codex/` branches only after their commits are
+preserved in `dev`. Preserve dirty worktrees and named ongoing experiments.
+After a requested main synchronization, make `dev` and `main` point to the same
+commit; this does not publish or deploy a release.
 
 Stable describes the tested release and its stated scope. Experimental methods and scientific validation limits must remain clearly labelled. Never move or reuse a published tag.
 

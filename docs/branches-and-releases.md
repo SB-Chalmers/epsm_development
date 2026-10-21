@@ -88,10 +88,72 @@ Keep both branches. Use `main` as the repository's default branch and direct dev
 
 ## Protect the shared branches
 
-On the repository host, protect `main` and `dev`. Require pull requests, the agreed checks and a maintainer review. Block force pushes and deletion of these branches. Allow normal merge commits so the release path described above remains possible.
+Where the repository host supports protection, protect `main` and `dev` with
+pull requests and the agreed checks. Block force pushes and deletion. Allow
+normal merge commits so the release path described above remains possible.
 
-Development checks run on feature branches and pull requests into `dev`. Release checks cover pull requests into `main` and the final tagged release. Fix a failing check before promoting the change.
+Run development checks once per pull-request revision, for pull requests into
+`dev` or `main`. Do not also run the same suite on feature-branch pushes, label
+changes, or the merge push. Use one stable check name, `ci`, and cancel obsolete
+runs for the same pull request. A routine branch synchronization is not a release.
+
+Do not require every feature branch to be updated after every unrelated `dev`
+merge. Resolve actual conflicts and rerun checks when the proposed code changes.
+Where protection is available, require the `ci` result and a pull request; request
+another maintainer's review when one is available. Do not add a merge queue or
+additional approval layers without a demonstrated need.
 
 These are settings to apply when each repository adopts the policy. Adding this page does not configure branch protection or change other repositories.
+
+## Keep CI small
+
+| Check | When it runs | Scope |
+| --- | --- | --- |
+| `ci` | Pull requests into `dev` or `main` | One Python 3.13 job, or Node.js 22 for frontend work; package tests and a build |
+| Release verification | Explicitly before a version tag or publication, or when an affected integration needs it | Supported Python versions, installed packages, real engines, database or browser checks and examples |
+| Platform metadata report | Weekly or explicitly requested in `epsm` | Dependency metadata and source references; no downstream workflow dispatches |
+
+Each package states its exact development commands in `.github/workflows/ci.yml`
+and their scope in `docs/ci.md`. Development checks must work without a live
+provider, production database or engine download. Core may use the supported
+Data package; other packages install only the collaborators their selected tests
+need. Tests needing omitted optional integrations remain release checks, and a
+development pass must not be described as full ecosystem or scientific validation.
+
+Run affected integration tests before merging changes to physics, database
+behaviour, browser interaction or package boundaries. Keep those tests available
+in the explicit release workflow instead of reinstalling the full ecosystem for
+every documentation edit. A missing required release prerequisite is a failure,
+not a passing skipped check.
+
+Use the same immutable dependency selection for a release's verification and
+publication. An optional manual candidate-manifest input may select a different
+cohort; PR labels and mutable repository variables must not select it. Keep the
+source identities and resulting receipts together. Do not dispatch extra runs
+solely to produce more green checks on an already checked revision. Manual
+dispatch checks do not replace a PR's required `ci` result.
+
+Read a failure before retrying it. Dependency conflicts, unavailable credentials
+and account spending restrictions need a configuration change, not repeated full
+runs. After fixing the cause, rerun only the failed jobs when possible. Preserve
+the original failure history.
+
+## Prune finished branches
+
+After a normal merge into `dev`, delete the completed feature or `codex/` branch
+locally and remotely once its tip is an ancestor of `dev`. Keep explicitly named
+ongoing experiments. For an earlier squash merge, review or merge the remaining
+history before deleting it; do not assume a closed PR proves all commits survived.
+Never discard dirty worktrees as part of pruning. Keep their files and commit
+identity recoverable before releasing a checked-out branch name.
+
+Promote the checked `dev` history to `main` with a normal merge when requested,
+then bring the resulting `main` history back into `dev`. Both branches should
+point to the same commit after a completed synchronization. This maintenance
+does not itself create a version tag, publish artifacts or deploy an application.
+When `main` is already an ancestor of a checked development merge, it can be
+fast-forwarded to that same commit for an explicitly requested synchronization.
+Retain the development PR and check receipt; a second release campaign is only
+needed when publishing a new version.
 
 For the underlying Git commands, see [Git's branching guide](https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows). For hosted protection settings, see [GitHub's protected-branch guide](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches).

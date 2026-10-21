@@ -60,7 +60,7 @@ package the same neutral scene renderer.
 ## Adopt on the next normal CI run
 
 After EPSM promotes a checked combination, each adopted consumer reads it on its
-next normal PR, main or manual CI run. There is no cross-repository job dispatch,
+next applicable PR or explicit release verification. There is no cross-repository job dispatch,
 callback or waiting cycle. Updating EPSM does not trigger every expensive package
 suite at once. Each receipt retains both the manifest SHA and the actual source
 revisions tested; an earlier passing run is not relabelled as checking a newer
@@ -73,11 +73,12 @@ ordinary repository token does not imply access to a sibling private repository.
 Do not copy credentials or credential values into the manifest, reports or URLs.
 The access setup is separate from publishing a manifest.
 
-Keep normal full checks on PRs into `dev`/`main` and pushes to `main`, with
-cancellation for superseded PR updates and an appropriate timeout. A feature
-push with an open PR should not create a second identical full run. Adopt these
-changes in each repository's own review, preserving engine, database, notebook
-and installed-wheel gates that determine its advertised behaviour.
+Use one lightweight `ci` job on PRs into `dev` or `main`, with cancellation for
+superseded revisions. Do not repeat it on feature pushes, labels or merge pushes.
+Run full verification explicitly before publication, and run affected integration
+checks before merging behavioural changes. Preserve the engine, database,
+notebook and installed-wheel checks in the manual release workflow. The
+[branch and CI policy](branches-and-releases.md#keep-ci-small) defines the scope.
 
 The [EPSM compatibility guide](https://github.com/SB-Chalmers/epsm/blob/main/docs/platform-compatibility.md)
 owns the implementation details and exact guard commands. Historical receipts
@@ -95,13 +96,12 @@ candidate selection with main-dependency mode. Empty input preserves supported
 selection. No consumer stores another scientific pin table or dispatches its
 siblings' jobs.
 
-For campaign PRs, a maintainer sets repository variable
-`EPSM_CANDIDATE_MANIFEST_SHA` and applies the `platform-candidate` label. That
-explicit run uses the captured PR head and checks its prospective target merge
-for conflicts. Unlabelled PRs retain supported selection, even when old supported
-bounds cannot accommodate the new feature. Keep their failed historical runs
-visible; the candidate run must pass all agreed checks before development review.
-Clear the variable and remove labels after supported release promotion.
+Select a candidate only through the explicit manual input at its recorded
+consumer revision. PR labels and repository variables no longer select a cohort
+or dispatch checks. Record the candidate receipt beside the PR, resolve actual
+merge conflicts, and verify affected integrations at the resulting revision.
+Keep failed historical runs visible. A manually dispatched candidate check does
+not replace the PR's required development `ci` result.
 
 Finish owner feature commits, capture their candidate record, publish that
 record as an EPSM feature commit, then run consumer workflows at the recorded
