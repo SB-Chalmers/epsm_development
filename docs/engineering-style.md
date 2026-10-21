@@ -50,8 +50,8 @@ Write down the job of every package and module. Before adding a feature, identif
 | `epsm_core` | Physical Building and elements, geometry, validation, quantities, transformations, Weather, EnergyPlus authoring, execution and result interpretation | Database access, catalogue lookup, weather acquisition, batch scheduling and study storage policy |
 | `epsm_rc` | Explicit reduction of the same physical Building and reduced-order thermal calculation | Physical construction ownership, evidence retrieval, lifecycle assessment and study orchestration |
 | `smhi2epw` | Provider acquisition, historical AMY generation, EPW inspection and weather provenance | Building modelling and study policy; additional weather methods require explicit future scope |
-| `epsm_workflows` | Reusable experiment designs, renovation search, prepared cases, local and Slurm execution, checkpoints, attempts, failures, collection and durable study-result artifacts | Source ingestion, direct catalogue selection, physical calculations and engine compilation |
-| `epsm_studies` | Generic PaperStudy protocol setup and persistence; named research records, result collections, general evaluation helpers and archives | Reusable execution, durable result artifacts, parametric/GSA and renovation search in Workflows; physical calculations in their owning packages |
+| `epsm_workflows` | Embedded workflow specifications/templates, parameter design and bindings, renovation search, prepared cases, local/Slurm execution, checkpoints, attempts and execution evidence | Outer study/protocol and permanent archive, source ingestion, physical calculations and engine compilation |
+| `epsm_studies` | Outer StudySpec and Study entry point, research protocols, portable result archives, lazy result access and general summaries | Workflow templates/design/preparation/execution in Workflows; physical calculations in their owning packages |
 | `epsm_lca` | Lifecycle assessment methods and the meaning of assessment results | Physical quantities, factor catalogues and study orchestration |
 | `epsm_viewer` | TypeScript browser rendering and optional Python display of neutral scene dictionaries | Physical geometry, scientific validation, source retrieval and application adapters |
 | `epsm_studio` | Web application, authenticated sessions, forms, settings, application adapters and user-requested jobs | Package-owned scientific calculations and Viewer rendering |
@@ -74,7 +74,12 @@ to retrieve, save, display or execute work.
 
 A user-facing workflow may request records through an EPSM integration step. That does not move database retrieval or building assembly into the Workflows library.
 
-Core and RC define their engine outputs; EPSM normalizes the common demand and delivered-energy boundary. LCA defines what an environmental assessment result means. Workflows stores study results, combines them and manages how long they are retained. Database may link published study artifacts to their buildings and evidence releases.
+Core and RC define their engine outputs; EPSM normalizes the common demand and
+delivered-energy boundary. LCA defines assessment meaning. Workflows retains
+execution evidence. Studies verifies and publishes portable collection snapshots
+and general summaries. Database may link published study artifacts to buildings
+and evidence releases. The [study platform campaign](study-platform-readiness.md)
+records implementation and release status for this ownership extension.
 
 Do not introduce a universal `Entity` base class, a general plugin system or another shared package until two real users of that code show why it is needed. The umbrella should call the owning implementation, not copy its algorithms.
 

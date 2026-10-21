@@ -7,12 +7,14 @@ behaviour; only linked execution receipts establish which checks have passed.
 
 ## Ownership and the first complete route
 
-Workflows owns study authoring, deterministic designs, fixed execution plans,
-attempts, collection and durable result files. Studies owns the named research
-record and a convenient result collection referring to those retained files.
-This gives a study its outcomes without creating another storage engine or
-making Workflows depend on Studies. EPSM owns Building assembly and combined
-evaluations. Core, RC and LCA keep their calculations and result meanings.
+Studies owns the outer `StudySpec`, research protocol, public `Study` entry point,
+portable result archives and general summaries. Workflows owns its embedded
+`WorkflowSpec`, templates, parameter design, physical bindings, fixed execution
+plans and attempts. Workflows retains execution evidence; Studies copies and
+verifies that evidence into immutable, self-contained collection snapshots.
+Workflows does not depend on Studies. EPSM owns Building assembly, combined
+evaluations and evaluation persistence. Core, RC and LCA retain their physical
+models, calculations and result meanings.
 
 The first complete route contains one baseline and two physical alternatives,
 each evaluated by RC and EnergyPlus using the same declared weather. Its six
@@ -47,11 +49,42 @@ packages. Primary working directories contain existing work and remain intact.
 | Workflows | 0.3.1 | `649634d15a4dc7e92fd1d660626a1ddbbefe3cd0` | Reuse prepared execution; add reusable authoring, expansion and result requirements |
 | Studies | 0.3.0 | `587f9088ae44391e01e9012ca78f17ba76bf1208` | Add a study result collection over Workflows artifacts and general evaluation helpers |
 
-The pre-existing weather branch `codex/amy-scenario-morphing` includes batch AMY
-and optional SSP/RCP morphing at `a44eb56`. It is an existing candidate to review,
-not a release promise or a reason to duplicate its implementation. The campaign
+The pre-existing weather branch `codex/amy-scenario-morphing` supplies batch AMY
+and optional SSP/RCP morphing. The campaign preserves its existing commits
+`a44eb56`, `9935b82` and `ec7a6c7` by cherry-picking them as `87705be`, `55c2917`
+and `6e651aa`; it does not reimplement weather generation. These remain candidate
+sources until the coordinated release gates pass. The campaign
 uses Data's freshly fetched lowercase `dev`; older local checkouts can retain a
 stale uppercase `DEV` reference and should not determine the starting point.
+
+## Shared authoring and capability limits
+
+`Study(name, type="parametric", method="lhs" | "monte_carlo" | "comparative")`
+loads a Workflows template. The outer document retains metadata, protocol,
+embedded workflow and reporting preferences. Draft edits replace its content
+revision; prepared inputs and collected snapshots remain immutable. Authoring,
+explicit resolution, preview, preparation, execution and collection are separate
+operations. Studio later uses those same operations and composed schemas.
+
+| Requested area | Reused owner contract and campaign boundary |
+| --- | --- |
+| Building, portfolio, groups, site | Portable Buildings/records and per-subject location evidence; shared, per-building and per-group sampling |
+| Footprints, height, orientation, roof, basement, zoning | Core geometry schema and authoring; synthetic/drawn/record acquisition; conflicting height controls reject explicitly |
+| Facades, glazing, WWR, shading, context | Core facade/context schemas and validated facade/storey overrides; facade-offset, wall-offset and measured arbitrary-window methods remain unavailable |
+| Fabric, material layers, mass, infiltration, boundaries | Data constructions/archetypes and Core assignments; geometry sensitivity does not create a material intervention; U-value targeting requires a future explicit construction-adjustment recipe |
+| S/F/FT/FTX, delivery, recovery, schedules, gains, DHW, renewables | Core system/operation schemas with settings-aware RC/EnergyPlus preflight; engine limitations remain explicit |
+| Attics, zones, opening behavior | Existing Core zone uses/unconditioned exchange remain discoverable; heated-attic and arbitrary detailed-zone authoring and behavioral opening remain blocked methods |
+| AMY, multiple locations/years, TMY, SSP/RCP | Supplied EPWs and existing weather batch/morphing; source calendars remain distinct from future periods; TMY generation remains unavailable |
+| Assessments and requested outputs | Existing material history, quantities, factors/modules/periods and owner output discovery; energy, LCA and requested-output completeness remain separate |
+
+The public capability/schema operations are authoritative. This table is a
+boundary map, not a replacement scientific schema. Unsupported choices can be
+retained with actionable diagnostics but cannot prepare a runnable plan. LHS
+uses uniform defaults; Monte Carlo requires explicit marginals. The initial
+distribution family is uniform, normal, Weibull, triangular, lognormal and finite
+discrete/categorical choices. Bounds policies are `truncate` and `validate`;
+integer inputs are discrete and continuous marginals are never silently rounded.
+Correlated requests are represented but explicitly unsupported.
 
 Current dependency ownership is Data → Core → RC/LCA, followed by EPSM assembly
 and evaluation, Workflows execution, and Studies interpretation. Database and
