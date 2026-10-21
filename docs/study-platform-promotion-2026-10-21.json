@@ -1,0 +1,190 @@
+{
+  "format": "epsm-study-platform-promotion/1",
+  "recorded_at": "2026-10-21T11:37:33.142198+00:00",
+  "status": "all feature-06 gates passed; final feature-07 source checks running; no campaign merges",
+  "authorization": {
+    "ci_access": "User replied proceed to the explicit six-key setup question",
+    "integration_and_release": "Original task explicitly requests staged development/main promotion"
+  },
+  "access": {
+    "target": "SB-Chalmers/epsm_studies",
+    "complete": true,
+    "private_staging_removed": true,
+    "finished_at": "2026-10-21T11:30:17.397278+00:00",
+    "dependencies": {
+      "epsm": {
+        "repository": "SB-Chalmers/epsm",
+        "secret": "EPSM_REPO_DEPLOY_KEY",
+        "deploy_key_id": 167174913,
+        "fingerprint": "SHA256:lrDgV7nxHPayZDOq8mItgZz2v9tYUXomdHDJmw7A3YE",
+        "read_only_verified": true,
+        "ssh_read_verified": true,
+        "secret_name_verified": true,
+        "original_deploy_keys_preserved": true,
+        "local_private_removed": true
+      },
+      "epsm_data": {
+        "repository": "SB-Chalmers/epsm_data",
+        "secret": "EPSM_DATA_DEPLOY_KEY",
+        "deploy_key_id": 167174937,
+        "fingerprint": "SHA256:VdIqRfX3ZQxB9phvuJwwMIzOjJ4mTZ4TqAOYbM5hJYs",
+        "read_only_verified": true,
+        "ssh_read_verified": true,
+        "secret_name_verified": true,
+        "original_deploy_keys_preserved": true,
+        "local_private_removed": true
+      },
+      "epsm_core": {
+        "repository": "SB-Chalmers/epsm_core",
+        "secret": "EPSM_CORE_DEPLOY_KEY",
+        "deploy_key_id": 167174965,
+        "fingerprint": "SHA256:eltUke9P2PBS2cHUQPCSsNaY9NojGOEpKA0NTY2zWn0",
+        "read_only_verified": true,
+        "ssh_read_verified": true,
+        "secret_name_verified": true,
+        "original_deploy_keys_preserved": true,
+        "local_private_removed": true
+      },
+      "epsm_lca": {
+        "repository": "SB-Chalmers/epsm_lca",
+        "secret": "EPSM_LCA_DEPLOY_KEY",
+        "deploy_key_id": 167174997,
+        "fingerprint": "SHA256:vfoXZQsFlQKoATma++1fPokXBC1ykSZlhfisPCgoozA",
+        "read_only_verified": true,
+        "ssh_read_verified": true,
+        "secret_name_verified": true,
+        "original_deploy_keys_preserved": true,
+        "local_private_removed": true
+      },
+      "epsm_rc": {
+        "repository": "SB-Chalmers/epsm_rc",
+        "secret": "EPSM_RC_DEPLOY_KEY",
+        "deploy_key_id": 167175015,
+        "fingerprint": "SHA256:SFaXvvYDjQrVseeaQWlfrNaaj3baAkMWfAAlGv1mY6o",
+        "read_only_verified": true,
+        "ssh_read_verified": true,
+        "secret_name_verified": true,
+        "original_deploy_keys_preserved": true,
+        "local_private_removed": true
+      },
+      "epsm_workflows": {
+        "repository": "SB-Chalmers/epsm_workflows",
+        "secret": "EPSM_WORKFLOWS_DEPLOY_KEY",
+        "deploy_key_id": 167175037,
+        "fingerprint": "SHA256:sa2/kPILr60s8TWj/k5zf76NupJqyaWlmdkX5q+xkiU",
+        "read_only_verified": true,
+        "ssh_read_verified": true,
+        "secret_name_verified": true,
+        "original_deploy_keys_preserved": true,
+        "local_private_removed": true
+      }
+    }
+  },
+  "studies_feature_06": {
+    "run": "https://github.com/SB-Chalmers/epsm_studies/actions/runs/39592452765",
+    "source": "7332f23c4f98f8fcb70acbe5ffbe4ef01bb07321",
+    "candidate": "7fe51c540edc9f489956a8af7e42a733d56d87ce",
+    "status": "passed",
+    "installed_tests_per_python": 77,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0
+  },
+  "feature_07": {
+    "format": 1,
+    "kind": "candidate",
+    "packages": {
+      "epsm": {
+        "source": "/private/tmp/epsm-study-platform/epsm",
+        "revision": "6890a2683d277025df4678abb0e240bdc885986c",
+        "version": "0.4.0",
+        "extras": [
+          "all",
+          "examples"
+        ]
+      },
+      "epsm_data": {
+        "source": "/private/tmp/epsm-study-platform/epsm_data",
+        "revision": "bc8449402b9e0dbe0ea85ff76c954cf36d209f86",
+        "version": "0.6.0",
+        "extras": []
+      },
+      "epsm_core": {
+        "source": "/private/tmp/epsm-study-platform/epsm_core",
+        "revision": "34c5ac1633129cec20172d02967fdccbbc38c84d",
+        "version": "0.8.2",
+        "extras": [
+          "geometry"
+        ]
+      },
+      "epsm_rc": {
+        "source": "/private/tmp/epsm-study-platform/epsm_rc",
+        "revision": "c4df386ec8ae2fa35c7f315826fbb30b9a1137a9",
+        "version": "0.9.0",
+        "extras": [
+          "platform",
+          "heatpump",
+          "gis"
+        ]
+      },
+      "epsm_lca": {
+        "source": "/private/tmp/epsm-study-platform/epsm_lca",
+        "revision": "00141d0500e717b4f18a9d69e158f0af2aae1934",
+        "version": "0.2.0",
+        "extras": [
+          "integration"
+        ]
+      },
+      "epsm_db": {
+        "source": "/private/tmp/epsm-study-platform/epsm_db",
+        "revision": "9e29a575f5495b76d5a8553bbe6e20dd4f0e1ff0",
+        "version": "0.3.0",
+        "extras": [
+          "catalogue",
+          "epsm",
+          "weather"
+        ]
+      },
+      "epsm_workflows": {
+        "source": "/private/tmp/epsm-study-platform/epsm_workflows",
+        "revision": "0d5230bfa84bf16fe29601142399e66ccf29cc07",
+        "version": "0.4.0",
+        "extras": [
+          "epsm",
+          "weather",
+          "epc"
+        ]
+      },
+      "epsm_studies": {
+        "source": "/private/tmp/epsm-study-platform/epsm_studies",
+        "revision": "7332f23c4f98f8fcb70acbe5ffbe4ef01bb07321",
+        "version": "0.4.0",
+        "extras": [
+          "workflows",
+          "results",
+          "dev"
+        ]
+      },
+      "smhi2epw": {
+        "source": "/private/tmp/epsm-study-platform/smhi2epw",
+        "revision": "b8d37aa3931c2df5bf08c2c307fefa869055ee92",
+        "version": "1.3.0",
+        "extras": [
+          "morphing"
+        ]
+      }
+    }
+  },
+  "dev_merges": {},
+  "main_merges": {},
+  "release_artifacts": {},
+  "review_scope": [
+    "Owner boundaries and reuse register",
+    "Typed schema/distribution/binding and unsupported-capability behavior",
+    "Immutable prepared identities, calendar/output accounting and portable archive checks",
+    "Owner suites, installed feature cohorts, real-engine and fresh-kernel receipts",
+    "History-preserving prospective merge trees and package metadata"
+  ],
+  "independent_github_approval_claimed": false,
+  "studio_changed": false
+}

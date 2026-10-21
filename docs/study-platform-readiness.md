@@ -8,6 +8,9 @@ The [21 October feature verification](study-platform-feature-verification-2026-1
 records the completed local candidate checks and the remaining hosted review
 and promotion work.
 
+The [integration record](study-platform-promotion-2026-10-21.md) follows the
+authorized Studies CI access setup and subsequent development/release checks.
+
 ## Ownership and the first complete route
 
 Studies owns the outer `StudySpec`, research protocol, public `Study` entry point,
