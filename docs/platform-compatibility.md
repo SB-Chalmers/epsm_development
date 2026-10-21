@@ -95,6 +95,14 @@ candidate selection with main-dependency mode. Empty input preserves supported
 selection. No consumer stores another scientific pin table or dispatches its
 siblings' jobs.
 
+For campaign PRs, a maintainer sets repository variable
+`EPSM_CANDIDATE_MANIFEST_SHA` and applies the `platform-candidate` label. That
+explicit run uses the captured PR head and checks its prospective target merge
+for conflicts. Unlabelled PRs retain supported selection, even when old supported
+bounds cannot accommodate the new feature. Keep their failed historical runs
+visible; the candidate run must pass all agreed checks before development review.
+Clear the variable and remove labels after supported release promotion.
+
 Finish owner feature commits, capture their candidate record, publish that
 record as an EPSM feature commit, then run consumer workflows at the recorded
 heads. Required private read-only keys must be configured for each consumer,
@@ -103,3 +111,11 @@ hosted check status and released compatibility distinct. After development
 conflicts or merges, check the newly captured actual revisions again. See the
 [study campaign](study-platform-readiness.md) for the acceptance and promotion
 sequence; this paragraph does not claim that any hosted run has passed.
+
+On 21 October 2026, read-only protection queries for these four private consumer
+repositories returned HTTP 403 with GitHub's message that the feature requires
+GitHub Pro or a public repository. Enforced protection could not be confirmed;
+the required reviews and gates remain a manual release policy. Studies' Actions
+secret-name inventory was empty at that review, so its newly added private
+integration lane still needed dedicated read-only dependency access. No secret
+values or hosting settings were changed during this inspection.
