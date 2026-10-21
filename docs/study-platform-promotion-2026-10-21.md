@@ -18,7 +18,10 @@ earlier access failure remains in the
 Final review also found one trailing blank line in Workflows' release notes.
 Its removal changes no runtime source or package metadata. Feature-07 captures
 that committed documentation cleanup and the corresponding EPSM candidate pin;
-its exact-source checks must pass before the first development merge.
+its exact-source checks passed before the first development merge. Both clean
+Python 3.11 and 3.13 cohorts passed all four required scenarios. The final EPSM,
+Workflows, RC and Studies hosted feature checks also passed; source and wheel
+identities remain in the non-secret receipt.
 
 ## Integration sequence
 
@@ -40,6 +43,24 @@ never move. Verify the actual published artifacts before promoting EPSM's
 supported manifest. The machine-readable receipt will retain development,
 release and artifact identities separately as those actions complete.
 
-At this checkpoint, no campaign development/main merges, tags or releases have
-occurred. Studio remains unchanged. Authentication, projects and UI integration
-remain a later application campaign.
+## Peer development merges
+
+The reviewed peer changes were merged normally into `dev`, preserving history.
+Each complete merged tree matches its tested feature tree; no conflict resolution
+or scientific change was needed.
+
+| Owner | Development merge revision |
+| --- | --- |
+| Core | `6f7282eb4381c2d49717ec9ede92c9eae6b14504` |
+| Weather | `a2c91a15e9b8a9a08dfae7a35e24060567347b3b` |
+| RC | `3db4ef93e71ea9b14ea65ca0f954a8db6ed2798e` |
+| Workflows | `cbb487b316d202fb18c86c95ff2a98056f6511b3` |
+| Studies | `2177cdd7452666d612b397025da2f41de9bfa0b5` |
+
+EPSM's open feature source `9a17b760232d6b6f7259e2a02a6a4a294b14f5a5`
+now pins these actual peer merges. Its coordinated installed and hosted checks
+are running before the final EPSM development merge. The supported release
+manifest remains unchanged.
+
+No campaign `main` merge, tag or release has occurred. Studio remains unchanged.
+Authentication, projects and UI integration remain a later application campaign.
