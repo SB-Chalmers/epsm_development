@@ -57,10 +57,55 @@ or scientific change was needed.
 | Workflows | `cbb487b316d202fb18c86c95ff2a98056f6511b3` |
 | Studies | `2177cdd7452666d612b397025da2f41de9bfa0b5` |
 
-EPSM's open feature source `9a17b760232d6b6f7259e2a02a6a4a294b14f5a5`
-now pins these actual peer merges. Its coordinated installed and hosted checks
-are running before the final EPSM development merge. The supported release
-manifest remains unchanged.
+## Complete development verification
 
-No campaign `main` merge, tag or release has occurred. Studio remains unchanged.
-Authentication, projects and UI integration remain a later application campaign.
+EPSM feature PR 31 and all peer feature PRs merged into development normally.
+The actual full development cohort passed the installed platform, six-evaluation
+study, archetype handoff and workflow handoff on Python 3.11 and 3.13. Release
+notes and package descriptions were then finalized through separate development
+PRs. Those release-preparation wheels and the actual complete release-ready
+development heads passed the same four gates on both Python versions. The
+machine-readable receipt retains their separate revisions and wheel hashes.
+
+A stronger archive check created a fresh Python 3.13 environment containing only
+Studies and NumPy. It reopened a relocated archive written by Python 3.11,
+verified all 297 files, read all six hourly arrays, produced three engine
+comparisons and four baseline differences, and exported CSV/JSON. EPSM, Core,
+RC, LCA, Workflows, Data, DB and Weather were absent from that environment.
+
+## Owner main promotion
+
+Core PR 60, Weather PR 9, RC PR 71, Workflows PR 15 and Studies PR 15 merged
+normally from development into main after the release-ready development gates
+passed. Each prospective merge had no conflicts and every actual main tree
+exactly matches its checked development tree. Actual revision identities and
+preflight trees are retained in the accompanying receipt.
+
+Exact-main wheels passed all four gates on Python 3.11/3.13 and all owner
+main checks passed before new release tags were created. Automatic RC, Workflows
+and Studies main runs selected the preceding
+supported cohort and failed its expected dependency resolution; those failures
+remain separate from the explicit passing candidate checks.
+
+Core 0.8.2, RC 0.9.0, Workflows 0.4.0 and Studies 0.4.0 were published privately
+from their actual main tags, with wheel/source checksums. LCA's existing v0.2.0
+tag now has those downloadable distributions; its source and tag did not change.
+Weather 1.3.0 passed its tagged validation and published to GitHub, PyPI and its
+documentation site. The PyPI wheel matches the GitHub wheel byte for byte.
+
+Downloaded owner artifacts match hosted digests and producer receipts. They
+passed all four existing installed acceptance harnesses on Python 3.11 and 3.13
+with the checked EPSM candidate. EPSM PR 33 now proposes those released main
+pins as the supported cohort and regenerates the README from the same manifest.
+The proposal passes the full pinned metadata guard and 141 compatibility tests.
+Its scientific source and package metadata are unchanged from the verified
+candidate.
+
+The separate main snapshot reports the temporary state where Workflows 0.4
+requires EPSM >=0.4 but EPSM main still declares 0.3.1. Preserve that finding and
+the dependency bounds; the final actual main snapshot must pass before EPSM
+is tagged. The release PR explains the non-atomic promotion sequence.
+
+Studio remains unchanged. Authentication, projects and UI integration remain a
+later application campaign. Publication and released-history synchronization
+will be recorded here as they complete; this entry does not claim them yet.
