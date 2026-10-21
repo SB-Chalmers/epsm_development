@@ -83,3 +83,23 @@ The [EPSM compatibility guide](https://github.com/SB-Chalmers/epsm/blob/main/doc
 owns the implementation details and exact guard commands. Historical receipts
 and explicitly retained numerical regression references remain dated evidence;
 they do not select the current supported combination.
+
+## Feature-cohort checks before development merges
+
+The study-platform campaign adds an explicit `candidate_manifest_revision`
+manual-workflow input to EPSM, Workflows, Studies and RC. It selects a separate
+`compatibility-candidate.json` at one immutable EPSM SHA. Every owner revision is
+fixed; EPSM's `self` resolves to that captured manifest checkout. The generator
+rejects a different consumer checkout, a moving candidate reference or combining
+candidate selection with main-dependency mode. Empty input preserves supported
+selection. No consumer stores another scientific pin table or dispatches its
+siblings' jobs.
+
+Finish owner feature commits, capture their candidate record, publish that
+record as an EPSM feature commit, then run consumer workflows at the recorded
+heads. Required private read-only keys must be configured for each consumer,
+including Studies' new installed integration lane. Keep local wheel receipts,
+hosted check status and released compatibility distinct. After development
+conflicts or merges, check the newly captured actual revisions again. See the
+[study campaign](study-platform-readiness.md) for the acceptance and promotion
+sequence; this paragraph does not claim that any hosted run has passed.
