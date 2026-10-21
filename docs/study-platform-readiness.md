@@ -4,6 +4,9 @@
 the scientific libraries for Studio. It does not change Studio or establish a
 deployed application. The acceptance scenarios below define the required
 behaviour; only linked execution receipts establish which checks have passed.
+The [21 October feature verification](study-platform-feature-verification-2026-10-21.md)
+records the completed local candidate checks and the remaining hosted review
+and promotion work.
 
 ## Ownership and the first complete route
 

@@ -1,0 +1,1348 @@
+{
+  "format": "epsm-study-platform-feature-verification/1",
+  "date": "2026-10-21",
+  "recorded_at": "2026-10-21T10:37:30.076716+00:00",
+  "status": "local coordinated scenarios passed; hosted checks and promotion pending",
+  "readiness_document": "study-platform-readiness.md",
+  "candidate": {
+    "manifest": {
+      "path": "/private/tmp/epsm-study-platform/candidate-feature-04.json",
+      "sha256": "5c0ff1ff08559dd4e2ed9f42b7f66ebf8986bcff129d2f13c24e14a98f9dec2d"
+    },
+    "packages": {
+      "epsm": {
+        "source": "/private/tmp/epsm-study-platform/epsm",
+        "revision": "6380e38f2ff2c68d506ddcdd62b6271777576e70",
+        "version": "0.4.0",
+        "extras": [
+          "all",
+          "examples"
+        ]
+      },
+      "epsm_data": {
+        "source": "/private/tmp/epsm-study-platform/epsm_data",
+        "revision": "bc8449402b9e0dbe0ea85ff76c954cf36d209f86",
+        "version": "0.6.0",
+        "extras": []
+      },
+      "epsm_core": {
+        "source": "/private/tmp/epsm-study-platform/epsm_core",
+        "revision": "71e04ecccd2c431a45c8a72f03f7534d5f8774f1",
+        "version": "0.8.2",
+        "extras": [
+          "geometry"
+        ]
+      },
+      "epsm_rc": {
+        "source": "/private/tmp/epsm-study-platform/epsm_rc",
+        "revision": "c4df386ec8ae2fa35c7f315826fbb30b9a1137a9",
+        "version": "0.9.0",
+        "extras": [
+          "platform",
+          "heatpump",
+          "gis"
+        ]
+      },
+      "epsm_lca": {
+        "source": "/private/tmp/epsm-study-platform/epsm_lca",
+        "revision": "00141d0500e717b4f18a9d69e158f0af2aae1934",
+        "version": "0.2.0",
+        "extras": [
+          "integration"
+        ]
+      },
+      "epsm_db": {
+        "source": "/private/tmp/epsm-study-platform/epsm_db",
+        "revision": "9e29a575f5495b76d5a8553bbe6e20dd4f0e1ff0",
+        "version": "0.3.0",
+        "extras": [
+          "catalogue",
+          "epsm",
+          "weather"
+        ]
+      },
+      "epsm_workflows": {
+        "source": "/private/tmp/epsm-study-platform/epsm_workflows",
+        "revision": "11c16829f0e27cc09db4f8b7a36be67a1c9bd412",
+        "version": "0.4.0",
+        "extras": [
+          "epsm",
+          "weather",
+          "epc"
+        ]
+      },
+      "epsm_studies": {
+        "source": "/private/tmp/epsm-study-platform/epsm_studies",
+        "revision": "7332f23c4f98f8fcb70acbe5ffbe4ef01bb07321",
+        "version": "0.4.0",
+        "extras": [
+          "workflows",
+          "results",
+          "dev"
+        ]
+      },
+      "smhi2epw": {
+        "source": "/private/tmp/epsm-study-platform/smhi2epw",
+        "revision": "b8d37aa3931c2df5bf08c2c307fefa869055ee92",
+        "version": "1.3.0",
+        "extras": [
+          "morphing"
+        ]
+      }
+    },
+    "canonical_manifest_digest": "c0b005488f5346fa1cd9409654215c8f2610299a56da1f7412d3fe3ebb34b3b8",
+    "canonical_manifest_serialization": "json.dumps(manifest, sort_keys=True), encoded as UTF-8, as used by the existing EPSM verifier"
+  },
+  "ownership": {
+    "epsm_studies": "Outer StudySpec and protocol, delegating Study facade, portable collection and general helpers",
+    "epsm_workflows": "WorkflowSpec, domains and scoped sampling, owner bindings, frozen cases, execution and attempts",
+    "epsm": "Building assembly, combined evaluation, output normalization and bundles",
+    "epsm_core_rc_lca": "Owned physics, calculation, acceptance and result meanings",
+    "epsm_db_data_weather": "Existing evidence, definitions and explicit acquisition methods"
+  },
+  "reuse": [
+    "Existing grid and latin_hypercube samplers",
+    "Public Building construction/renovation and owner schemas/preflight",
+    "PreparedEvaluation, local execution and public Vera transport interface",
+    "Existing strict compare_energy_results",
+    "Existing Weather batch and scenario morphing methods",
+    "EPSM compatibility manifest and installed scenario harnesses"
+  ],
+  "lanes": {
+    "py311": {
+      "status": "passed",
+      "python": "3.11.13 (main, Jul 28 2025, 11:09:10) [Clang 17.0.0 (clang-1700.0.13.5)]",
+      "receipt": {
+        "path": "/private/tmp/epsm-study-platform/feature-04-py311/receipt.json",
+        "sha256": "2508051da5f13fa4818cbf586b2141fc0d95a1cd0c378d45c69ee46cdd8d4701"
+      },
+      "manifest_sha256": "c0b005488f5346fa1cd9409654215c8f2610299a56da1f7412d3fe3ebb34b3b8",
+      "scenarios": {
+        "installed-platform": {
+          "required": true,
+          "status": "passed"
+        },
+        "study-platform": {
+          "required": true,
+          "status": "passed"
+        },
+        "archetype-handoff": {
+          "required": true,
+          "status": "passed"
+        },
+        "workflow-handoff": {
+          "required": true,
+          "status": "passed"
+        }
+      },
+      "wheels": {
+        "epsm": {
+          "filename": "epsm-0.4.0-py3-none-any.whl",
+          "version": "0.4.0",
+          "sha256": "5e0fdec9602098994e3b761d331df3a5d55f28f402670bc6b6ca9e1ade66f7e0"
+        },
+        "epsm_data": {
+          "filename": "epsm_data-0.6.0-py3-none-any.whl",
+          "version": "0.6.0",
+          "sha256": "b193a04effe23a9e4422c0736f958b49c21a15a6f33c7a56bb1497bc1dd95f21"
+        },
+        "epsm_core": {
+          "filename": "epsm_core-0.8.2-py3-none-any.whl",
+          "version": "0.8.2",
+          "sha256": "49d68be8e3a42337102cd709448c305807ffb0fc2e626f9827200368dac1a755"
+        },
+        "epsm_rc": {
+          "filename": "epsm_rc-0.9.0-py3-none-any.whl",
+          "version": "0.9.0",
+          "sha256": "7156e4c0a87e629f9df4035af258db3b0ed3f71f2271a694a2fc0bc826b1e65f"
+        },
+        "epsm_lca": {
+          "filename": "epsm_lca-0.2.0-py3-none-any.whl",
+          "version": "0.2.0",
+          "sha256": "b3fe902a7378db926afccff1a9e68ed2b28974c4626714929b2e99a1ab454914"
+        },
+        "epsm_db": {
+          "filename": "epsm_db-0.3.0-py3-none-any.whl",
+          "version": "0.3.0",
+          "sha256": "affbb82681a47356b107c793c1a5b28580434e9666fdb43b984bf0bee3b81321"
+        },
+        "epsm_workflows": {
+          "filename": "epsm_workflows-0.4.0-py3-none-any.whl",
+          "version": "0.4.0",
+          "sha256": "4730cbed584361d78229fd1c940ad251a6bc307fb4c0f18ddf2e4b3a1b0d4294"
+        },
+        "epsm_studies": {
+          "filename": "epsm_studies-0.4.0-py3-none-any.whl",
+          "version": "0.4.0",
+          "sha256": "10faf8092fb7f3ac197031eb9d8dd37f4d38ff5e24d4cc60e2a3579bc17ebd03"
+        },
+        "smhi2epw": {
+          "filename": "smhi2epw-1.3.0-py3-none-any.whl",
+          "version": "1.3.0",
+          "sha256": "a41fee1f231e8570efbdbbce1323a4e99dd92a563606c9acf699596bbe54a656"
+        }
+      },
+      "installed_imports": {
+        "epsm": {
+          "version": "0.4.0",
+          "site_packages": true
+        },
+        "epsm_data": {
+          "version": "0.6.0",
+          "site_packages": true
+        },
+        "epsm_core": {
+          "version": "0.8.2",
+          "site_packages": true
+        },
+        "epsm_rc": {
+          "version": "0.9.0",
+          "site_packages": true
+        },
+        "epsm_lca": {
+          "version": "0.2.0",
+          "site_packages": true
+        },
+        "epsm_db": {
+          "version": "0.3.0",
+          "site_packages": true
+        },
+        "epsm_workflows": {
+          "version": "0.4.0",
+          "site_packages": true
+        },
+        "epsm_studies": {
+          "version": "0.4.0",
+          "site_packages": true
+        },
+        "smhi2epw": {
+          "version": "1.3.0",
+          "site_packages": true
+        }
+      },
+      "study_report": {
+        "path": "/private/tmp/epsm-study-platform/feature-04-py311/scenarios/study-platform/study-compatibility-report.json",
+        "sha256": "b7e04fbce122363b3fdd6a582cadc7010c4931377d92fbaaa1fddd203c0963cd"
+      },
+      "study": {
+        "study_id": "3ed4fc513d13ce935a88753d595db6812b2557a458ceb5eaf5041e4f4bb170cb",
+        "plan_id": "2a8c9bf51f08a8cdac4ec405c925c92f9d689708c4f457591faff8d624c7e03b",
+        "archive_id": "ba647f97b34746cbeb14353d4c810b3acc890744755fef17c1b0431e6cafb53f",
+        "planned_evaluations": 6,
+        "coverage": {
+          "total": 6,
+          "succeeded": 6,
+          "failed": 0,
+          "not_run": 0,
+          "running": 0,
+          "unverified_results": 0,
+          "complete_results": 6,
+          "complete": true,
+          "outputs": {
+            "delivered_energy": {
+              "available": 6,
+              "missing": 0,
+              "required": true
+            },
+            "lca": {
+              "available": 6,
+              "missing": 0,
+              "required": true
+            },
+            "space_heating_demand_kwh": {
+              "available": 6,
+              "missing": 0,
+              "required": true
+            }
+          }
+        },
+        "engine_comparisons": {
+          "baseline": {
+            "hours": 8760,
+            "quality_checks": {
+              "accepted_results": true,
+              "shared_inputs": true,
+              "complete_hourly_calendar": true,
+              "finite_values": true,
+              "annual_hourly_balance": true,
+              "accounting_relative_tolerance": 0.001,
+              "accounting_absolute_tolerance_kwh": 0.001
+            },
+            "reference_run_id": "77bd206e2f445af605ffbdc662ae7c872a475d5ce1873d07e094c6bebcb3a75b",
+            "candidate_run_id": "25244eb6eeec508340cd33ec7748f094defda26798c98ef4260751ede056cccb"
+          },
+          "windows": {
+            "hours": 8760,
+            "quality_checks": {
+              "accepted_results": true,
+              "shared_inputs": true,
+              "complete_hourly_calendar": true,
+              "finite_values": true,
+              "annual_hourly_balance": true,
+              "accounting_relative_tolerance": 0.001,
+              "accounting_absolute_tolerance_kwh": 0.001
+            },
+            "reference_run_id": "d44aaff72724c7692d84aba19797b3fbb1312c6d0cd4c2313346e46c7b392338",
+            "candidate_run_id": "8997620d59ca34bcaa84461569ec1fb00f8abf545c8c8dfe3f51c83d29a10c30"
+          },
+          "windows-and-insulation": {
+            "hours": 8760,
+            "quality_checks": {
+              "accepted_results": true,
+              "shared_inputs": true,
+              "complete_hourly_calendar": true,
+              "finite_values": true,
+              "annual_hourly_balance": true,
+              "accounting_relative_tolerance": 0.001,
+              "accounting_absolute_tolerance_kwh": 0.001
+            },
+            "reference_run_id": "d399edf1453da1255c1d1e2b1dd663dfce8de9e000b913d30c9b86205022fcc3",
+            "candidate_run_id": "1cafe279c6fe0f585da392b01cc353e217951f1f610c7402f617ebe745f48ca6"
+          }
+        },
+        "baseline_changes": {
+          "epsm_rc": {
+            "windows": {
+              "metric": "space_heating_demand_kwh",
+              "unit": "kWh",
+              "complete": true,
+              "coverage_verified": true,
+              "reference_case_id": "193e598f88c850ece0ae36537c13b0d5362c6622370e2161b9969814eee35556",
+              "candidate_case_id": "3ffad7352b3443e065a774f5bc047992e3891b45cd933fe3de107aa52af5c01e"
+            },
+            "windows-and-insulation": {
+              "metric": "space_heating_demand_kwh",
+              "unit": "kWh",
+              "complete": true,
+              "coverage_verified": true,
+              "reference_case_id": "193e598f88c850ece0ae36537c13b0d5362c6622370e2161b9969814eee35556",
+              "candidate_case_id": "77ab642ed65007dc05d88a00467312440ab9c1f65473933e74bceaaba5001a27"
+            }
+          },
+          "energyplus": {
+            "windows": {
+              "metric": "space_heating_demand_kwh",
+              "unit": "kWh",
+              "complete": true,
+              "coverage_verified": true,
+              "reference_case_id": "5ddd1c20542a0192b5468beaaf936cab15cc74da683744789699f53880e9dafd",
+              "candidate_case_id": "f923be405fd63ade1fd4c3a6f013b4086968e157f1a7665ed60f83e91c336ef1"
+            },
+            "windows-and-insulation": {
+              "metric": "space_heating_demand_kwh",
+              "unit": "kWh",
+              "complete": true,
+              "coverage_verified": true,
+              "reference_case_id": "5ddd1c20542a0192b5468beaaf936cab15cc74da683744789699f53880e9dafd",
+              "candidate_case_id": "1d54522b7ebce1945c79db718d542e5d5b77761fc8b71c85cf80e8b52c2a8c6b"
+            }
+          }
+        },
+        "portable_reopen": {
+          "archive_id": "ba647f97b34746cbeb14353d4c810b3acc890744755fef17c1b0431e6cafb53f",
+          "coverage": {
+            "total": 6,
+            "succeeded": 6,
+            "failed": 0,
+            "not_run": 0,
+            "running": 0,
+            "unverified_results": 0,
+            "complete_results": 6,
+            "complete": true,
+            "outputs": {
+              "delivered_energy": {
+                "available": 6,
+                "missing": 0,
+                "required": true
+              },
+              "lca": {
+                "available": 6,
+                "missing": 0,
+                "required": true
+              },
+              "space_heating_demand_kwh": {
+                "available": 6,
+                "missing": 0,
+                "required": true
+              }
+            }
+          },
+          "verification": {
+            "id": "ba647f97b34746cbeb14353d4c810b3acc890744755fef17c1b0431e6cafb53f",
+            "verified_files": 297
+          },
+          "execution_imports_used": false
+        },
+        "evaluation_cases": [
+          {
+            "case_id": "193e598f88c850ece0ae36537c13b0d5362c6622370e2161b9969814eee35556",
+            "evaluation_id": "516721d847944f69830d47f8ae2ccce0",
+            "assessment_contributions": 2,
+            "building_id": "one",
+            "engine": "epsm_rc",
+            "scenario_id": "baseline",
+            "weather_id": "goteborg-2023"
+          },
+          {
+            "case_id": "5ddd1c20542a0192b5468beaaf936cab15cc74da683744789699f53880e9dafd",
+            "evaluation_id": "17d0f2d308b849a290e5e694c86779e6",
+            "assessment_contributions": 2,
+            "building_id": "one",
+            "engine": "energyplus",
+            "scenario_id": "baseline",
+            "weather_id": "goteborg-2023"
+          },
+          {
+            "case_id": "3ffad7352b3443e065a774f5bc047992e3891b45cd933fe3de107aa52af5c01e",
+            "evaluation_id": "a09cccb7fdab4069abbfa7a83524086e",
+            "assessment_contributions": 86,
+            "building_id": "one",
+            "engine": "epsm_rc",
+            "scenario_id": "windows",
+            "weather_id": "goteborg-2023"
+          },
+          {
+            "case_id": "f923be405fd63ade1fd4c3a6f013b4086968e157f1a7665ed60f83e91c336ef1",
+            "evaluation_id": "5524068f42844ff5a15983507f91ec17",
+            "assessment_contributions": 86,
+            "building_id": "one",
+            "engine": "energyplus",
+            "scenario_id": "windows",
+            "weather_id": "goteborg-2023"
+          },
+          {
+            "case_id": "77ab642ed65007dc05d88a00467312440ab9c1f65473933e74bceaaba5001a27",
+            "evaluation_id": "dc1bf09a584740a28dc44730c6e884e6",
+            "assessment_contributions": 122,
+            "building_id": "one",
+            "engine": "epsm_rc",
+            "scenario_id": "windows-and-insulation",
+            "weather_id": "goteborg-2023"
+          },
+          {
+            "case_id": "1d54522b7ebce1945c79db718d542e5d5b77761fc8b71c85cf80e8b52c2a8c6b",
+            "evaluation_id": "dc3675d81e554990a128222dae3c106e",
+            "assessment_contributions": 122,
+            "building_id": "one",
+            "engine": "energyplus",
+            "scenario_id": "windows-and-insulation",
+            "weather_id": "goteborg-2023"
+          }
+        ]
+      },
+      "energyplus": {
+        "path": "/Applications/OpenStudio-3.9.0/EnergyPlus/energyplus-24.2.0",
+        "version": "EnergyPlus, Version 24.2.0-94a887817b",
+        "sha256": "5e0e8246df3dada575d1597a2448409ce31ffa58778f0218d0e6cfc5e508a30e"
+      }
+    },
+    "py313": {
+      "status": "passed",
+      "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 11:23:37) [Clang 14.0.6 ]",
+      "receipt": {
+        "path": "/private/tmp/epsm-study-platform/feature-04-py313/receipt.json",
+        "sha256": "217a482f16ee06325c838863467000803dac6994d09663670d1f3f578e3567df"
+      },
+      "manifest_sha256": "c0b005488f5346fa1cd9409654215c8f2610299a56da1f7412d3fe3ebb34b3b8",
+      "scenarios": {
+        "installed-platform": {
+          "required": true,
+          "status": "passed"
+        },
+        "study-platform": {
+          "required": true,
+          "status": "passed"
+        },
+        "archetype-handoff": {
+          "required": true,
+          "status": "passed"
+        },
+        "workflow-handoff": {
+          "required": true,
+          "status": "passed"
+        }
+      },
+      "wheels": {
+        "epsm": {
+          "filename": "epsm-0.4.0-py3-none-any.whl",
+          "version": "0.4.0",
+          "sha256": "a5c41c97a62d2a86d3658e24a0e7257693d78b1acd2b7b4da5292069d0a89fef"
+        },
+        "epsm_data": {
+          "filename": "epsm_data-0.6.0-py3-none-any.whl",
+          "version": "0.6.0",
+          "sha256": "5079148744adf30b04cfa14450c3a09be362035cf758cc21ce77cd3daab120e1"
+        },
+        "epsm_core": {
+          "filename": "epsm_core-0.8.2-py3-none-any.whl",
+          "version": "0.8.2",
+          "sha256": "196efff73e882d4a9842dde33a02121dc46008b85c73ab3ef07c6e35ab9a83e9"
+        },
+        "epsm_rc": {
+          "filename": "epsm_rc-0.9.0-py3-none-any.whl",
+          "version": "0.9.0",
+          "sha256": "e831c94e62f26405300ca12a0ad83f0ed624fc5518eee9170bcd94236664e1e0"
+        },
+        "epsm_lca": {
+          "filename": "epsm_lca-0.2.0-py3-none-any.whl",
+          "version": "0.2.0",
+          "sha256": "f3838a1fa6de6c8ea7fe70f70a955bf5cddcf1ff2959d794a7a8258b56ace5da"
+        },
+        "epsm_db": {
+          "filename": "epsm_db-0.3.0-py3-none-any.whl",
+          "version": "0.3.0",
+          "sha256": "543ea11208f5ef51d3a6dfc5e9eedbe87e566feec18a34a66188c23d13429819"
+        },
+        "epsm_workflows": {
+          "filename": "epsm_workflows-0.4.0-py3-none-any.whl",
+          "version": "0.4.0",
+          "sha256": "483dc948a4e41e02494c9a9b7dda933a66a4808e6d20ab08ce8c12e1c0163f92"
+        },
+        "epsm_studies": {
+          "filename": "epsm_studies-0.4.0-py3-none-any.whl",
+          "version": "0.4.0",
+          "sha256": "592ac8cb8133660a720aa6291df8c0ab5b7fc6843fd366c4f47f4ac11ce850f0"
+        },
+        "smhi2epw": {
+          "filename": "smhi2epw-1.3.0-py3-none-any.whl",
+          "version": "1.3.0",
+          "sha256": "a41fee1f231e8570efbdbbce1323a4e99dd92a563606c9acf699596bbe54a656"
+        }
+      },
+      "installed_imports": {
+        "epsm": {
+          "version": "0.4.0",
+          "site_packages": true
+        },
+        "epsm_data": {
+          "version": "0.6.0",
+          "site_packages": true
+        },
+        "epsm_core": {
+          "version": "0.8.2",
+          "site_packages": true
+        },
+        "epsm_rc": {
+          "version": "0.9.0",
+          "site_packages": true
+        },
+        "epsm_lca": {
+          "version": "0.2.0",
+          "site_packages": true
+        },
+        "epsm_db": {
+          "version": "0.3.0",
+          "site_packages": true
+        },
+        "epsm_workflows": {
+          "version": "0.4.0",
+          "site_packages": true
+        },
+        "epsm_studies": {
+          "version": "0.4.0",
+          "site_packages": true
+        },
+        "smhi2epw": {
+          "version": "1.3.0",
+          "site_packages": true
+        }
+      },
+      "study_report": {
+        "path": "/private/tmp/epsm-study-platform/feature-04-py313/scenarios/study-platform/study-compatibility-report.json",
+        "sha256": "2de745f3516beea4d3f6d2677d4352893592f815076c58f5caf5986bdb1fdaee"
+      },
+      "study": {
+        "study_id": "81596dbf2cda7e0fbb72f5c3b3af865d6a10f055c6060b7af9509e40d0e1fb46",
+        "plan_id": "2790501cee65d8cb00de6d95b9260d691dbea3d58960e544f4f1946ef8336987",
+        "archive_id": "48153ca331384ec47370fa2a07c2bce6c7afa5a47c90a4c8267b7720e4279308",
+        "planned_evaluations": 6,
+        "coverage": {
+          "total": 6,
+          "succeeded": 6,
+          "failed": 0,
+          "not_run": 0,
+          "running": 0,
+          "unverified_results": 0,
+          "complete_results": 6,
+          "complete": true,
+          "outputs": {
+            "delivered_energy": {
+              "available": 6,
+              "missing": 0,
+              "required": true
+            },
+            "lca": {
+              "available": 6,
+              "missing": 0,
+              "required": true
+            },
+            "space_heating_demand_kwh": {
+              "available": 6,
+              "missing": 0,
+              "required": true
+            }
+          }
+        },
+        "engine_comparisons": {
+          "baseline": {
+            "hours": 8760,
+            "quality_checks": {
+              "accepted_results": true,
+              "shared_inputs": true,
+              "complete_hourly_calendar": true,
+              "finite_values": true,
+              "annual_hourly_balance": true,
+              "accounting_relative_tolerance": 0.001,
+              "accounting_absolute_tolerance_kwh": 0.001
+            },
+            "reference_run_id": "5469cc892457ce5b2289f8c22703ba99065dd2d854b94812055d35275e8e2c2a",
+            "candidate_run_id": "bd9aa83125faaecd05d4874ce2ebefc4718932a630b905c7c2fa4655b0703a55"
+          },
+          "windows": {
+            "hours": 8760,
+            "quality_checks": {
+              "accepted_results": true,
+              "shared_inputs": true,
+              "complete_hourly_calendar": true,
+              "finite_values": true,
+              "annual_hourly_balance": true,
+              "accounting_relative_tolerance": 0.001,
+              "accounting_absolute_tolerance_kwh": 0.001
+            },
+            "reference_run_id": "c6362e651a26041645ac6c9c76497c2024776a5acdfb8aa1ff031bbb52928f9f",
+            "candidate_run_id": "9e2fac70a6070d5a89727bdb6fd3eb4061ca9be7bc5aae868623370efec7713f"
+          },
+          "windows-and-insulation": {
+            "hours": 8760,
+            "quality_checks": {
+              "accepted_results": true,
+              "shared_inputs": true,
+              "complete_hourly_calendar": true,
+              "finite_values": true,
+              "annual_hourly_balance": true,
+              "accounting_relative_tolerance": 0.001,
+              "accounting_absolute_tolerance_kwh": 0.001
+            },
+            "reference_run_id": "901de06e560a083ee5ed4d44518dbefd047b47cec55aae0f5203b32b263f5345",
+            "candidate_run_id": "f2b3dad1096d2e68215ebc0ba93fb5a7522830ab44142a20c07415745f13ca87"
+          }
+        },
+        "baseline_changes": {
+          "epsm_rc": {
+            "windows": {
+              "metric": "space_heating_demand_kwh",
+              "unit": "kWh",
+              "complete": true,
+              "coverage_verified": true,
+              "reference_case_id": "382c5921375baa5fd336a060deb65b2bbcf0d4f855e85c9e6479b773653d8ac7",
+              "candidate_case_id": "46ef9c649d8e9685210564ebb0c2db0f9c36d3a8b64a0f9ec853a1190abf3fe2"
+            },
+            "windows-and-insulation": {
+              "metric": "space_heating_demand_kwh",
+              "unit": "kWh",
+              "complete": true,
+              "coverage_verified": true,
+              "reference_case_id": "382c5921375baa5fd336a060deb65b2bbcf0d4f855e85c9e6479b773653d8ac7",
+              "candidate_case_id": "cbaaf73ec08ba86fe1653dd98453f4894916782becc0290ac371fd77dea8a72e"
+            }
+          },
+          "energyplus": {
+            "windows": {
+              "metric": "space_heating_demand_kwh",
+              "unit": "kWh",
+              "complete": true,
+              "coverage_verified": true,
+              "reference_case_id": "cc09df19fa98c4dfdd89cb58b6442f3b2e31b94148b841f16e967561c08e93cb",
+              "candidate_case_id": "c65430e9f8b3429c85017f2c35bed9eaa1368806a7c9b3129cb6dbb2bd8592ac"
+            },
+            "windows-and-insulation": {
+              "metric": "space_heating_demand_kwh",
+              "unit": "kWh",
+              "complete": true,
+              "coverage_verified": true,
+              "reference_case_id": "cc09df19fa98c4dfdd89cb58b6442f3b2e31b94148b841f16e967561c08e93cb",
+              "candidate_case_id": "99dff3bf3a59d67d0c4981818c9582770907132382c4de0e0823344789b965c0"
+            }
+          }
+        },
+        "portable_reopen": {
+          "archive_id": "48153ca331384ec47370fa2a07c2bce6c7afa5a47c90a4c8267b7720e4279308",
+          "coverage": {
+            "total": 6,
+            "succeeded": 6,
+            "failed": 0,
+            "not_run": 0,
+            "running": 0,
+            "unverified_results": 0,
+            "complete_results": 6,
+            "complete": true,
+            "outputs": {
+              "delivered_energy": {
+                "available": 6,
+                "missing": 0,
+                "required": true
+              },
+              "lca": {
+                "available": 6,
+                "missing": 0,
+                "required": true
+              },
+              "space_heating_demand_kwh": {
+                "available": 6,
+                "missing": 0,
+                "required": true
+              }
+            }
+          },
+          "verification": {
+            "id": "48153ca331384ec47370fa2a07c2bce6c7afa5a47c90a4c8267b7720e4279308",
+            "verified_files": 297
+          },
+          "execution_imports_used": false
+        },
+        "evaluation_cases": [
+          {
+            "case_id": "382c5921375baa5fd336a060deb65b2bbcf0d4f855e85c9e6479b773653d8ac7",
+            "evaluation_id": "cfbdbe9406f848cc82bd3a4280f63bba",
+            "assessment_contributions": 2,
+            "building_id": "one",
+            "engine": "epsm_rc",
+            "scenario_id": "baseline",
+            "weather_id": "goteborg-2023"
+          },
+          {
+            "case_id": "cc09df19fa98c4dfdd89cb58b6442f3b2e31b94148b841f16e967561c08e93cb",
+            "evaluation_id": "3598e47e0fff49c2b0c44a5be4d22e35",
+            "assessment_contributions": 2,
+            "building_id": "one",
+            "engine": "energyplus",
+            "scenario_id": "baseline",
+            "weather_id": "goteborg-2023"
+          },
+          {
+            "case_id": "46ef9c649d8e9685210564ebb0c2db0f9c36d3a8b64a0f9ec853a1190abf3fe2",
+            "evaluation_id": "a6fcc4c775cd43bab997f66592083bdf",
+            "assessment_contributions": 86,
+            "building_id": "one",
+            "engine": "epsm_rc",
+            "scenario_id": "windows",
+            "weather_id": "goteborg-2023"
+          },
+          {
+            "case_id": "c65430e9f8b3429c85017f2c35bed9eaa1368806a7c9b3129cb6dbb2bd8592ac",
+            "evaluation_id": "0c6a50f008d640558f4c1ed16908452f",
+            "assessment_contributions": 86,
+            "building_id": "one",
+            "engine": "energyplus",
+            "scenario_id": "windows",
+            "weather_id": "goteborg-2023"
+          },
+          {
+            "case_id": "cbaaf73ec08ba86fe1653dd98453f4894916782becc0290ac371fd77dea8a72e",
+            "evaluation_id": "d3f787f60dc24a0d800266775ff82400",
+            "assessment_contributions": 122,
+            "building_id": "one",
+            "engine": "epsm_rc",
+            "scenario_id": "windows-and-insulation",
+            "weather_id": "goteborg-2023"
+          },
+          {
+            "case_id": "99dff3bf3a59d67d0c4981818c9582770907132382c4de0e0823344789b965c0",
+            "evaluation_id": "aa7e3e6ce09d4caca740f02abf9236f1",
+            "assessment_contributions": 122,
+            "building_id": "one",
+            "engine": "energyplus",
+            "scenario_id": "windows-and-insulation",
+            "weather_id": "goteborg-2023"
+          }
+        ]
+      },
+      "energyplus": {
+        "path": "/Applications/OpenStudio-3.9.0/EnergyPlus/energyplus-24.2.0",
+        "version": "EnergyPlus, Version 24.2.0-94a887817b",
+        "sha256": "5e0e8246df3dada575d1597a2448409ce31ffa58778f0218d0e6cfc5e508a30e"
+      }
+    }
+  },
+  "owner_checks": {
+    "epsm": {
+      "status": "passed",
+      "package": {
+        "source": "/private/tmp/epsm-study-platform/epsm",
+        "revision": "6380e38f2ff2c68d506ddcdd62b6271777576e70",
+        "version": "0.4.0",
+        "extras": [
+          "all",
+          "examples"
+        ]
+      },
+      "provenance": "installed final04 Python3.11",
+      "tests": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "343",
+        "time": "111.605",
+        "timestamp": "2026-10-21T12:32:38.912483+02:00",
+        "hostname": "CM-GHHXPN239T"
+      },
+      "coverage": {
+        "covered_lines": 1581,
+        "num_statements": 1942,
+        "percent_covered": 77.93685756240822,
+        "percent_covered_display": "78",
+        "missing_lines": 361,
+        "excluded_lines": 0,
+        "percent_statements_covered": 81.41091658084449,
+        "percent_statements_covered_display": "81",
+        "num_branches": 782,
+        "num_partial_branches": 178,
+        "covered_branches": 542,
+        "missing_branches": 240,
+        "percent_branches_covered": 69.30946291560102,
+        "percent_branches_covered_display": "69"
+      },
+      "junit": {
+        "path": "/private/tmp/epsm-study-platform/feature-04-py311/epsm-tests.xml",
+        "sha256": "856ae15b945951f3c4d2602879702986e0aeb236a32db9b31b266d739903b48c"
+      },
+      "coverage_evidence": {
+        "path": "/private/tmp/epsm-study-platform/feature-04-py311/epsm-coverage.json",
+        "sha256": "42030db6faf23bc6c5386a508185d503cebb9e10982081d4f9ff3461a3a7c278"
+      }
+    },
+    "epsm_core": {
+      "status": "passed",
+      "package": {
+        "source": "/private/tmp/epsm-study-platform/epsm_core",
+        "revision": "71e04ecccd2c431a45c8a72f03f7534d5f8774f1",
+        "version": "0.8.2",
+        "extras": [
+          "geometry"
+        ]
+      },
+      "python": "3.13.5",
+      "installed_only": true,
+      "tests": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "8",
+        "tests": "1098",
+        "time": "208.032",
+        "timestamp": "2026-10-21T12:22:34.883575+02:00",
+        "hostname": "CM-GHHXPN239T"
+      },
+      "passed": 1090,
+      "skips": [
+        {
+          "class": "tests.core.test_adapter",
+          "test": "test_complete_layer_adapter",
+          "message": "could not import 'epsm_data.epsm_core_adapter': No module named 'epsm_data.epsm_core_adapter'"
+        },
+        {
+          "class": "tests.core.test_foundations",
+          "test": "test_energyplus_smoke[per_storey-none]",
+          "message": "Explicit EnergyPlus smoke gate"
+        },
+        {
+          "class": "tests.core.test_foundations",
+          "test": "test_energyplus_smoke[whole_building-heated]",
+          "message": "Explicit EnergyPlus smoke gate"
+        },
+        {
+          "class": "tests.core.test_foundations",
+          "test": "test_energyplus_smoke[per_storey-unheated]",
+          "message": "Explicit EnergyPlus smoke gate"
+        },
+        {
+          "class": "tests.core.test_foundations",
+          "test": "test_energyplus_smoke[perimeter_core-none]",
+          "message": "Explicit EnergyPlus smoke gate"
+        },
+        {
+          "class": "tests.core.test_foundations",
+          "test": "test_energyplus_smoke[apartments-none]",
+          "message": "Explicit EnergyPlus smoke gate"
+        },
+        {
+          "class": "tests.core.test_foundations",
+          "test": "test_energyplus_smoke[rotated_apartments-none]",
+          "message": "Explicit EnergyPlus smoke gate"
+        },
+        {
+          "class": "tests.core.test_foundations",
+          "test": "test_energyplus_smoke[concave-none]",
+          "message": "Explicit EnergyPlus smoke gate"
+        }
+      ],
+      "skip_audit": {
+        "retired_optional_epsm_data_adapter": 1,
+        "explicit_2018_amy_kiva_energyplus_gate_not_run": 7,
+        "missing_required_engine_or_geometry": 0
+      },
+      "coverage": {
+        "covered_lines": 6544,
+        "num_statements": 7119,
+        "percent_covered": 89.65239294710328,
+        "percent_covered_display": "90",
+        "missing_lines": 575,
+        "excluded_lines": 0,
+        "percent_statements_covered": 91.92302289647422,
+        "percent_statements_covered_display": "92",
+        "num_branches": 2806,
+        "num_partial_branches": 382,
+        "covered_branches": 2354,
+        "missing_branches": 452,
+        "percent_branches_covered": 83.89166072701354,
+        "percent_branches_covered_display": "84"
+      },
+      "new_outputs_module": {
+        "covered_lines": 41,
+        "num_statements": 43,
+        "percent_covered": 96.36363636363636,
+        "percent_covered_display": "96",
+        "missing_lines": 2,
+        "excluded_lines": 0,
+        "percent_statements_covered": 95.34883720930233,
+        "percent_statements_covered_display": "95",
+        "num_branches": 12,
+        "num_partial_branches": 0,
+        "covered_branches": 12,
+        "missing_branches": 0,
+        "percent_branches_covered": 100.0,
+        "percent_branches_covered_display": "100"
+      },
+      "warnings": "66 ResourceWarning notices about SQLite connections from existing tests; no failures.",
+      "evidence": {
+        "path": "/private/tmp/epsm-study-platform/installed-owner-review03/core/summary.json",
+        "sha256": "a5c993eac4f751cade32b581182de02be3d82767ecfe820bd5971c4afab917cd"
+      },
+      "source_unchanged_in_final04": true
+    },
+    "epsm_studies": {
+      "status": "passed",
+      "package": {
+        "source": "/private/tmp/epsm-study-platform/epsm_studies",
+        "revision": "7332f23c4f98f8fcb70acbe5ffbe4ef01bb07321",
+        "version": "0.4.0",
+        "extras": [
+          "workflows",
+          "results",
+          "dev"
+        ]
+      },
+      "python": "3.13.5",
+      "installed_only": true,
+      "tests": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "77",
+        "time": "16.066",
+        "timestamp": "2026-10-21T12:32:03.235416+02:00",
+        "hostname": "CM-GHHXPN239T"
+      },
+      "skips": [],
+      "evidence": {
+        "path": "/private/tmp/epsm-study-platform/installed-owner-review04/studies/summary.json",
+        "sha256": "23a8e904311952e7f204374f9bd9543eb842a335c6fc090f54907cd5c8e49636"
+      },
+      "coverage": {
+        "covered_lines": 1013,
+        "num_statements": 1252,
+        "percent_covered": 78.46506300114548,
+        "percent_covered_display": "78",
+        "missing_lines": 239,
+        "excluded_lines": 0,
+        "percent_statements_covered": 80.91054313099042,
+        "percent_statements_covered_display": "81",
+        "num_branches": 494,
+        "num_partial_branches": 103,
+        "covered_branches": 357,
+        "missing_branches": 137,
+        "percent_branches_covered": 72.2672064777328,
+        "percent_branches_covered_display": "72"
+      },
+      "coverage_evidence": {
+        "path": "/private/tmp/epsm-study-platform/installed-owner-review03/studies/summary.json",
+        "sha256": "56a34f99ef15f1f353b26e5716333c3b14d33e9a589924a43750d497325256de"
+      },
+      "coverage_source_unchanged_in_final04": true,
+      "notebook": {
+        "status": "passed",
+        "source": "/private/tmp/epsm-study-platform/feature-03-py313/sources/epsm_studies/examples/01_portable_study.ipynb",
+        "source_sha256": "0f372a8d1444f8186f6033fe9780a7b50d2d022314ecc26b6aa96c98ebdf17d8",
+        "executed_notebook": "/private/tmp/epsm-study-platform/installed-owner-review03/studies/notebook/01_portable_study.executed.ipynb",
+        "python": "/private/tmp/epsm-study-platform/feature-03-py313/environment/bin/python",
+        "code_cells": 3
+      }
+    },
+    "epsm_workflows": {
+      "status": "passed",
+      "package": {
+        "source": "/private/tmp/epsm-study-platform/epsm_workflows",
+        "revision": "11c16829f0e27cc09db4f8b7a36be67a1c9bd412",
+        "version": "0.4.0",
+        "extras": [
+          "epsm",
+          "weather",
+          "epc"
+        ]
+      },
+      "python": "3.13.5",
+      "installed_only": true,
+      "tests": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "134",
+        "time": "24.690",
+        "timestamp": "2026-10-21T12:32:03.869316+02:00",
+        "hostname": "CM-GHHXPN239T"
+      },
+      "skips": [],
+      "coverage": {
+        "covered_lines": 1886,
+        "num_statements": 2322,
+        "percent_covered": 77.89218655360388,
+        "percent_covered_display": "78",
+        "missing_lines": 436,
+        "excluded_lines": 0,
+        "percent_statements_covered": 81.22308354866495,
+        "percent_statements_covered_display": "81",
+        "num_branches": 980,
+        "num_partial_branches": 194,
+        "covered_branches": 686,
+        "missing_branches": 294,
+        "percent_branches_covered": 70.0,
+        "percent_branches_covered_display": "70"
+      },
+      "evidence": {
+        "path": "/private/tmp/epsm-study-platform/installed-owner-review04/workflows/summary.json",
+        "sha256": "7daa619dcf31134d2b9a6e928cf83153f235835b54bf23a2b2e0adab677f6603"
+      },
+      "notebook": {
+        "status": "passed",
+        "source": "/private/tmp/epsm-study-platform/feature-04-py313/sources/epsm_workflows/examples/01_study_authoring.ipynb",
+        "source_sha256": "f06cccfd70b76b39a33edaa2bc32d3c5b19608199e52aebe5a89aed3ef508a60",
+        "executed_notebook": "/private/tmp/epsm-study-platform/installed-owner-review04/workflows/notebook/01_study_authoring.executed.ipynb",
+        "python": "/private/tmp/epsm-study-platform/feature-04-py313/environment/bin/python",
+        "code_cells": 3
+      }
+    },
+    "epsm_rc": {
+      "kind": "source-owner-verification",
+      "source_revision": "ba88ffd73e6d171c67dd04a5ae70aba57fe41286",
+      "tests": {
+        "tests": 610,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "skips": [],
+      "coverage": {
+        "covered_lines": 3411,
+        "num_statements": 3959,
+        "percent_covered": 83.4576400841461,
+        "percent_covered_display": "83",
+        "missing_lines": 548,
+        "excluded_lines": 16,
+        "percent_statements_covered": 86.15812073755998,
+        "percent_statements_covered_display": "86",
+        "num_branches": 1270,
+        "num_partial_branches": 221,
+        "covered_branches": 953,
+        "missing_branches": 317,
+        "percent_branches_covered": 75.03937007874016,
+        "percent_branches_covered_display": "75"
+      },
+      "scope_note": "Candidate imports are frozen campaign sources, not installed wheels. Installed distribution labels in benchmark report.json reflect the original runner environment and must not be used as source provenance; environment.json contains actual imported paths/versions/revisions. The reference Core/RC/Data packages are independently installed archive-built wheels.",
+      "style_gate": {
+        "original_format_result": "failed for _results.py/platform.py",
+        "resolved_revision": "c4df386",
+        "format_check_passed": true,
+        "ruff_check_passed": true,
+        "ast_equivalence_receipt": "format-equivalence.json",
+        "note": "Coverage source locations remain those of the original tested ba88ffd; both source ASTs are identical after formatting."
+      },
+      "untested_paths": [
+        {
+          "area": "standalone solar single-hour entry point",
+          "evidence": "src/epsm_rc/solar.py:748-825 not executed by full pytest suite; annual standalone radiation paths passed exact reference comparisons"
+        },
+        {
+          "area": "legacy standalone heating variants",
+          "evidence": "heating.py dynamic wood/pellet and several alternative-model/failure branches remain unexecuted; required hplib tests did execute"
+        },
+        {
+          "area": "weather header ground-temperature parser",
+          "evidence": "weather.py:582-630 remains unexecuted by full pytest suite; platform weather/calendar paths are exercised"
+        },
+        {
+          "area": "parametric command-line entry point",
+          "evidence": "parametric.py:572-601 not executed by full pytest suite"
+        },
+        {
+          "area": "public output discovery rejection branches",
+          "evidence": "outputs.py:34,36 explicit dict coercion/invalid-settings-type branches remain unexecuted in this owner suite; preflight/output integration is separately tested by EPSM"
+        }
+      ],
+      "evidence": {
+        "path": "/private/tmp/epsm-study-platform/rc-owner-review/receipt.json",
+        "sha256": "086911a05a559fb2ce43373a4393699b39f2ba9f3e1f3d02b3654ce5509b6348"
+      },
+      "numerical_regression": {
+        "reference_revisions": {
+          "epsm_core": "3e0256d70c5e82849308b05544b1ad2fd0573665",
+          "epsm_rc": "5a9d5f4251847e270b5dc4a526a4b2260915a4f9",
+          "epsm_data": "065c1f9aab5e5baa881e11dcb19834521181d7de"
+        },
+        "checks": [
+          {
+            "name": "legacy-regression",
+            "exit_code": 0,
+            "exact_cases": {
+              "controlled_sensible_0": true,
+              "controlled_sensible_1": true,
+              "dynamic_airflow_cooling_ground": true,
+              "heated_basement": true,
+              "weather_concave": true,
+              "weather_rectangle": true,
+              "zero_airflow": true
+            },
+            "standalone_exact_reference_match": true
+          },
+          {
+            "name": "prepared-regression",
+            "exit_code": 0,
+            "exact_cases": {
+              "controlled_sensible_0": true,
+              "controlled_sensible_1": true,
+              "dynamic_airflow_cooling_ground": true,
+              "heated_basement": true,
+              "weather_concave": true,
+              "weather_rectangle": true,
+              "zero_airflow": true
+            },
+            "standalone_exact_reference_match": true
+          },
+          {
+            "name": "angular-regression",
+            "exit_code": 0,
+            "exact_cases": {
+              "controlled_sensible_0": true,
+              "controlled_sensible_1": true,
+              "dynamic_airflow_cooling_ground": true,
+              "heated_basement": true,
+              "weather_concave": true,
+              "weather_rectangle": true,
+              "zero_airflow": true
+            },
+            "standalone_exact_reference_match": true
+          },
+          {
+            "name": "angular-prepared-regression",
+            "exit_code": 0,
+            "exact_cases": {
+              "controlled_sensible_0": true,
+              "controlled_sensible_1": true,
+              "dynamic_airflow_cooling_ground": true,
+              "heated_basement": true,
+              "weather_concave": true,
+              "weather_rectangle": true,
+              "zero_airflow": true
+            },
+            "standalone_exact_reference_match": true
+          }
+        ]
+      }
+    },
+    "smhi2epw": {
+      "status": "passed for recorded checks",
+      "python": "3.12.3",
+      "source": {
+        "source": "/private/tmp/epsm-study-platform/smhi2epw",
+        "revision": "b8d37aa3931c2df5bf08c2c307fefa869055ee92",
+        "version": "1.3.0",
+        "extras": [
+          "morphing",
+          "test",
+          "tutorials",
+          "dev",
+          "docs"
+        ]
+      },
+      "checks": {
+        "offline": {
+          "tests": "314",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0",
+          "time": "78.028",
+          "junit": "/private/tmp/epsm-study-platform/weather-verification/offline.xml"
+        },
+        "fwg": {
+          "tests": "2",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0",
+          "time": "49.194",
+          "junit": "/private/tmp/epsm-study-platform/weather-verification/fwg.xml"
+        },
+        "network": {
+          "tests": "5",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0",
+          "time": "21.492",
+          "junit": "/private/tmp/epsm-study-platform/weather-verification/network.xml"
+        },
+        "energyplus": {
+          "tests": "7",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0",
+          "time": "76.102",
+          "junit": "/private/tmp/epsm-study-platform/weather-verification/energyplus.xml"
+        },
+        "static": {
+          "ruff_check": "passed",
+          "ruff_format": "55 files already formatted",
+          "mypy": "19 source files, no issues"
+        },
+        "documentation": {
+          "html": "passed, warnings as errors",
+          "doctests": 73,
+          "failures": 0,
+          "directory": "/private/tmp/epsm-study-platform/weather-verification/docs-html"
+        },
+        "energyplus_application_notebook": {
+          "status": "passed in fresh installed-wheel kernel",
+          "path": "/private/tmp/epsm-study-platform/weather-verification/09_run_energyplus.executed.ipynb",
+          "sha256": "ab5f943dca096776544bdac52cc64440752dac604d8815af67667d3414cfd863",
+          "prerequisites": "SMHI2EPW_EXAMPLES_DIR and retained provider-generated EPW supplied explicitly"
+        },
+        "installed_source_doctests": {
+          "tests": "31",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0",
+          "time": "1.294"
+        }
+      },
+      "coverage": {
+        "batch.py": {
+          "covered_statements": 132,
+          "statements": 144,
+          "covered_branches": 41,
+          "branches": 48,
+          "statement_percent": 91.66666666666667,
+          "branch_percent": 85.41666666666667
+        },
+        "morphing.py": {
+          "covered_statements": 147,
+          "statements": 171,
+          "covered_branches": 38,
+          "branches": 50,
+          "statement_percent": 85.96491228070175,
+          "branch_percent": 76.0
+        }
+      },
+      "coverage_note": "Measured from 39 offline batch/morphing tests. Real FWG gates ran separately; these percentages are not whole-package coverage.",
+      "limits": [
+        "Runtime execution, provenance and calendar checks do not establish climate projection accuracy.",
+        "Default FWG SolarQC preprocessing applies; source AMY years do not rebase climate deltas.",
+        "Global/Europe third-party JARs remain outside repositories and distributions.",
+        "This standalone installed owner verification used Python 3.12.3; the coordinated Python 3.11/3.13 lanes and hosted release checks remain separate evidence."
+      ],
+      "evidence": {
+        "path": "/private/tmp/epsm-study-platform/weather-verification/weather-verification-summary.json",
+        "sha256": "406a0f46a1def63a57fb793a3f208878115880edbc0095769c536540388d1dd0"
+      }
+    },
+    "epsm_lca": {
+      "status": "passed",
+      "package": {
+        "source": "/private/tmp/epsm-study-platform/epsm_lca",
+        "revision": "00141d0500e717b4f18a9d69e158f0af2aae1934",
+        "version": "0.2.0",
+        "extras": [
+          "integration"
+        ]
+      },
+      "provenance": "Earlier full source owner check of unchanged revision, reported by campaign coordinator",
+      "tests": {
+        "passed": 83,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      "coverage": null
+    }
+  },
+  "limits": {
+    "studio_changed": false,
+    "synthetic_study_inputs": true,
+    "study_live_services_used": false,
+    "live_vera_submission_claimed": false,
+    "predictive_accuracy_established": false,
+    "deep_analysis_in_scope": false,
+    "unsupported_choices": [
+      "TMY generation",
+      "correlated sampling",
+      "arbitrary detailed-zone authoring",
+      "behavioral window opening",
+      "heated-attic authoring",
+      "measured arbitrary windows",
+      "facade/wall-offset methods",
+      "automatic U-value construction targeting"
+    ]
+  },
+  "publication": {
+    "campaign_pull_requests_created": false,
+    "campaign_pushes": false,
+    "dev_merges": false,
+    "main_merges": false,
+    "tags_created": false,
+    "releases_created": false,
+    "hosted_checks": "pending",
+    "persistent_ci_credentials": {
+      "automatic_approval_review": "rejected",
+      "human_authorization": "pending",
+      "credential_created": false,
+      "action": "Create six dedicated read-only GitHub deploy keys for epsm, epsm_data, epsm_core, epsm_lca, epsm_rc and epsm_workflows; store private key values as epsm_studies Actions secrets",
+      "reason": "Retained instructions did not explicitly authorize persistent repository access",
+      "keys_created": 0,
+      "secrets_created": 0
+    },
+    "next_steps": [
+      "Resolve authorized hosted CI access",
+      "Open coordinated review requests and run hosted checks",
+      "Merge completed features into dev and verify combined sources/conflicts",
+      "Review promotion to main and releases with compatible artifacts"
+    ]
+  },
+  "handbook_checks": {
+    "status": "passed",
+    "local_documentation_check": {
+      "markdown_files": 35,
+      "local_links": 252,
+      "python_syntax_examples": 15,
+      "template_doctest_examples": 35,
+      "notebooks_and_templates": 3,
+      "python_cells": 10
+    },
+    "unit_tests": 11,
+    "fresh_namespace_example_notebooks": 2,
+    "commands": [
+      "python3 scripts/check_docs.py",
+      "python3 -m unittest discover -s tests -v",
+      "python3 scripts/run_examples.py",
+      "git diff --check"
+    ]
+  }
+}
