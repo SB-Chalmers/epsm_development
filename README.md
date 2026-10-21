@@ -72,6 +72,7 @@ Coding agents should also read [AGENTS.md](AGENTS.md).
 | Set up a repository and its project information | [Project layout](docs/project-layout.md) |
 | Start a feature, experiment or release | [Branches and releases](docs/branches-and-releases.md) |
 | Adopt a reviewed package combination without duplicated CI pins | [Platform compatibility](docs/platform-compatibility.md) |
+| Prepare reusable study authoring, retained results and paired engines | [Study platform readiness](docs/study-platform-readiness.md) |
 | Check the current Core, Viewer and Studio preparation | [Studio readiness record](docs/studio-readiness-2026-10-20.md) |
 | Read and write data, or pass it to another package | [I/O modules and package APIs](docs/io-and-api.md) |
 | Add a notebook that teaches a package | [Examples guide](docs/examples-and-use-cases.md) |
