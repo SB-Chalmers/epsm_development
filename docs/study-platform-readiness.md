@@ -49,9 +49,9 @@ packages. Primary working directories contain existing work and remain intact.
 
 The pre-existing weather branch `codex/amy-scenario-morphing` includes batch AMY
 and optional SSP/RCP morphing at `a44eb56`. It is an existing candidate to review,
-not a release promise or a reason to duplicate its implementation. Data's remote
-development branch is currently named `DEV`; preserve it until a separately
-agreed branch-maintenance change establishes lowercase `dev`.
+not a release promise or a reason to duplicate its implementation. The campaign
+uses Data's freshly fetched lowercase `dev`; older local checkouts can retain a
+stale uppercase `DEV` reference and should not determine the starting point.
 
 Current dependency ownership is Data → Core → RC/LCA, followed by EPSM assembly
 and evaluation, Workflows execution, and Studies interpretation. Database and
