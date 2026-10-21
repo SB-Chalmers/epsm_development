@@ -81,11 +81,22 @@ passed. Each prospective merge had no conflicts and every actual main tree
 exactly matches its checked development tree. Actual revision identities and
 preflight trees are retained in the accompanying receipt.
 
-Exact-main wheel and owner checks are running before new release tags are
-created. Automatic RC, Workflows and Studies main runs selected the preceding
+Exact-main wheels passed all four gates on Python 3.11/3.13 and all owner
+main checks passed before new release tags were created. Automatic RC, Workflows
+and Studies main runs selected the preceding
 supported cohort and failed its expected dependency resolution; those failures
-remain separate from the explicit candidate checks. EPSM's supported manifest
-remains unchanged until actual released peer artifacts pass verification.
+remain separate from the explicit passing candidate checks.
+
+Core 0.8.2, RC 0.9.0, Workflows 0.4.0 and Studies 0.4.0 were published privately
+from their actual main tags, with wheel/source checksums. LCA's existing v0.2.0
+tag now has those downloadable distributions; its source and tag did not change.
+Weather 1.3.0 passed its tagged validation and published to GitHub, PyPI and its
+documentation site. The PyPI wheel matches the GitHub wheel byte for byte.
+
+Downloaded owner artifacts match hosted digests and producer receipts. They are
+now running through the existing installed acceptance harnesses on Python 3.11
+and 3.13 with the checked EPSM candidate. EPSM's supported manifest remains
+unchanged until those actual-artifact gates pass.
 
 Studio remains unchanged. Authentication, projects and UI integration remain a
 later application campaign. Publication and released-history synchronization
