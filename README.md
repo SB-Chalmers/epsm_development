@@ -1,4 +1,15 @@
-# epsm_development
+# EPSM Development
+
+<!-- EPSM introduction: Pocket CAD -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/brand/epsm_development-dark.png">
+  <img src="docs/assets/brand/epsm_development.png" width="64" height="64" alt="EPSM Development — developer handbook">
+</picture>
+
+Learn how to build and contribute to EPSM through shared engineering guides, examples and templates.
+
+[Explore the EPSM platform](https://github.com/SB-Chalmers/epsm/blob/main/docs/platform.md)
+<!-- /EPSM introduction -->
 
 This is our handbook for building EPSM, the Swedish building-stock research platform. The coding guides, package review, templates, example notebooks and plans are kept here in one repository.
 
