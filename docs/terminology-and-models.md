@@ -68,8 +68,14 @@ Use the same names in public methods, docstrings, logs, plot legends and noteboo
 | Combined evaluation and Results | EPSM | Common energy boundaries, physical state, renovation path, weather, assessment settings and separate energy/LCA identities |
 | LCA or other assessment Result | The method package | Method and factor versions, assessment boundaries, time basis and result meaning |
 | Study outcomes and retained files | Workflows | Every case outcome, collection, aggregation and retention policy |
+| Named study result collection | Studies | References to Workflows outcomes, the research protocol, general selection/summaries and comparison pairing; no second execution or storage engine |
 
 Use the owning package's public objects and validators. EPSM should not maintain a second physical model with a second set of validation rules. If an adapter needs a small intermediate value, explain why and keep it limited to that conversion.
+
+The [study platform campaign](study-platform-readiness.md) adds the named study
+result collection as a new interface. Workflows retains attempts and durable
+artifacts; Studies associates those outcomes with the research record. The
+campaign's acceptance receipts determine when that interface is supported.
 
 Packages must remain independently usable. Database and Catalogue do not need Core to represent their evidence or definitions. Data owns the lightweight construction classes shared by Core. Lower-level packages do not import EPSM to obtain a shared type. Data exposes definition selection; Core exposes physical conversion and assignment; EPSM owns their assembly. Retired integration forwarders are listed in the owning package migration guides. This handbook is not a Python model package.
 

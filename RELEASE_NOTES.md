@@ -1,3 +1,16 @@
+# Release 0.6.0 candidate — 21 October 2026
+
+Agree the Studies outer specification/archive boundary and Workflows embedded
+templates, design, physical bindings and execution boundary. Record the reusable
+study journey, supported scientific subset, explicit unavailable choices,
+cross-owner acceptance stories and staged development-to-main promotion.
+
+Candidate verification uses EPSM's central compatibility tooling and exact source
+revisions. Feature, development-merge and released-artifact checks remain separate
+evidence; required checks that did not run are never treated as passes. The
+[campaign record](docs/study-platform-readiness.md) carries current status. Studio
+authentication, projects and application integration remain subsequent work.
+
 # Release 0.5.1 — 20 October 2026
 
 This documentation release records the Core scene-data boundary, separate

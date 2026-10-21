@@ -6,7 +6,12 @@ The agreed package names are `epsm`, `epsm_db`, `epsm_data`, `epsm_core`, `epsm_
 
 The handbook is written for the people who build and use EPSM. Coding agents follow the same instructions. Start with one small task, find the package that owns it, and write a test that shows the behaviour you want.
 
-**Version:** Handbook v0.5.1 source, 20 October 2026. The
+**Version:** Handbook v0.6.0 candidate, 21 October 2026. The
+[study platform campaign](docs/study-platform-readiness.md) records composed
+study authoring, owner boundaries, portable results and the staged acceptance
+and release gates. Its candidate work does not change Studio.
+
+The preceding handbook source was v0.5.1, 20 October 2026. The
 [Studio readiness record](docs/studio-readiness-2026-10-20.md) records the released
 owner packages and published EPSM 0.3.1 combination. Its scientific, display and
 metadata checks passed, as did the six consumer owner runs, active documentation
@@ -72,6 +77,7 @@ Coding agents should also read [AGENTS.md](AGENTS.md).
 | Set up a repository and its project information | [Project layout](docs/project-layout.md) |
 | Start a feature, experiment or release | [Branches and releases](docs/branches-and-releases.md) |
 | Adopt a reviewed package combination without duplicated CI pins | [Platform compatibility](docs/platform-compatibility.md) |
+| Prepare reusable study authoring, retained results and paired engines | [Study platform readiness](docs/study-platform-readiness.md) |
 | Check the current Core, Viewer and Studio preparation | [Studio readiness record](docs/studio-readiness-2026-10-20.md) |
 | Read and write data, or pass it to another package | [I/O modules and package APIs](docs/io-and-api.md) |
 | Add a notebook that teaches a package | [Examples guide](docs/examples-and-use-cases.md) |
