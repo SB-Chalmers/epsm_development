@@ -1344,5 +1344,366 @@
       "python3 scripts/run_examples.py",
       "git diff --check"
     ]
+  },
+  "publication_state_scope": "The original publication object below is immutable as-of-local-capture state at recorded_at; see publication_phase for subsequent pushed branches and draft pull requests.",
+  "last_updated_at": "2026-10-21T10:50:26.892951+00:00",
+  "publication_phase": {
+    "observed_at": "2026-10-21T10:50:26.892951+00:00",
+    "readback_method": "gh pr view, gh run view, gh variable get and gh pr checks --required; no remote mutation by the monitoring agent",
+    "branch_pushes": 7,
+    "draft_dev_pull_requests": [
+      {
+        "repository": "SB-Chalmers/epsm_core",
+        "number": 59,
+        "url": "https://github.com/SB-Chalmers/epsm_core/pull/59",
+        "base": "dev",
+        "branch": "codex/study-platform-readiness",
+        "head_sha": "71e04ecccd2c431a45c8a72f03f7534d5f8774f1",
+        "state": "OPEN",
+        "draft": true
+      },
+      {
+        "repository": "SB-Chalmers/epsm_rc",
+        "number": 69,
+        "url": "https://github.com/SB-Chalmers/epsm_rc/pull/69",
+        "base": "dev",
+        "branch": "codex/study-platform-readiness",
+        "head_sha": "c4df386ec8ae2fa35c7f315826fbb30b9a1137a9",
+        "state": "OPEN",
+        "draft": true
+      },
+      {
+        "repository": "SB-Chalmers/smhi2epw",
+        "number": 7,
+        "url": "https://github.com/SB-Chalmers/smhi2epw/pull/7",
+        "base": "dev",
+        "branch": "codex/study-platform-readiness",
+        "head_sha": "b8d37aa3931c2df5bf08c2c307fefa869055ee92",
+        "state": "OPEN",
+        "draft": true
+      },
+      {
+        "repository": "SB-Chalmers/epsm_workflows",
+        "number": 13,
+        "url": "https://github.com/SB-Chalmers/epsm_workflows/pull/13",
+        "base": "dev",
+        "branch": "codex/study-platform-readiness",
+        "head_sha": "11c16829f0e27cc09db4f8b7a36be67a1c9bd412",
+        "state": "OPEN",
+        "draft": true
+      },
+      {
+        "repository": "SB-Chalmers/epsm_studies",
+        "number": 13,
+        "url": "https://github.com/SB-Chalmers/epsm_studies/pull/13",
+        "base": "dev",
+        "branch": "codex/study-platform-readiness",
+        "head_sha": "7332f23c4f98f8fcb70acbe5ffbe4ef01bb07321",
+        "state": "OPEN",
+        "draft": true
+      },
+      {
+        "repository": "SB-Chalmers/epsm",
+        "number": 31,
+        "url": "https://github.com/SB-Chalmers/epsm/pull/31",
+        "base": "dev",
+        "branch": "codex/study-platform-readiness",
+        "head_sha": "6380e38f2ff2c68d506ddcdd62b6271777576e70",
+        "state": "OPEN",
+        "draft": true
+      },
+      {
+        "repository": "SB-Chalmers/epsm_development",
+        "number": 28,
+        "url": "https://github.com/SB-Chalmers/epsm_development/pull/28",
+        "base": "dev",
+        "branch": "codex/study-platform-readiness",
+        "head_sha": "20ee9f994e35d4ba6b8567735b9396723f9336a8",
+        "state": "OPEN",
+        "draft": true
+      }
+    ],
+    "candidate_label": "platform-candidate",
+    "candidate_selector_name": "EPSM_CANDIDATE_MANIFEST_SHA",
+    "candidate_selectors": {
+      "epsm": "6380e38f2ff2c68d506ddcdd62b6271777576e70",
+      "epsm_rc": "6380e38f2ff2c68d506ddcdd62b6271777576e70",
+      "epsm_workflows": "6380e38f2ff2c68d506ddcdd62b6271777576e70",
+      "epsm_studies": "6380e38f2ff2c68d506ddcdd62b6271777576e70"
+    },
+    "candidate_label_read_back_on": [
+      "epsm",
+      "epsm_rc",
+      "epsm_workflows",
+      "epsm_studies"
+    ],
+    "prospective_merge_checks": {
+      "status": "clean for all7 branches",
+      "target": "freshly fetched dev",
+      "evidence": "Campaign coordinator reported git merge-tree checks; no branches were merged",
+      "repeat_if_either_side_changes": true
+    },
+    "hosted_checks": {
+      "epsm_workflows": {
+        "run_id": 39586841483,
+        "head_sha": "11c16829f0e27cc09db4f8b7a36be67a1c9bd412",
+        "status": "completed",
+        "conclusion": "success",
+        "jobs": {
+          "combination": "success",
+          "package (3.11)": "success",
+          "package (3.13)": "success"
+        },
+        "full_suite_against_installed_wheels": true,
+        "url": "https://github.com/SB-Chalmers/epsm_workflows/actions/runs/39586841483"
+      },
+      "epsm_studies": {
+        "run_id": 39586854373,
+        "head_sha": "7332f23c4f98f8fcb70acbe5ffbe4ef01bb07321",
+        "status": "completed",
+        "conclusion": "failure",
+        "jobs": {
+          "package (3.11)": "success",
+          "package (3.13)": "success",
+          "combination": "failure",
+          "coordinated_installed_integration": "skipped"
+        },
+        "failure": {
+          "stage": "Checkout of private SB-Chalmers/epsm candidate at6380e38",
+          "message": "Repository not found",
+          "git_exit_code": 128,
+          "expected_secret": "EPSM_REPO_DEPLOY_KEY",
+          "diagnosis": "Absent cross-repository deploy key leaves the repository-scoped default token unable to read the other private repository; integration tests did not run"
+        },
+        "url": "https://github.com/SB-Chalmers/epsm_studies/actions/runs/39586854373"
+      },
+      "epsm_development": {
+        "run_id": 39586894447,
+        "head_sha": "20ee9f994e35d4ba6b8567735b9396723f9336a8",
+        "status": "completed",
+        "conclusion": "success",
+        "jobs": {
+          "documentation (3.11)": "success",
+          "documentation (3.13)": "success",
+          "api-documentation": "success"
+        },
+        "scope": "Observed head20ee9f9 before publication addendum; the addendum creates a new head requiring fresh checks",
+        "url": "https://github.com/SB-Chalmers/epsm_development/actions/runs/39586894447"
+      }
+    },
+    "monitoring_scope": "Workflows, Studies and Handbook exact heads; this is not a claim that all seven campaign PR checks passed",
+    "required_check_query": {
+      "repositories": [
+        "epsm_workflows",
+        "epsm_studies",
+        "epsm_development"
+      ],
+      "result": "No required checks reported on the campaign branches",
+      "policy_waived": false,
+      "maintainer_review_required": true
+    },
+    "credential_actions": {
+      "automatic_approval_review": "rejected",
+      "human_authorization": "pending",
+      "credential_created": false,
+      "action": "Create six dedicated read-only GitHub deploy keys for epsm, epsm_data, epsm_core, epsm_lca, epsm_rc and epsm_workflows; store private key values as epsm_studies Actions secrets",
+      "reason": "Retained instructions did not explicitly authorize persistent repository access",
+      "keys_created": 0,
+      "secrets_created": 0
+    },
+    "dev_merges": false,
+    "main_merges": false,
+    "tags_created": false,
+    "releases_created": false,
+    "studio_changed": false,
+    "all_prs_remain_drafts": true,
+    "next_steps": [
+      "Resolve authorized Studies cross-repository access",
+      "Complete all hosted checks and diagnose remaining actual failures",
+      "Obtain maintainer review",
+      "Merge completed features into dev and recheck combined sources/conflicts",
+      "Review main promotion and compatible releases separately"
+    ],
+    "other_hosted_failures": {
+      "epsm_display": {
+        "url": "https://github.com/SB-Chalmers/epsm/actions/runs/39586876691",
+        "head_sha": "6380e38f2ff2c68d506ddcdd62b6271777576e70",
+        "status": "failed",
+        "diagnosis_source": "Campaign coordinator reported inspection of the actual hosted failure",
+        "reason": "CI display command omitted the required candidate manifest argument",
+        "repair_status": "pending separate workflow fix",
+        "new_candidate_capture_required_after_source_change": true,
+        "final04_local_receipts_unchanged": true
+      }
+    }
+  },
+  "additional_unchanged_dependency_checks": {
+    "scope": "Additional full owner checks of unchanged Data and Database source; separate from the four required final04 installed platform gates, all of which passed on Python3.11/3.13",
+    "epsm_data": {
+      "version": "0.6.0",
+      "revision": "bc8449402b9e0dbe0ea85ff76c954cf36d209f86",
+      "initial_full_run": {
+        "counts": {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "3",
+          "skipped": "6",
+          "tests": "361",
+          "time": "542.635",
+          "timestamp": "2026-10-21T12:32:43.340009+02:00",
+          "hostname": "CM-GHHXPN239T"
+        },
+        "evidence": {
+          "path": "/private/tmp/epsm-study-platform/feature-04-py311/epsm_data-tests.xml",
+          "sha256": "23480215c0201e4a43b36bccf44d4224b660f9b00894b2c92a1f516922c8b7b9"
+        },
+        "passed": 352
+      },
+      "targeted_cwd_rerun": {
+        "counts": {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "3",
+          "time": "34.123",
+          "timestamp": "2026-10-21T12:43:13.941966+02:00",
+          "hostname": "CM-GHHXPN239T"
+        },
+        "evidence": {
+          "path": "/private/tmp/epsm-study-platform/feature-04-py311/epsm_data-cwd-rerun.xml",
+          "sha256": "ed71ad72714eb8e7b7516eceb924e4c9b992dced30918c23fa3dd8989c8926ed"
+        },
+        "stdout": {
+          "path": "/private/tmp/epsm-study-platform/feature-04-py311/epsm_data-cwd-rerun.log",
+          "sha256": "dfdd48b15914b1bd209052bd00ea2d7c21889af3d1c8b402b907c540effc99cb"
+        },
+        "import_proof": {
+          "path": "/private/tmp/epsm-study-platform/feature-04-py311/epsm_data-cwd-rerun-import-proof.json",
+          "sha256": "65c3970a928ebd242fe4944dae87eb9a6dcce449cf5435ed6884d6323ca2e09b"
+        },
+        "cwd": "/private/tmp/epsm-study-platform/feature-04-py311/sources/epsm_data",
+        "python": "/private/tmp/epsm-study-platform/feature-04-py311/environment/bin/python",
+        "isolated_python": true,
+        "pytest_pythonpath": "disabled",
+        "passed": 3
+      },
+      "failure_dispositions": [
+        {
+          "class": "tests.test_detailed_catalogue",
+          "test": "test_directory_or_any_registry_file_and_cli",
+          "disposition": "Passed targeted rerun from archived repository cwd; subprocess test has relative src/epsm_data/datasets arguments"
+        },
+        {
+          "class": "tests.test_detailed_catalogue",
+          "test": "test_lod2_cli_compact_summary",
+          "disposition": "Passed targeted rerun from archived repository cwd; subprocess test has relative src/epsm_data/datasets arguments"
+        },
+        {
+          "class": "tests.test_layered",
+          "test": "test_cli_export_and_failed_check",
+          "disposition": "Passed targeted rerun from archived repository cwd; subprocess test has relative src/epsm_data/datasets arguments"
+        }
+      ],
+      "optional_skips": [
+        {
+          "class": "tests.test_detailed_catalogue",
+          "test": "test_source_definitions_are_native_honeybee_materials_when_installed",
+          "reason": "could not import 'honeybee_energy.material.dictutil': No module named 'honeybee_energy'"
+        },
+        {
+          "class": "tests.test_library",
+          "test": "test_optional_graph_supports_window_records",
+          "reason": "could not import 'networkx': No module named 'networkx'"
+        },
+        {
+          "class": "tests.test_nominal",
+          "test": "test_native_constructions_roundtrip_and_installed_core_types[existing]",
+          "reason": "could not import 'honeybee_energy': No module named 'honeybee_energy'"
+        },
+        {
+          "class": "tests.test_nominal",
+          "test": "test_native_constructions_roundtrip_and_installed_core_types[standard]",
+          "reason": "could not import 'honeybee_energy': No module named 'honeybee_energy'"
+        },
+        {
+          "class": "tests.test_nominal",
+          "test": "test_native_constructions_roundtrip_and_installed_core_types[advanced]",
+          "reason": "could not import 'honeybee_energy': No module named 'honeybee_energy'"
+        },
+        {
+          "class": "tests.test_school",
+          "test": "test_portable_and_native_handover_preserve_labels_metrics_and_reversal",
+          "reason": "could not import 'honeybee_energy': No module named 'honeybee_energy'"
+        }
+      ],
+      "slowest_cases": [
+        {
+          "seconds": 103.186,
+          "class": "tests.test_detailed_catalogue",
+          "test": "test_lod2_check_uses_supplied_catalogue_and_in_memory_registries"
+        },
+        {
+          "seconds": 82.299,
+          "class": "tests.test_explorer",
+          "test": "test_json_input_and_deterministic_review_hashes"
+        },
+        {
+          "seconds": 68.781,
+          "class": "tests.test_detailed_catalogue",
+          "test": "test_lod2_recipe_coverage_is_separate_from_acceptance_and_material_registration"
+        },
+        {
+          "seconds": 39.812,
+          "class": "tests.test_explorer",
+          "test": "test_matrix_uses_parametric_catalogue_and_effective_values"
+        },
+        {
+          "seconds": 34.808,
+          "class": "tests.test_school",
+          "test": "test_fridhem_draft_is_retained_as_an_alternative_to_complete_school_states"
+        },
+        {
+          "seconds": 34.676,
+          "class": "tests.test_school",
+          "test": "test_all_school_periods_and_states_are_complete_with_named_windows"
+        }
+      ],
+      "slow_reason": "Offline registry calibration/completeness and Explorer matrix generation, evidenced by per-case timings and owner source; no external provider acquisition found in the pinned tests",
+      "consolidated_disposition": "All three cwd-related failures passed targeted rerun; original full-run failure receipt remains unchanged.355 distinct test cases passed across the original run plus rerun, with six optional skips. No package/source changes."
+    },
+    "epsm_db": {
+      "version": "0.3.0",
+      "revision": "9e29a575f5495b76d5a8553bbe6e20dd4f0e1ff0",
+      "evidence": {
+        "epsm_db-tests.xml": {
+          "path": "/private/tmp/epsm-study-platform/feature-04-py311/epsm_db-tests.xml",
+          "sha256": "c2a078986278f41413e104cd324301b74b8515ad9be069ad88fa7e76e540deff"
+        },
+        "epsm_db-tests-rerun.xml": {
+          "path": "/private/tmp/epsm-study-platform/feature-04-py311/epsm_db-tests-rerun.xml",
+          "sha256": "ab11ebaaf6653b34dba2d4d188982a523af3f6adbc024bb8bad033aabfd37ab2"
+        },
+        "epsm_db-offline-tests.xml": {
+          "path": "/private/tmp/epsm-study-platform/feature-04-py311/epsm_db-offline-tests.xml",
+          "sha256": "2d85ff621932672bc9a3de5957542c47b3a24c6f5d1e531e1830c641f16dd45f"
+        }
+      },
+      "initial_collection_errors": 8,
+      "full_attempt_after_test_helper": {
+        "errors_missing_UBEM_TEST_ADMIN_URL": 34,
+        "cwd_relative_sql_schema_failure": 1,
+        "skips_optional_UBEM_TEST_EPW": 14
+      },
+      "correct_cwd_offline_run": {
+        "passed": 174,
+        "skipped": 14,
+        "postgis_deselected": 34,
+        "failures": 0,
+        "errors": 0
+      },
+      "disposition": "Offline owner suite passed after trusted cwd/test-helper setup.34 mandatory PostGIS cases were explicitly excluded because UBEM_TEST_ADMIN_URL was absent; they did not pass and do not establish live database integration.14 optional EPW compiler cases remain skipped."
+    },
+    "platform_gate_status": "All four required final04 installed scenarios passed in both supported Python lanes; these extra owner-test dispositions do not change those receipt results."
   }
 }

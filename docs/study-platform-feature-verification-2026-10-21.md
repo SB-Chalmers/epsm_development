@@ -1,7 +1,7 @@
 # Study platform feature verification, 21 October 2026
 
-**Status: the four coordinated local scenarios passed on Python 3.11 and 3.13.
-Hosted checks and promotion remain pending.** This is a dated record of the
+**Local capture: the four coordinated scenarios passed on Python 3.11 and 3.13.
+Hosted checks and promotion were pending.** This is a dated record of the
 candidate scientific libraries, not a release or a deployed Studio application.
 The [readiness plan](study-platform-readiness.md) defines the ownership,
 supported choices, acceptance scenarios and promotion sequence. The accompanying
@@ -9,9 +9,11 @@ supported choices, acceptance scenarios and promotion sequence. The accompanying
 retains exact source revisions, receipt checksums, wheel checksums and the
 distinction between installed and source-level checks.
 
-No Studio changes, campaign pull requests, pushes, merges into `dev` or `main`,
-tags or releases have been made for this campaign. Existing primary working
-directories and unrelated work remain intact.
+At the original local capture, there had been no Studio changes, campaign pull
+requests, pushes, merges into `dev` or `main`, tags or releases. The publication
+update below records subsequent draft pull requests without changing the
+captured source or artifact identities. Existing primary working directories
+and unrelated work remain intact.
 
 ## Candidate sources and ownership
 
@@ -124,6 +126,29 @@ Its application notebook ran in a fresh installed kernel. Batch coverage was
 76.0000%. These are coverage figures for those two modules, not the whole
 Weather package. Third-party JARs remain outside repositories and distributions.
 
+### Additional checks of unchanged dependencies
+
+The extra Data full suite recorded 352 passed, three failed and six optional
+skips in 542.6 seconds. All three failures were CLI tests passing relative
+`src/epsm_data/datasets` paths while the suite ran from a neutral directory.
+Rerunning exactly those three cases from the trusted archived Data directory
+passed all three, with isolated Python, pytest's source path setting disabled,
+and an installed `site-packages` import proved before collection. The original
+failure receipt remains unchanged: 355 distinct cases passed across the two
+runs, rather than one clean full-suite result. Five skips require optional
+Honeybee and one requires the optional NetworkX graph dependency. The longest
+tests performed offline catalogue completeness/calibration and Explorer matrix
+work; this was not a provider-network delay. No package source changed.
+
+Database's extra owner run needed its pinned test helpers and repository working
+directory. The corrected offline run passed 174 tests, skipped 14 optional EPW
+compiler checks, and explicitly deselected 34 PostGIS cases. The retained full
+attempt had 34 setup errors because `UBEM_TEST_ADMIN_URL` was absent, plus a
+working-directory-dependent SQL schema assertion; it does not establish live
+PostGIS coverage. The preceding collection attempt also remains recorded. These
+are additional checks of unchanged Data and Database sources, separate from the
+four required platform scenarios that passed in both Python lanes.
+
 ## Supported scope and remaining promotion work
 
 The completed route supports the registered owner bindings, declared output
@@ -143,11 +168,12 @@ required inputs block preparation. Vera behavior is covered through its public
 transport interface; this record does not claim a new live cluster submission.
 The capability/schema and readiness operations remain authoritative.
 
-Local feature checks do not complete publication. The remaining sequence is to
-establish authorized hosted CI access, open the coordinated review requests,
-run hosted checks, merge completed features into `dev`, check the combined
-sources and conflicts there, and then perform the separately reviewed promotion
-to `main` and releases using the compatibility record. No promotion has happened.
+Local feature checks do not complete publication. At local capture, the remaining
+sequence was to establish authorized hosted CI access, open the coordinated
+review requests, run hosted checks, merge completed features into `dev`, check
+the combined sources and conflicts there, and then perform separately reviewed
+promotion to `main` and releases. The update below records the draft review
+requests. No promotion has happened.
 
 Automatic approval review rejected creating six dedicated read-only GitHub deploy
 keys for EPSM, Data, Core, LCA, RC and Workflows, and storing their private keys
@@ -156,3 +182,55 @@ did not explicitly authorize persistent repository access. Human authorization
 is pending; zero keys and zero secrets were created. This record contains no
 credentials. Until that access is resolved, hosted checks and campaign
 publication remain pending rather than passed.
+
+## Publication update, 21 October 2026
+
+All seven campaign branches have since been pushed and these draft pull requests
+are open against `dev`. The listed heads were read back from GitHub. This
+publication phase does not change the final04 local capture above.
+
+| Package | Draft pull request | Observed head |
+| --- | --- | --- |
+| Core | [59](https://github.com/SB-Chalmers/epsm_core/pull/59) | `71e04ecccd2c431a45c8a72f03f7534d5f8774f1` |
+| RC | [69](https://github.com/SB-Chalmers/epsm_rc/pull/69) | `c4df386ec8ae2fa35c7f315826fbb30b9a1137a9` |
+| Weather | [7](https://github.com/SB-Chalmers/smhi2epw/pull/7) | `b8d37aa3931c2df5bf08c2c307fefa869055ee92` |
+| Workflows | [13](https://github.com/SB-Chalmers/epsm_workflows/pull/13) | `11c16829f0e27cc09db4f8b7a36be67a1c9bd412` |
+| Studies | [13](https://github.com/SB-Chalmers/epsm_studies/pull/13) | `7332f23c4f98f8fcb70acbe5ffbe4ef01bb07321` |
+| EPSM | [31](https://github.com/SB-Chalmers/epsm/pull/31) | `6380e38f2ff2c68d506ddcdd62b6271777576e70` |
+| Handbook | [28](https://github.com/SB-Chalmers/epsm_development/pull/28) | `20ee9f994e35d4ba6b8567735b9396723f9336a8` before this addendum |
+
+The `platform-candidate` label is applied to EPSM, RC, Workflows and Studies.
+Their four `EPSM_CANDIDATE_MANIFEST_SHA` variables each read back as the full
+`6380e38f2ff2c68d506ddcdd62b6271777576e70` revision. Prospective merge checks
+against freshly fetched `dev` were clean for all seven branches; those checks
+did not merge anything and must be repeated if either side changes.
+
+Studies' [hosted run](https://github.com/SB-Chalmers/epsm_studies/actions/runs/39586854373)
+passed its standalone Python 3.11 and 3.13 package checks. Its combination job
+failed while checking out the private EPSM repository at the selected candidate
+revision: GitHub returned `Repository not found` and Git exited 128. The
+coordinated integration jobs were consequently skipped. The workflow expects
+`EPSM_REPO_DEPLOY_KEY`; with that secret absent, the repository-scoped default
+token cannot read the other private repository. This confirms an access failure
+before integration tests ran, and does not pass the hosted integration gate.
+
+The [Handbook hosted run](https://github.com/SB-Chalmers/epsm_development/actions/runs/39586894447)
+passed documentation checks on Python 3.11 and 3.13 and its API documentation
+build at the listed `20ee9f9` head. This addendum produces a new documentation
+head; that head requires its own checks after it is pushed. The
+[Workflows hosted run](https://github.com/SB-Chalmers/epsm_workflows/actions/runs/39586841483)
+passed combination selection and both Python 3.11 and 3.13 installed-wheel
+checks, including its full owner suite, at `11c16829`.
+
+The separate EPSM [hosted display run](https://github.com/SB-Chalmers/epsm/actions/runs/39586876691)
+also exposed a CI entry-point error: its command omitted the required candidate
+manifest argument. That workflow repair is pending and is not counted as a
+passed hosted check. Later source changes require a new candidate capture and
+fresh checks; they do not rewrite the successful final04 local receipts above.
+
+GitHub's required-check query reported no configured required checks for the
+three monitored branches. That is a configuration observation, not a waiver of
+the handbook's checks or maintainer review. The pull requests remain drafts.
+The six deploy-key/Actions-secret creation actions remain unperformed while
+human authorization is pending. There have been no campaign merges into `dev`
+or `main`, tags, releases or Studio changes.
