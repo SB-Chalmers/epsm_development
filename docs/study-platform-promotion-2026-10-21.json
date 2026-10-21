@@ -1,7 +1,7 @@
 {
   "format": "epsm-study-platform-promotion/1",
-  "recorded_at": "2026-10-21T13:08:40.611159+00:00",
-  "status": "actual owner main and clean-wheel gates passed; all owner releases published; downloaded peer artifact checks running; EPSM supported unchanged",
+  "recorded_at": "2026-10-21T13:15:22.192827+00:00",
+  "status": "published peer artifact cohorts passed both Python versions; EPSM support PR33 final checks running; expected old EPSM-main metadata transition retained",
   "authorization": {
     "ci_access": "User replied proceed to the explicit six-key setup question",
     "integration_and_release": "Original task explicitly requests staged development/main promotion"
@@ -7644,5 +7644,570 @@
         }
       }
     }
+  },
+  "published_peer_artifact_checks": {
+    "311": {
+      "status": "passed",
+      "inventory": {
+        "format": 1,
+        "packages": {
+          "epsm": {
+            "version": "0.4.0",
+            "revision": "556b8519e2f9ca1f27a3dc680f7f84482ed46f8b",
+            "wheel": "/private/tmp/epsm-study-platform/peer-main-02-py311/wheels/epsm-0.4.0-py3-none-any.whl",
+            "sha256": "633ef034c400c90eec507e011d170f8646f6606f10bb47e9764234ddc7c78f54",
+            "source": "unpublished EPSM candidate wheel; peer release proof only"
+          },
+          "epsm_data": {
+            "version": "0.6.0",
+            "revision": "bc8449402b9e0dbe0ea85ff76c954cf36d209f86",
+            "wheel": "/private/tmp/epsm-study-platform/released-downloads/epsm_data/epsm_data-0.6.0-py3-none-any.whl",
+            "sha256": "f2851cc9bf113c05c01dcbd5fc535875c0e435a03662eba1656c75b9189b7ac3",
+            "release_url": "https://github.com/SB-Chalmers/epsm_data/releases/tag/v0.6.0",
+            "published_at": "2026-10-15T13:40:58Z",
+            "assets": [
+              {
+                "id": 643933251,
+                "name": "epsm_data-0.6.0-py3-none-any.whl",
+                "size": 577595,
+                "digest": "sha256:f2851cc9bf113c05c01dcbd5fc535875c0e435a03662eba1656c75b9189b7ac3",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_data/releases/download/v0.6.0/epsm_data-0.6.0-py3-none-any.whl"
+              },
+              {
+                "id": 643933253,
+                "name": "epsm_data-0.6.0.tar.gz",
+                "size": 688591,
+                "digest": "sha256:d55c915a21eef23162feea9af6f26ef46e322aaadc8f6daae990f6297ed5dcb1",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_data/releases/download/v0.6.0/epsm_data-0.6.0.tar.gz"
+              },
+              {
+                "id": 643990369,
+                "name": "release-receipt.json",
+                "size": 920,
+                "digest": "sha256:c432ff99cefab01c5b54a806f9ca959fc6538cb86d8fa9aa14ad05e6e7ef0141",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_data/releases/download/v0.6.0/release-receipt.json"
+              }
+            ]
+          },
+          "epsm_core": {
+            "version": "0.8.2",
+            "revision": "1ea867d849b808bc9f879f2fb740c54a51754295",
+            "wheel": "/private/tmp/epsm-study-platform/released-downloads/epsm_core/epsm_core-0.8.2-py3-none-any.whl",
+            "sha256": "5a2df402d3c208d6e20d18d2dddb4a49725405aaa085e492be57e0db63212334",
+            "release_url": "https://github.com/SB-Chalmers/epsm_core/releases/tag/v0.8.2",
+            "published_at": "2026-10-21T13:02:24Z",
+            "assets": [
+              {
+                "id": 662529429,
+                "name": "epsm_core-0.8.2-py3-none-any.whl",
+                "size": 283577,
+                "digest": "sha256:5a2df402d3c208d6e20d18d2dddb4a49725405aaa085e492be57e0db63212334",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_core/releases/download/v0.8.2/epsm_core-0.8.2-py3-none-any.whl"
+              },
+              {
+                "id": 662529419,
+                "name": "epsm_core-0.8.2.tar.gz",
+                "size": 244442,
+                "digest": "sha256:9bef6f33cd8a4e3df35651802a1088797f5d7481fc83ffb59d5fd9ea9be4f57c",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_core/releases/download/v0.8.2/epsm_core-0.8.2.tar.gz"
+              },
+              {
+                "id": 662529427,
+                "name": "release-receipt.json",
+                "size": 584,
+                "digest": "sha256:616ca2650342bb1520f182312735e1a6cd9a9c53856effa3e30e2dfc8e0c6bed",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_core/releases/download/v0.8.2/release-receipt.json"
+              }
+            ]
+          },
+          "epsm_rc": {
+            "version": "0.9.0",
+            "revision": "8837d3e8afd2d5be70172fd88d74598f1eba74ff",
+            "wheel": "/private/tmp/epsm-study-platform/released-downloads/epsm_rc/epsm_rc-0.9.0-py3-none-any.whl",
+            "sha256": "27b9d1249e1312594b017a553c15f78e5e660b5f2ccde3d9f9f425660b668827",
+            "release_url": "https://github.com/SB-Chalmers/epsm_rc/releases/tag/v0.9.0",
+            "published_at": "2026-10-21T13:03:17Z",
+            "assets": [
+              {
+                "id": 662529750,
+                "name": "epsm_rc-0.9.0-py3-none-any.whl",
+                "size": 4899003,
+                "digest": "sha256:27b9d1249e1312594b017a553c15f78e5e660b5f2ccde3d9f9f425660b668827",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_rc/releases/download/v0.9.0/epsm_rc-0.9.0-py3-none-any.whl"
+              },
+              {
+                "id": 662529748,
+                "name": "epsm_rc-0.9.0.tar.gz",
+                "size": 4802967,
+                "digest": "sha256:64e7d30f16db7c36a3689063f3a85fe041ae03cb5895180af051ee5b45b1fd88",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_rc/releases/download/v0.9.0/epsm_rc-0.9.0.tar.gz"
+              },
+              {
+                "id": 662529751,
+                "name": "release-receipt.json",
+                "size": 578,
+                "digest": "sha256:b6019393c47af2ac3e0de1fe115925574afc8e3782c772847e9ce120f27827e1",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_rc/releases/download/v0.9.0/release-receipt.json"
+              }
+            ]
+          },
+          "epsm_lca": {
+            "version": "0.2.0",
+            "revision": "00141d0500e717b4f18a9d69e158f0af2aae1934",
+            "wheel": "/private/tmp/epsm-study-platform/released-downloads/epsm_lca/epsm_lca-0.2.0-py3-none-any.whl",
+            "sha256": "fbc149c31d8b94edc2ec02ecd9cde70619ec88e9ee525291c6d3c838ca53a5cf",
+            "release_url": "https://github.com/SB-Chalmers/epsm_lca/releases/tag/v0.2.0",
+            "published_at": "2026-10-21T12:54:19Z",
+            "assets": [
+              {
+                "id": 662508344,
+                "name": "epsm_lca-0.2.0-py3-none-any.whl",
+                "size": 37147,
+                "digest": "sha256:fbc149c31d8b94edc2ec02ecd9cde70619ec88e9ee525291c6d3c838ca53a5cf",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_lca/releases/download/v0.2.0/epsm_lca-0.2.0-py3-none-any.whl"
+              },
+              {
+                "id": 662508332,
+                "name": "epsm_lca-0.2.0.tar.gz",
+                "size": 42643,
+                "digest": "sha256:9c2a9276c7f317014e51c5546301e9ff7668aa9e47e07e8b25ae44dbaf69ad4c",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_lca/releases/download/v0.2.0/epsm_lca-0.2.0.tar.gz"
+              },
+              {
+                "id": 662508338,
+                "name": "release-receipt.json",
+                "size": 581,
+                "digest": "sha256:40b56acc8223c71a2aa4ce7ef00e2f5797f5a102bc96fa7f9b0044f86ac04d45",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_lca/releases/download/v0.2.0/release-receipt.json"
+              }
+            ]
+          },
+          "epsm_db": {
+            "version": "0.3.0",
+            "revision": "9e29a575f5495b76d5a8553bbe6e20dd4f0e1ff0",
+            "wheel": "/private/tmp/epsm-study-platform/released-downloads/epsm_db/epsm_db-0.3.0-py3-none-any.whl",
+            "sha256": "4f1f5b37238553a048d411f16f20d4af87322221946099e64e9c36018254c07a",
+            "release_url": "https://github.com/SB-Chalmers/epsm_db/releases/tag/v0.3.0",
+            "published_at": "2026-10-15T14:06:04Z",
+            "assets": [
+              {
+                "id": 644002570,
+                "name": "epsm_db-0.3.0-py3-none-any.whl",
+                "size": 167384,
+                "digest": "sha256:4f1f5b37238553a048d411f16f20d4af87322221946099e64e9c36018254c07a",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_db/releases/download/v0.3.0/epsm_db-0.3.0-py3-none-any.whl"
+              },
+              {
+                "id": 644002566,
+                "name": "epsm_db-0.3.0.tar.gz",
+                "size": 200802,
+                "digest": "sha256:bc5c962ba0d7c5672febfa99b4e3f085a7a4fe104b6c03e86e0883713aabe274",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_db/releases/download/v0.3.0/epsm_db-0.3.0.tar.gz"
+              },
+              {
+                "id": 644062679,
+                "name": "release-receipt.json",
+                "size": 1445,
+                "digest": "sha256:dc3aad380ecbcb1f92f3dcc9056b9f5266b57eda90212b02a6cd4356d168d980",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_db/releases/download/v0.3.0/release-receipt.json"
+              }
+            ]
+          },
+          "epsm_workflows": {
+            "version": "0.4.0",
+            "revision": "433a8b6d461ad2016e6f8c046aeaeb16b2861787",
+            "wheel": "/private/tmp/epsm-study-platform/released-downloads/epsm_workflows/epsm_workflows-0.4.0-py3-none-any.whl",
+            "sha256": "7e2d3a17fa8937a5f474c883f88accfe61207a977ade5d83853093dafaaa157c",
+            "release_url": "https://github.com/SB-Chalmers/epsm_workflows/releases/tag/v0.4.0",
+            "published_at": "2026-10-21T13:03:23Z",
+            "assets": [
+              {
+                "id": 662531850,
+                "name": "epsm_workflows-0.4.0-py3-none-any.whl",
+                "size": 58577,
+                "digest": "sha256:7e2d3a17fa8937a5f474c883f88accfe61207a977ade5d83853093dafaaa157c",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_workflows/releases/download/v0.4.0/epsm_workflows-0.4.0-py3-none-any.whl"
+              },
+              {
+                "id": 662531852,
+                "name": "epsm_workflows-0.4.0.tar.gz",
+                "size": 76149,
+                "digest": "sha256:bca83b80bc55819bf8380443d19137c76b4e2ec9d26bed38155bdd3301e7fcf5",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_workflows/releases/download/v0.4.0/epsm_workflows-0.4.0.tar.gz"
+              },
+              {
+                "id": 662531851,
+                "name": "release-receipt.json",
+                "size": 599,
+                "digest": "sha256:f86e05c091ec7cba8d9918ccf3488667f2c64ee71791e2bcaf987dcda4f4fd0f",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_workflows/releases/download/v0.4.0/release-receipt.json"
+              }
+            ]
+          },
+          "epsm_studies": {
+            "version": "0.4.0",
+            "revision": "d38ffc053cc4e9f88cb86e15018bf6ce309a65a9",
+            "wheel": "/private/tmp/epsm-study-platform/released-downloads/epsm_studies/epsm_studies-0.4.0-py3-none-any.whl",
+            "sha256": "5bd340510dedd8604c417d02ee9801cedbe2779f7e661883a8a76f7d45967e9c",
+            "release_url": "https://github.com/SB-Chalmers/epsm_studies/releases/tag/v0.4.0",
+            "published_at": "2026-10-21T13:03:28Z",
+            "assets": [
+              {
+                "id": 662532106,
+                "name": "epsm_studies-0.4.0-py3-none-any.whl",
+                "size": 35557,
+                "digest": "sha256:5bd340510dedd8604c417d02ee9801cedbe2779f7e661883a8a76f7d45967e9c",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_studies/releases/download/v0.4.0/epsm_studies-0.4.0-py3-none-any.whl"
+              },
+              {
+                "id": 662532103,
+                "name": "epsm_studies-0.4.0.tar.gz",
+                "size": 57857,
+                "digest": "sha256:d122e844d93e281e63d2f97bb4c6368a654044d24e0d8e56cfa3a44afd0401ca",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_studies/releases/download/v0.4.0/epsm_studies-0.4.0.tar.gz"
+              },
+              {
+                "id": 662532101,
+                "name": "release-receipt.json",
+                "size": 593,
+                "digest": "sha256:66fe5d6e731429786f99db38221b0a3c1069f41892be1de79bd8575b6b87533b",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_studies/releases/download/v0.4.0/release-receipt.json"
+              }
+            ]
+          },
+          "smhi2epw": {
+            "version": "1.3.0",
+            "revision": "6792b2a4d1bc6a7bdcd1bd77b35dd0ff704f2b29",
+            "wheel": "/private/tmp/epsm-study-platform/released-downloads/smhi2epw/smhi2epw-1.3.0-py3-none-any.whl",
+            "sha256": "b32c8fd457814265edb969973a4a0b442dca7905aa6fa8ca3fd9a42bf6c762bc",
+            "release_url": "https://github.com/SB-Chalmers/smhi2epw/releases/tag/v1.3.0",
+            "published_at": "2026-10-21T13:04:23Z",
+            "assets": [
+              {
+                "id": 662534648,
+                "name": "smhi2epw-1.3.0-py3-none-any.whl",
+                "size": 87890,
+                "digest": "sha256:b32c8fd457814265edb969973a4a0b442dca7905aa6fa8ca3fd9a42bf6c762bc",
+                "browser_download_url": "https://github.com/SB-Chalmers/smhi2epw/releases/download/v1.3.0/smhi2epw-1.3.0-py3-none-any.whl"
+              },
+              {
+                "id": 662534650,
+                "name": "smhi2epw-1.3.0.tar.gz",
+                "size": 224934,
+                "digest": "sha256:3d59b0f707203c88f91921ce4c671103b6c4c7af1bc12f673481273e8a973f72",
+                "browser_download_url": "https://github.com/SB-Chalmers/smhi2epw/releases/download/v1.3.0/smhi2epw-1.3.0.tar.gz"
+              }
+            ]
+          }
+        }
+      },
+      "scenarios": {
+        "installed-platform": {
+          "required": true,
+          "status": "passed"
+        },
+        "study-platform": {
+          "required": true,
+          "status": "passed"
+        },
+        "archetype-handoff": {
+          "required": true,
+          "status": "passed"
+        },
+        "workflow-handoff": {
+          "required": true,
+          "status": "passed"
+        }
+      }
+    },
+    "313": {
+      "status": "passed",
+      "inventory": {
+        "format": 1,
+        "packages": {
+          "epsm": {
+            "version": "0.4.0",
+            "revision": "556b8519e2f9ca1f27a3dc680f7f84482ed46f8b",
+            "wheel": "/private/tmp/epsm-study-platform/peer-main-02-py311/wheels/epsm-0.4.0-py3-none-any.whl",
+            "sha256": "633ef034c400c90eec507e011d170f8646f6606f10bb47e9764234ddc7c78f54",
+            "source": "unpublished EPSM candidate wheel; peer release proof only"
+          },
+          "epsm_data": {
+            "version": "0.6.0",
+            "revision": "bc8449402b9e0dbe0ea85ff76c954cf36d209f86",
+            "wheel": "/private/tmp/epsm-study-platform/released-downloads/epsm_data/epsm_data-0.6.0-py3-none-any.whl",
+            "sha256": "f2851cc9bf113c05c01dcbd5fc535875c0e435a03662eba1656c75b9189b7ac3",
+            "release_url": "https://github.com/SB-Chalmers/epsm_data/releases/tag/v0.6.0",
+            "published_at": "2026-10-15T13:40:58Z",
+            "assets": [
+              {
+                "id": 643933251,
+                "name": "epsm_data-0.6.0-py3-none-any.whl",
+                "size": 577595,
+                "digest": "sha256:f2851cc9bf113c05c01dcbd5fc535875c0e435a03662eba1656c75b9189b7ac3",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_data/releases/download/v0.6.0/epsm_data-0.6.0-py3-none-any.whl"
+              },
+              {
+                "id": 643933253,
+                "name": "epsm_data-0.6.0.tar.gz",
+                "size": 688591,
+                "digest": "sha256:d55c915a21eef23162feea9af6f26ef46e322aaadc8f6daae990f6297ed5dcb1",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_data/releases/download/v0.6.0/epsm_data-0.6.0.tar.gz"
+              },
+              {
+                "id": 643990369,
+                "name": "release-receipt.json",
+                "size": 920,
+                "digest": "sha256:c432ff99cefab01c5b54a806f9ca959fc6538cb86d8fa9aa14ad05e6e7ef0141",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_data/releases/download/v0.6.0/release-receipt.json"
+              }
+            ]
+          },
+          "epsm_core": {
+            "version": "0.8.2",
+            "revision": "1ea867d849b808bc9f879f2fb740c54a51754295",
+            "wheel": "/private/tmp/epsm-study-platform/released-downloads/epsm_core/epsm_core-0.8.2-py3-none-any.whl",
+            "sha256": "5a2df402d3c208d6e20d18d2dddb4a49725405aaa085e492be57e0db63212334",
+            "release_url": "https://github.com/SB-Chalmers/epsm_core/releases/tag/v0.8.2",
+            "published_at": "2026-10-21T13:02:24Z",
+            "assets": [
+              {
+                "id": 662529429,
+                "name": "epsm_core-0.8.2-py3-none-any.whl",
+                "size": 283577,
+                "digest": "sha256:5a2df402d3c208d6e20d18d2dddb4a49725405aaa085e492be57e0db63212334",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_core/releases/download/v0.8.2/epsm_core-0.8.2-py3-none-any.whl"
+              },
+              {
+                "id": 662529419,
+                "name": "epsm_core-0.8.2.tar.gz",
+                "size": 244442,
+                "digest": "sha256:9bef6f33cd8a4e3df35651802a1088797f5d7481fc83ffb59d5fd9ea9be4f57c",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_core/releases/download/v0.8.2/epsm_core-0.8.2.tar.gz"
+              },
+              {
+                "id": 662529427,
+                "name": "release-receipt.json",
+                "size": 584,
+                "digest": "sha256:616ca2650342bb1520f182312735e1a6cd9a9c53856effa3e30e2dfc8e0c6bed",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_core/releases/download/v0.8.2/release-receipt.json"
+              }
+            ]
+          },
+          "epsm_rc": {
+            "version": "0.9.0",
+            "revision": "8837d3e8afd2d5be70172fd88d74598f1eba74ff",
+            "wheel": "/private/tmp/epsm-study-platform/released-downloads/epsm_rc/epsm_rc-0.9.0-py3-none-any.whl",
+            "sha256": "27b9d1249e1312594b017a553c15f78e5e660b5f2ccde3d9f9f425660b668827",
+            "release_url": "https://github.com/SB-Chalmers/epsm_rc/releases/tag/v0.9.0",
+            "published_at": "2026-10-21T13:03:17Z",
+            "assets": [
+              {
+                "id": 662529750,
+                "name": "epsm_rc-0.9.0-py3-none-any.whl",
+                "size": 4899003,
+                "digest": "sha256:27b9d1249e1312594b017a553c15f78e5e660b5f2ccde3d9f9f425660b668827",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_rc/releases/download/v0.9.0/epsm_rc-0.9.0-py3-none-any.whl"
+              },
+              {
+                "id": 662529748,
+                "name": "epsm_rc-0.9.0.tar.gz",
+                "size": 4802967,
+                "digest": "sha256:64e7d30f16db7c36a3689063f3a85fe041ae03cb5895180af051ee5b45b1fd88",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_rc/releases/download/v0.9.0/epsm_rc-0.9.0.tar.gz"
+              },
+              {
+                "id": 662529751,
+                "name": "release-receipt.json",
+                "size": 578,
+                "digest": "sha256:b6019393c47af2ac3e0de1fe115925574afc8e3782c772847e9ce120f27827e1",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_rc/releases/download/v0.9.0/release-receipt.json"
+              }
+            ]
+          },
+          "epsm_lca": {
+            "version": "0.2.0",
+            "revision": "00141d0500e717b4f18a9d69e158f0af2aae1934",
+            "wheel": "/private/tmp/epsm-study-platform/released-downloads/epsm_lca/epsm_lca-0.2.0-py3-none-any.whl",
+            "sha256": "fbc149c31d8b94edc2ec02ecd9cde70619ec88e9ee525291c6d3c838ca53a5cf",
+            "release_url": "https://github.com/SB-Chalmers/epsm_lca/releases/tag/v0.2.0",
+            "published_at": "2026-10-21T12:54:19Z",
+            "assets": [
+              {
+                "id": 662508344,
+                "name": "epsm_lca-0.2.0-py3-none-any.whl",
+                "size": 37147,
+                "digest": "sha256:fbc149c31d8b94edc2ec02ecd9cde70619ec88e9ee525291c6d3c838ca53a5cf",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_lca/releases/download/v0.2.0/epsm_lca-0.2.0-py3-none-any.whl"
+              },
+              {
+                "id": 662508332,
+                "name": "epsm_lca-0.2.0.tar.gz",
+                "size": 42643,
+                "digest": "sha256:9c2a9276c7f317014e51c5546301e9ff7668aa9e47e07e8b25ae44dbaf69ad4c",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_lca/releases/download/v0.2.0/epsm_lca-0.2.0.tar.gz"
+              },
+              {
+                "id": 662508338,
+                "name": "release-receipt.json",
+                "size": 581,
+                "digest": "sha256:40b56acc8223c71a2aa4ce7ef00e2f5797f5a102bc96fa7f9b0044f86ac04d45",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_lca/releases/download/v0.2.0/release-receipt.json"
+              }
+            ]
+          },
+          "epsm_db": {
+            "version": "0.3.0",
+            "revision": "9e29a575f5495b76d5a8553bbe6e20dd4f0e1ff0",
+            "wheel": "/private/tmp/epsm-study-platform/released-downloads/epsm_db/epsm_db-0.3.0-py3-none-any.whl",
+            "sha256": "4f1f5b37238553a048d411f16f20d4af87322221946099e64e9c36018254c07a",
+            "release_url": "https://github.com/SB-Chalmers/epsm_db/releases/tag/v0.3.0",
+            "published_at": "2026-10-15T14:06:04Z",
+            "assets": [
+              {
+                "id": 644002570,
+                "name": "epsm_db-0.3.0-py3-none-any.whl",
+                "size": 167384,
+                "digest": "sha256:4f1f5b37238553a048d411f16f20d4af87322221946099e64e9c36018254c07a",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_db/releases/download/v0.3.0/epsm_db-0.3.0-py3-none-any.whl"
+              },
+              {
+                "id": 644002566,
+                "name": "epsm_db-0.3.0.tar.gz",
+                "size": 200802,
+                "digest": "sha256:bc5c962ba0d7c5672febfa99b4e3f085a7a4fe104b6c03e86e0883713aabe274",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_db/releases/download/v0.3.0/epsm_db-0.3.0.tar.gz"
+              },
+              {
+                "id": 644062679,
+                "name": "release-receipt.json",
+                "size": 1445,
+                "digest": "sha256:dc3aad380ecbcb1f92f3dcc9056b9f5266b57eda90212b02a6cd4356d168d980",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_db/releases/download/v0.3.0/release-receipt.json"
+              }
+            ]
+          },
+          "epsm_workflows": {
+            "version": "0.4.0",
+            "revision": "433a8b6d461ad2016e6f8c046aeaeb16b2861787",
+            "wheel": "/private/tmp/epsm-study-platform/released-downloads/epsm_workflows/epsm_workflows-0.4.0-py3-none-any.whl",
+            "sha256": "7e2d3a17fa8937a5f474c883f88accfe61207a977ade5d83853093dafaaa157c",
+            "release_url": "https://github.com/SB-Chalmers/epsm_workflows/releases/tag/v0.4.0",
+            "published_at": "2026-10-21T13:03:23Z",
+            "assets": [
+              {
+                "id": 662531850,
+                "name": "epsm_workflows-0.4.0-py3-none-any.whl",
+                "size": 58577,
+                "digest": "sha256:7e2d3a17fa8937a5f474c883f88accfe61207a977ade5d83853093dafaaa157c",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_workflows/releases/download/v0.4.0/epsm_workflows-0.4.0-py3-none-any.whl"
+              },
+              {
+                "id": 662531852,
+                "name": "epsm_workflows-0.4.0.tar.gz",
+                "size": 76149,
+                "digest": "sha256:bca83b80bc55819bf8380443d19137c76b4e2ec9d26bed38155bdd3301e7fcf5",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_workflows/releases/download/v0.4.0/epsm_workflows-0.4.0.tar.gz"
+              },
+              {
+                "id": 662531851,
+                "name": "release-receipt.json",
+                "size": 599,
+                "digest": "sha256:f86e05c091ec7cba8d9918ccf3488667f2c64ee71791e2bcaf987dcda4f4fd0f",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_workflows/releases/download/v0.4.0/release-receipt.json"
+              }
+            ]
+          },
+          "epsm_studies": {
+            "version": "0.4.0",
+            "revision": "d38ffc053cc4e9f88cb86e15018bf6ce309a65a9",
+            "wheel": "/private/tmp/epsm-study-platform/released-downloads/epsm_studies/epsm_studies-0.4.0-py3-none-any.whl",
+            "sha256": "5bd340510dedd8604c417d02ee9801cedbe2779f7e661883a8a76f7d45967e9c",
+            "release_url": "https://github.com/SB-Chalmers/epsm_studies/releases/tag/v0.4.0",
+            "published_at": "2026-10-21T13:03:28Z",
+            "assets": [
+              {
+                "id": 662532106,
+                "name": "epsm_studies-0.4.0-py3-none-any.whl",
+                "size": 35557,
+                "digest": "sha256:5bd340510dedd8604c417d02ee9801cedbe2779f7e661883a8a76f7d45967e9c",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_studies/releases/download/v0.4.0/epsm_studies-0.4.0-py3-none-any.whl"
+              },
+              {
+                "id": 662532103,
+                "name": "epsm_studies-0.4.0.tar.gz",
+                "size": 57857,
+                "digest": "sha256:d122e844d93e281e63d2f97bb4c6368a654044d24e0d8e56cfa3a44afd0401ca",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_studies/releases/download/v0.4.0/epsm_studies-0.4.0.tar.gz"
+              },
+              {
+                "id": 662532101,
+                "name": "release-receipt.json",
+                "size": 593,
+                "digest": "sha256:66fe5d6e731429786f99db38221b0a3c1069f41892be1de79bd8575b6b87533b",
+                "browser_download_url": "https://github.com/SB-Chalmers/epsm_studies/releases/download/v0.4.0/release-receipt.json"
+              }
+            ]
+          },
+          "smhi2epw": {
+            "version": "1.3.0",
+            "revision": "6792b2a4d1bc6a7bdcd1bd77b35dd0ff704f2b29",
+            "wheel": "/private/tmp/epsm-study-platform/released-downloads/smhi2epw/smhi2epw-1.3.0-py3-none-any.whl",
+            "sha256": "b32c8fd457814265edb969973a4a0b442dca7905aa6fa8ca3fd9a42bf6c762bc",
+            "release_url": "https://github.com/SB-Chalmers/smhi2epw/releases/tag/v1.3.0",
+            "published_at": "2026-10-21T13:04:23Z",
+            "assets": [
+              {
+                "id": 662534648,
+                "name": "smhi2epw-1.3.0-py3-none-any.whl",
+                "size": 87890,
+                "digest": "sha256:b32c8fd457814265edb969973a4a0b442dca7905aa6fa8ca3fd9a42bf6c762bc",
+                "browser_download_url": "https://github.com/SB-Chalmers/smhi2epw/releases/download/v1.3.0/smhi2epw-1.3.0-py3-none-any.whl"
+              },
+              {
+                "id": 662534650,
+                "name": "smhi2epw-1.3.0.tar.gz",
+                "size": 224934,
+                "digest": "sha256:3d59b0f707203c88f91921ce4c671103b6c4c7af1bc12f673481273e8a973f72",
+                "browser_download_url": "https://github.com/SB-Chalmers/smhi2epw/releases/download/v1.3.0/smhi2epw-1.3.0.tar.gz"
+              }
+            ]
+          }
+        }
+      },
+      "scenarios": {
+        "installed-platform": {
+          "required": true,
+          "status": "passed"
+        },
+        "study-platform": {
+          "required": true,
+          "status": "passed"
+        },
+        "archetype-handoff": {
+          "required": true,
+          "status": "passed"
+        },
+        "workflow-handoff": {
+          "required": true,
+          "status": "passed"
+        }
+      }
+    }
+  },
+  "supported_proposal_checks": {
+    "head": "3f2b22472a174ef6d8cfd9fd60822b4644d7eddc",
+    "runtime_and_package_metadata_unchanged_since": "556b8519e2f9ca1f27a3dc680f7f84482ed46f8b",
+    "compatibility_tests": {
+      "passed": 141,
+      "seconds": 46.86
+    },
+    "full_pinned_metadata": "passed",
+    "renderer": "passed",
+    "published_peer_gate": {
+      "311": "passed",
+      "313": "passed"
+    },
+    "initial_metadata_retry": "First check lacked Viewer checkout; second check reads all pinned committed metadata including unchanged Viewer through read-only links"
   }
 }

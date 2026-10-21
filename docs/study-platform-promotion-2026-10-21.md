@@ -93,10 +93,18 @@ tag now has those downloadable distributions; its source and tag did not change.
 Weather 1.3.0 passed its tagged validation and published to GitHub, PyPI and its
 documentation site. The PyPI wheel matches the GitHub wheel byte for byte.
 
-Downloaded owner artifacts match hosted digests and producer receipts. They are
-now running through the existing installed acceptance harnesses on Python 3.11
-and 3.13 with the checked EPSM candidate. EPSM's supported manifest remains
-unchanged until those actual-artifact gates pass.
+Downloaded owner artifacts match hosted digests and producer receipts. They
+passed all four existing installed acceptance harnesses on Python 3.11 and 3.13
+with the checked EPSM candidate. EPSM PR 33 now proposes those released main
+pins as the supported cohort and regenerates the README from the same manifest.
+The proposal passes the full pinned metadata guard and 141 compatibility tests.
+Its scientific source and package metadata are unchanged from the verified
+candidate.
+
+The separate main snapshot reports the temporary state where Workflows 0.4
+requires EPSM >=0.4 but EPSM main still declares 0.3.1. Preserve that finding and
+the dependency bounds; the final actual main snapshot must pass before EPSM
+is tagged. The release PR explains the non-atomic promotion sequence.
 
 Studio remains unchanged. Authentication, projects and UI integration remain a
 later application campaign. Publication and released-history synchronization
