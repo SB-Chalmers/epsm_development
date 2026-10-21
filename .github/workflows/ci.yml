@@ -1,0 +1,27 @@
+name: Development checks
+'on':
+  pull_request:
+    branches:
+    - dev
+    - main
+  workflow_dispatch: null
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  ci:
+    name: ci
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.13'
+    - name: Check handbook and runnable examples
+      run: |
+        python scripts/check_docs.py
+        python -m unittest discover -s tests -v
+        python scripts/run_examples.py

@@ -1,51 +1,44 @@
-name: Check the handbook
-
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [dev, main]
-  workflow_dispatch:
-
+name: Release verification
 permissions:
   contents: read
-
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
-
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
 jobs:
   documentation:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     strategy:
       matrix:
-        python: ['3.11', '3.13']
+        python:
+        - '3.11'
+        - '3.13'
     steps:
-      - uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-      - uses: actions/setup-python@v5
-        with:
-          python-version: ${{ matrix.python }}
-      - name: Check links and examples
-        run: python scripts/check_docs.py
-      - name: Test the documentation checks
-        run: python -m unittest discover -s tests -v
-      - name: Run the learning notebooks
-        run: python scripts/run_examples.py
-
+    - uses: actions/checkout@v4
+      with:
+        persist-credentials: false
+    - uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python }}
+    - name: Check links and examples
+      run: python scripts/check_docs.py
+    - name: Test the documentation checks
+      run: python -m unittest discover -s tests -v
+    - name: Run the learning notebooks
+      run: python scripts/run_examples.py
   api-documentation:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.13'
-      - name: Install the documentation tools
-        run: python -m pip install -r requirements-docs.txt
-      - name: Render the template API reference
-        run: python scripts/build_api_example.py
+    - uses: actions/checkout@v4
+      with:
+        persist-credentials: false
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.13'
+    - name: Install the documentation tools
+      run: python -m pip install -r requirements-docs.txt
+    - name: Render the template API reference
+      run: python scripts/build_api_example.py
+'on':
+  workflow_dispatch: null
