@@ -1,9 +1,9 @@
 # Reusable dataset authoring
 
-Status: implementation complete, awaiting the final installed-cohort and browser
-verification receipt, 22 October 2026. This campaign extends the existing study
+Status: implementation and local owner/Studio verification complete,
+22 October 2026. This campaign extends the existing study
 journey. It does not reproduce the archived Vera experiment or add model training
-and statistical analysis to Studio. Pending checks are not counted as passing.
+and statistical analysis to Studio. Release promotion remains a separate gate.
 
 ## Ownership and reuse
 
@@ -70,7 +70,7 @@ actionable diagnostics rather than being silently repaired or omitted.
 | --- | --- | --- |
 | Core | `b562ff5` | `solve_element_insulation()` and `Building.assign_element_u_value()` |
 | EPSM | `fef5b23` | Inherited `Building.assign_element_u_value()`, verified through the integration Building |
-| Workflows | `6ffb394` | Physical geometry/context/construction bindings, `log_uniform()`, `WorkflowSpec.describe_design()`, selected local execution and Vera task batching |
+| Workflows | `3d3c255` | Physical geometry/context/construction bindings, `log_uniform()`, `WorkflowSpec.describe_design()`, selected local execution and Vera task batching |
 | Studies | `f36e1b7` | `Study.describe_design()`, `StudyResults.case_inputs()`, `design_table()` and `export_dataset()` |
 
 ### Physical variation and its assumptions
@@ -100,6 +100,8 @@ buildings, it must explicitly choose `retain_existing=True`; otherwise preview
 reports the conflict. Retention preserves the supplied buildings, context
 settings and earlier generation evidence. This prevents a generated context
 from silently replacing a student's supplied surroundings.
+Conditions that depend on generated context before it resolves produce an
+explicit diagnostic; existing conditions without generation retain their behavior.
 
 ### Sampling, review and execution
 
@@ -147,9 +149,11 @@ adds original timestamps, values, units and per-case availability. Complete
 owner metadata is released between cases, and hourly arrays are streamed one
 case at a time. Full physical model records do not accumulate across the export.
 
-The dataset references the immutable scientific archive; it does not duplicate
-weather, models or native artifacts. Share the archive when complete evidence
-is needed. Existing archive identities, formats and single-table export behavior
+The dataset includes the unchanged specification, including any models embedded
+in that document. It references the immutable scientific archive rather than
+separately copying native model files, weather bytes or engine artifacts. Share
+the archive when complete evidence is needed. Existing archive identities,
+formats and single-table export behavior
 stay unchanged. New datasets refuse occupied destinations, publish a completion
 manifest last and preserve existing evidence on failure.
 
@@ -172,12 +176,28 @@ The baseline audit ran 304 selected offline tests against immutable development
 source snapshots. Eight optional weather-morphing tests were skipped and four
 engine/climate-generator cases were excluded. This remains dated source evidence.
 
-The latest completed installed-package checks passed 196 Workflows tests at
-`aba02f8`, 92 Studies tests at `f36e1b7` and 58 EPSM handoff tests at `fef5b23`.
-The final Workflows context-retention revision `6ffb394` adds four regression
-cases; its final installed-cohort rerun is pending here. The final receipt will
-be recorded at `docs/verification/2026-10-22-training-data-authoring.json` after
-the cohort and browser gates finish. It is not yet evidence of those gates.
+The final installed-package checks passed 206 Workflows tests at
+`3d3c255`, 92 Studies tests at `f36e1b7` and 58 EPSM handoff tests at `fef5b23`.
+Installed Workflows statement/branch coverage was 83.59%/73.56%; Studies was
+82.41%/74.55%. These checks used isolated owner-wheel installs on Python 3.12.3
+with available third-party dependencies. Core's offline source suite passed
+1,086 tests, with eight prerequisite skips and 33 EnergyPlus-marked checks
+excluded. Seven skips need the unavailable pinned AMY weather file and one
+needs an optional legacy Data adapter. Skipped checks are not passing checks.
+Core statement/branch coverage was 90.69%/82.26%; its new public operations
+reached 100% of both. Exact candidate revisions, wheel hashes, implementation
+identities, coverage counts and qualifications are recorded in the
+[verification receipt](verification/2026-10-22-training-data-authoring.json).
+
+Studio at `3338e10` passed 114 unit tests, 21 browser journeys, its build, ten
+fixture/harness tests and seven Pocket CAD asset checks. The browser handoff
+exported an L-shaped teaching building with a log-uniform footprint range,
+assigned weather through the public owner API and invoked the real Workflows
+compact-preview CLI. It imported the four-case report, recovered it after reload
+and hid stale counts immediately after a physical edit. A joined dataset download
+matched the public Studies export bytes. No engines ran during that handoff.
+The original fixture and artwork remained unchanged. The optional authoring pack
+round-tripped three complete building models through installed owner APIs.
 
 The 92-test Studies source run covered 82.4% of statements and 74.5% of branches.
 The new dataset module covered 99.2% of statements and 95.5% of branches. CLI

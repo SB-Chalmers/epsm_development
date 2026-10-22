@@ -1,0 +1,282 @@
+{
+  "format": 1,
+  "kind": "local-authoring-wheel-cohort",
+  "status": "passed",
+  "date": "2026-10-22",
+  "python": "3.12.3",
+  "qualification": "Local development wheels with isolated owner installs and available third-party dependencies; no release qualification or live Vera/60k-scale claim.",
+  "candidate_manifest": {
+    "format": 1,
+    "kind": "candidate",
+    "packages": {
+      "epsm_core": {
+        "revision": "b562ff5bd6e17c2bf542cc9e408292b245a391fa",
+        "version": "0.8.2",
+        "extras": [
+          "geometry"
+        ]
+      },
+      "epsm": {
+        "revision": "fef5b23c8af6a0442d7a4b9a50cfde146bce05c1",
+        "version": "0.4.0",
+        "extras": [
+          "all"
+        ]
+      },
+      "epsm_workflows": {
+        "revision": "3d3c25549176d4fa7651325f7e07eedbfd4fdf0d",
+        "version": "0.4.0",
+        "extras": [
+          "epsm",
+          "weather"
+        ]
+      },
+      "epsm_studies": {
+        "revision": "f36e1b77f96413150f7c80dcd44eac62747f8609",
+        "version": "0.4.0",
+        "extras": []
+      }
+    }
+  },
+  "inventory": {
+    "packages": {
+      "epsm_core": {
+        "filename": "epsm_core-0.8.2-py3-none-any.whl",
+        "version": "0.8.2",
+        "sha256": "49697f28bdebc78eb304c3997744f954d11a9b1125f73f082b9213a2ee3327db",
+        "revision": "b562ff5bd6e17c2bf542cc9e408292b245a391fa",
+        "implementation_identity": "89511f512c749f83c2a2e193f0ac7121c21618c59da8c93307c8e289aaa22a74"
+      },
+      "epsm": {
+        "filename": "epsm-0.4.0-py3-none-any.whl",
+        "version": "0.4.0",
+        "sha256": "b3cf169b98f1c1ea01ccc3cc7f2122524f459c09a6b5b927c0ad650cc9899601",
+        "revision": "fef5b23c8af6a0442d7a4b9a50cfde146bce05c1",
+        "implementation_identity": "f1199d86d6f15c0d4a195f7acc4010781a405db4b82016e39f8434bc09da5f39"
+      },
+      "epsm_workflows": {
+        "filename": "epsm_workflows-0.4.0-py3-none-any.whl",
+        "version": "0.4.0",
+        "sha256": "2db683f79b16c8b15df5479056b5f638f6cc6a1d58522a72ee4605eea2db66ab",
+        "revision": "3d3c25549176d4fa7651325f7e07eedbfd4fdf0d",
+        "implementation_identity": "70817e45429cf77776522cd2b39c14f4c78f3c69d37b2ba61217709bdaf2fbcf"
+      },
+      "epsm_studies": {
+        "filename": "epsm_studies-0.4.0-py3-none-any.whl",
+        "version": "0.4.0",
+        "sha256": "de1a9fe6a6e9ae6de3c84c4c9f99743e856fe36ebb61fb318e5b68fb5fafead8",
+        "revision": "f36e1b77f96413150f7c80dcd44eac62747f8609",
+        "implementation_identity": "acafeaa44915b7eff218fe4f43c329ade38b62c7f0556201cee05d4390c1a6df"
+      },
+      "epsm_data": {
+        "filename": "epsm_data-0.6.0-py3-none-any.whl",
+        "version": "0.6.0",
+        "sha256": "4b88d8cc5db6be5c24170c9e70f16a3108b08ff5980e8c097c932e2e1d1a1e0a",
+        "revision": "02f03d9be317211401984f0984484843811a9deb",
+        "implementation_identity": "0855d41a4eab9c81f53182952ea1f482cbe90c9ad2fa461ab7f2bed5adfc5f0e"
+      },
+      "epsm_rc": {
+        "filename": "epsm_rc-0.9.0-py3-none-any.whl",
+        "version": "0.9.0",
+        "sha256": "1739b96f731222aa7b4d4b5657568b252c075512d28301a2d30ee8fda9c3ca06",
+        "revision": "c4c143a0dbba4e90d4378499df88d1dacb20b951",
+        "implementation_identity": "42d03cacff4314e9944c5f5f1e687b6c44caeeecdbd4106d57ebd9a225bbddd5"
+      },
+      "epsm_lca": {
+        "filename": "epsm_lca-0.2.0-py3-none-any.whl",
+        "version": "0.2.0",
+        "sha256": "7793f32e2f943a9f142f8c1aa056e17f09330c2dc02d864654ae272be61bf455",
+        "revision": "b108124832abedabbd36921baf3266139344dcba",
+        "implementation_identity": "85dd70e1414156e1426140bcacc617c0fce6ccfbad190a7c3b338b0e4dad6c21"
+      },
+      "epsm_db": {
+        "filename": "epsm_db-0.3.0-py3-none-any.whl",
+        "version": "0.3.0",
+        "sha256": "9a5631a80d40752fe5eab244838a2e555cb3c35bd1de430367054187a378be6a",
+        "revision": "52961947d54ae221cf0abd0c2b84591bbca49590",
+        "implementation_identity": "05cfa7be2f8c213062d21af0d40194d4ed4517fc984535353646657769ea06cc"
+      },
+      "smhi2epw": {
+        "filename": "smhi2epw-1.3.0-py3-none-any.whl",
+        "version": "1.3.0",
+        "sha256": "788dd5bdf3e4e69e9d8d0f990db05b2c597e1d639d32c7df814483a2f25fd274",
+        "revision": "6792b2a4d1bc6a7bdcd1bd77b35dd0ff704f2b29",
+        "implementation_identity": "e5ad569a90455fa4495e1244edcfb2dfbb79f43be9eb5d3e3681532fb0428473"
+      }
+    }
+  },
+  "gates": {
+    "workflows-installed": {
+      "status": "passed",
+      "tests": 206,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "scope": "complete owner suite",
+      "coverage": {
+        "covered_lines": 2084,
+        "num_statements": 2493,
+        "covered_branches": 790,
+        "num_branches": 1074
+      }
+    },
+    "studies-installed": {
+      "status": "passed",
+      "tests": 92,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "scope": "complete owner suite",
+      "coverage": {
+        "covered_lines": 1185,
+        "num_statements": 1438,
+        "covered_branches": 413,
+        "num_branches": 554
+      }
+    },
+    "epsm-installed": {
+      "status": "passed",
+      "tests": 58,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "scope": "physical authoring, archetype, output, evaluation-bundle and workflow handoff checks"
+    },
+    "core-offline": {
+      "status": "passed",
+      "passed": 1086,
+      "skipped": 8,
+      "deselected": 33,
+      "scope": "offline source suite; EnergyPlus-marked checks excluded",
+      "limits": [
+        "1 optional legacy epsm_data.epsm_core_adapter import unavailable",
+        "7 existing Kiva smoke checks require a pinned AMY EPW that is unavailable"
+      ],
+      "coverage": {
+        "whole_package_statements": {
+          "covered": 6507,
+          "total": 7175,
+          "percent": 90.68989547038328
+        },
+        "whole_package_branches": {
+          "covered": 2328,
+          "total": 2830,
+          "percent": 82.26148409893993
+        },
+        "new_functions_statements": {
+          "covered": 50,
+          "total": 50,
+          "percent": 100
+        },
+        "new_functions_branches": {
+          "covered": 24,
+          "total": 24,
+          "percent": 100
+        }
+      }
+    },
+    "retained-archive": {
+      "status": "passed",
+      "kind": "studies-dataset-retained-release-archive",
+      "archive_id": "f040579cdc04749c63e4c25a61ba641e85059aee7eed966858f40a54d70937e6",
+      "verified_files": 297,
+      "evaluations": 6,
+      "hourly_rows": 52560,
+      "engines": [
+        "energyplus",
+        "epsm_rc"
+      ],
+      "source": "unchanged Studio retained archive ZIP",
+      "engines_executed": false,
+      "owner_imports_required": false
+    },
+    "studio": {
+      "status": "passed",
+      "revision": "3338e10c72582047fa69ea5ad735c15ff2037bde",
+      "unit_tests": 114,
+      "browser_tests": 21,
+      "browser_failures": 0,
+      "browser_skips": 0,
+      "browser_junit_sha256": "e1e5782416adc37c9048b9f65b84d759303a6eaf10dd177b9c5c1e317b02a7da",
+      "build": "passed",
+      "fixture_harness_tests": 10,
+      "pocket_cad_checks": 7,
+      "authoring_pack": {
+        "files": 17,
+        "subjects": 3,
+        "installed_owner_check": "passed"
+      },
+      "legacy_assets": "original study-platform fixture and Pocket CAD artwork unchanged",
+      "owner_handoff": {
+        "executed": true,
+        "workflow_cases": 4,
+        "readiness_checked": false,
+        "engines_executed": false,
+        "behaviors": [
+          "owner template added lazily",
+          "log-uniform footprint range retained",
+          "workflow file exported",
+          "public owner weather assignment",
+          "real compact preview CLI",
+          "exact-byte workflow/report import",
+          "recovery after reload",
+          "stale counts hidden after scientific edit",
+          "joined dataset download equals public owner export bytes"
+        ]
+      }
+    },
+    "handbook": {
+      "status": "passed",
+      "markdown_files": 40,
+      "local_links": 272,
+      "python_syntax_examples": 15,
+      "doctest_examples": 35,
+      "notebook_templates": 3,
+      "notebook_python_cells": 10,
+      "unit_tests": 11,
+      "executed_notebooks": 2
+    }
+  },
+  "environment": {
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "pydantic": "2.14.1",
+    "shapely": "2.2.0",
+    "pytest": "9.1.1",
+    "duckdb": "1.5.6",
+    "pyarrow": "23.0.1"
+  },
+  "candidate_manifest_sha256": "dfe218c57e311c09ca5196b8a96363653a710105f24a93639299de6483f75522",
+  "scientific_execution": {
+    "energyplus_rerun": false,
+    "rc": "existing small annual RC/LCA integration test in complete Workflows suite",
+    "archive_export_engines_executed": false,
+    "vera_live_submission": false,
+    "simulation_count_60000_qualified": false
+  },
+  "compatibility": [
+    "Golden existing workflow serialization, identity and seeded rows unchanged",
+    "Old Studies archive identity f040579cdc04749c63e4c25a61ba641e85059aee7eed966858f40a54d70937e6 and 297 file checks retained",
+    "Six original evaluations and 52560 hourly values retained",
+    "New features opt in; older readers need capability-compatible versions for new bindings/marginals",
+    "Existing prepared runtime/integrity checks stay enforced",
+    "No changes to numerical RC/LCA methods, Data definitions or weather generator"
+  ],
+  "limits": [
+    "Python 3.12.3 local development wheel cohort; not a Python 3.11/3.13 release qualification",
+    "Eight Core prerequisite skips and 33 excluded EnergyPlus-marked checks are not counted as passing",
+    "No 60000-case memory/runtime claim; describe_design still materializes physical preview internally",
+    "512-case stub benchmark qualifies dispatch overhead only",
+    "No live Vera/Slurm or future-weather provider exercise",
+    "Studio remains frontend authoring; arbitrary drafts need explicit platform resolution, validation, preparation and execution",
+    "No exact reconstruction of archived optimized LHS design, correlated sampler, model-training service or statistical analysis"
+  ],
+  "delivery": {
+    "branch": "codex/training-data-authoring",
+    "isolated_worktrees": true,
+    "unrelated_primary_changes_preserved": true,
+    "merged": false,
+    "pushed": false,
+    "additional_ci_workflows": false
+  }
+}
