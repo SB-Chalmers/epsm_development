@@ -1,0 +1,20 @@
+{
+  "hash_algorithm": "sha256",
+  "files": [
+    {
+      "file": "epsm_development.png",
+      "source": "SB-Chalmers/epsm_studio/design/pocket-cad/icons/png/256/epsm_development.png",
+      "sha256": "e4a177d6951e9e443f4884e73e193aec5bb76a62b1a0a68c2b442f14b5f62006"
+    },
+    {
+      "file": "epsm_development-dark.png",
+      "source": "SB-Chalmers/epsm_studio/design/pocket-cad/icons/png/dark/256/epsm_development.png",
+      "sha256": "4d97f9b400f29223dc7cfd82e8cb8668728b1350770e0ea0b86c43bd94a43e55"
+    },
+    {
+      "file": "logos.png",
+      "source": "renovation_catalogue/WP1A/figures/logos.png (supplied by project lead)",
+      "sha256": "0fc8f632bfa3abc45c49dd80c0c9d824377ffdc5a2fac809173e3ed03e0eacf3"
+    }
+  ]
+}

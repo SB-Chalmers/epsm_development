@@ -1,10 +1,20 @@
-# epsm_development
+# EPSM Development
+
+<!-- EPSM introduction: Pocket CAD -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/welcome/epsm_development-dark.png">
+  <img src="docs/assets/welcome/epsm_development.png" width="160" height="160" alt="EPSM Development — An open engineering handbook; the active right page represents shared development guidance.">
+</picture>
+
+Welcome to the EPSM developer handbook. Whether you are trying your first
+example or contributing a new feature, start here for shared engineering guides,
+package responsibilities and small worked examples. Pick one task and find the
+package that owns it.
+
+**[Explore the EPSM platform →](https://github.com/SB-Chalmers/epsm/blob/main/docs/platform.md)**
+<!-- /EPSM introduction -->
 
 [![CI](https://img.shields.io/badge/CI-GitHub_Actions-2088FF?logo=githubactions&logoColor=white)](https://github.com/SB-Chalmers/epsm_development/actions/workflows/ci.yml) [![Releases](https://img.shields.io/badge/releases-GitHub-181717?logo=github&logoColor=white)](https://github.com/SB-Chalmers/epsm_development/releases) [![Issues](https://img.shields.io/badge/issues-GitHub-181717?logo=github&logoColor=white)](https://github.com/SB-Chalmers/epsm_development/issues)
-
-The developer handbook for EPSM, a Swedish building-stock research platform.
-Find shared engineering and writing guides, package responsibilities, examples
-and templates for contributing to the platform.
 
 ## Getting started
 
@@ -36,3 +46,25 @@ python3 scripts/run_examples.py
 
 [MIT](LICENSE). See the [shared licensing policy](docs/licensing.md) for
 EPSM-owned material and retained third-party terms.
+
+## People and support
+
+Developed at Chalmers University of Technology as part of the EPSM research platform.
+
+**Funding**: Swedish Energy Agency (Project ID: P2024-04053)
+
+**Partners**:
+
+- Lindholmen Science Park AB
+- Sinom AB
+- Stiftelsen Chalmers Industriteknik
+
+**Team**:
+
+- **Lead Developer**: Sanjay Somanath
+- **Principal Investigator**: Alexander Hollberg
+- **Contributors**: Yinan Yu, Dag Wästberg
+
+<p align="center">
+  <img src="docs/assets/welcome/logos.png" width="100%" alt="Chalmers University of Technology, Chalmers Industriteknik, Sinom, Lindholmen Science Park and Swedish Energy Agency logos">
+</p>
