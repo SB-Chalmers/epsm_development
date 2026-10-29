@@ -85,6 +85,57 @@ owns the implementation details and exact guard commands. Historical receipts
 and explicitly retained numerical regression references remain dated evidence;
 they do not select the current supported combination.
 
+## Development checks during a version transition
+
+A coordinated release raises lower bounds in consumer packages before EPSM has
+promoted the new combination: Core 0.9.0 declares `epsm_data>=0.7.0,<0.8` while
+the supported manifest still pins Data 0.6.0, and EPSM cannot promote Data alone
+while supported RC 0.9.0 declares `epsm_data<0.7`. Installing the supported pin
+then fails at dependency resolution, so every consumer that raises a bound has a
+red `ci` until promotion. A dependency conflict needs a configuration change, not
+a repeated run, and manual dispatch checks do not replace the PR's `ci` result.
+
+The configuration change is a deterministic cohort selection inside `ci`, made
+only from committed content:
+
+1. Check out EPSM `main` read-only into `.ci/platform` and capture its SHA once.
+   Both `compatibility.json` and `compatibility-candidate.json` are read from
+   that one checkout.
+2. Read the consumer's own declared bounds for the sibling packages it installs
+   from its `pyproject.toml` at the PR checkout under test.
+3. When every supported pin satisfies those bounds, install the supported
+   cohort. This is the ordinary case and stays the default.
+4. Otherwise, install the whole cohort named by the candidate record at the same
+   SHA, provided it is marked `kind: candidate`, names an immutable SHA-40 for
+   each needed package and satisfies the bounds. Selection is per cohort, never
+   per package, so the installed set is always one recorded combination.
+5. When neither record satisfies the bounds, fail before installing anything
+   and name the record and bound that disagree. The remedy is to publish a
+   candidate record that satisfies the bounds on EPSM `main`, or to keep the
+   bound within the supported combination.
+
+No PR label, repository variable or workflow input takes part. The inputs are
+the consumer's reviewed `pyproject.toml` and two committed files at one
+immutable EPSM SHA, so the same PR revision always selects the same cohort and
+the receipt can be reproduced from those identities. The step summary records
+the EPSM SHA, the record used, the reason, and each dependency's bound, version
+and revision; a later step logs the actual checked-out revisions.
+
+A `ci` pass on the candidate cohort is still a development check of that
+package. It does not verify the candidate combination, does not record a
+candidate receipt for the consumer's own revision, and does not replace the
+explicit `candidate_manifest_revision` release verification described below.
+The rule applies to development jobs that install sibling packages from the
+manifest, Core and LCA at present; RC and Database development jobs install no
+siblings and select revisions only in Release verification. Each consumer's
+`docs/ci.md` states which case it is in.
+
+For the rule to take effect during a transition, the candidate record must be
+on EPSM `main`, not only on a candidate branch. Publishing it is an EPSM
+metadata change that leaves `compatibility.json` and every release tag
+untouched. Once the combination is promoted, every bound is satisfied by the
+supported manifest and the candidate record is no longer consulted.
+
 ## Feature-cohort checks before development merges
 
 The study-platform campaign adds an explicit `candidate_manifest_revision`
