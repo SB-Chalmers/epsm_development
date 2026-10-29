@@ -40,6 +40,7 @@ python3 scripts/run_examples.py
 - [Package responsibilities and engineering style](docs/engineering-style.md)
 - [Writing guide](docs/writing-guide.md)
 - [Branches and releases](docs/branches-and-releases.md)
+- [Harmonised release record, 29 October 2026](docs/harmonised-release-2026-10-29.md)
 - [Examples and common use cases](docs/examples-and-use-cases.md)
 
 ## License
