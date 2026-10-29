@@ -1,12 +1,13 @@
-# Harmonised release preparation — 29 October 2026
+# Harmonised release — 29 October 2026
 
-**Status: CANDIDATE.** This record describes the coordinated release that brings
-the renovation-era work on each package's `dev` branch into one supported EPSM
-combination. Nothing below is a supported combination until EPSM's candidate
-release verification passes and `compatibility.json` on EPSM `main` names the
-released tags. The [studio readiness record](studio-readiness-2026-10-20.md) and
-the [archetype release record](archetype-release-2026-10-15.md) remain the dated
-evidence for the preceding combinations.
+**Status: RELEASED.** EPSM 0.5.0 (`v0.5.0`, main `1c15659`) is the supported
+combination: its `compatibility.json` names Data 0.7.0, Core 0.9.0, RC 0.11.0,
+LCA 0.3.0, Database 0.5.0, Workflows 0.5.0, Studies 0.5.0, smhi2epw 1.3.0 and
+Viewer 0.1.0 at their tagged sources. The [studio readiness
+record](studio-readiness-2026-10-20.md) and the [archetype release
+record](archetype-release-2026-10-15.md) remain the dated evidence for the
+preceding combinations. The sections below keep the preparation history; the
+outcome is at the end.
 
 ## Why a coordinated release is needed
 
@@ -47,9 +48,9 @@ not express which combination works together.
 | EPSM | 0.5.0 | [epsm#41](https://github.com/SB-Chalmers/epsm/pull/41) and [epsm#44](https://github.com/SB-Chalmers/epsm/pull/44) (records through `epsm_db`) | Data 0.7, Core 0.9, LCA 0.3, RC 0.11, Database 0.5 |
 | Weather | 1.3.0 (unchanged) | [smhi2epw#11](https://github.com/SB-Chalmers/smhi2epw/pull/11), #10, #12 restore a passing `main` | — |
 
-Workflows 0.4.0, Studies 0.4.0 and Viewer 0.1.0 keep their supported pins. Workflows 0.4.0 and Studies 0.4.0 declare `epsm_core<0.9`, so the
-installed cohort cannot pass `pip check` until those two packages release with
-updated bounds; that work is outside this record.
+Workflows 0.4.0 and Studies 0.4.0 declared `epsm_core<0.9`, so the installed
+cohort could not pass `pip check`; both were brought into scope and released as
+0.5.0 the same day (see the outcome below). Viewer 0.1.0 keeps its supported pin.
 
 EPSM's `compatibility-candidate.json` on the candidate branch names the exact
 heads of the preparation branches. The candidate release verification
@@ -75,44 +76,82 @@ its preparation branch with the others at their candidates:
 Hosted evidence: the preparation pull requests' own checks, and the EPSM
 candidate release verification dispatched on the head of epsm#44. The first
 candidate run (29 October, epsm `5e737a4`) stopped at wheel installation because
-Workflows 0.4.0 declares `epsm_core<0.9`; no engine gate ran. Record the run
-identifiers and receipts here before promotion. A metadata report or a local run
+Workflows 0.4.0 declared `epsm_core<0.9`; no engine gate ran. The runs that did
+install the cohort are in the outcome below. A metadata report or a local run
 without EnergyPlus does not establish the engine gates.
 
 ## Release order
 
-Each step follows [branches and releases](branches-and-releases.md): merge the
+Each step followed [branches and releases](branches-and-releases.md): merge the
 preparation pull request into `dev`, open the release pull request from `dev` to
-`main`, merge it with a normal merge, tag `vX.Y.Z`, then merge `main` back into
-`dev`.
+`main`, merge it with a normal merge, tag `vX.Y.Z`, then bring `main` back into
+`dev`. Steps 1 to 6 were planned on the morning of 29 October; Workflows and
+Studies were brought into scope in the afternoon because their `epsm_core<0.9`
+bounds stopped the cohort from installing.
 
-1. Weather: merge smhi2epw#11, then #10, then #12. No new tag.
-2. Data 0.7.0 (`v0.7.0`).
-3. Core 0.9.0 (`v0.9.0`). Its `dev` checks read Data's supported pin and stay red
-   until step 7; use `Release verification` with `development_dependencies` as
-   the release check.
-4. LCA 0.3.0 (`v0.3.0`), as for Core.
-5. RC 0.11.0 (`v0.11.0`), as for Core.
-5b. Database 0.5.0 (`v0.5.0`): merge epsm_db#27, release with the PostGIS
-   acceptance job green, then delete `codex/gis-first-data-lake` and
-   `codex/lod2-catalogue` (their content is in the release).
-6. EPSM: merge epsm#41 then epsm#44 into `dev`. Replace the candidate revisions
-   with the released tags, run the candidate verification again, then promote
-   `compatibility.json`, regenerate the README table and release 0.5.0 (`v0.5.0`).
-7. Consumers adopt the promoted manifest on their next normal CI run.
-8. Delete the superseded EPSM branches `codex/lod2-catalogue`,
-   `claude/catalogue-templates`, `claude/lake-record-runner` and
-   `claude/se07-single-state`; their commits are carried by epsm#44.
+## Outcome
 
-## Work preserved but not decided
+| Package | Released | Tag commit | Release pull request | Preparation evidence |
+| --- | --- | --- | --- | --- |
+| Weather | 1.3.0 unchanged; `main` and `dev` at `45656c1` | — | smhi2epw#11, #13, #12 | — |
+| Data | 0.7.0 | `7fb6817` | [epsm_data#30](https://github.com/SB-Chalmers/epsm_data/pull/30) | Release verification [40854119098](https://github.com/SB-Chalmers/epsm_data/actions/runs/40854119098) |
+| Core | 0.9.0 | `21fbed6` | [epsm_core#69](https://github.com/SB-Chalmers/epsm_core/pull/69) | Release verification, `development_dependencies` [40859788914](https://github.com/SB-Chalmers/epsm_core/actions/runs/40859788914) |
+| RC | 0.11.0 | `dcb47ba` | [epsm_rc#82](https://github.com/SB-Chalmers/epsm_rc/pull/82) | Release verification, candidate manifest [40861689808](https://github.com/SB-Chalmers/epsm_rc/actions/runs/40861689808); native wheels [40863726346](https://github.com/SB-Chalmers/epsm_rc/actions/runs/40863726346) |
+| LCA | 0.3.0 | `9854bc7` | [epsm_lca#26](https://github.com/SB-Chalmers/epsm_lca/pull/26) | Release verification, `development_dependencies` [40864041148](https://github.com/SB-Chalmers/epsm_lca/actions/runs/40864041148) |
+| Database | 0.5.0 | `a3dcdb7` | [epsm_db#29](https://github.com/SB-Chalmers/epsm_db/pull/29) | PR `ci` green; PostGIS acceptance run locally against the workflow's `postgis/postgis:17-3.5` image, fixture- and `epsm-db init`-initialised: 84 passed, 8 skipped. The hosted lane could not install the cohort before EPSM 0.5.0 was on `main`. |
+| Workflows | 0.5.0 | `1ea589e` | [epsm_workflows#20](https://github.com/SB-Chalmers/epsm_workflows/pull/20) | Full suite locally against the cohort: 134 passed. Compatibility release only ([epsm_workflows#19](https://github.com/SB-Chalmers/epsm_workflows/pull/19)). |
+| Studies | 0.5.0 | `6bccba1` | [epsm_studies#21](https://github.com/SB-Chalmers/epsm_studies/pull/21) | Full suite locally with Workflows 0.5.0: 77 passed. Compatibility release only ([epsm_studies#19](https://github.com/SB-Chalmers/epsm_studies/pull/19)). |
+| EPSM | 0.5.0 | `1c15659` | [epsm#46](https://github.com/SB-Chalmers/epsm/pull/46) after [epsm#41](https://github.com/SB-Chalmers/epsm/pull/41), [#44](https://github.com/SB-Chalmers/epsm/pull/44) and the promotion [#45](https://github.com/SB-Chalmers/epsm/pull/45) | Candidate release verification at the tagged sources, Python 3.11 and 3.13, EnergyPlus 24.2: [40886432131](https://github.com/SB-Chalmers/epsm/actions/runs/40886432131) (`ed1bd7a`); earlier run on the pre-release heads [40879513275](https://github.com/SB-Chalmers/epsm/actions/runs/40879513275) |
 
-The `codex/training-data-authoring` branches of 22 October are open as draft
-pull requests so they are reviewable rather than stranded:
-[epsm#43](https://github.com/SB-Chalmers/epsm/pull/43),
-[epsm_core#68](https://github.com/SB-Chalmers/epsm_core/pull/68) (conflicts with
-`dev`) and [epsm_development#32](https://github.com/SB-Chalmers/epsm_development/pull/32).
-Decide whether that effort continues or is closed. Database's uncommitted stock
-work is preserved as commit `fd21917` on `codex/lod2-catalogue` and carried onto the
-lake stock in epsm_db#27. The design assets on
-[epsm#42](https://github.com/SB-Chalmers/epsm/pull/42) follow the dev-first policy
-and carry no platform change.
+Every repository above has `dev` and `main` at the same commit, and the merged
+preparation branches are deleted.
+
+### Deviations and findings
+
+- **Consumer `ci` checks were red by construction.** Core, LCA, RC, Workflows and
+  Studies read EPSM `main`'s supported manifest, which pinned the 0.4.0 cohort
+  until EPSM 0.5.0 was promoted. Their preparation pull requests were merged on
+  the release-verification evidence above, and the failed `ci` runs on the open
+  fallback pull requests ([epsm_core#70](https://github.com/SB-Chalmers/epsm_core/pull/70),
+  [epsm_lca#25](https://github.com/SB-Chalmers/epsm_lca/pull/25)) were rerun after
+  promotion. The fallback proposal itself is [epsm_development#34](https://github.com/SB-Chalmers/epsm_development/pull/34).
+- **One example was stale.** The first candidate run to install the whole cohort
+  failed only in `00_geometry_and_archetype.ipynb`, which asserted that archetype
+  application leaves `hvac` unset; Data 0.7.0 archetypes carry a ventilation
+  template, so the example now checks the installed topology and the still
+  unchosen heating delivery (epsm `8e22ce4`).
+- **Formatting debt surfaced at release time.** Core (one import order), RC (2
+  files) and LCA (11 files) needed `ruff` fixes before their release checks
+  passed; Workflows and Studies carry no formatter in CI.
+- **Hosted checks in private repositories.** From 29 October every job in
+  `epsm_workflows` and `epsm_studies` ended within seconds with no step
+  executed, including the dependency-light `ci`; public repositories ran
+  normally. Treat this as an account spending restriction per [branches and
+  releases](branches-and-releases.md): fix the configuration, do not rerun. Their
+  0.5.0 releases rest on local suites and on EPSM's candidate verification, which
+  installs both packages.
+- **Database PostGIS acceptance** ran locally only, for the reason in the table.
+  Dispatch `Release verification` on Database `main` now that EPSM 0.5.0 is
+  supported, and record it here.
+
+### Left for the maintainer
+
+- Delete the superseded EPSM branches `codex/lod2-catalogue`,
+  `claude/catalogue-templates`, `claude/lake-record-runner` and
+  `claude/se07-single-state` (their commits are carried by epsm#44), and
+  Database's `codex/lod2-catalogue`. They are not ancestors of `dev`, so the
+  pruning rule asks for a maintainer decision.
+- Create the GitHub release pages for `v0.7.0` (Data), `v0.9.0` (Core),
+  `v0.11.0` (RC), `v0.3.0` (LCA), `v0.5.0` (Database, Workflows, Studies, EPSM).
+- The 22 October `codex/training-data-authoring` drafts
+  ([epsm#43](https://github.com/SB-Chalmers/epsm/pull/43),
+  [epsm_core#68](https://github.com/SB-Chalmers/epsm_core/pull/68),
+  [epsm_development#32](https://github.com/SB-Chalmers/epsm_development/pull/32))
+  and the design assets on [epsm#42](https://github.com/SB-Chalmers/epsm/pull/42)
+  are still undecided.
+- The October catalogue validation study stays in a local Studies worktree by
+  decision; it changes nothing under `src/`. Its scripts drive EnergyPlus through
+  the legacy record route rather than a Workflows plan; the gaps that led there
+  (catalogue application as a workflow input, cohort sampling, cross-year
+  measurement weather, per-carrier EPC comparison, process execution) are a
+  Workflows 0.6 topic.

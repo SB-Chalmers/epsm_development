@@ -13,11 +13,10 @@ The handbook is written for the people who build and use EPSM. Coding agents fol
 study authoring, owner boundaries, portable results and the staged acceptance
 and release gates. Its candidate work does not change Studio.
 
-The [harmonised release record](../docs/harmonised-release-2026-10-29.md) names the
-renovation-era candidate cohort of 29 October 2026 (Data 0.7.0, Core 0.9.0, LCA
-0.3.0, RC 0.11.0, Database 0.5.0 with the promoted GIS data lake, EPSM 0.5.0), its
-evidence so far and the release order. It is **CANDIDATE** until EPSM promotes
-`compatibility.json`; Workflows and Studies still need updated bounds first.
+The [harmonised release record](../docs/harmonised-release-2026-10-29.md) records
+the renovation-era release of 29 October 2026: EPSM 0.5.0 with Data 0.7.0, Core
+0.9.0, RC 0.11.0, LCA 0.3.0, Database 0.5.0 (the promoted GIS data lake),
+Workflows 0.5.0 and Studies 0.5.0, its evidence, deviations and what is left.
 
 The preceding handbook source was v0.5.1, 20 October 2026. The
 [Studio readiness record](../docs/studio-readiness-2026-10-20.md) records the released
