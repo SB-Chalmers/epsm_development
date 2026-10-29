@@ -13,6 +13,21 @@ pass. A metadata report cannot establish numerical agreement or scientific
 accuracy. The handbook explains the contract; it does not keep a second current
 table of package pins.
 
+## Sibling bounds and released wheels
+
+In-house packages declare a lower bound on each sibling and no upper bound.
+EPSM's supported manifest is the tested combination, so a strict `<next-minor`
+bound added no safety and forced every consumer to release whenever a sibling
+bumped a minor version. Third-party dependencies keep their usual upper bounds.
+A package that needs a newer sibling raises that lower bound in the same change.
+
+Each EPSM release builds the supported combination once. EPSM's `Release wheels`
+workflow runs on the `vX.Y.Z` tag, builds every pinned scientific package,
+proves the set installs, and attaches the wheels of public repositories to the
+GitHub release with `compatibility.json` and checksums. Consumers install the
+released wheels instead of rebuilding siblings from source, and a wheel is
+published only when its source repository is public.
+
 ## Keep release evidence and candidates distinct
 
 | EPSM record | Meaning |
