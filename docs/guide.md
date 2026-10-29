@@ -13,6 +13,11 @@ The handbook is written for the people who build and use EPSM. Coding agents fol
 study authoring, owner boundaries, portable results and the staged acceptance
 and release gates. Its candidate work does not change Studio.
 
+The [harmonised release record](../docs/harmonised-release-2026-10-29.md) records
+the renovation-era release of 29 October 2026: EPSM 0.5.0 with Data 0.7.0, Core
+0.9.0, RC 0.11.0, LCA 0.3.0, Database 0.5.0 (the promoted GIS data lake),
+Workflows 0.5.0 and Studies 0.5.0, its evidence, deviations and what is left.
+
 The preceding handbook source was v0.5.1, 20 October 2026. The
 [Studio readiness record](../docs/studio-readiness-2026-10-20.md) records the released
 owner packages and published EPSM 0.3.1 combination. Its scientific, display and
@@ -81,6 +86,7 @@ Coding agents should also read [AGENTS.md](../AGENTS.md).
 | Adopt a reviewed package combination without duplicated CI pins | [Platform compatibility](../docs/platform-compatibility.md) |
 | Prepare reusable study authoring, retained results and paired engines | [Study platform readiness](../docs/study-platform-readiness.md) |
 | Check the current Core, Viewer and Studio preparation | [Studio readiness record](../docs/studio-readiness-2026-10-20.md) |
+| Follow the renovation-era coordinated release | [Harmonised release record](../docs/harmonised-release-2026-10-29.md) |
 | Read and write data, or pass it to another package | [I/O modules and package APIs](../docs/io-and-api.md) |
 | Add a notebook that teaches a package | [Examples guide](../docs/examples-and-use-cases.md) |
 | Find a shared example of a research task | [Common use cases](../use_cases/README.md) |
